@@ -69,8 +69,7 @@ $gutter                         : 3%; // percentages only
 	width: 100%;
 	// Opera collapse white-space
 	@at-root {
-		.opera-only :-o-prefocus,
-		& {
+		.opera-only :-o-prefocus, & {
 			word-spacing: -0.43em;
 		}
 	}
@@ -212,3 +211,20 @@ $gutter                         : 3%; // percentages only
 	}
 
 } // end .row
+
+/* Semantic Examples
+================================================================ */
+
+.container {
+	width: $breakpoint-4;
+	max-width: 95%;
+	margin: auto;
+}
+
+.sidebar {
+	@extend .span-4;
+}
+
+.content {
+	@extend .span-8;
+}

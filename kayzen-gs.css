@@ -49,7 +49,7 @@ http://github.com/esr360/Kayzen-GS/
   width: 22.75%;
 }
 
-.span-4 {
+.span-4, .sidebar {
   width: 31.33333%;
 }
 
@@ -65,7 +65,7 @@ http://github.com/esr360/Kayzen-GS/
   width: 57.08333%;
 }
 
-.span-8 {
+.span-8, .content {
   width: 65.66667%;
 }
 
@@ -147,7 +147,7 @@ http://github.com/esr360/Kayzen-GS/
   .row.flow-columns .span-3 {
     width: 22%;
   }
-  .row.flow-columns .span-4 {
+  .row.flow-columns .span-4, .row.flow-columns .sidebar {
     width: 30.33333%;
   }
   .row.flow-columns .span-5 {
@@ -159,7 +159,7 @@ http://github.com/esr360/Kayzen-GS/
   .row.flow-columns .span-7 {
     width: 55.33333%;
   }
-  .row.flow-columns .span-8 {
+  .row.flow-columns .span-8, .row.flow-columns .content {
     width: 63.66667%;
   }
   .row.flow-columns .span-9 {
@@ -215,4 +215,12 @@ http://github.com/esr360/Kayzen-GS/
 }
 .row.block-columns > [class*="span"] {
   display: table-cell;
+}
+
+/* Semantic Examples
+================================================================ */
+.container {
+  width: 1200px;
+  max-width: 95%;
+  margin: auto;
 }
