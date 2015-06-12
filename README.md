@@ -9,7 +9,7 @@ The simple answer is; flexibility. By definition, columns *are* just inline bloc
 
 ## Why don't other grid systems use inline-block?
 
-By default, adding display: inline-block to an element causes a natural whitespace to appear between each element, which can vary in width from font to font and browser to browser. Indeed, this has caused many people many problems, and there are plenty of go-to hacky and impractical work arounds, none of which are really suitble for a production environment. However, the above code allows for the use of completely usable and functional columns which use inline-block and have no white-space. And to top it all off, it works on all browsers, including Internet Explorer 6!
+By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, it works on all browsers, including **Internet Explorer 6**!
 
 ## What about Flex?
 
