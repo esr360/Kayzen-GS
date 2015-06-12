@@ -10,11 +10,11 @@ http://github.com/esr360/Kayzen-GS/
 /* Kayzen GS Generator
 ================================================================ */
 .row {
-  *letter-spacing: normal;
-  *word-spacing: -0.43em;
   letter-spacing: -0.31em;
   display: table !important;
   width: 100%;
+  *letter-spacing: normal;
+  *word-spacing: -0.43em;
 }
 
 .opera-only :-o-prefocus,
@@ -30,10 +30,10 @@ http://github.com/esr360/Kayzen-GS/
 
 [class*="span"] {
   display: inline-block;
-  zoom: 1;
-  *display: inline;
   vertical-align: top;
   margin-left: 3%;
+  *display: inline;
+  zoom: 1;
 }
 [class*="span"]:first-child {
   margin-left: 0;
@@ -129,15 +129,6 @@ http://github.com/esr360/Kayzen-GS/
     width: 100%;
   }
   .row.break-4.block-columns > [class*="span"] {
-    display: inline-block;
-  }
-}
-@media (max-width: 1400px) {
-  .row.break-5 [class*="span"] {
-    margin-left: 0;
-    width: 100%;
-  }
-  .row.break-5.block-columns > [class*="span"] {
     display: inline-block;
   }
 }

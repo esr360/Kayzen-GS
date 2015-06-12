@@ -13,7 +13,7 @@ http://github.com/esr360/Kayzen-GS/
 // Options
 //-----------------------------------------------------------------
 
-// Support Internet Explorer 6 + 7?
+// Support Internet Explorer 6 & 7?
 $old-ie                         : true;
 
 // Generate Flow Columns?
@@ -37,14 +37,12 @@ $breakpoint-1                   : 460px;
 $breakpoint-2                   : 720px;
 $breakpoint-3                   : 940px;
 $breakpoint-4                   : 1200px;
-$breakpoint-5                   : 1400px;
 
 $breakpoints: (
 	break-1                     : $breakpoint-1,
 	break-2                     : $breakpoint-2,
 	break-3                     : $breakpoint-3,
 	break-4                     : $breakpoint-4,
-	break-5                     : $breakpoint-5
 );
 
 // Set the maximum width for default vertically stacked columns
@@ -57,21 +55,23 @@ $col-collapse                   : $breakpoint-3;
 // How many columns should your grid system have?
 $columns                        : 12;
 
-// How big should the gutter inbetween columns be?
+// How big should the gutter inbetween your columns be?
 $gutter                         : 3%; // percentages only
 
 /* Kayzen GS Generator
 ================================================================ */
 
 .row { 
-	// IE < 8 collapse white-space
-	*letter-spacing: normal;
-	*word-spacing: -0.43em;
 	// Firefox/IE collapse white-space
 	letter-spacing: -0.31em;
 	// Webkit collapse white-space
 	display: table !important;
 	width: 100%;
+	// IE < 8 collapse white-space
+	@if $old-ie == true {
+		*letter-spacing: normal;
+		*word-spacing: -0.43em;
+	}
 }
 
 // For Opera support
@@ -93,9 +93,13 @@ $gutter                         : 3%; // percentages only
 
 [class*="#{$col-namespace}"] {
 	display: inline-block;
-	zoom: 1; *display: inline; // IE < 8: fake inline-block
 	vertical-align: top;
 	margin-left: $gutter;
+	// IE < 8: fake inline-block
+	@if $old-ie == true {
+		*display: inline;
+		zoom: 1; 
+	}
 	&:first-child {
 		margin-left: 0;
 	}
@@ -155,18 +159,20 @@ $gutter                         : 3%; // percentages only
 // Flow Columns
 //-----------------------------------------------------------------
 
-	@media (min-width: $col-collapse) {
-		&.flow-columns {
-			margin-left: -$gutter;
-			width: 100% + $gutter;
-			[class*="#{$col-namespace}"] {
-				&, &:first-child {
-					margin-left: $gutter;
+	@if $flow-columns == true {
+		@media (min-width: $col-collapse) {
+			&.flow-columns {
+				margin-left: -$gutter;
+				width: 100% + $gutter;
+				[class*="#{$col-namespace}"] {
+					&, &:first-child {
+						margin-left: $gutter;
+					}
 				}
-			}
-			@for $i from 1 through $columns {
-				.#{$col-namespace}-#{$i} {		
-					width: ((100/$columns) * $i) - $gutter;
+				@for $i from 1 through $columns {
+					.#{$col-namespace}-#{$i} {		
+						width: ((100/$columns) * $i) - $gutter;
+					}
 				}
 			}
 		}
@@ -176,13 +182,15 @@ $gutter                         : 3%; // percentages only
 // Magic Columns
 //-----------------------------------------------------------------
 
-	@media (min-width: $col-collapse) {
-		.#{$col-namespace}-m {
-			&:first-child {
-				@for $i from 1 through $columns {
-					&:nth-last-child(#{$i}) {
-						&, ~ .#{$col-namespace}-m {		
-							width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+	@if $magic-columns == true {
+		@media (min-width: $col-collapse) {
+			.#{$col-namespace}-m {
+				&:first-child {
+					@for $i from 1 through $columns {
+						&:nth-last-child(#{$i}) {
+							&, ~ .#{$col-namespace}-m {		
+								width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+							}
 						}
 					}
 				}
@@ -194,11 +202,12 @@ $gutter                         : 3%; // percentages only
 // Block Columns
 //-----------------------------------------------------------------
 
-	&.block-columns {
-		> [class*="#{$col-namespace}"] {
-			display: table-cell;
+	@if $block-columns == true {
+		&.block-columns {
+			> [class*="#{$col-namespace}"] {
+				display: table-cell;
+			}
 		}
 	}
-
 
 } // end .row
