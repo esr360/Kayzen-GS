@@ -56,12 +56,12 @@ $gutter                         : 3%; // percentages only
 ================================================================ */
 
 .row { 
-    // IE < 8 collapse white-space
-    *letter-spacing: normal;
-    *word-spacing: -0.43em;
+	// IE < 8 collapse white-space
+	*letter-spacing: normal;
+	*word-spacing: -0.43em;
 	// Firefox/IE collapse white-space
-    letter-spacing: -0.31em;
-    // Webkit collapse white-space
+	letter-spacing: -0.31em;
+	// Webkit collapse white-space
 	display: table !important;
 	width: 100%;
 }
@@ -69,14 +69,14 @@ $gutter                         : 3%; // percentages only
 // For Opera support
 .opera-only :-o-prefocus,
 .row {
-    word-spacing: -0.43em;
+	word-spacing: -0.43em;
 }
 
 // Reset spacing
 * {        
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-rendering: auto;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-rendering: auto;
 }
 
 //-----------------------------------------------------------------
@@ -84,9 +84,9 @@ $gutter                         : 3%; // percentages only
 //-----------------------------------------------------------------
 
 [class*="#{$col-namespace}"] {
-    display: inline-block;
-    zoom: 1; *display: inline; // IE < 8: fake inline-block
-    vertical-align: top;
+	display: inline-block;
+	zoom: 1; *display: inline; // IE < 8: fake inline-block
+	vertical-align: top;
 	margin-left: $gutter;
 	&:first-child {
 		margin-left: 0;
