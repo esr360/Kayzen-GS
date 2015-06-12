@@ -13,6 +13,6 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ## What about Flex?
 
-Flex doesn't work in IE6!
+Go ahead and use Flex instead of this if you want, seriously. I'm a firm believer of improving web standards, so completely undersyand why anyone would prefer to use Flex.
 
 ## Documentation
