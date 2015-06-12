@@ -16,9 +16,7 @@ http://github.com/esr360/Kayzen-GS/
   *letter-spacing: normal;
   *word-spacing: -0.43em;
 }
-
-.opera-only :-o-prefocus,
-.row {
+.opera-only :-o-prefocus, .row {
   word-spacing: -0.43em;
 }
 

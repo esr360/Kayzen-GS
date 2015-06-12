@@ -67,17 +67,18 @@ $gutter                         : 3%; // percentages only
 	// Webkit collapse white-space
 	display: table !important;
 	width: 100%;
+	// Opera collapse white-space
+	@at-root {
+		.opera-only :-o-prefocus,
+		& {
+			word-spacing: -0.43em;
+		}
+	}
 	// IE < 8 collapse white-space
 	@if $old-ie == true {
 		*letter-spacing: normal;
 		*word-spacing: -0.43em;
 	}
-}
-
-// For Opera support
-.opera-only :-o-prefocus,
-.row {
-	word-spacing: -0.43em;
 }
 
 // Reset spacing
