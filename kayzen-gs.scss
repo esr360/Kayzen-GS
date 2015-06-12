@@ -1,0 +1,196 @@
+/* Configuration
+================================================================ */
+
+//-----------------------------------------------------------------
+// Options
+//-----------------------------------------------------------------
+
+// Support Internet Explorer 6 + 7?
+$old-ie                         : true;
+
+// Generate Flow Columns?
+$flow-columns                   : true;
+
+// Generate Magic Columns?
+$magic-columns                  : true;
+
+// Generate Block Columns?
+$block-columns                  : true;
+
+// Set column namespace
+$col-namespace                  : span;
+
+//-----------------------------------------------------------------
+// Breakpoints
+//-----------------------------------------------------------------
+
+$breakpoint-0                   : 0px;
+$breakpoint-1                   : 460px;
+$breakpoint-2                   : 720px;
+$breakpoint-3                   : 940px;
+$breakpoint-4                   : 1200px;
+$breakpoint-5                   : 1400px;
+
+$breakpoints: (
+	break-1                     : $breakpoint-1,
+	break-2                     : $breakpoint-2,
+	break-3                     : $breakpoint-3,
+	break-4                     : $breakpoint-4,
+	break-5                     : $breakpoint-5
+);
+
+// Set the maximum width for default vertically stacked columns
+$col-collapse                   : $breakpoint-3;
+
+//-----------------------------------------------------------------
+// Grid System
+//-----------------------------------------------------------------
+
+// How many columns should your grid system have?
+$columns                        : 12;
+
+// How big should the gutter inbetween columns be?
+$gutter                         : 3%; // percentages only
+
+/* Kayzen GS Generator
+================================================================ */
+
+.row { 
+    // IE < 8 collapse white-space
+    *letter-spacing: normal;
+    *word-spacing: -0.43em;
+	// Firefox/IE collapse white-space
+    letter-spacing: -0.31em;
+    // Webkit collapse white-space
+	display: table !important;
+	width: 100%;
+}
+
+// For Opera support
+.opera-only :-o-prefocus,
+.row {
+    word-spacing: -0.43em;
+}
+
+// Reset spacing
+* {        
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+}
+
+//-----------------------------------------------------------------
+// Individual Column
+//-----------------------------------------------------------------
+
+[class*="#{$col-namespace}"] {
+    display: inline-block;
+    zoom: 1; *display: inline; // IE < 8: fake inline-block
+    vertical-align: top;
+	margin-left: $gutter;
+	&:first-child {
+		margin-left: 0;
+	}
+}
+
+//-----------------------------------------------------------------
+// Custom Column Grid
+//-----------------------------------------------------------------
+
+@for $i from 1 through $columns {
+	.#{$col-namespace}-#{$i} {			
+		width: ( (100/$columns) * $i) - ( ( ((100 / ((100/$columns) * $i)) - 1) * $gutter ) / ( $columns / $i ) )
+	}
+}
+
+.row {
+
+//-----------------------------------------------------------------
+// Default Column Stacking
+//-----------------------------------------------------------------
+
+	@media (max-width: $col-collapse) {
+		&:not([class*="break-"]) {
+			> [class*="#{$col-namespace}"] {
+				margin-left: 0;
+				width: 100%;
+			}
+			&.block-columns {
+				> [class*="#{$col-namespace}"] {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+//-----------------------------------------------------------------
+// Custom Column Stacking
+//-----------------------------------------------------------------
+
+	@each $bp, $width in $breakpoints {
+		@media (max-width: $width) {
+			&.#{$bp} {
+				[class*="#{$col-namespace}"] {
+					margin-left: 0;
+					width: 100%;
+				}
+				&.block-columns {
+					> [class*="#{$col-namespace}"] {
+						display: inline-block;
+					}
+				}
+			}
+		}
+	} 	
+
+//-----------------------------------------------------------------
+// Flow Columns
+//-----------------------------------------------------------------
+
+	@media (min-width: $col-collapse) {
+		&.flow-columns {
+			margin-left: -$gutter;
+			width: 100% + $gutter;
+			[class*="#{$col-namespace}"] {
+				&, &:first-child {
+					margin-left: $gutter;
+				}
+			}
+			@for $i from 1 through $columns {
+				.#{$col-namespace}-#{$i} {		
+					width: ((100/$columns) * $i) - $gutter;
+				}
+			}
+		}
+	}
+
+//-----------------------------------------------------------------
+// Magic Columns
+//-----------------------------------------------------------------
+
+	@media (min-width: $col-collapse) {
+		.#{$col-namespace}-m {
+			&:first-child {
+				@for $i from 1 through $columns {
+					&:nth-last-child(#{$i}) {
+						&, ~ .#{$col-namespace}-m {		
+							width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+						}
+					}
+				}
+			}
+		}
+	}
+
+//-----------------------------------------------------------------
+// Block Columns
+//-----------------------------------------------------------------
+
+	&.block-columns {
+		> [class*="#{$col-namespace}"] {
+			display: table-cell;
+		}
+	}
+
+
+} // end .row
