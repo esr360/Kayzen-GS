@@ -18,14 +18,162 @@
 	<body>
 		
 		<div class="container">
-			<div class="row">
-				<div class="sidebar">
-					<h4>Sidebar</h4>
-				</div>
-				<div class="content">
-					<h4>Content</h4>
-				</div>
-			</div>
+
+            <h2 class="heading">
+                <a href="http://www.onenexusproject.com/documentation/features/responsive-grid-system/" target="blank">
+                    <i><em>Responsive Grid System</em></i>
+                </a>
+            </h2>
+
+            <h3 class="heading">Regular columns</h3>
+
+            <p>A row of regular columns can contain any number of columns with different span widths so long as the total number doesn't exceed the value defined by the <code>$columns</code> variable. By default, this number is set to <b>12</b>, so our column-spans should add up to this number.</p>
+
+            <div class="row flow-columns grid-system">                    
+                <div class="span-3 break-1-full break-2-half break-3-third break-4-quarter">span-3</div>
+                <div class="span-3 break-1-full break-2-half break-3-third break-4-quarter">span-3</div>           
+                <div class="span-3 break-1-full break-2-half break-3-third break-4-quarter">span-3</div>
+                <div class="span-3 break-1-full break-2-half break-3-third break-4-quarter">span-3</div>
+            </div> 
+			
+			<br />
+			
+            <div class="row grid-system">                    
+                <div class="span-6">span-6</div>
+                <div class="span-6">span-6</div>
+            </div> 
+
+            <br>
+
+            <div class="row grid-system">                    
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
+            </div>
+
+            <br>
+
+            <div class="row grid-system">                    
+                <div class="span-3">span-3</div>
+                <div class="span-3">span-3</div>
+                <div class="span-3">span-3</div>
+                <div class="span-3">span-3</div>
+            </div>
+
+            <br>
+
+            <div class="row grid-system">
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+                <div class="span-1">span-1</div>
+            </div>
+
+            <hr class="stripes">
+
+            <h3 class="heading">Flow Columns</h3>
+
+            <p>Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own <code>row</code> wrapper - you can wrap all of your columns for every row inside just one main <code>row</code> container.</p> 
+
+            <div class="row flow-columns grid-system">
+                <div class="span-6">Flow Column</div>
+                <div class="span-6">Flow Column</div>
+                <div class="span-4">Flow Column</div>
+                <div class="span-4">Flow Column</div>
+                <div class="span-4">Flow Column</div>
+                <div class="span-3">Flow Column</div>
+                <div class="span-3">Flow Column</div>
+                <div class="span-3">Flow Column</div>
+                <div class="span-3">Flow Column</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+                <div class="span-1">FC</div>
+            </div>
+
+            <hr class="stripes">
+
+            <h3 class="heading">Magic Columns</h3>
+
+            <p>"Magic" columns are so named as each row of magic columns can automatically detect the number of columns within its row, and set the width of each column accordingly (without using any JavaScript!). Each column in a row of magic columns will always be the same width, and will always add up to <b>100%</b> width. Perfect for cases where you know each column will always be the same width, or where you need any "<a href="http://en.wikipedia.org/wiki/Widows_and_orphans" target="blank">widow</a>" columns to take up any remaining space.</p> 
+
+            <div class="row magic-columns">
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+            </div>
+            <br>
+            <div class="row magic-columns">
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+            </div>
+            <br>
+            <div class="row magic-columns">
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+            </div>
+            <br>
+            <div class="row magic-columns">
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+                <div class="span">MC</div>
+            </div>
+			
+            <hr class="stripes">
+
+            <h3 class="heading">Block Columns</h3>
+
+            <p>Block columns are similar to regular columns except that they have no gutter (no margin) and they are all equal height to each other.</p>
+
+            <div class="row block-columns block-columns-demo">
+                <div class="span-4">
+                    <p>Block Column</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl.</p>
+                </div>
+                <div class="span-4">
+                    <p>Block Column</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl.</p>
+                </div>
+                <div class="span-4">
+                    <p>Block Column</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+
+            <p>To create a row of block columns, simply add the <b>block-columns</b> class to your row which contains the target columns.</p>
+
 		</div>
 		
 	</body>
