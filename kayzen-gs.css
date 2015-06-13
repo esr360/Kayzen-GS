@@ -5,10 +5,6 @@ Made by @esr360
 http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
-/* Configuration
-================================================================ */
-/* Kayzen GS Generator
-================================================================ */
 .row {
   letter-spacing: -0.31em;
   display: table !important;
@@ -26,197 +22,222 @@ http://github.com/esr360/Kayzen-GS/
   text-rendering: auto;
 }
 
-[class*="span"], .sidebar, .content {
+.row > [class*="span"] {
   display: inline-block;
   vertical-align: top;
   margin-left: 3%;
   *display: inline;
   zoom: 1;
 }
-[class*="span"]:first-child, .sidebar:first-child, .content:first-child {
+.row > [class*="span"]:first-child {
   margin-left: 0;
 }
-
-.span-1 {
+.row .span-1 {
   width: 5.58333%;
 }
-
-.span-2 {
+.row .span-2 {
   width: 14.16667%;
 }
-
-.span-3, .sidebar {
+.row .span-3 {
   width: 22.75%;
 }
-
-.span-4 {
+.row .span-4 {
   width: 31.33333%;
 }
-
-.span-5 {
+.row .span-5 {
   width: 39.91667%;
 }
-
-.span-6 {
+.row .span-6 {
   width: 48.5%;
 }
-
-.span-7 {
+.row .span-7 {
   width: 57.08333%;
 }
-
-.span-8 {
+.row .span-8 {
   width: 65.66667%;
 }
-
-.span-9, .content {
+.row .span-9 {
   width: 74.25%;
 }
-
-.span-10 {
+.row .span-10 {
   width: 82.83333%;
 }
-
-.span-11 {
+.row .span-11 {
   width: 91.41667%;
 }
-
-.span-12 {
+.row .span-12 {
   width: 100%;
 }
-
 @media (max-width: 940px) {
-  .row:not([class*="break-"]) > [class*="span"], .row:not([class*="break-"]) > .sidebar, .row:not([class*="break-"]) > .content {
+  .row > [class*="span"]:not([class*="break"]) {
     margin-left: 0;
     width: 100%;
-  }
-  .row:not([class*="break-"]).block-columns > [class*="span"], .row:not([class*="break-"]).block-columns > .sidebar, .row:not([class*="break-"]).block-columns > .content {
-    display: inline-block;
   }
 }
 @media (max-width: 460px) {
-  .row.break-1 [class*="span"], .row.break-1 .sidebar, .row.break-1 .content {
+  .row.break-1 > [class*="span"]:not([class*="break"]) {
     margin-left: 0;
     width: 100%;
-  }
-  .row.break-1.block-columns > [class*="span"], .row.break-1.block-columns > .sidebar, .row.break-1.block-columns > .content {
-    display: inline-block;
   }
 }
 @media (max-width: 720px) {
-  .row.break-2 [class*="span"], .row.break-2 .sidebar, .row.break-2 .content {
+  .row.break-2 > [class*="span"]:not([class*="break"]) {
     margin-left: 0;
     width: 100%;
-  }
-  .row.break-2.block-columns > [class*="span"], .row.break-2.block-columns > .sidebar, .row.break-2.block-columns > .content {
-    display: inline-block;
   }
 }
 @media (max-width: 940px) {
-  .row.break-3 [class*="span"], .row.break-3 .sidebar, .row.break-3 .content {
+  .row.break-3 > [class*="span"]:not([class*="break"]) {
     margin-left: 0;
     width: 100%;
-  }
-  .row.break-3.block-columns > [class*="span"], .row.break-3.block-columns > .sidebar, .row.break-3.block-columns > .content {
-    display: inline-block;
   }
 }
 @media (max-width: 1200px) {
-  .row.break-4 [class*="span"], .row.break-4 .sidebar, .row.break-4 .content {
+  .row.break-4 > [class*="span"]:not([class*="break"]) {
     margin-left: 0;
     width: 100%;
   }
-  .row.break-4.block-columns > [class*="span"], .row.break-4.block-columns > .sidebar, .row.break-4.block-columns > .content {
-    display: inline-block;
-  }
 }
-@media (min-width: 940px) {
-  .row.flow-columns {
-    margin-left: -3%;
-    width: 103%;
-  }
-  .row.flow-columns [class*="span"], .row.flow-columns .sidebar, .row.flow-columns .content, .row.flow-columns [class*="span"]:first-child, .row.flow-columns .sidebar:first-child, .row.flow-columns .content:first-child {
-    margin-left: 3%;
-  }
-  .row.flow-columns .span-1 {
-    width: 5.33333%;
-  }
-  .row.flow-columns .span-2 {
-    width: 13.66667%;
-  }
-  .row.flow-columns .span-3, .row.flow-columns .sidebar {
-    width: 22%;
-  }
-  .row.flow-columns .span-4 {
-    width: 30.33333%;
-  }
-  .row.flow-columns .span-5 {
-    width: 38.66667%;
-  }
-  .row.flow-columns .span-6 {
-    width: 47%;
-  }
-  .row.flow-columns .span-7 {
-    width: 55.33333%;
-  }
-  .row.flow-columns .span-8 {
-    width: 63.66667%;
-  }
-  .row.flow-columns .span-9, .row.flow-columns .content {
-    width: 72%;
-  }
-  .row.flow-columns .span-10 {
-    width: 80.33333%;
-  }
-  .row.flow-columns .span-11 {
-    width: 88.66667%;
-  }
-  .row.flow-columns .span-12 {
-    width: 97%;
-  }
+
+.flow-columns {
+  margin-left: -3%;
+  width: 103%;
 }
+.flow-columns > [class*="span"], .flow-columns > [class*="span"]:first-child {
+  margin-left: 3%;
+}
+.flow-columns .span-1 {
+  width: 5.33333%;
+}
+.flow-columns .span-2 {
+  width: 13.66667%;
+}
+.flow-columns .span-3 {
+  width: 22%;
+}
+.flow-columns .span-4 {
+  width: 30.33333%;
+}
+.flow-columns .span-5 {
+  width: 38.66667%;
+}
+.flow-columns .span-6 {
+  width: 47%;
+}
+.flow-columns .span-7 {
+  width: 55.33333%;
+}
+.flow-columns .span-8 {
+  width: 63.66667%;
+}
+.flow-columns .span-9 {
+  width: 72%;
+}
+.flow-columns .span-10 {
+  width: 80.33333%;
+}
+.flow-columns .span-11 {
+  width: 88.66667%;
+}
+.flow-columns .span-12 {
+  width: 97%;
+}
+
 @media (min-width: 940px) {
-  .row .span-m:first-child:nth-last-child(1), .row .span-m:first-child:nth-last-child(1) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1) ~ [class*="span"] {
     width: 100%;
   }
-  .row .span-m:first-child:nth-last-child(2), .row .span-m:first-child:nth-last-child(2) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
     width: 48.5%;
   }
-  .row .span-m:first-child:nth-last-child(3), .row .span-m:first-child:nth-last-child(3) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
     width: 31.33333%;
   }
-  .row .span-m:first-child:nth-last-child(4), .row .span-m:first-child:nth-last-child(4) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
     width: 22.75%;
   }
-  .row .span-m:first-child:nth-last-child(5), .row .span-m:first-child:nth-last-child(5) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
     width: 17.6%;
   }
-  .row .span-m:first-child:nth-last-child(6), .row .span-m:first-child:nth-last-child(6) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
     width: 14.16667%;
   }
-  .row .span-m:first-child:nth-last-child(7), .row .span-m:first-child:nth-last-child(7) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
     width: 11.71429%;
   }
-  .row .span-m:first-child:nth-last-child(8), .row .span-m:first-child:nth-last-child(8) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
     width: 9.875%;
   }
-  .row .span-m:first-child:nth-last-child(9), .row .span-m:first-child:nth-last-child(9) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
     width: 8.44444%;
   }
-  .row .span-m:first-child:nth-last-child(10), .row .span-m:first-child:nth-last-child(10) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
     width: 7.3%;
   }
-  .row .span-m:first-child:nth-last-child(11), .row .span-m:first-child:nth-last-child(11) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
     width: 6.36364%;
   }
-  .row .span-m:first-child:nth-last-child(12), .row .span-m:first-child:nth-last-child(12) ~ .span-m {
+  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
     width: 5.58333%;
   }
 }
-.row.block-columns > [class*="span"], .row.block-columns > .sidebar, .row.block-columns > .content {
+.block-columns > [class*="span"]:not([class*="break"]) {
   display: table-cell;
 }
 
-/* Semantic Examples
- - Based off the default value of 12 for $columns
-================================================================ */
+@media (max-width: 1200px) {
+  .row .break-4-full {
+    width: 97%;
+  }
+  .row .break-4-half {
+    width: 47%;
+  }
+  .row .break-4-third {
+    width: 30.33333%;
+  }
+  .row .break-4-quarter {
+    width: 22%;
+  }
+}
+@media (max-width: 940px) {
+  .row .break-3-full {
+    width: 97%;
+  }
+  .row .break-3-half {
+    width: 47%;
+  }
+  .row .break-3-third {
+    width: 30.33333%;
+  }
+  .row .break-3-quarter {
+    width: 22%;
+  }
+}
+@media (max-width: 720px) {
+  .row .break-2-full {
+    width: 97%;
+  }
+  .row .break-2-half {
+    width: 47%;
+  }
+  .row .break-2-third {
+    width: 30.33333%;
+  }
+  .row .break-2-quarter {
+    width: 22%;
+  }
+}
+@media (max-width: 460px) {
+  .row .break-1-full {
+    width: 97%;
+  }
+  .row .break-1-half {
+    width: 47%;
+  }
+  .row .break-1-third {
+    width: 30.33333%;
+  }
+  .row .break-1-quarter {
+    width: 22%;
+  }
+}
