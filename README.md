@@ -16,3 +16,15 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 Go ahead and use Flex instead of this if you want, seriously. I'm a firm believer of improving web standards, so completely understand why anyone would prefer to use newer technologies.
 
 ## Documentation
+
+By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. 
+
+### Custom Configuration
+
+> Each row of columns **must** be wrapped inside a paret container with the **row** class.
+
+```html
+<div class="row">
+	...
+</div>
+```
