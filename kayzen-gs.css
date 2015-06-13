@@ -26,14 +26,14 @@ http://github.com/esr360/Kayzen-GS/
   text-rendering: auto;
 }
 
-[class*="span"] {
+[class*="span"], .sidebar, .content {
   display: inline-block;
   vertical-align: top;
   margin-left: 3%;
   *display: inline;
   zoom: 1;
 }
-[class*="span"]:first-child {
+[class*="span"]:first-child, .sidebar:first-child, .content:first-child {
   margin-left: 0;
 }
 
@@ -45,11 +45,11 @@ http://github.com/esr360/Kayzen-GS/
   width: 14.16667%;
 }
 
-.span-3 {
+.span-3, .sidebar {
   width: 22.75%;
 }
 
-.span-4, .sidebar {
+.span-4 {
   width: 31.33333%;
 }
 
@@ -65,11 +65,11 @@ http://github.com/esr360/Kayzen-GS/
   width: 57.08333%;
 }
 
-.span-8, .content {
+.span-8 {
   width: 65.66667%;
 }
 
-.span-9 {
+.span-9, .content {
   width: 74.25%;
 }
 
@@ -86,47 +86,47 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 @media (max-width: 940px) {
-  .row:not([class*="break-"]) > [class*="span"] {
+  .row:not([class*="break-"]) > [class*="span"], .row:not([class*="break-"]) > .sidebar, .row:not([class*="break-"]) > .content {
     margin-left: 0;
     width: 100%;
   }
-  .row:not([class*="break-"]).block-columns > [class*="span"] {
+  .row:not([class*="break-"]).block-columns > [class*="span"], .row:not([class*="break-"]).block-columns > .sidebar, .row:not([class*="break-"]).block-columns > .content {
     display: inline-block;
   }
 }
 @media (max-width: 460px) {
-  .row.break-1 [class*="span"] {
+  .row.break-1 [class*="span"], .row.break-1 .sidebar, .row.break-1 .content {
     margin-left: 0;
     width: 100%;
   }
-  .row.break-1.block-columns > [class*="span"] {
+  .row.break-1.block-columns > [class*="span"], .row.break-1.block-columns > .sidebar, .row.break-1.block-columns > .content {
     display: inline-block;
   }
 }
 @media (max-width: 720px) {
-  .row.break-2 [class*="span"] {
+  .row.break-2 [class*="span"], .row.break-2 .sidebar, .row.break-2 .content {
     margin-left: 0;
     width: 100%;
   }
-  .row.break-2.block-columns > [class*="span"] {
+  .row.break-2.block-columns > [class*="span"], .row.break-2.block-columns > .sidebar, .row.break-2.block-columns > .content {
     display: inline-block;
   }
 }
 @media (max-width: 940px) {
-  .row.break-3 [class*="span"] {
+  .row.break-3 [class*="span"], .row.break-3 .sidebar, .row.break-3 .content {
     margin-left: 0;
     width: 100%;
   }
-  .row.break-3.block-columns > [class*="span"] {
+  .row.break-3.block-columns > [class*="span"], .row.break-3.block-columns > .sidebar, .row.break-3.block-columns > .content {
     display: inline-block;
   }
 }
 @media (max-width: 1200px) {
-  .row.break-4 [class*="span"] {
+  .row.break-4 [class*="span"], .row.break-4 .sidebar, .row.break-4 .content {
     margin-left: 0;
     width: 100%;
   }
-  .row.break-4.block-columns > [class*="span"] {
+  .row.break-4.block-columns > [class*="span"], .row.break-4.block-columns > .sidebar, .row.break-4.block-columns > .content {
     display: inline-block;
   }
 }
@@ -135,7 +135,7 @@ http://github.com/esr360/Kayzen-GS/
     margin-left: -3%;
     width: 103%;
   }
-  .row.flow-columns [class*="span"], .row.flow-columns [class*="span"]:first-child {
+  .row.flow-columns [class*="span"], .row.flow-columns .sidebar, .row.flow-columns .content, .row.flow-columns [class*="span"]:first-child, .row.flow-columns .sidebar:first-child, .row.flow-columns .content:first-child {
     margin-left: 3%;
   }
   .row.flow-columns .span-1 {
@@ -144,10 +144,10 @@ http://github.com/esr360/Kayzen-GS/
   .row.flow-columns .span-2 {
     width: 13.66667%;
   }
-  .row.flow-columns .span-3 {
+  .row.flow-columns .span-3, .row.flow-columns .sidebar {
     width: 22%;
   }
-  .row.flow-columns .span-4, .row.flow-columns .sidebar {
+  .row.flow-columns .span-4 {
     width: 30.33333%;
   }
   .row.flow-columns .span-5 {
@@ -159,10 +159,10 @@ http://github.com/esr360/Kayzen-GS/
   .row.flow-columns .span-7 {
     width: 55.33333%;
   }
-  .row.flow-columns .span-8, .row.flow-columns .content {
+  .row.flow-columns .span-8 {
     width: 63.66667%;
   }
-  .row.flow-columns .span-9 {
+  .row.flow-columns .span-9, .row.flow-columns .content {
     width: 72%;
   }
   .row.flow-columns .span-10 {
@@ -213,14 +213,10 @@ http://github.com/esr360/Kayzen-GS/
     width: 5.58333%;
   }
 }
-.row.block-columns > [class*="span"] {
+.row.block-columns > [class*="span"], .row.block-columns > .sidebar, .row.block-columns > .content {
   display: table-cell;
 }
 
 /* Semantic Examples
+ - Based off the default value of 12 for $columns
 ================================================================ */
-.container {
-  width: 1200px;
-  max-width: 95%;
-  margin: auto;
-}
