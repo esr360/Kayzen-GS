@@ -63,10 +63,13 @@ $breakpoints: (
 $col-collapse                   : $breakpoint-3;
 
 //=================================================================
-// Kayzen GS Generator
+// Kayzen GS Framework
 //=================================================================
 
-.#{$row-namespace} { 
+// Column Row
+//-----------------------------------------------------------------
+
+%row-core {
 	// Firefox/IE collapse white-space
 	letter-spacing: -0.31em;
 	// Webkit collapse white-space
@@ -82,14 +85,32 @@ $col-collapse                   : $breakpoint-3;
 	@if $old-ie == true {
 		*letter-spacing: normal;
 		*word-spacing: -0.43em;
+	}	
+	@at-root {
+		// Reset spacing
+		* {        
+			letter-spacing: normal;
+			word-spacing: normal;
+			text-rendering: auto;
+		}		
 	}
 }
 
-// Reset spacing
-* {        
-	letter-spacing: normal;
-	word-spacing: normal;
-	text-rendering: auto;
+// Single Column
+//-----------------------------------------------------------------
+
+%column-core {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: $gutter;
+	// IE < 8: fake inline-block
+	@if $old-ie == true {
+		*display: inline;
+		zoom: 1; 
+	}
+	&:first-child {
+		margin-left: 0;
+	}	
 }
 
 // Column Mixin
@@ -115,23 +136,19 @@ $col-collapse                   : $breakpoint-3;
 	width: ((100/$columns) * $span) - $gutter;
 }
 
+//=================================================================
+// Kayzen GS Generator
+//=================================================================
+
 .#{$row-namespace} {
+	
+	@extend %row-core;
 	
 // Individual Column
 //-----------------------------------------------------------------
 
 	@include column(true) {
-		display: inline-block;
-		vertical-align: top;
-		margin-left: $gutter;
-		// IE < 8: fake inline-block
-		@if $old-ie == true {
-			*display: inline;
-			zoom: 1; 
-		}
-		&:first-child {
-			margin-left: 0;
-		}
+		@extend %column-core;
 	}
 
 // Column Width
@@ -228,6 +245,7 @@ $col-collapse                   : $breakpoint-3;
 //-----------------------------------------------------------------
 
 @mixin full {
+	margin-left: 0;
 	@include flow-column-width(1, 1);
 }
 
@@ -245,6 +263,23 @@ $col-collapse                   : $breakpoint-3;
 
 .#{$row-namespace} {
 	
+	@each $bp, $width in $breakpoints {
+		@media (max-width: $width) {
+			.#{$bp}-full {
+				@include full;
+			}
+			.#{$bp}-half {
+				@include half;
+			}
+			.#{$bp}-third {
+				@include third;
+			}
+			.#{$bp}-quarter {
+				@include quarter;
+			}
+		}
+	}
+
 	@media (max-width: $breakpoint-4) {
 		.break-4-full {
 			@include full;
@@ -311,3 +346,19 @@ $col-collapse                   : $breakpoint-3;
 // Semantic Examples
 // Based off the default value of 12 for $columns
 //=================================================================
+
+.sidebar {
+	@extend %column-core;
+	@include column-width(12, 4);
+	@media (max-width: $breakpoint-3) {
+		@include full;
+	}
+}
+
+.content {
+	@extend %column-core;
+	@include column-width(12, 8);
+	@media (max-width: $breakpoint-3) {
+		@include full;
+	}
+}
