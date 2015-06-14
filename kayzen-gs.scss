@@ -82,7 +82,7 @@ $fractions: (
 // Column Row
 //-----------------------------------------------------------------
 
-%row-core {
+%row {
 	// Firefox/IE collapse white-space
 	letter-spacing: -0.31em;
 	// Webkit collapse white-space
@@ -109,10 +109,16 @@ $fractions: (
 	}
 }
 
+%flow-row {
+	@extend %row;
+	margin-left: -$gutter;
+	width: 100% + $gutter;
+}
+
 // Single Column
 //-----------------------------------------------------------------
 
-%column-core {
+%column {
 	display: inline-block;
 	vertical-align: top;
 	margin-left: $gutter;
@@ -123,19 +129,13 @@ $fractions: (
 	}
 	&:first-child {
 		margin-left: 0;
-	}	
+	}
 }
 
-// Column Mixin
-@mixin column($core: false) {
-	@if $core {	
-		> [class*="#{$col-namespace}"] {
-			@content;
-		}
-	} @else {	
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			@content;
-		}
+%flow-column {
+	@extend %column;
+	&:first-child {
+		margin-left: $gutter;
 	}
 }
 
@@ -155,13 +155,13 @@ $fractions: (
 
 .#{$row-namespace} {
 	
-	@extend %row-core;
+	@extend %row;
 	
 // Individual Column
 //-----------------------------------------------------------------
 
-	@include column(true) {
-		@extend %column-core;
+	> [class*="#{$col-namespace}"] {
+		@extend %column;	
 	}
 
 // Column Width
@@ -177,9 +177,9 @@ $fractions: (
 //-----------------------------------------------------------------
 
 	@media (max-width: $col-collapse) {
-		@include column {
-			margin-left: 0;
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			width: 100%;
+			margin-left: 0;
 		}
 	}
 
@@ -190,8 +190,7 @@ $fractions: (
 		@each $bp, $width in $breakpoints {
 			@media (max-width: $width) {
 				&.#{$bp} {
-					@include column {
-						margin-left: 0;
+					> [class*="#{$col-namespace}"]:not([class*="break"]) {
 						width: 100%;
 					}
 				}
@@ -206,12 +205,9 @@ $fractions: (
 
 @if $flow-columns {
 	.flow-columns {
-		margin-left: -$gutter;
-		width: 100% + $gutter;
-		@include column(true) {
-			&, &:first-child {
-				margin-left: $gutter;
-			}
+		@extend %flow-row;
+		> [class*="#{$col-namespace}"] {
+			@extend %flow-column;
 		}
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
@@ -227,7 +223,7 @@ $fractions: (
 @if $magic-columns {
 	@media (min-width: $col-collapse) {
 		.magic-columns {
-			@include column {
+			> [class*="#{$col-namespace}"]:not([class*="break"]) {
 				&:first-child {
 					@for $i from 1 through $columns {
 						&:nth-last-child(#{$i}) {
@@ -247,7 +243,7 @@ $fractions: (
 
 @if $block-columns {
 	.block-columns {
-		@include column {
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			display: table-cell;
 		}
 	}
@@ -289,14 +285,26 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 } // .#{$row-namespace}
 
+//=================================================================
+// Custom Grid System Generator
+//=================================================================
+
+// Custom Column
+//-----------------------------------------------------------------
+
 // Custom Responsive Handling
 //-----------------------------------------------------------------
 
-@mixin respond-to($width, $breakpoint) {
+@mixin respond-to($width, $breakpoint, $flow-columns: false) {
 	@media (max-width: breakpoint($breakpoint)) {
 		$columns: map-get(fraction($width), columns);
 		$span: map-get(fraction($width), span);
-		@include column-width($columns, $span);
+		@if $flow-columns {
+			@include flow-column-width($columns, $span);
+		} @else {
+			@include column-width($columns, $span);
+			margin-left: 0;
+		}
 	}
 }
 
@@ -309,25 +317,31 @@ $reverse-breakpoints: reverse-map($breakpoints);
 //=================================================================
 
 .main {
-	@extend %row-core;
+	@extend %row;
 }
 
 .sidebar {
-	@extend %column-core;
+	@extend %column;
 	@include column-width(12, 4);
 	@include respond-to(full, break-3);
 }
 
 .content {
-	@extend %column-core;
+	@extend %column;
 	@include column-width(12, 8);
 	@include respond-to(full, break-3);
 }
 
+// Custom flow columns
+
+.portfolio-grid {
+	@extend %flow-row;	
+}
+
 .portfolio-item {
-	@extend %column-core;
-	@include respond-to(sixth, break-4);
-	@include respond-to(quarter, break-3);
-	@include respond-to(third, break-2);
-	@include respond-to(half, break-1);
+	@extend %flow-column;
+	@include flow-column-width(12, 3);
+	@include respond-to(third, break-3, true);
+	@include respond-to(half, break-2, true);
+	@include respond-to(full, break-1, true);
 }
