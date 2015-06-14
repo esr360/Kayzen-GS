@@ -132,11 +132,27 @@ $fractions: (
 	}
 }
 
-%flow-column {
+@mixin flow-column {
 	@extend %column;
 	&:first-child {
 		margin-left: $gutter;
 	}
+}
+
+@mixin magic-column {
+	&:first-child {
+		@for $i from 1 through $columns {
+			&:nth-last-child(#{$i}) {
+				&, ~ [class*="#{$col-namespace}"] {		
+					width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+				}
+			}
+		}
+	}	
+}
+
+@mixin block-column {
+	display: table-cell;
 }
 
 // Column Width Mixin
@@ -207,7 +223,7 @@ $fractions: (
 	.flow-columns {
 		@extend %flow-row;
 		> [class*="#{$col-namespace}"] {
-			@extend %flow-column;
+			@include flow-column;
 		}
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
@@ -224,15 +240,7 @@ $fractions: (
 	@media (min-width: $col-collapse) {
 		.magic-columns {
 			> [class*="#{$col-namespace}"]:not([class*="break"]) {
-				&:first-child {
-					@for $i from 1 through $columns {
-						&:nth-last-child(#{$i}) {
-							&, ~ [class*="#{$col-namespace}"] {		
-								width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
-							}
-						}
-					}
-				}
+				@include magic-column;
 			}
 		}
 	}
@@ -244,7 +252,7 @@ $fractions: (
 @if $block-columns {
 	.block-columns {
 		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			display: table-cell;
+			@include block-column;
 		}
 	}
 }
@@ -284,6 +292,9 @@ $reverse-breakpoints: reverse-map($breakpoints);
 	}
 
 } // .#{$row-namespace}
+
+// Usage
+// <div class="span-3 break-1-full break-2-half break-3-third">>
 
 //=================================================================
 // Custom Grid System Generator
@@ -339,7 +350,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 }
 
 .portfolio-item {
-	@extend %flow-column;
+	@include flow-column;
 	@include flow-column-width(12, 3);
 	@include respond-to(third, break-3, true);
 	@include respond-to(half, break-2, true);

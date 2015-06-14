@@ -26,19 +26,15 @@ http://github.com/esr360/Kayzen-GS/
   width: 102.5%;
 }
 
-.flow-columns > [class*="span"], .portfolio-item, .row > [class*="span"], .sidebar, .content {
+.row > [class*="span"], .flow-columns > [class*="span"], .sidebar, .content, .portfolio-item {
   display: inline-block;
   vertical-align: top;
   margin-left: 2.5%;
   *display: inline;
   zoom: 1;
 }
-.flow-columns > [class*="span"]:first-child, .portfolio-item:first-child, .row > [class*="span"]:first-child, .sidebar:first-child, .content:first-child {
+.row > [class*="span"]:first-child, .flow-columns > [class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child {
   margin-left: 0;
-}
-
-.flow-columns > [class*="span"]:first-child, .portfolio-item:first-child {
-  margin-left: 2.5%;
 }
 
 .row .span-1 {
@@ -104,6 +100,9 @@ http://github.com/esr360/Kayzen-GS/
   }
 }
 
+.flow-columns > [class*="span"]:first-child {
+  margin-left: 2.5%;
+}
 .flow-columns .span-1 {
   width: 5.83333%;
 }
@@ -274,6 +273,9 @@ http://github.com/esr360/Kayzen-GS/
 
 .portfolio-item {
   width: 22.5%;
+}
+.portfolio-item:first-child {
+  margin-left: 2.5%;
 }
 @media (max-width: 940px) {
   .portfolio-item {
