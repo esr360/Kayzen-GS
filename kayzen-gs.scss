@@ -41,7 +41,7 @@ $col-namespace                  : span;
 $columns                        : 12;
 
 // How big should the gutter inbetween your columns be?
-$gutter                         : 3%; // percentages only
+$gutter                         : 2.5%; // percentages only
 
 // Breakpoints
 //-----------------------------------------------------------------
@@ -95,7 +95,7 @@ $fractions: (
 		}
 	}
 	// IE < 8 collapse white-space
-	@if $old-ie == true {
+	@if $old-ie {
 		*letter-spacing: normal;
 		*word-spacing: -0.43em;
 	}	
@@ -117,7 +117,7 @@ $fractions: (
 	vertical-align: top;
 	margin-left: $gutter;
 	// IE < 8: fake inline-block
-	@if $old-ie == true {
+	@if $old-ie {
 		*display: inline;
 		zoom: 1; 
 	}
@@ -128,12 +128,12 @@ $fractions: (
 
 // Column Mixin
 @mixin column($core: false) {
-	@if $core == false {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
+	@if $core {	
+		> [class*="#{$col-namespace}"] {
 			@content;
 		}
-	} @else {		
-		> [class*="#{$col-namespace}"] {
+	} @else {	
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			@content;
 		}
 	}
@@ -186,7 +186,7 @@ $fractions: (
 // Custom Column Stacking
 //-----------------------------------------------------------------
 
-	@if $column-stacking == true {
+	@if $column-stacking {
 		@each $bp, $width in $breakpoints {
 			@media (max-width: $width) {
 				&.#{$bp} {
@@ -204,7 +204,7 @@ $fractions: (
 // Flow Columns
 //-----------------------------------------------------------------
 
-@if $flow-columns == true {
+@if $flow-columns {
 	.flow-columns {
 		margin-left: -$gutter;
 		width: 100% + $gutter;
@@ -224,7 +224,7 @@ $fractions: (
 // Magic Columns
 //-----------------------------------------------------------------
 
-@if $magic-columns == true {
+@if $magic-columns {
 	@media (min-width: $col-collapse) {
 		.magic-columns {
 			@include column {
@@ -245,7 +245,7 @@ $fractions: (
 // Block Columns
 //-----------------------------------------------------------------
 
-@if $block-columns == true {
+@if $block-columns {
 	.block-columns {
 		@include column {
 			display: table-cell;
@@ -272,28 +272,36 @@ $fractions: (
 } // reverse-map
 
 // Reverse $breakpoints map
+// This is to allow the generated CSS to override when scaling
 $reverse-breakpoints: reverse-map($breakpoints);
 	
 .#{$row-namespace} {
 
 	@each $bp, $width in $reverse-breakpoints {
 		@media (max-width: $width) {
-			.#{$bp}-full {
-				@include flow-column-width(1, 1);
-			}
-			.#{$bp}-half {
-				@include flow-column-width(2, 1);
-			}
-			.#{$bp}-third {
-				@include flow-column-width(3, 1);
-			}
-			.#{$bp}-quarter {
-				@include flow-column-width(4, 1);
+			@each $name, $fraction in $fractions {				
+				.#{$bp}-#{$name} {
+					@include flow-column-width(map-get($fraction, columns), map-get($fraction, span));
+				}
 			}
 		}
 	}
 
 } // .#{$row-namespace}
+
+// Custom Responsive Handling
+//-----------------------------------------------------------------
+
+@mixin respond-to($width, $breakpoint) {
+	@media (max-width: breakpoint($breakpoint)) {
+		$columns: map-get(fraction($width), columns);
+		$span: map-get(fraction($width), span);
+		@include column-width($columns, $span);
+	}
+}
+
+// Usage
+//	@include respond-to(half, break-2);
 
 //=================================================================
 // Semantic Examples
@@ -307,15 +315,19 @@ $reverse-breakpoints: reverse-map($breakpoints);
 .sidebar {
 	@extend %column-core;
 	@include column-width(12, 4);
-	@media (max-width: $col-collapse) {
-		@include column-width(1, 1);
-	}
+	@include respond-to(full, break-3);
 }
 
 .content {
 	@extend %column-core;
 	@include column-width(12, 8);
-	@media (max-width: $col-collapse) {
-		@include column-width(1, 1);
-	}
+	@include respond-to(full, break-3);
+}
+
+.portfolio-item {
+	@extend %column-core;
+	@include respond-to(sixth, break-4);
+	@include respond-to(quarter, break-3);
+	@include respond-to(third, break-2);
+	@include respond-to(half, break-1);
 }

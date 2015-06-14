@@ -21,49 +21,49 @@ http://github.com/esr360/Kayzen-GS/
   text-rendering: auto;
 }
 
-.row > [class*="span"], .sidebar, .content {
+.row > [class*="span"], .sidebar, .content, .portfolio-item {
   display: inline-block;
   vertical-align: top;
-  margin-left: 3%;
+  margin-left: 2.5%;
   *display: inline;
   zoom: 1;
 }
-.row > [class*="span"]:first-child, .sidebar:first-child, .content:first-child {
+.row > [class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child {
   margin-left: 0;
 }
 
 .row .span-1 {
-  width: 5.58333%;
+  width: 6.04167%;
 }
 .row .span-2 {
-  width: 14.16667%;
+  width: 14.58333%;
 }
 .row .span-3 {
-  width: 22.75%;
+  width: 23.125%;
 }
 .row .span-4 {
-  width: 31.33333%;
+  width: 31.66667%;
 }
 .row .span-5 {
-  width: 39.91667%;
+  width: 40.20833%;
 }
 .row .span-6 {
-  width: 48.5%;
+  width: 48.75%;
 }
 .row .span-7 {
-  width: 57.08333%;
+  width: 57.29167%;
 }
 .row .span-8 {
-  width: 65.66667%;
+  width: 65.83333%;
 }
 .row .span-9 {
-  width: 74.25%;
+  width: 74.375%;
 }
 .row .span-10 {
-  width: 82.83333%;
+  width: 82.91667%;
 }
 .row .span-11 {
-  width: 91.41667%;
+  width: 91.45833%;
 }
 .row .span-12 {
   width: 100%;
@@ -100,47 +100,47 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .flow-columns {
-  margin-left: -3%;
-  width: 103%;
+  margin-left: -2.5%;
+  width: 102.5%;
 }
 .flow-columns > [class*="span"], .flow-columns > [class*="span"]:first-child {
-  margin-left: 3%;
+  margin-left: 2.5%;
 }
 .flow-columns .span-1 {
-  width: 5.33333%;
+  width: 5.83333%;
 }
 .flow-columns .span-2 {
-  width: 13.66667%;
+  width: 14.16667%;
 }
 .flow-columns .span-3 {
-  width: 22%;
+  width: 22.5%;
 }
 .flow-columns .span-4 {
-  width: 30.33333%;
+  width: 30.83333%;
 }
 .flow-columns .span-5 {
-  width: 38.66667%;
+  width: 39.16667%;
 }
 .flow-columns .span-6 {
-  width: 47%;
+  width: 47.5%;
 }
 .flow-columns .span-7 {
-  width: 55.33333%;
+  width: 55.83333%;
 }
 .flow-columns .span-8 {
-  width: 63.66667%;
+  width: 64.16667%;
 }
 .flow-columns .span-9 {
-  width: 72%;
+  width: 72.5%;
 }
 .flow-columns .span-10 {
-  width: 80.33333%;
+  width: 80.83333%;
 }
 .flow-columns .span-11 {
-  width: 88.66667%;
+  width: 89.16667%;
 }
 .flow-columns .span-12 {
-  width: 97%;
+  width: 97.5%;
 }
 
 @media (min-width: 940px) {
@@ -148,37 +148,37 @@ http://github.com/esr360/Kayzen-GS/
     width: 100%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
-    width: 48.5%;
+    width: 48.75%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
-    width: 31.33333%;
+    width: 31.66667%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
-    width: 22.75%;
+    width: 23.125%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
-    width: 17.6%;
+    width: 18%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
-    width: 14.16667%;
+    width: 14.58333%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
-    width: 11.71429%;
+    width: 12.14286%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
-    width: 9.875%;
+    width: 10.3125%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
-    width: 8.44444%;
+    width: 8.88889%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
-    width: 7.3%;
+    width: 7.75%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
-    width: 6.36364%;
+    width: 6.81818%;
   }
   .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
-    width: 5.58333%;
+    width: 6.04167%;
   }
 }
 .block-columns > [class*="span"]:not([class*="break"]) {
@@ -187,63 +187,75 @@ http://github.com/esr360/Kayzen-GS/
 
 @media (max-width: 1200px) {
   .row .break-4-full {
-    width: 97%;
+    width: 97.5%;
   }
   .row .break-4-half {
-    width: 47%;
+    width: 47.5%;
   }
   .row .break-4-third {
-    width: 30.33333%;
+    width: 30.83333%;
   }
   .row .break-4-quarter {
-    width: 22%;
+    width: 22.5%;
+  }
+  .row .break-4-sixth {
+    width: 14.16667%;
   }
 }
 @media (max-width: 940px) {
   .row .break-3-full {
-    width: 97%;
+    width: 97.5%;
   }
   .row .break-3-half {
-    width: 47%;
+    width: 47.5%;
   }
   .row .break-3-third {
-    width: 30.33333%;
+    width: 30.83333%;
   }
   .row .break-3-quarter {
-    width: 22%;
+    width: 22.5%;
+  }
+  .row .break-3-sixth {
+    width: 14.16667%;
   }
 }
 @media (max-width: 720px) {
   .row .break-2-full {
-    width: 97%;
+    width: 97.5%;
   }
   .row .break-2-half {
-    width: 47%;
+    width: 47.5%;
   }
   .row .break-2-third {
-    width: 30.33333%;
+    width: 30.83333%;
   }
   .row .break-2-quarter {
-    width: 22%;
+    width: 22.5%;
+  }
+  .row .break-2-sixth {
+    width: 14.16667%;
   }
 }
 @media (max-width: 460px) {
   .row .break-1-full {
-    width: 97%;
+    width: 97.5%;
   }
   .row .break-1-half {
-    width: 47%;
+    width: 47.5%;
   }
   .row .break-1-third {
-    width: 30.33333%;
+    width: 30.83333%;
   }
   .row .break-1-quarter {
-    width: 22%;
+    width: 22.5%;
+  }
+  .row .break-1-sixth {
+    width: 14.16667%;
   }
 }
 
 .sidebar {
-  width: 31.33333%;
+  width: 31.66667%;
 }
 @media (max-width: 940px) {
   .sidebar {
@@ -252,10 +264,31 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .content {
-  width: 65.66667%;
+  width: 65.83333%;
 }
 @media (max-width: 940px) {
   .content {
     width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .portfolio-item {
+    width: 14.58333%;
+  }
+}
+@media (max-width: 940px) {
+  .portfolio-item {
+    width: 23.125%;
+  }
+}
+@media (max-width: 720px) {
+  .portfolio-item {
+    width: 31.66667%;
+  }
+}
+@media (max-width: 460px) {
+  .portfolio-item {
+    width: 48.75%;
   }
 }
