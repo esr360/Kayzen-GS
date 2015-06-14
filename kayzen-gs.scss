@@ -53,8 +53,27 @@ $breakpoints: (
 	break-4                     : 1200px
 );
 
+@function breakpoint($breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+}
+
 // Set the maximum width for default vertically stacked columns
-$col-collapse                   : map-get($breakpoints, break-3);
+$col-collapse                   : breakpoint(break-3);
+
+// Fractions
+//-----------------------------------------------------------------
+
+$fractions: (
+	full                        : (columns: 1, span: 1),
+	half                        : (columns: 2, span: 1),
+	third                       : (columns: 3, span: 1),
+	quarter                     : (columns: 4, span: 1),
+	sixth                       : (columns: 6, span: 1)
+);
+
+@function fraction($fraction) {
+    @return map-get($fractions, $fraction);
+}
 
 //=================================================================
 // Kayzen GS Framework
