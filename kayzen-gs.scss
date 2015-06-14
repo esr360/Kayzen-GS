@@ -52,11 +52,12 @@ $breakpoint-2                   : 720px;
 $breakpoint-3                   : 940px;
 $breakpoint-4                   : 1200px;
 
+// Ensure order is descending
 $breakpoints: (
-	break-1: $breakpoint-1,
-	break-2: $breakpoint-2,
-	break-3: $breakpoint-3,
 	break-4: $breakpoint-4,
+	break-3: $breakpoint-3,
+	break-2: $breakpoint-2,
+	break-1: $breakpoint-1
 );
 
 // Set the maximum width for default vertically stacked columns
@@ -244,99 +245,22 @@ $col-collapse                   : $breakpoint-3;
 // For Flow Columns only
 //-----------------------------------------------------------------
 
-@mixin full {
-	margin-left: 0;
-	@include flow-column-width(1, 1);
-}
-
-@mixin half {
-	@include flow-column-width(2, 1);
-}
-
-@mixin third {
-	@include flow-column-width(3, 1);
-}
-
-@mixin quarter {
-	@include flow-column-width(4, 1);
-}
-
 .#{$row-namespace} {
-	
+
 	@each $bp, $width in $breakpoints {
 		@media (max-width: $width) {
 			.#{$bp}-full {
-				@include full;
+				@include flow-column-width(1, 1);
 			}
 			.#{$bp}-half {
-				@include half;
+				@include flow-column-width(2, 1);
 			}
 			.#{$bp}-third {
-				@include third;
+				@include flow-column-width(3, 1);
 			}
 			.#{$bp}-quarter {
-				@include quarter;
+				@include flow-column-width(4, 1);
 			}
-		}
-	}
-
-	@media (max-width: $breakpoint-4) {
-		.break-4-full {
-			@include full;
-		}
-		.break-4-half {
-			@include half;
-		}
-		.break-4-third {
-			@include third;
-		}
-		.break-4-quarter {
-			@include quarter;
-		}
-	}
-	
-	@media (max-width: $breakpoint-3) {
-		.break-3-full {
-			@include full;
-		}
-		.break-3-half {
-			@include half;
-		}
-		.break-3-third {
-			@include third;
-		}
-		.break-3-quarter {
-			@include quarter;
-		}
-	}
-	
-	@media (max-width: $breakpoint-2) {
-		.break-2-full {
-			@include full;
-		}
-		.break-2-half {
-			@include half;
-		}
-		.break-2-third {
-			@include third;
-		}
-		.break-2-quarter {
-			@include quarter;
-		}
-	}
-	
-	@media (max-width: $breakpoint-1) {
-		.break-1-full {
-			@include full;
-		}
-		.break-1-half {
-			@include half;
-		}
-		.break-1-third {
-			@include third;
-		}
-		.break-1-quarter {
-			@include quarter;
 		}
 	}
 
@@ -351,7 +275,7 @@ $col-collapse                   : $breakpoint-3;
 	@extend %column-core;
 	@include column-width(12, 4);
 	@media (max-width: $breakpoint-3) {
-		@include full;
+		@include column-width(1, 1);
 	}
 }
 
@@ -359,6 +283,6 @@ $col-collapse                   : $breakpoint-3;
 	@extend %column-core;
 	@include column-width(12, 8);
 	@media (max-width: $breakpoint-3) {
-		@include full;
+		@include column-width(1, 1);
 	}
 }
