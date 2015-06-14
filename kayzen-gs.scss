@@ -46,22 +46,15 @@ $gutter                         : 3%; // percentages only
 // Breakpoints
 //-----------------------------------------------------------------
 
-$breakpoint-0                   : 0px;
-$breakpoint-1                   : 460px;
-$breakpoint-2                   : 720px;
-$breakpoint-3                   : 940px;
-$breakpoint-4                   : 1200px;
-
-// Ensure order is descending
 $breakpoints: (
-	break-4: $breakpoint-4,
-	break-3: $breakpoint-3,
-	break-2: $breakpoint-2,
-	break-1: $breakpoint-1
+	break-1: 460px,
+	break-2: 720px,
+	break-3: 940px,
+	break-4: 1200px
 );
 
 // Set the maximum width for default vertically stacked columns
-$col-collapse                   : $breakpoint-3;
+$col-collapse                   : map-get($breakpoints, break-3);
 
 //=================================================================
 // Kayzen GS Framework
@@ -274,7 +267,7 @@ $col-collapse                   : $breakpoint-3;
 .sidebar {
 	@extend %column-core;
 	@include column-width(12, 4);
-	@media (max-width: $breakpoint-3) {
+	@media (max-width: map-get($breakpoints, break-3)) {
 		@include column-width(1, 1);
 	}
 }
@@ -282,7 +275,7 @@ $col-collapse                   : $breakpoint-3;
 .content {
 	@extend %column-core;
 	@include column-width(12, 8);
-	@media (max-width: $breakpoint-3) {
+	@media (max-width: map-get($breakpoints, break-3)) {
 		@include column-width(1, 1);
 	}
 }
