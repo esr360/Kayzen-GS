@@ -47,10 +47,10 @@ $gutter                         : 3%; // percentages only
 //-----------------------------------------------------------------
 
 $breakpoints: (
-	break-1: 460px,
-	break-2: 720px,
-	break-3: 940px,
-	break-4: 1200px
+	break-1                     : 460px,
+	break-2                     : 720px,
+	break-3                     : 940px,
+	break-4                     : 1200px
 );
 
 // Set the maximum width for default vertically stacked columns
@@ -238,9 +238,26 @@ $col-collapse                   : map-get($breakpoints, break-3);
 // For Flow Columns only
 //-----------------------------------------------------------------
 
+// Reverse map function
+// http://git.io/vLfuz
+@function reverse-map ($map) {	
+    $keys: map-keys($map);
+    $map-reversed: ();    
+    @for $i from length($keys) through 1 {
+        $map-reversed: map-merge(
+            $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
+        );
+    }
+    $result: $map-reversed; 
+    @return $result;
+} // reverse-map
+
+// Reverse $breakpoints map
+$reverse-breakpoints: reverse-map($breakpoints);
+	
 .#{$row-namespace} {
 
-	@each $bp, $width in $breakpoints {
+	@each $bp, $width in $reverse-breakpoints {
 		@media (max-width: $width) {
 			.#{$bp}-full {
 				@include flow-column-width(1, 1);
@@ -264,10 +281,14 @@ $col-collapse                   : map-get($breakpoints, break-3);
 // Based off the default value of 12 for $columns
 //=================================================================
 
+.main {
+	@extend %row-core;
+}
+
 .sidebar {
 	@extend %column-core;
 	@include column-width(12, 4);
-	@media (max-width: map-get($breakpoints, break-3)) {
+	@media (max-width: $col-collapse) {
 		@include column-width(1, 1);
 	}
 }
@@ -275,7 +296,7 @@ $col-collapse                   : map-get($breakpoints, break-3);
 .content {
 	@extend %column-core;
 	@include column-width(12, 8);
-	@media (max-width: map-get($breakpoints, break-3)) {
+	@media (max-width: $col-collapse) {
 		@include column-width(1, 1);
 	}
 }

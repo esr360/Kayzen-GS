@@ -5,14 +5,14 @@ Made by @esr360
 http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
-.row {
+.row, .main {
   letter-spacing: -0.31em;
   display: table !important;
   width: 100%;
   *letter-spacing: normal;
   *word-spacing: -0.43em;
 }
-.opera-only :-o-prefocus, .row {
+.opera-only :-o-prefocus, .row, .main {
   word-spacing: -0.43em;
 }
 * {
@@ -185,31 +185,17 @@ http://github.com/esr360/Kayzen-GS/
   display: table-cell;
 }
 
-@media (max-width: 460px) {
-  .row .break-1-full {
+@media (max-width: 1200px) {
+  .row .break-4-full {
     width: 97%;
   }
-  .row .break-1-half {
+  .row .break-4-half {
     width: 47%;
   }
-  .row .break-1-third {
+  .row .break-4-third {
     width: 30.33333%;
   }
-  .row .break-1-quarter {
-    width: 22%;
-  }
-}
-@media (max-width: 720px) {
-  .row .break-2-full {
-    width: 97%;
-  }
-  .row .break-2-half {
-    width: 47%;
-  }
-  .row .break-2-third {
-    width: 30.33333%;
-  }
-  .row .break-2-quarter {
+  .row .break-4-quarter {
     width: 22%;
   }
 }
@@ -227,17 +213,31 @@ http://github.com/esr360/Kayzen-GS/
     width: 22%;
   }
 }
-@media (max-width: 1200px) {
-  .row .break-4-full {
+@media (max-width: 720px) {
+  .row .break-2-full {
     width: 97%;
   }
-  .row .break-4-half {
+  .row .break-2-half {
     width: 47%;
   }
-  .row .break-4-third {
+  .row .break-2-third {
     width: 30.33333%;
   }
-  .row .break-4-quarter {
+  .row .break-2-quarter {
+    width: 22%;
+  }
+}
+@media (max-width: 460px) {
+  .row .break-1-full {
+    width: 97%;
+  }
+  .row .break-1-half {
+    width: 47%;
+  }
+  .row .break-1-third {
+    width: 30.33333%;
+  }
+  .row .break-1-quarter {
     width: 22%;
   }
 }
