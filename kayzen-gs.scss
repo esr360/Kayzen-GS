@@ -142,16 +142,23 @@ $fractions: (
 }
 
 // Magic Column width mixin
-@mixin magic-column($columns: $columns, $namespace: $col-namespace) {
-	&:first-child {
-		@for $i from 1 through $columns {
-			&:nth-last-child(#{$i}) {
-				&, ~ [class*="#{$namespace}"] {		
-					width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+@mixin magic-column($columns: $columns, $namespace: $col-namespace, $stack: $col-collapse) {
+	width: 100%;
+	margin-left: 0;
+	@media (min-width: $stack) {
+		&:first-child {
+			@for $i from 1 through $columns {
+				&:nth-last-child(#{$i}) {
+					&, ~ [class*="#{$namespace}"] {		
+						width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
+					}
+					~ [class*="#{$namespace}"] {		
+						margin-left: $gutter;
+					}
 				}
 			}
-		}
-	}	
+		}	
+	}
 }
 
 //=================================================================
@@ -238,11 +245,9 @@ $fractions: (
 //-----------------------------------------------------------------
 
 @if $magic-columns {
-	@media (min-width: $col-collapse) {
-		.magic-row {
-			> [class*="#{$col-namespace}"]:not([class*="break"]) {
-				@include magic-column;
-			}
+	.magic-row {
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
+			@include magic-column;
 		}
 	}
 }
@@ -360,12 +365,12 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .sidebar {
 	@include column(4, 12);
-	@include respond-to(full, break-3);
+	@include respond-to(full, break-2);
 }
 
 .content {
 	@include column(8, 12);
-	@include respond-to(full, break-3);
+	@include respond-to(full, break-2);
 }
 
 // Custom Flow Columns
@@ -389,5 +394,5 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .client {
 	@include column;
-	@include magic-column(6, client);
+	@include magic-column(6, client, breakpoint(break-2));
 }

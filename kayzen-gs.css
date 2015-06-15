@@ -162,44 +162,85 @@ http://github.com/esr360/Kayzen-GS/
   }
 }
 
+.magic-row > [class*="span"]:not([class*="break"]) {
+  width: 100%;
+  margin-left: 0;
+}
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1) ~ [class*="span"] {
     width: 100%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
     width: 48.75%;
+  }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
+    margin-left: 2.5%;
   }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
     width: 31.66667%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
     width: 23.125%;
+  }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
+    margin-left: 2.5%;
   }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
     width: 18%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
     width: 14.58333%;
+  }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
+    margin-left: 2.5%;
   }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
     width: 12.14286%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
     width: 10.3125%;
+  }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
+    margin-left: 2.5%;
   }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
     width: 8.88889%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
     width: 7.75%;
+  }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
+    margin-left: 2.5%;
   }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
     width: 6.81818%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
     width: 6.04167%;
   }
+  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
+    margin-left: 2.5%;
+  }
 }
+
 .block-row > [class*="span"]:not([class*="break"]) {
   display: table-cell;
 }
@@ -276,7 +317,7 @@ http://github.com/esr360/Kayzen-GS/
 .sidebar {
   width: 31.66667%;
 }
-@media (max-width: 940px) {
+@media (max-width: 720px) {
   .sidebar {
     width: 100%;
     margin-left: 0;
@@ -286,7 +327,7 @@ http://github.com/esr360/Kayzen-GS/
 .content {
   width: 65.83333%;
 }
-@media (max-width: 940px) {
+@media (max-width: 720px) {
   .content {
     width: 100%;
     margin-left: 0;
@@ -317,22 +358,44 @@ http://github.com/esr360/Kayzen-GS/
 
 .client {
   width: 100%;
-}
-.client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
   width: 100%;
+  margin-left: 0;
 }
-.client:first-child:nth-last-child(2), .client:first-child:nth-last-child(2) ~ [class*="client"] {
-  width: 48.75%;
-}
-.client:first-child:nth-last-child(3), .client:first-child:nth-last-child(3) ~ [class*="client"] {
-  width: 31.66667%;
-}
-.client:first-child:nth-last-child(4), .client:first-child:nth-last-child(4) ~ [class*="client"] {
-  width: 23.125%;
-}
-.client:first-child:nth-last-child(5), .client:first-child:nth-last-child(5) ~ [class*="client"] {
-  width: 18%;
-}
-.client:first-child:nth-last-child(6), .client:first-child:nth-last-child(6) ~ [class*="client"] {
-  width: 14.58333%;
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
+    width: 100%;
+  }
+  .client:first-child:nth-last-child(1) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(2), .client:first-child:nth-last-child(2) ~ [class*="client"] {
+    width: 48.75%;
+  }
+  .client:first-child:nth-last-child(2) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(3), .client:first-child:nth-last-child(3) ~ [class*="client"] {
+    width: 31.66667%;
+  }
+  .client:first-child:nth-last-child(3) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(4), .client:first-child:nth-last-child(4) ~ [class*="client"] {
+    width: 23.125%;
+  }
+  .client:first-child:nth-last-child(4) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(5), .client:first-child:nth-last-child(5) ~ [class*="client"] {
+    width: 18%;
+  }
+  .client:first-child:nth-last-child(5) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(6), .client:first-child:nth-last-child(6) ~ [class*="client"] {
+    width: 14.58333%;
+  }
+  .client:first-child:nth-last-child(6) ~ [class*="client"] {
+    margin-left: 2.5%;
+  }
 }
