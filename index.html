@@ -52,7 +52,7 @@
 			
 			<br />
 			
-            <div class="row">                    
+            <div class="row break-2">                    
                 <div class="span-6">span-6</div>
                 <div class="span-6">span-6</div>
             </div> 
@@ -97,7 +97,7 @@
 
             <p>Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own <code>row</code> wrapper - you can wrap all of your columns for every row inside just one main <code>row</code> container.</p> 
 
-            <div class="row flow-columns">
+            <div class="row flow-row">
                 <div class="span-6">Flow Column</div>
                 <div class="span-6">Flow Column</div>
                 <div class="span-4">Flow Column</div>
@@ -123,7 +123,7 @@
 			
 			<h4>Adaptable Columns Using Flow Columns</h4>
 			
-            <div class="row flow-columns">                    
+            <div class="row flow-row">                    
                 <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
                 <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>           
                 <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
@@ -144,22 +144,12 @@
 
             <p>"Magic" columns are so named as each row of magic columns can automatically detect the number of columns within its row, and set the width of each column accordingly (without using any JavaScript!). Each column in a row of magic columns will always be the same width, and will always add up to <b>100%</b> width. Perfect for cases where you know each column will always be the same width, or where you need any "<a href="http://en.wikipedia.org/wiki/Widows_and_orphans" target="blank">widow</a>" columns to take up any remaining space.</p> 
 
-            <div class="row magic-columns">
+            <div class="row magic-row">
                 <div class="span">magic column</div>
                 <div class="span">magic column</div>
             </div>
             <br>
-            <div class="row magic-columns">
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-            </div>
-            <br>
-            <div class="row magic-columns">
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
+            <div class="row magic-row">
                 <div class="span">magic column</div>
                 <div class="span">magic column</div>
                 <div class="span">magic column</div>
@@ -167,7 +157,17 @@
                 <div class="span">magic column</div>
             </div>
             <br>
-            <div class="row magic-columns">
+            <div class="row magic-row">
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+                <div class="span">magic column</div>
+            </div>
+            <br>
+            <div class="row magic-row">
                 <div class="span">MC</div>
                 <div class="span">MC</div>
                 <div class="span">MC</div>
@@ -188,7 +188,7 @@
 
             <p>Block columns are similar to regular columns except that they have no gutter (no margin) and they are all equal height to each other.</p>
 
-            <div class="row block-columns block-columns-demo">
+            <div class="row block-row">
                 <div class="span-4">
                     <p>Block Column</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl.</p>
