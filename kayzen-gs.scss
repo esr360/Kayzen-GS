@@ -301,14 +301,18 @@ $reverse-breakpoints: reverse-map($breakpoints);
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($type: null) {
+@mixin column($span: 1, $columns: 1, $type: null) {
 	@extend %column;
-	@if $type == flow {		
+	@if $type == block {
+		display: table-cell;		
+	}
+	@if $type == flow {	
+		@include flow-column-width($span, $columns);	
 		&:first-child {
 			margin-left: $gutter;
 		}
-	} @else if $type == block {
-		display: table-cell;		
+	} @else {
+		@include column-width($span, $columns);
 	}
 }
 
@@ -355,14 +359,12 @@ $reverse-breakpoints: reverse-map($breakpoints);
 }
 
 .sidebar {
-	@include column;
-	@include column-width(4, 12);
+	@include column(4, 12);
 	@include respond-to(full, break-3);
 }
 
 .content {
-	@include column;
-	@include column-width(8, 12);
+	@include column(8, 12);
 	@include respond-to(full, break-3);
 }
 
@@ -373,8 +375,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 }
 
 .portfolio-item {
-	@include column(flow);
-	@include flow-column-width(3, 12);
+	@include column(3, 12, flow);
 	@include respond-to(third, break-3, true);
 	@include respond-to((1, 2), break-2, true);
 	@include respond-to((1, 1), break-1, true);

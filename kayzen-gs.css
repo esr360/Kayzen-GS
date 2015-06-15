@@ -315,6 +315,9 @@ http://github.com/esr360/Kayzen-GS/
   }
 }
 
+.client {
+  width: 100%;
+}
 .client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
   width: 100%;
 }
