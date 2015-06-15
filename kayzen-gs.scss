@@ -133,12 +133,12 @@ $fractions: (
 }
 
 // Column width mixin
-@mixin column-width($columns, $span) {
+@mixin column-width($span, $columns) {
 	width: ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * $gutter ) / ( $columns / $span ) );
 }
 
 // Flow Column width mixin
-@mixin flow-column-width($columns, $span) {
+@mixin flow-column-width($span, $columns) {
 	width: ((100/$columns) * $span) - $gutter;
 }
 
@@ -171,7 +171,7 @@ $fractions: (
 
 @for $i from 1 through $columns {
 	.#{$col-namespace}-#{$i} {			
-		@include column-width($columns, $i);
+		@include column-width($i, $columns);
 	}
 }
 
@@ -217,7 +217,7 @@ $fractions: (
 		@extend %flow-row;
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
-				@include flow-column-width($columns, $i)
+				@include flow-column-width($i, $columns)
 			}
 		}
 		> [class*="#{$col-namespace}"] {
@@ -284,7 +284,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 		@media (max-width: $width) {
 			@each $name, $fraction in $fractions {				
 				.#{$bp}-#{$name} {
-					@include flow-column-width(map-get($fraction, columns), map-get($fraction, span));
+					@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
 				}
 			}
 		}
@@ -322,9 +322,9 @@ $reverse-breakpoints: reverse-map($breakpoints);
 		$columns: map-get(fraction($width), columns);
 		$span: map-get(fraction($width), span);
 		@if $flow-columns {
-			@include flow-column-width($columns, $span);
+			@include flow-column-width($span, $columns);
 		} @else {
-			@include column-width($columns, $span);
+			@include column-width($span, $columns);
 			margin-left: 0;
 		}
 	}
@@ -344,13 +344,13 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .sidebar {
 	@extend %column;
-	@include column-width(12, 4);
+	@include column-width(4, 12);
 	@include respond-to(full, break-3);
 }
 
 .content {
 	@extend %column;
-	@include column-width(12, 8);
+	@include column-width(8, 12);
 	@include respond-to(full, break-3);
 }
 
@@ -362,7 +362,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .portfolio-item {
 	@include flow-column;
-	@include flow-column-width(12, 3);
+	@include flow-column-width(3, 12);
 	@include respond-to(third, break-3, true);
 	@include respond-to(half, break-2, true);
 	@include respond-to(full, break-1, true);
