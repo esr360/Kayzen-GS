@@ -5,14 +5,14 @@ Made by @esr360
 http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
-.flow-row, .portfolio-grid, .row, .main {
+.row, .main, .portfolio-grid, .clients {
   letter-spacing: -0.31em;
   display: table !important;
   width: 100%;
   *letter-spacing: normal;
   *word-spacing: -0.43em;
 }
-.opera-only :-o-prefocus, .flow-row, .portfolio-grid, .row, .main {
+.opera-only :-o-prefocus, .row, .main, .portfolio-grid, .clients {
   word-spacing: -0.43em;
 }
 * {
@@ -26,14 +26,14 @@ http://github.com/esr360/Kayzen-GS/
   width: 102.5%;
 }
 
-[class*="span"], .sidebar, .content, .portfolio-item {
+[class*="span"], .sidebar, .content, .portfolio-item, .client {
   display: inline-block;
   vertical-align: top;
   margin-left: 2.5%;
   *display: inline;
   zoom: 1;
 }
-[class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child {
+[class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child, .client:first-child {
   margin-left: 0;
 }
 
@@ -313,4 +313,23 @@ http://github.com/esr360/Kayzen-GS/
   .portfolio-item {
     width: 97.5%;
   }
+}
+
+.client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
+  width: 100%;
+}
+.client:first-child:nth-last-child(2), .client:first-child:nth-last-child(2) ~ [class*="client"] {
+  width: 48.75%;
+}
+.client:first-child:nth-last-child(3), .client:first-child:nth-last-child(3) ~ [class*="client"] {
+  width: 31.66667%;
+}
+.client:first-child:nth-last-child(4), .client:first-child:nth-last-child(4) ~ [class*="client"] {
+  width: 23.125%;
+}
+.client:first-child:nth-last-child(5), .client:first-child:nth-last-child(5) ~ [class*="client"] {
+  width: 18%;
+}
+.client:first-child:nth-last-child(6), .client:first-child:nth-last-child(6) ~ [class*="client"] {
+  width: 14.58333%;
 }

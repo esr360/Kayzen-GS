@@ -110,7 +110,6 @@ $fractions: (
 }
 
 %flow-row {
-	@extend %row;
 	margin-left: -$gutter;
 	width: 100% + $gutter;
 }
@@ -143,11 +142,11 @@ $fractions: (
 }
 
 // Magic Column width mixin
-@mixin magic-column($columns: $columns) {
+@mixin magic-column($columns: $columns, $namespace: $col-namespace) {
 	&:first-child {
 		@for $i from 1 through $columns {
 			&:nth-last-child(#{$i}) {
-				&, ~ [class*="#{$col-namespace}"] {		
+				&, ~ [class*="#{$namespace}"] {		
 					width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
 				}
 			}
@@ -295,9 +294,6 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 } // .#{$row-namespace}
 
-// Usage
-// <div class="span-3 break-1-full break-2-half break-3-third">>
-
 //=================================================================
 // Semantic Grid System Framework
 //=================================================================
@@ -305,16 +301,25 @@ $reverse-breakpoints: reverse-map($breakpoints);
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin flow-column {
+@mixin column($type: null) {
 	@extend %column;
-	&:first-child {
-		margin-left: $gutter;
+	@if $type == flow {		
+		&:first-child {
+			margin-left: $gutter;
+		}
+	} @else if $type == block {
+		display: table-cell;		
 	}
 }
 
-@mixin block-column {
-	@extend %column;
-	display: table-cell;
+// Custom Row
+//-----------------------------------------------------------------
+
+@mixin row($type: null) {
+	@extend %row;
+	@if $type == flow {		
+		@extend %flow-row;
+	}
 }
 
 // Custom Responsive Handling
@@ -322,8 +327,15 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 @mixin respond-to($width, $breakpoint, $flow-columns: false) {
 	@media (max-width: breakpoint($breakpoint)) {
-		$columns: map-get(fraction($width), columns);
-		$span: map-get(fraction($width), span);
+		$columns: null;
+		$span: null;
+		@if type-of($width) == string {
+			$columns: map-get(fraction($width), columns);
+			$span: map-get(fraction($width), span);
+		} @else if type-of($width) == list {
+			$span: nth($width, 1);
+			$columns: nth($width, length($width));			
+		}
 		@if $flow-columns {
 			@include flow-column-width($span, $columns);
 		} @else {
@@ -333,40 +345,48 @@ $reverse-breakpoints: reverse-map($breakpoints);
 	}
 }
 
-// Usage
-//	@include respond-to(half, break-2);
-
 //=================================================================
 // Semantic Examples
 // Based off the default value of 12 for $columns
 //=================================================================
 
 .main {
-	@extend %row;
+	@include row;
 }
 
 .sidebar {
-	@extend %column;
+	@include column;
 	@include column-width(4, 12);
 	@include respond-to(full, break-3);
 }
 
 .content {
-	@extend %column;
+	@include column;
 	@include column-width(8, 12);
 	@include respond-to(full, break-3);
 }
 
-// Custom flow columns
+// Custom Flow Columns
 
 .portfolio-grid {
-	@extend %flow-row;	
+	@include row(flow);	
 }
 
 .portfolio-item {
-	@include flow-column;
+	@include column(flow);
 	@include flow-column-width(3, 12);
 	@include respond-to(third, break-3, true);
-	@include respond-to(half, break-2, true);
-	@include respond-to(full, break-1, true);
+	@include respond-to((1, 2), break-2, true);
+	@include respond-to((1, 1), break-1, true);
+}
+
+// Custom Magic Columns
+
+.clients {
+	@include row;
+}
+
+.client {
+	@include column;
+	@include magic-column(6, client);
 }
