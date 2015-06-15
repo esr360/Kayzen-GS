@@ -86,7 +86,7 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 @media (max-width: 940px) {
-  [class*="span"]:not([class*="break"]) {
+  .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
   }
@@ -94,21 +94,25 @@ http://github.com/esr360/Kayzen-GS/
 @media (max-width: 460px) {
   .row.break-1 > [class*="span"]:not([class*="break"]) {
     width: 100%;
+    margin-left: 0;
   }
 }
 @media (max-width: 720px) {
   .row.break-2 > [class*="span"]:not([class*="break"]) {
     width: 100%;
+    margin-left: 0;
   }
 }
 @media (max-width: 940px) {
   .row.break-3 > [class*="span"]:not([class*="break"]) {
     width: 100%;
+    margin-left: 0;
   }
 }
 @media (max-width: 1200px) {
   .row.break-4 > [class*="span"]:not([class*="break"]) {
     width: 100%;
+    margin-left: 0;
   }
 }
 

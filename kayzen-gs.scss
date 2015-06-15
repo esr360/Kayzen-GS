@@ -174,16 +174,6 @@ $fractions: (
 		@include column-width($i, $columns);
 	}
 }
-
-// Default Column Stacking
-//-----------------------------------------------------------------
-
-@media (max-width: $col-collapse) {
-	[class*="#{$col-namespace}"]:not([class*="break"]) {
-		width: 100%;
-		margin-left: 0;
-	}
-}
 	
 // Column Row
 //-----------------------------------------------------------------
@@ -191,6 +181,18 @@ $fractions: (
 .#{$row-namespace} {
 	
 	@extend %row;
+
+// Default Column Stacking
+//-----------------------------------------------------------------
+
+	@media (max-width: $col-collapse) {
+		&:not([class*="break"]):not([class*="flow"]) {
+			[class*="#{$col-namespace}"]:not([class*="break"]) {
+				width: 100%;
+				margin-left: 0;
+			}
+		}
+	}
 
 // Custom Column Stacking
 //-----------------------------------------------------------------
@@ -201,6 +203,7 @@ $fractions: (
 				&.#{$bp} {
 					> [class*="#{$col-namespace}"]:not([class*="break"]) {
 						width: 100%;
+						margin-left: 0;
 					}
 				}
 			}
