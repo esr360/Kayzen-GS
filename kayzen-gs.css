@@ -1,294 +1,90 @@
-/*-----------------------------------------------------------------
+/*
+Error: Base-level rules cannot contain the parent-selector-referencing character '&'.
+        on line 201 of kayzen-gs.scss
 
-Kayzen GS
-Made by @esr360
-http://github.com/esr360/Kayzen-GS/
-	
------------------------------------------------------------------*/
-.flow-columns, .portfolio-grid, .row, .main {
-  letter-spacing: -0.31em;
-  display: table !important;
-  width: 100%;
-  *letter-spacing: normal;
-  *word-spacing: -0.43em;
-}
-.opera-only :-o-prefocus, .flow-columns, .portfolio-grid, .row, .main {
-  word-spacing: -0.43em;
-}
-* {
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-rendering: auto;
-}
+196: //-----------------------------------------------------------------
+197: 
+198: 	@if $column-stacking {
+199: 		@each $bp, $width in $breakpoints {
+200: 			@media (max-width: $width) {
+201: 				&.#{$bp} {
+202: 					> [class*="#{$col-namespace}"]:not([class*="break"]) {
+203: 						width: 100%;
+204: 					}
+205: 				}
+206: 			}
 
-.flow-columns, .portfolio-grid {
-  margin-left: -2.5%;
-  width: 102.5%;
-}
-
-.row > [class*="span"], .flow-columns > [class*="span"], .sidebar, .content, .portfolio-item {
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 2.5%;
-  *display: inline;
-  zoom: 1;
-}
-.row > [class*="span"]:first-child, .flow-columns > [class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child {
-  margin-left: 0;
-}
-
-.row .span-1 {
-  width: 6.04167%;
-}
-.row .span-2 {
-  width: 14.58333%;
-}
-.row .span-3 {
-  width: 23.125%;
-}
-.row .span-4 {
-  width: 31.66667%;
-}
-.row .span-5 {
-  width: 40.20833%;
-}
-.row .span-6 {
-  width: 48.75%;
-}
-.row .span-7 {
-  width: 57.29167%;
-}
-.row .span-8 {
-  width: 65.83333%;
-}
-.row .span-9 {
-  width: 74.375%;
-}
-.row .span-10 {
-  width: 82.91667%;
-}
-.row .span-11 {
-  width: 91.45833%;
-}
-.row .span-12 {
-  width: 100%;
-}
-@media (max-width: 940px) {
-  .row > [class*="span"]:not([class*="break"]) {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-@media (max-width: 460px) {
-  .row.break-1 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
-  }
-}
-@media (max-width: 720px) {
-  .row.break-2 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
-  }
-}
-@media (max-width: 940px) {
-  .row.break-3 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
-  }
-}
-@media (max-width: 1200px) {
-  .row.break-4 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
-  }
-}
-
-.flow-columns > [class*="span"]:first-child {
-  margin-left: 2.5%;
-}
-.flow-columns .span-1 {
-  width: 5.83333%;
-}
-.flow-columns .span-2 {
-  width: 14.16667%;
-}
-.flow-columns .span-3 {
-  width: 22.5%;
-}
-.flow-columns .span-4 {
-  width: 30.83333%;
-}
-.flow-columns .span-5 {
-  width: 39.16667%;
-}
-.flow-columns .span-6 {
-  width: 47.5%;
-}
-.flow-columns .span-7 {
-  width: 55.83333%;
-}
-.flow-columns .span-8 {
-  width: 64.16667%;
-}
-.flow-columns .span-9 {
-  width: 72.5%;
-}
-.flow-columns .span-10 {
-  width: 80.83333%;
-}
-.flow-columns .span-11 {
-  width: 89.16667%;
-}
-.flow-columns .span-12 {
-  width: 97.5%;
-}
-
-@media (min-width: 940px) {
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1) ~ [class*="span"] {
-    width: 100%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
-    width: 48.75%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
-    width: 31.66667%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
-    width: 23.125%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
-    width: 18%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
-    width: 14.58333%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
-    width: 12.14286%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
-    width: 10.3125%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
-    width: 8.88889%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
-    width: 7.75%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
-    width: 6.81818%;
-  }
-  .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-columns > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
-    width: 6.04167%;
-  }
-}
-.block-columns > [class*="span"]:not([class*="break"]) {
-  display: table-cell;
-}
-
-@media (max-width: 1200px) {
-  .row .break-4-full {
-    width: 97.5%;
-  }
-  .row .break-4-half {
-    width: 47.5%;
-  }
-  .row .break-4-third {
-    width: 30.83333%;
-  }
-  .row .break-4-quarter {
-    width: 22.5%;
-  }
-  .row .break-4-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 940px) {
-  .row .break-3-full {
-    width: 97.5%;
-  }
-  .row .break-3-half {
-    width: 47.5%;
-  }
-  .row .break-3-third {
-    width: 30.83333%;
-  }
-  .row .break-3-quarter {
-    width: 22.5%;
-  }
-  .row .break-3-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 720px) {
-  .row .break-2-full {
-    width: 97.5%;
-  }
-  .row .break-2-half {
-    width: 47.5%;
-  }
-  .row .break-2-third {
-    width: 30.83333%;
-  }
-  .row .break-2-quarter {
-    width: 22.5%;
-  }
-  .row .break-2-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 460px) {
-  .row .break-1-full {
-    width: 97.5%;
-  }
-  .row .break-1-half {
-    width: 47.5%;
-  }
-  .row .break-1-third {
-    width: 30.83333%;
-  }
-  .row .break-1-quarter {
-    width: 22.5%;
-  }
-  .row .break-1-sixth {
-    width: 14.16667%;
-  }
-}
-
-.sidebar {
-  width: 31.66667%;
-}
-@media (max-width: 940px) {
-  .sidebar {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-.content {
-  width: 65.83333%;
-}
-@media (max-width: 940px) {
-  .content {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-.portfolio-item {
-  width: 22.5%;
-}
-.portfolio-item:first-child {
-  margin-left: 2.5%;
-}
-@media (max-width: 940px) {
-  .portfolio-item {
-    width: 30.83333%;
-  }
-}
-@media (max-width: 720px) {
-  .portfolio-item {
-    width: 47.5%;
-  }
-}
-@media (max-width: 460px) {
-  .portfolio-item {
-    width: 97.5%;
-  }
-}
+Backtrace:
+kayzen-gs.scss:201
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/selector/comma_sequence.rb:29:in `resolve_parent_refs'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:425:in `visit_rule'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:512:in `visit_media'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:240:in `block (3 levels) in visit_each'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:240:in `map'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:240:in `block (2 levels) in visit_each'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:232:in `map'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:232:in `block in visit_each'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:231:in `visit_each'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:299:in `block (2 levels) in visit_if'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:299:in `map'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:299:in `block in visit_if'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:298:in `visit_if'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/root_node.rb:20:in `render'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/engine.rb:268:in `render'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/exec/sass_scss.rb:415:in `run'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Prepros/resources/app/ruby/ruby_gems/gems/sass-3.4.13/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Prepros/resources/app/ruby/loader.rb:15:in `load'
+C:/Program Files (x86)/Prepros/resources/app/ruby/loader.rb:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Base-level rules cannot contain the parent-selector-referencing character '&'.\A         on line 201 of kayzen-gs.scss\A \A 196: //-----------------------------------------------------------------\A 197: \A 198: 	@if $column-stacking {\A 199: 		@each $bp, $width in $breakpoints {\A 200: 			@media (max-width: $width) {\A 201: 				&.#{$bp} {\A 202: 					> [class*=\"#{$col-namespace}\"]:not([class*=\"break\"]) {\A 203: 						width: 100%;\A 204: 					}\A 205: 				}\A 206: 			}"; }

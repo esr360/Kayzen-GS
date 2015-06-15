@@ -132,14 +132,18 @@ $fractions: (
 	}
 }
 
-@mixin flow-column {
-	@extend %column;
-	&:first-child {
-		margin-left: $gutter;
-	}
+// Column width mixin
+@mixin column-width($columns, $span) {
+	width: ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * $gutter ) / ( $columns / $span ) );
 }
 
-@mixin magic-column {
+// Flow Column width mixin
+@mixin flow-column-width($columns, $span) {
+	width: ((100/$columns) * $span) - $gutter;
+}
+
+// Magic Column width mixin
+@mixin magic-column($columns: $columns) {
 	&:first-child {
 		@for $i from 1 through $columns {
 			&:nth-last-child(#{$i}) {
@@ -151,53 +155,42 @@ $fractions: (
 	}	
 }
 
-@mixin block-column {
-	display: table-cell;
-}
-
-// Column Width Mixin
-@mixin column-width($columns, $span) {
-	width: ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * $gutter ) / ( $columns / $span ) );
-}
-
-// Flow Column Width Mixin
-@mixin flow-column-width($columns, $span) {
-	width: ((100/$columns) * $span) - $gutter;
-}
-
 //=================================================================
 // Kayzen GS Generator
 //=================================================================
+	
+// Column Row
+//-----------------------------------------------------------------
 
 .#{$row-namespace} {
-	
 	@extend %row;
-	
+}
+
 // Individual Column
 //-----------------------------------------------------------------
 
-	> [class*="#{$col-namespace}"] {
-		@extend %column;	
-	}
+[class*="#{$col-namespace}"] {
+	@extend %column;	
+}
 
 // Column Width
 //-----------------------------------------------------------------
 
-	@for $i from 1 through $columns {
-		.#{$col-namespace}-#{$i} {			
-			@include column-width($columns, $i);
-		}
+@for $i from 1 through $columns {
+	.#{$col-namespace}-#{$i} {			
+		@include column-width($columns, $i);
 	}
+}
 
 // Default Column Stacking
 //-----------------------------------------------------------------
 
-	@media (max-width: $col-collapse) {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			width: 100%;
-			margin-left: 0;
-		}
+@media (max-width: $col-collapse) {
+	[class*="#{$col-namespace}"]:not([class*="break"]) {
+		width: 100%;
+		margin-left: 0;
 	}
+}
 
 // Custom Column Stacking
 //-----------------------------------------------------------------
@@ -214,20 +207,25 @@ $fractions: (
 		} 	
 	} 
 
-} // .#{$row-namespace}
-
 // Flow Columns
 //-----------------------------------------------------------------
 
 @if $flow-columns {
 	.flow-columns {
 		@extend %flow-row;
-		> [class*="#{$col-namespace}"] {
-			@include flow-column;
-		}
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
 				@include flow-column-width($columns, $i)
+			}
+		}
+		> [class*="#{$col-namespace}"] {
+			@extend %column;
+			&:first-child {
+				margin-left: $gutter;
+			}
+			@media (max-width: $col-collapse) {
+				width: (100% - $gutter);
+				margin-left: $gutter;
 			}
 		}
 	}
@@ -252,7 +250,7 @@ $fractions: (
 @if $block-columns {
 	.block-columns {
 		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			@include block-column;
+			display: table-cell;
 		}
 	}
 }
@@ -302,6 +300,17 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 // Custom Column
 //-----------------------------------------------------------------
+
+@mixin flow-column {
+	@extend %column;
+	&:first-child {
+		margin-left: $gutter;
+	}
+}
+
+@mixin block-column {
+	display: table-cell;
+}
 
 // Custom Responsive Handling
 //-----------------------------------------------------------------
