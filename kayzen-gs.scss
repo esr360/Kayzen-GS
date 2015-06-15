@@ -131,6 +131,12 @@ $fractions: (
 	}
 }
 
+@mixin full-width-column {
+	display: block;	
+	width: 100%;
+	margin-left: 0;
+}
+
 // Column width mixin
 @mixin column-width($span, $columns) {
 	width: ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * $gutter ) / ( $columns / $span ) );
@@ -194,8 +200,7 @@ $fractions: (
 	@media (max-width: $col-collapse) {
 		&:not([class*="break"]):not([class*="flow"]) {
 			[class*="#{$col-namespace}"]:not([class*="break"]) {
-				width: 100%;
-				margin-left: 0;
+				@include full-width-column;
 			}
 		}
 	}
@@ -208,8 +213,7 @@ $fractions: (
 			@media (max-width: $width) {
 				&.#{$bp} {
 					> [class*="#{$col-namespace}"]:not([class*="break"]) {
-						width: 100%;
-						margin-left: 0;
+						@include full-width-column;
 					}
 				}
 			}
@@ -306,7 +310,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($span: 1, $columns: 1, $type: null) {
+@mixin column($span: 1, $columns: 1, $type: null, $mobile-first: false) {
 	@extend %column;
 	@if $type == block {
 		display: table-cell;		
@@ -316,8 +320,15 @@ $reverse-breakpoints: reverse-map($breakpoints);
 		&:first-child {
 			margin-left: $gutter;
 		}
+		@if $mobile-first {
+			width: (100% - $gutter);
+		}
 	} @else {
 		@include column-width($span, $columns);
+		@if $mobile-first {
+			width: 100%;
+			margin-left: 0;
+		}
 	}
 }
 
@@ -334,10 +345,12 @@ $reverse-breakpoints: reverse-map($breakpoints);
 // Custom Responsive Handling
 //-----------------------------------------------------------------
 
-@mixin respond-to($width, $breakpoint, $flow-columns: false) {
-	@media (max-width: breakpoint($breakpoint)) {
-		$columns: null;
-		$span: null;
+@mixin respond-to($width, $breakpoint, $flow-columns: false, $mobile-first: false) {
+	$columns: null;	$span: null; $scale: null;
+	@if $mobile-first {	$scale: min; } 
+	@else {	$scale: max; }
+	@media (#{$scale}-width: breakpoint($breakpoint)) {
+		margin-left: $gutter;
 		@if type-of($width) == string {
 			$columns: map-get(fraction($width), columns);
 			$span: map-get(fraction($width), span);
@@ -349,7 +362,9 @@ $reverse-breakpoints: reverse-map($breakpoints);
 			@include flow-column-width($span, $columns);
 		} @else {
 			@include column-width($span, $columns);
-			margin-left: 0;
+			@if $mobile-first == false {
+				margin-left: 0;
+			}
 		}
 	}
 }
@@ -381,9 +396,22 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .portfolio-item {
 	@include column(3, 12, flow);
-	@include respond-to(third, break-3, true);
-	@include respond-to((1, 2), break-2, true);
-	@include respond-to((1, 1), break-1, true);
+	@include respond-to((1, 3), break-3, 1);
+	@include respond-to((1, 2), break-2, 1);
+	@include respond-to((1, 1), break-1, 1);
+}
+
+// Custom Flow Columns - Mobile First
+
+.photo-grid {
+	@include row(flow);	
+}
+
+.photo {
+	@include column(2, 12, flow, true);
+	@include respond-to(half, break-1, true, true);
+	@include respond-to(third, break-2, true, true);
+	@include respond-to(quarter, break-3, true, true);
 }
 
 // Custom Magic Columns

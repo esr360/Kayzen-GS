@@ -5,14 +5,14 @@ Made by @esr360
 http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
-.row, .main, .portfolio-grid, .clients {
+.row, .main, .portfolio-grid, .photo-grid, .clients {
   letter-spacing: -0.31em;
   display: table !important;
   width: 100%;
   *letter-spacing: normal;
   *word-spacing: -0.43em;
 }
-.opera-only :-o-prefocus, .row, .main, .portfolio-grid, .clients {
+.opera-only :-o-prefocus, .row, .main, .portfolio-grid, .photo-grid, .clients {
   word-spacing: -0.43em;
 }
 * {
@@ -21,19 +21,19 @@ http://github.com/esr360/Kayzen-GS/
   text-rendering: auto;
 }
 
-.flow-row, .portfolio-grid {
+.flow-row, .portfolio-grid, .photo-grid {
   margin-left: -2.5%;
   width: 102.5%;
 }
 
-[class*="span"], .sidebar, .content, .portfolio-item, .client {
+[class*="span"], .sidebar, .content, .portfolio-item, .photo, .client {
   display: inline-block;
   vertical-align: top;
   margin-left: 2.5%;
   *display: inline;
   zoom: 1;
 }
-[class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child, .client:first-child {
+[class*="span"]:first-child, .sidebar:first-child, .content:first-child, .portfolio-item:first-child, .photo:first-child, .client:first-child {
   margin-left: 0;
 }
 
@@ -87,30 +87,35 @@ http://github.com/esr360/Kayzen-GS/
 
 @media (max-width: 940px) {
   .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]) {
+    display: block;
     width: 100%;
     margin-left: 0;
   }
 }
 @media (max-width: 460px) {
   .row.break-1 > [class*="span"]:not([class*="break"]) {
+    display: block;
     width: 100%;
     margin-left: 0;
   }
 }
 @media (max-width: 720px) {
   .row.break-2 > [class*="span"]:not([class*="break"]) {
+    display: block;
     width: 100%;
     margin-left: 0;
   }
 }
 @media (max-width: 940px) {
   .row.break-3 > [class*="span"]:not([class*="break"]) {
+    display: block;
     width: 100%;
     margin-left: 0;
   }
 }
 @media (max-width: 1200px) {
   .row.break-4 > [class*="span"]:not([class*="break"]) {
+    display: block;
     width: 100%;
     margin-left: 0;
   }
@@ -319,6 +324,7 @@ http://github.com/esr360/Kayzen-GS/
 }
 @media (max-width: 720px) {
   .sidebar {
+    margin-left: 2.5%;
     width: 100%;
     margin-left: 0;
   }
@@ -329,6 +335,7 @@ http://github.com/esr360/Kayzen-GS/
 }
 @media (max-width: 720px) {
   .content {
+    margin-left: 2.5%;
     width: 100%;
     margin-left: 0;
   }
@@ -342,17 +349,46 @@ http://github.com/esr360/Kayzen-GS/
 }
 @media (max-width: 940px) {
   .portfolio-item {
+    margin-left: 2.5%;
     width: 30.83333%;
   }
 }
 @media (max-width: 720px) {
   .portfolio-item {
+    margin-left: 2.5%;
     width: 47.5%;
   }
 }
 @media (max-width: 460px) {
   .portfolio-item {
+    margin-left: 2.5%;
     width: 97.5%;
+  }
+}
+
+.photo {
+  width: 14.16667%;
+  width: 97.5%;
+}
+.photo:first-child {
+  margin-left: 2.5%;
+}
+@media (min-width: 460px) {
+  .photo {
+    margin-left: 2.5%;
+    width: 47.5%;
+  }
+}
+@media (min-width: 720px) {
+  .photo {
+    margin-left: 2.5%;
+    width: 30.83333%;
+  }
+}
+@media (min-width: 940px) {
+  .photo {
+    margin-left: 2.5%;
+    width: 22.5%;
   }
 }
 
