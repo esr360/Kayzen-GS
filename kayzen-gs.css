@@ -37,55 +37,7 @@ http://github.com/esr360/Kayzen-GS/
   margin-left: 0;
 }
 
-.span-1 {
-  width: 6.04167%;
-}
-
-.span-2 {
-  width: 14.58333%;
-}
-
-.span-3 {
-  width: 23.125%;
-}
-
-.span-4 {
-  width: 31.66667%;
-}
-
-.span-5 {
-  width: 40.20833%;
-}
-
-.span-6 {
-  width: 48.75%;
-}
-
-.span-7 {
-  width: 57.29167%;
-}
-
-.span-8 {
-  width: 65.83333%;
-}
-
-.span-9 {
-  width: 74.375%;
-}
-
-.span-10 {
-  width: 82.91667%;
-}
-
-.span-11 {
-  width: 91.45833%;
-}
-
-.span-12 {
-  width: 100%;
-}
-
-@media (max-width: 940px) {
+@media (max: 940px) {
   .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]) {
     display: block;
     width: 100%;
@@ -367,25 +319,25 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .photo {
-  width: 14.16667%;
+  width: 97.5%;
   width: 97.5%;
 }
 .photo:first-child {
   margin-left: 2.5%;
 }
-@media (min-width: 460px) {
+@media (max-width: 460px) {
   .photo {
     margin-left: 2.5%;
     width: 47.5%;
   }
 }
-@media (min-width: 720px) {
+@media (max-width: 720px) {
   .photo {
     margin-left: 2.5%;
     width: 30.83333%;
   }
 }
-@media (min-width: 940px) {
+@media (max-width: 940px) {
   .photo {
     margin-left: 2.5%;
     width: 22.5%;

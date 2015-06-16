@@ -16,6 +16,9 @@ http://github.com/esr360/Kayzen-GS/
 // Support Internet Explorer 6 & 7?
 $old-ie                         : true;
 
+// Enable mobile-first mode?
+$mobile-first                   : false;
+
 // Enable custom column stacking?
 $column-stacking                : true;
 
@@ -59,6 +62,15 @@ $breakpoints: (
 
 // Set the maximum width for default vertically stacked columns
 $col-collapse                   : breakpoint(break-3);
+
+// Set min/max width for breakpoints
+$scale                          : null;
+@if $mobile-first {	
+	$scale                      : min; 
+} 
+@else {	
+	$scale                      : max; 
+}
 
 // Fractions
 //-----------------------------------------------------------------
@@ -175,15 +187,17 @@ $fractions: (
 //-----------------------------------------------------------------
 
 [class*="#{$col-namespace}"] {
-	@extend %column;	
+	@extend %column;
 }
 
 // Column Width
 //-----------------------------------------------------------------
 
-@for $i from 1 through $columns {
-	.#{$col-namespace}-#{$i} {			
-		@include column-width($i, $columns);
+@if $mobile-first {
+	@for $i from 1 through $columns {
+		.#{$col-namespace}-#{$i} {			
+			@include column-width($i, $columns);
+		}
 	}
 }
 	
@@ -197,10 +211,13 @@ $fractions: (
 // Default Column Stacking
 //-----------------------------------------------------------------
 
-	@media (max-width: $col-collapse) {
+	@media (#{$scale}: $col-collapse) {
 		&:not([class*="break"]):not([class*="flow"]) {
 			[class*="#{$col-namespace}"]:not([class*="break"]) {
 				@include full-width-column;
+				@if $mobile-first {
+					margin-left: $gutter;
+				}
 			}
 		}
 	}
@@ -287,15 +304,23 @@ $fractions: (
 
 // Reverse $breakpoints map
 // This is to allow the generated CSS to override when scaling
-$reverse-breakpoints: reverse-map($breakpoints);
+$reverse-breakpoints: null;
+@if $mobile-first {
+	$reverse-breakpoints: $breakpoints;
+} @else {
+	$reverse-breakpoints: reverse-map($breakpoints);	
+}
 	
 .#{$row-namespace} {
 
 	@each $bp, $width in $reverse-breakpoints {
-		@media (max-width: $width) {
+		@media (#{$scale}-width: $width) {
 			@each $name, $fraction in $fractions {				
 				.#{$bp}-#{$name} {
 					@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+					@if $mobile-first {
+						margin-left: $gutter;
+					}
 				}
 			}
 		}
@@ -325,10 +350,6 @@ $reverse-breakpoints: reverse-map($breakpoints);
 		}
 	} @else {
 		@include column-width($span, $columns);
-		@if $mobile-first {
-			width: 100%;
-			margin-left: 0;
-		}
 	}
 }
 
@@ -346,9 +367,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 //-----------------------------------------------------------------
 
 @mixin respond-to($width, $breakpoint, $flow-columns: false, $mobile-first: false) {
-	$columns: null;	$span: null; $scale: null;
-	@if $mobile-first {	$scale: min; } 
-	@else {	$scale: max; }
+	$columns: null;	$span: null;
 	@media (#{$scale}-width: breakpoint($breakpoint)) {
 		margin-left: $gutter;
 		@if type-of($width) == string {
@@ -408,7 +427,7 @@ $reverse-breakpoints: reverse-map($breakpoints);
 }
 
 .photo {
-	@include column(2, 12, flow, true);
+	@include column($type: flow, $mobile-first: true);
 	@include respond-to(half, break-1, true, true);
 	@include respond-to(third, break-2, true, true);
 	@include respond-to(quarter, break-3, true, true);
