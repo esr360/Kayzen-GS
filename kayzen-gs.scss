@@ -20,6 +20,8 @@ $old-ie                         : true;
 $mobile-first                   : false;
 
 // Enable custom column stacking?
+// Warning: enabling this in conjunction with mobile-first can
+// result in bloated stylesheets.
 $column-stacking                : true;
 
 // Generate Flow Columns?
@@ -132,21 +134,11 @@ $fractions: (
 %column {
 	display: inline-block;
 	vertical-align: top;
-	margin-left: $gutter;
 	// IE < 8: fake inline-block
 	@if $old-ie {
 		*display: inline;
 		zoom: 1; 
 	}
-	&:first-child {
-		margin-left: 0;
-	}
-}
-
-@mixin full-width-column {
-	display: block;	
-	width: 100%;
-	margin-left: 0;
 }
 
 // Column width mixin
@@ -188,17 +180,22 @@ $fractions: (
 
 [class*="#{$col-namespace}"] {
 	@extend %column;
+	width: 100%;
 }
 
 // Column Width
 //-----------------------------------------------------------------
 
-@if $mobile-first {
+@if $mobile-first == false {
 	@for $i from 1 through $columns {
-		.#{$col-namespace}-#{$i} {			
+		.#{$col-namespace}-#{$i} {	
 			@include column-width($i, $columns);
+			margin-left: $gutter;
+			&:first-child {
+				margin-left: 0;
+			}
 		}
-	}
+	}	
 }
 	
 // Column Row
@@ -211,14 +208,24 @@ $fractions: (
 // Default Column Stacking
 //-----------------------------------------------------------------
 
-	@media (#{$scale}: $col-collapse) {
+	@media (#{$scale}-width: $col-collapse) {
 		&:not([class*="break"]):not([class*="flow"]) {
-			[class*="#{$col-namespace}"]:not([class*="break"]) {
-				@include full-width-column;
-				@if $mobile-first {
-					margin-left: $gutter;
+			@if $mobile-first {
+				@for $i from 1 through $columns {
+					.#{$col-namespace}-#{$i} {	
+						@include column-width($i, $columns);
+						margin-left: $gutter;
+						&:first-child {
+							margin-left: 0;
+						}
+					}
 				}
-			}
+			} @else {
+				[class*="#{$col-namespace}"]:not([class*="break"]) {
+					width: 100%;
+					margin-left: 0;
+				}
+			}	
 		}
 	}
 
@@ -227,10 +234,25 @@ $fractions: (
 
 	@if $column-stacking {
 		@each $bp, $width in $breakpoints {
-			@media (max-width: $width) {
+			@media (#{$scale}-width: $width) {
 				&.#{$bp} {
-					> [class*="#{$col-namespace}"]:not([class*="break"]) {
-						@include full-width-column;
+					@if $mobile-first {
+						[class*="#{$col-namespace}"] {
+							margin-left: $gutter;
+						}
+						@for $i from 1 through $columns {
+							.#{$col-namespace}-#{$i} {	
+								@include column-width($i, $columns);
+								&:first-child {
+									margin-left: 0;
+								}
+							}
+						}
+					} @else {
+						> [class*="#{$col-namespace}"]:not([class*="break"]) {							
+							width: 100%;	
+							margin-left: 0;
+						}
 					}
 				}
 			}
@@ -247,16 +269,23 @@ $fractions: (
 		@extend %flow-row;
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
-				@include flow-column-width($i, $columns)
+				@if $mobile-first {
+					width: (100% - $gutter);
+					@media (min-width: $col-collapse) {
+						@include flow-column-width($i, $columns);
+					}
+				} @else {
+					@include flow-column-width($i, $columns);
+				}
 			}
 		}
 		> [class*="#{$col-namespace}"] {
-			&:first-child {
-				margin-left: $gutter;
-			}
-			@media (max-width: $col-collapse) {
-				width: (100% - $gutter);
-				margin-left: $gutter;
+			margin-left: $gutter;
+			@if $mobile-first == false {
+				@media (max-width: $col-collapse) {
+					width: (100% - $gutter);
+					margin-left: $gutter;
+				}
 			}
 		}
 	}
@@ -269,6 +298,9 @@ $fractions: (
 	.magic-row {
 		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			@include magic-column;
+			&:first-child {
+				margin-left: 0;
+			}
 		}
 	}
 }
@@ -335,21 +367,26 @@ $reverse-breakpoints: null;
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($span: 1, $columns: 1, $type: null, $mobile-first: false) {
+@mixin column($span: 1, $columns: 1, $type: null, $mob-first: false) {
 	@extend %column;
+	margin-left: $gutter;
 	@if $type == block {
 		display: table-cell;		
 	}
 	@if $type == flow {	
-		@include flow-column-width($span, $columns);	
-		&:first-child {
-			margin-left: $gutter;
-		}
-		@if $mobile-first {
+		@include flow-column-width($span, $columns);
+		@if $mob-first {
 			width: (100% - $gutter);
 		}
 	} @else {
 		@include column-width($span, $columns);
+		@if $mob-first {
+			width: 100%;
+			margin-left: 0;
+		}
+		&:first-child {
+			margin-left: 0;
+		}
 	}
 }
 
@@ -366,9 +403,11 @@ $reverse-breakpoints: null;
 // Custom Responsive Handling
 //-----------------------------------------------------------------
 
-@mixin respond-to($width, $breakpoint, $flow-columns: false, $mobile-first: false) {
-	$columns: null;	$span: null;
-	@media (#{$scale}-width: breakpoint($breakpoint)) {
+@mixin respond-to($width, $breakpoint, $flow-columns: false, $mob-first: false) {
+	$columns: null;	$span: null; $respond-scale: null;
+	@if $mob-first { $respond-scale: min; } 
+	@else {	$respond-scale: max; }
+	@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
 		margin-left: $gutter;
 		@if type-of($width) == string {
 			$columns: map-get(fraction($width), columns);
@@ -381,7 +420,7 @@ $reverse-breakpoints: null;
 			@include flow-column-width($span, $columns);
 		} @else {
 			@include column-width($span, $columns);
-			@if $mobile-first == false {
+			@if $mob-first == false {
 				margin-left: 0;
 			}
 		}
@@ -427,7 +466,7 @@ $reverse-breakpoints: null;
 }
 
 .photo {
-	@include column($type: flow, $mobile-first: true);
+	@include column($type: flow, $mob-first: true);
 	@include respond-to(half, break-1, true, true);
 	@include respond-to(third, break-2, true, true);
 	@include respond-to(quarter, break-3, true, true);
