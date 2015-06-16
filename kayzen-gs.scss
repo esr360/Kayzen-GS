@@ -469,6 +469,6 @@ $reverse-breakpoints: null;
 }
 
 .client {
-	@include column(3, 12);
+	@include column;
 	@include magic-column(6, client, breakpoint(break-2));
 }
