@@ -34,139 +34,328 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 [class*="span"] {
-  margin-left: 2.5%;
-}
-[class*="span"]:first-child {
-  margin-left: 0;
-}
-
-.span-1 {
-  width: 6.04167%;
-}
-
-.span-2 {
-  width: 14.58333%;
-}
-
-.span-3 {
-  width: 23.125%;
-}
-
-.span-4 {
-  width: 31.66667%;
-}
-
-.span-5 {
-  width: 40.20833%;
-}
-
-.span-6 {
-  width: 48.75%;
-}
-
-.span-7 {
-  width: 57.29167%;
-}
-
-.span-8 {
-  width: 65.83333%;
-}
-
-.span-9 {
-  width: 74.375%;
-}
-
-.span-10 {
-  width: 82.91667%;
-}
-
-.span-11 {
-  width: 91.45833%;
-}
-
-.span-12 {
   width: 100%;
 }
 
-@media (max-width: 940px) {
+@media (min-width: 940px) {
+  .row:not([class*="break"]):not([class*="flow"]) .span-1 {
+    width: 6.04167%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-2 {
+    width: 14.58333%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-3 {
+    width: 23.125%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-4 {
+    width: 31.66667%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-5 {
+    width: 40.20833%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-6 {
+    width: 48.75%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-7 {
+    width: 57.29167%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-8 {
+    width: 65.83333%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-9 {
+    width: 74.375%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-10 {
+    width: 82.91667%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-11 {
+    width: 91.45833%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) .span-12 {
+    width: 100%;
+  }
   .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]) {
-    width: 100%;
+    margin-left: 2.5%;
+  }
+  .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]):first-child {
     margin-left: 0;
-    display: block;
   }
 }
-@media (max-width: 460px) {
+@media (min-width: 460px) {
+  .row.break-1 .span-1 {
+    width: 6.04167%;
+  }
+  .row.break-1 .span-2 {
+    width: 14.58333%;
+  }
+  .row.break-1 .span-3 {
+    width: 23.125%;
+  }
+  .row.break-1 .span-4 {
+    width: 31.66667%;
+  }
+  .row.break-1 .span-5 {
+    width: 40.20833%;
+  }
+  .row.break-1 .span-6 {
+    width: 48.75%;
+  }
+  .row.break-1 .span-7 {
+    width: 57.29167%;
+  }
+  .row.break-1 .span-8 {
+    width: 65.83333%;
+  }
+  .row.break-1 .span-9 {
+    width: 74.375%;
+  }
+  .row.break-1 .span-10 {
+    width: 82.91667%;
+  }
+  .row.break-1 .span-11 {
+    width: 91.45833%;
+  }
+  .row.break-1 .span-12 {
+    width: 100%;
+  }
   .row.break-1 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
+    margin-left: 2.5%;
+  }
+  .row.break-1 > [class*="span"]:not([class*="break"]):first-child {
     margin-left: 0;
-    display: block;
   }
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
+  .row.break-2 .span-1 {
+    width: 6.04167%;
+  }
+  .row.break-2 .span-2 {
+    width: 14.58333%;
+  }
+  .row.break-2 .span-3 {
+    width: 23.125%;
+  }
+  .row.break-2 .span-4 {
+    width: 31.66667%;
+  }
+  .row.break-2 .span-5 {
+    width: 40.20833%;
+  }
+  .row.break-2 .span-6 {
+    width: 48.75%;
+  }
+  .row.break-2 .span-7 {
+    width: 57.29167%;
+  }
+  .row.break-2 .span-8 {
+    width: 65.83333%;
+  }
+  .row.break-2 .span-9 {
+    width: 74.375%;
+  }
+  .row.break-2 .span-10 {
+    width: 82.91667%;
+  }
+  .row.break-2 .span-11 {
+    width: 91.45833%;
+  }
+  .row.break-2 .span-12 {
+    width: 100%;
+  }
   .row.break-2 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
+    margin-left: 2.5%;
+  }
+  .row.break-2 > [class*="span"]:not([class*="break"]):first-child {
     margin-left: 0;
-    display: block;
   }
 }
-@media (max-width: 940px) {
+@media (min-width: 940px) {
+  .row.break-3 .span-1 {
+    width: 6.04167%;
+  }
+  .row.break-3 .span-2 {
+    width: 14.58333%;
+  }
+  .row.break-3 .span-3 {
+    width: 23.125%;
+  }
+  .row.break-3 .span-4 {
+    width: 31.66667%;
+  }
+  .row.break-3 .span-5 {
+    width: 40.20833%;
+  }
+  .row.break-3 .span-6 {
+    width: 48.75%;
+  }
+  .row.break-3 .span-7 {
+    width: 57.29167%;
+  }
+  .row.break-3 .span-8 {
+    width: 65.83333%;
+  }
+  .row.break-3 .span-9 {
+    width: 74.375%;
+  }
+  .row.break-3 .span-10 {
+    width: 82.91667%;
+  }
+  .row.break-3 .span-11 {
+    width: 91.45833%;
+  }
+  .row.break-3 .span-12 {
+    width: 100%;
+  }
   .row.break-3 > [class*="span"]:not([class*="break"]) {
-    width: 100%;
+    margin-left: 2.5%;
+  }
+  .row.break-3 > [class*="span"]:not([class*="break"]):first-child {
     margin-left: 0;
-    display: block;
   }
 }
-@media (max-width: 1200px) {
-  .row.break-4 > [class*="span"]:not([class*="break"]) {
+@media (min-width: 1200px) {
+  .row.break-4 .span-1 {
+    width: 6.04167%;
+  }
+  .row.break-4 .span-2 {
+    width: 14.58333%;
+  }
+  .row.break-4 .span-3 {
+    width: 23.125%;
+  }
+  .row.break-4 .span-4 {
+    width: 31.66667%;
+  }
+  .row.break-4 .span-5 {
+    width: 40.20833%;
+  }
+  .row.break-4 .span-6 {
+    width: 48.75%;
+  }
+  .row.break-4 .span-7 {
+    width: 57.29167%;
+  }
+  .row.break-4 .span-8 {
+    width: 65.83333%;
+  }
+  .row.break-4 .span-9 {
+    width: 74.375%;
+  }
+  .row.break-4 .span-10 {
+    width: 82.91667%;
+  }
+  .row.break-4 .span-11 {
+    width: 91.45833%;
+  }
+  .row.break-4 .span-12 {
     width: 100%;
+  }
+  .row.break-4 > [class*="span"]:not([class*="break"]) {
+    margin-left: 2.5%;
+  }
+  .row.break-4 > [class*="span"]:not([class*="break"]):first-child {
     margin-left: 0;
-    display: block;
   }
 }
 
 .flow-row .span-1 {
-  width: 5.83333%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-1 {
+    width: 5.83333%;
+  }
 }
 .flow-row .span-2 {
-  width: 14.16667%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-2 {
+    width: 14.16667%;
+  }
 }
 .flow-row .span-3 {
-  width: 22.5%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-3 {
+    width: 22.5%;
+  }
 }
 .flow-row .span-4 {
-  width: 30.83333%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-4 {
+    width: 30.83333%;
+  }
 }
 .flow-row .span-5 {
-  width: 39.16667%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-5 {
+    width: 39.16667%;
+  }
 }
 .flow-row .span-6 {
-  width: 47.5%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-6 {
+    width: 47.5%;
+  }
 }
 .flow-row .span-7 {
-  width: 55.83333%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-7 {
+    width: 55.83333%;
+  }
 }
 .flow-row .span-8 {
-  width: 64.16667%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-8 {
+    width: 64.16667%;
+  }
 }
 .flow-row .span-9 {
-  width: 72.5%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-9 {
+    width: 72.5%;
+  }
 }
 .flow-row .span-10 {
-  width: 80.83333%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-10 {
+    width: 80.83333%;
+  }
 }
 .flow-row .span-11 {
-  width: 89.16667%;
+  width: 97.5%;
+}
+@media (min-width: 940px) {
+  .flow-row .span-11 {
+    width: 89.16667%;
+  }
 }
 .flow-row .span-12 {
   width: 97.5%;
 }
-.flow-row > [class*="span"] {
-  margin-left: 2.5%;
-}
-@media (max-width: 940px) {
-  .flow-row > [class*="span"]:not([class*="break"]) {
+@media (min-width: 940px) {
+  .flow-row .span-12 {
     width: 97.5%;
   }
+}
+.flow-row > [class*="span"] {
+  margin-left: 2.5%;
 }
 
 .magic-row > [class*="span"]:not([class*="break"]) {
@@ -252,58 +441,7 @@ http://github.com/esr360/Kayzen-GS/
   display: table-cell;
 }
 
-@media (max-width: 1200px) {
-  .row .break-4-full {
-    width: 97.5%;
-  }
-  .row .break-4-half {
-    width: 47.5%;
-  }
-  .row .break-4-third {
-    width: 30.83333%;
-  }
-  .row .break-4-quarter {
-    width: 22.5%;
-  }
-  .row .break-4-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 940px) {
-  .row .break-3-full {
-    width: 97.5%;
-  }
-  .row .break-3-half {
-    width: 47.5%;
-  }
-  .row .break-3-third {
-    width: 30.83333%;
-  }
-  .row .break-3-quarter {
-    width: 22.5%;
-  }
-  .row .break-3-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 720px) {
-  .row .break-2-full {
-    width: 97.5%;
-  }
-  .row .break-2-half {
-    width: 47.5%;
-  }
-  .row .break-2-third {
-    width: 30.83333%;
-  }
-  .row .break-2-quarter {
-    width: 22.5%;
-  }
-  .row .break-2-sixth {
-    width: 14.16667%;
-  }
-}
-@media (max-width: 460px) {
+@media (min-width: 460px) {
   .row .break-1-full {
     width: 97.5%;
   }
@@ -320,6 +458,57 @@ http://github.com/esr360/Kayzen-GS/
     width: 14.16667%;
   }
 }
+@media (min-width: 720px) {
+  .row .break-2-full {
+    width: 97.5%;
+  }
+  .row .break-2-half {
+    width: 47.5%;
+  }
+  .row .break-2-third {
+    width: 30.83333%;
+  }
+  .row .break-2-quarter {
+    width: 22.5%;
+  }
+  .row .break-2-sixth {
+    width: 14.16667%;
+  }
+}
+@media (min-width: 940px) {
+  .row .break-3-full {
+    width: 97.5%;
+  }
+  .row .break-3-half {
+    width: 47.5%;
+  }
+  .row .break-3-third {
+    width: 30.83333%;
+  }
+  .row .break-3-quarter {
+    width: 22.5%;
+  }
+  .row .break-3-sixth {
+    width: 14.16667%;
+  }
+}
+@media (min-width: 1200px) {
+  .row .break-4-full {
+    width: 97.5%;
+  }
+  .row .break-4-half {
+    width: 47.5%;
+  }
+  .row .break-4-third {
+    width: 30.83333%;
+  }
+  .row .break-4-quarter {
+    width: 22.5%;
+  }
+  .row .break-4-sixth {
+    width: 14.16667%;
+  }
+}
 
 .sidebar {
   width: 31.66667%;
@@ -331,7 +520,6 @@ http://github.com/esr360/Kayzen-GS/
 @media (max-width: 720px) {
   .sidebar {
     width: 100%;
-    margin-left: 0;
   }
 }
 
@@ -345,7 +533,6 @@ http://github.com/esr360/Kayzen-GS/
 @media (max-width: 720px) {
   .content {
     width: 100%;
-    margin-left: 0;
   }
 }
 
