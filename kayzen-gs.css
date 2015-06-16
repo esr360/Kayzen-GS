@@ -34,133 +34,93 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 [class*="span"] {
-  width: 100%;
+  margin-left: 2.5%;
+}
+[class*="span"]:first-child {
+  margin-left: 0;
 }
 
 .span-1 {
   width: 6.04167%;
-  margin-left: 2.5%;
-}
-.span-1:first-child {
-  margin-left: 0;
 }
 
 .span-2 {
   width: 14.58333%;
-  margin-left: 2.5%;
-}
-.span-2:first-child {
-  margin-left: 0;
 }
 
 .span-3 {
   width: 23.125%;
-  margin-left: 2.5%;
-}
-.span-3:first-child {
-  margin-left: 0;
 }
 
 .span-4 {
   width: 31.66667%;
-  margin-left: 2.5%;
-}
-.span-4:first-child {
-  margin-left: 0;
 }
 
 .span-5 {
   width: 40.20833%;
-  margin-left: 2.5%;
-}
-.span-5:first-child {
-  margin-left: 0;
 }
 
 .span-6 {
   width: 48.75%;
-  margin-left: 2.5%;
-}
-.span-6:first-child {
-  margin-left: 0;
 }
 
 .span-7 {
   width: 57.29167%;
-  margin-left: 2.5%;
-}
-.span-7:first-child {
-  margin-left: 0;
 }
 
 .span-8 {
   width: 65.83333%;
-  margin-left: 2.5%;
-}
-.span-8:first-child {
-  margin-left: 0;
 }
 
 .span-9 {
   width: 74.375%;
-  margin-left: 2.5%;
-}
-.span-9:first-child {
-  margin-left: 0;
 }
 
 .span-10 {
   width: 82.91667%;
-  margin-left: 2.5%;
-}
-.span-10:first-child {
-  margin-left: 0;
 }
 
 .span-11 {
   width: 91.45833%;
-  margin-left: 2.5%;
-}
-.span-11:first-child {
-  margin-left: 0;
 }
 
 .span-12 {
   width: 100%;
-  margin-left: 2.5%;
-}
-.span-12:first-child {
-  margin-left: 0;
 }
 
 @media (max-width: 940px) {
   .row:not([class*="break"]):not([class*="flow"]) [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
+    display: block;
   }
 }
 @media (max-width: 460px) {
   .row.break-1 > [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
+    display: block;
   }
 }
 @media (max-width: 720px) {
   .row.break-2 > [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
+    display: block;
   }
 }
 @media (max-width: 940px) {
   .row.break-3 > [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
+    display: block;
   }
 }
 @media (max-width: 1200px) {
   .row.break-4 > [class*="span"]:not([class*="break"]) {
     width: 100%;
     margin-left: 0;
+    display: block;
   }
 }
 
@@ -204,9 +164,8 @@ http://github.com/esr360/Kayzen-GS/
   margin-left: 2.5%;
 }
 @media (max-width: 940px) {
-  .flow-row > [class*="span"] {
+  .flow-row > [class*="span"]:not([class*="break"]) {
     width: 97.5%;
-    margin-left: 2.5%;
   }
 }
 
@@ -288,9 +247,6 @@ http://github.com/esr360/Kayzen-GS/
     margin-left: 2.5%;
   }
 }
-.magic-row > [class*="span"]:not([class*="break"]):first-child {
-  margin-left: 0;
-}
 
 .block-row > [class*="span"]:not([class*="break"]) {
   display: table-cell;
@@ -366,85 +322,76 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .sidebar {
-  margin-left: 2.5%;
   width: 31.66667%;
+  margin-left: 2.5%;
 }
 .sidebar:first-child {
   margin-left: 0;
 }
 @media (max-width: 720px) {
   .sidebar {
-    margin-left: 2.5%;
     width: 100%;
     margin-left: 0;
   }
 }
 
 .content {
-  margin-left: 2.5%;
   width: 65.83333%;
+  margin-left: 2.5%;
 }
 .content:first-child {
   margin-left: 0;
 }
 @media (max-width: 720px) {
   .content {
-    margin-left: 2.5%;
     width: 100%;
     margin-left: 0;
   }
 }
 
 .portfolio-item {
-  margin-left: 2.5%;
   width: 22.5%;
+  margin-left: 2.5%;
 }
 @media (max-width: 940px) {
   .portfolio-item {
-    margin-left: 2.5%;
     width: 30.83333%;
   }
 }
 @media (max-width: 720px) {
   .portfolio-item {
-    margin-left: 2.5%;
     width: 47.5%;
   }
 }
 @media (max-width: 460px) {
   .portfolio-item {
-    margin-left: 2.5%;
     width: 97.5%;
   }
 }
 
 .photo {
+  width: 97.5%;
   margin-left: 2.5%;
-  width: 97.5%;
-  width: 97.5%;
 }
 @media (min-width: 460px) {
   .photo {
-    margin-left: 2.5%;
     width: 47.5%;
   }
 }
 @media (min-width: 720px) {
   .photo {
-    margin-left: 2.5%;
     width: 30.83333%;
   }
 }
 @media (min-width: 940px) {
   .photo {
-    margin-left: 2.5%;
     width: 22.5%;
   }
 }
 
 .client {
+  width: 23.125%;
   margin-left: 2.5%;
-  width: 100%;
   width: 100%;
   margin-left: 0;
 }
