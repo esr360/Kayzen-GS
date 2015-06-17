@@ -31,6 +31,7 @@
 				padding: 0.5rem;
 				background: rgba(0,0,0,0.2);
 				border-radius: 4px;
+				margin-bottom: 1em;
 			}
 		</style>
 		
@@ -38,7 +39,7 @@
 	
 	<body>
 		
-		<div class="container">
+		<div class="container main-container">
 
             <h2 class="heading">
                 <a href="http://www.onenexusproject.com/documentation/features/responsive-grid-system/" target="blank">
@@ -50,14 +51,10 @@
 
             <p>A row of regular columns can contain any number of columns with different span widths so long as the total number doesn't exceed the value defined by the <code>$columns</code> variable. By default, this number is set to <b>12</b>, so our column-spans should add up to this number.</p>
 			
-			<br />
-			
             <div class="row break-2">                    
                 <div class="span-6">span-6</div>
                 <div class="span-6">span-6</div>
             </div> 
-
-            <br>
 
             <div class="row break-4">                    
                 <div class="span-4">span-4</div>
@@ -65,16 +62,12 @@
                 <div class="span-4">span-4</div>
             </div>
 
-            <br>
-
             <div class="row">                    
                 <div class="span-3">span-3</div>
                 <div class="span-3">span-3</div>
                 <div class="span-3">span-3</div>
                 <div class="span-3">span-3</div>
             </div>
-
-            <br>
 
             <div class="row">
                 <div class="span-1">span-1</div>
@@ -91,7 +84,6 @@
                 <div class="span-1">span-1</div>
             </div>
 			
-
             <hr class="stripes">
 			
 			<h3 class="heading">Mobile First Columns</h3>
