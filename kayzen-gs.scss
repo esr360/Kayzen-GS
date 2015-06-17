@@ -16,6 +16,12 @@ http://github.com/esr360/Kayzen-GS/
 // Support Internet Explorer 6 & 7?
 $old-ie                         : true;
 
+// Enable Responsive?
+$responsive                     : true;
+
+// Enable mobile-first mode?
+$mobile-first                   : false;
+
 // Enable custom column stacking?
 $column-stacking                : true;
 
@@ -60,6 +66,15 @@ $breakpoints: (
 // Set the maximum width for default vertically stacked columns
 $col-collapse                   : breakpoint(break-3);
 
+// Set min/max width for breakpoints
+$scale                          : null;
+@if $mobile-first {	
+	$scale                      : min; 
+} 
+@else {	
+	$scale                      : max; 
+}
+
 // Fractions
 //-----------------------------------------------------------------
 
@@ -78,6 +93,11 @@ $fractions: (
 //=================================================================
 // Kayzen GS Framework
 //=================================================================
+
+// Reset $mobile-first to false if $responsive is disabled
+@if $responsive == false {
+	$mobile-first: false;
+}
 
 // Column Row
 //-----------------------------------------------------------------
@@ -120,12 +140,15 @@ $fractions: (
 %column {
 	display: inline-block;
 	vertical-align: top;
-	margin-left: $gutter;
 	// IE < 8: fake inline-block
 	@if $old-ie {
 		*display: inline;
 		zoom: 1; 
 	}
+}
+
+@mixin gutter {
+	margin-left: $gutter;
 	&:first-child {
 		margin-left: 0;
 	}
@@ -143,16 +166,19 @@ $fractions: (
 
 // Magic Column width mixin
 @mixin magic-column($columns: $columns, $namespace: $col-namespace, $stack: $col-collapse) {
-	width: 100%;
-	margin-left: 0;
+	@if $responsive {
+		width: 100%;
+		margin-left: 0;
+	} @else {		
+		$stack: 0px;
+	}
 	@media (min-width: $stack) {
 		&:first-child {
 			@for $i from 1 through $columns {
 				&:nth-last-child(#{$i}) {
 					&, ~ [class*="#{$namespace}"] {		
 						width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
-					}
-					~ [class*="#{$namespace}"] {		
+					} ~ [class*="#{$namespace}"] {		
 						margin-left: $gutter;
 					}
 				}
@@ -169,16 +195,23 @@ $fractions: (
 //-----------------------------------------------------------------
 
 [class*="#{$col-namespace}"] {
-	@extend %column;	
+	@extend %column;
+	@if $mobile-first {
+		width: 100%;
+	} @else {		
+		@include gutter;
+	}
 }
 
 // Column Width
 //-----------------------------------------------------------------
 
-@for $i from 1 through $columns {
-	.#{$col-namespace}-#{$i} {			
-		@include column-width($i, $columns);
-	}
+@if $mobile-first == false {
+	@for $i from 1 through $columns {
+		.#{$col-namespace}-#{$i} {	
+			@include column-width($i, $columns);
+		}
+	}	
 }
 	
 // Column Row
@@ -191,11 +224,25 @@ $fractions: (
 // Default Column Stacking
 //-----------------------------------------------------------------
 
-	@media (max-width: $col-collapse) {
-		&:not([class*="break"]):not([class*="flow"]) {
-			[class*="#{$col-namespace}"]:not([class*="break"]) {
-				width: 100%;
-				margin-left: 0;
+	@if $responsive {
+		@media (#{$scale}-width: $col-collapse) {
+			&:not([class*="break"]):not([class*="flow"]) {
+				@if $mobile-first {
+					@for $i from 1 through $columns {
+						.#{$col-namespace}-#{$i} {	
+							@include column-width($i, $columns);
+						}
+					}
+					[class*="#{$col-namespace}"]:not([class*="break"]) {
+						@include gutter;
+					}
+				} @else {
+					[class*="#{$col-namespace}"]:not([class*="break"]) {
+						width: 100%;
+						margin-left: 0;
+						display: block;
+					}
+				}	
 			}
 		}
 	}
@@ -203,18 +250,32 @@ $fractions: (
 // Custom Column Stacking
 //-----------------------------------------------------------------
 
-	@if $column-stacking {
-		@each $bp, $width in $breakpoints {
-			@media (max-width: $width) {
-				&.#{$bp} {
-					> [class*="#{$col-namespace}"]:not([class*="break"]) {
-						width: 100%;
-						margin-left: 0;
+	@if $responsive {
+		@if $column-stacking {
+			@each $bp, $width in $breakpoints {
+				@media (#{$scale}-width: $width) {
+					&.#{$bp} {
+						@if $mobile-first {
+							@for $i from 1 through $columns {
+								.#{$col-namespace}-#{$i} {	
+									@include column-width($i, $columns);
+								}
+							}
+							> [class*="#{$col-namespace}"]:not([class*="break"]) {	
+								@include gutter;
+							}
+						} @else {
+							> [class*="#{$col-namespace}"]:not([class*="break"]) {							
+								width: 100%;
+								margin-left: 0;
+								display: block;
+							}
+						}
 					}
 				}
-			}
-		} 	
-	} 
+			} 	
+		} 
+	}
 
 } // row
 
@@ -226,16 +287,26 @@ $fractions: (
 		@extend %flow-row;
 		@for $i from 1 through $columns {
 			.#{$col-namespace}-#{$i} {		
-				@include flow-column-width($i, $columns)
+				@if $mobile-first {
+					width: (100% - $gutter);
+					@media (min-width: $col-collapse) {
+						@include flow-column-width($i, $columns);
+					}
+				} @else {
+					@include flow-column-width($i, $columns);
+				}
 			}
 		}
 		> [class*="#{$col-namespace}"] {
-			&:first-child {
-				margin-left: $gutter;
-			}
-			@media (max-width: $col-collapse) {
-				width: (100% - $gutter);
-				margin-left: $gutter;
+			margin-left: $gutter;
+			&:not([class*="break"]) {
+				@if $responsive {
+					@if $mobile-first == false {
+						@media (max-width: $col-collapse) {
+							width: (100% - $gutter);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -281,23 +352,32 @@ $fractions: (
     @return $result;
 } // reverse-map
 
-// Reverse $breakpoints map
-// This is to allow the generated CSS to override when scaling
-$reverse-breakpoints: reverse-map($breakpoints);
-	
-.#{$row-namespace} {
+@if $responsive {
 
-	@each $bp, $width in $reverse-breakpoints {
-		@media (max-width: $width) {
-			@each $name, $fraction in $fractions {				
-				.#{$bp}-#{$name} {
-					@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+	// Reverse $breakpoints map
+	// This is to allow the generated CSS to override when scaling
+	$reverse-breakpoints: null;
+	@if $mobile-first {
+		$reverse-breakpoints: $breakpoints;
+	} @else {
+		$reverse-breakpoints: reverse-map($breakpoints);	
+	}
+		
+	.#{$row-namespace} {
+	
+		@each $bp, $width in $reverse-breakpoints {
+			@media (#{$scale}-width: $width) {
+				@each $name, $fraction in $fractions {				
+					.#{$bp}-#{$name} {
+						@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+					}
 				}
 			}
 		}
-	}
+	
+	} // .#{$row-namespace}
 
-} // .#{$row-namespace}
+}
 
 //=================================================================
 // Semantic Grid System Framework
@@ -312,12 +392,11 @@ $reverse-breakpoints: reverse-map($breakpoints);
 		display: table-cell;		
 	}
 	@if $type == flow {	
-		@include flow-column-width($span, $columns);	
-		&:first-child {
-			margin-left: $gutter;
-		}
+		@include flow-column-width($span, $columns);
+		margin-left: $gutter;
 	} @else {
 		@include column-width($span, $columns);
+		@include gutter;
 	}
 }
 
@@ -334,22 +413,27 @@ $reverse-breakpoints: reverse-map($breakpoints);
 // Custom Responsive Handling
 //-----------------------------------------------------------------
 
-@mixin respond-to($width, $breakpoint, $flow-columns: false) {
-	@media (max-width: breakpoint($breakpoint)) {
-		$columns: null;
-		$span: null;
-		@if type-of($width) == string {
-			$columns: map-get(fraction($width), columns);
-			$span: map-get(fraction($width), span);
-		} @else if type-of($width) == list {
-			$span: nth($width, 1);
-			$columns: nth($width, length($width));			
-		}
-		@if $flow-columns {
-			@include flow-column-width($span, $columns);
-		} @else {
-			@include column-width($span, $columns);
-			margin-left: 0;
+@mixin respond-to($width, $breakpoint, $flow-columns: false, $mob-first: false) {
+	$columns: null;	$span: null; $respond-scale: null;
+	@if $mob-first { $respond-scale: min; } 
+	@else {	$respond-scale: max; }
+	@if $responsive {
+		@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
+			@if type-of($width) == string {
+				$columns: map-get(fraction($width), columns);
+				$span: map-get(fraction($width), span);
+			} @else if type-of($width) == list {
+				$span: nth($width, 1);
+				$columns: nth($width, length($width));			
+			}
+			@if $flow-columns {
+				@include flow-column-width($span, $columns);
+			} @else {
+				@include column-width($span, $columns);
+				@if $mobile-first == false {
+					margin-left: 0;
+				}
+			}
 		}
 	}
 }
@@ -381,9 +465,22 @@ $reverse-breakpoints: reverse-map($breakpoints);
 
 .portfolio-item {
 	@include column(3, 12, flow);
-	@include respond-to(third, break-3, true);
-	@include respond-to((1, 2), break-2, true);
-	@include respond-to((1, 1), break-1, true);
+	@include respond-to((1, 3), break-3, 1);
+	@include respond-to((1, 2), break-2, 1);
+	@include respond-to((1, 1), break-1, 1);
+}
+
+// Custom Flow Columns - Mobile First
+
+.photo-grid {
+	@include row(flow);	
+}
+
+.photo {
+	@include column($type: flow);
+	@include respond-to(half, break-1, true, true);
+	@include respond-to(third, break-2, true, true);
+	@include respond-to(quarter, break-3, true, true);
 }
 
 // Custom Magic Columns
