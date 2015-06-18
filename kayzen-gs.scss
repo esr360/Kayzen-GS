@@ -20,10 +20,13 @@ $old-ie                         : true;
 $responsive                     : true;
 
 // Enable mobile-first mode?
-$mobile-first                   : false;
+$mobile-first                   : true;
 
 // Enable custom column stacking?
 $column-stacking                : true;
+
+// Enable custom width overrides?
+$width-override                 : true;
 
 // Generate Flow Columns?
 $flow-columns                   : true;
@@ -165,16 +168,8 @@ $fractions: (
 }
 
 // Magic Column width mixin
-@mixin magic-column-width {
-	&:first-child {
-		@for $i from 1 through $columns {
-			&:nth-last-child(#{$i}) {
-				&, ~ [class*="#{$col-namespace}"] {		
-					width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
-				}
-			}
-		}
-	}
+@mixin magic-column-width($columns: $columns) {
+	width: (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * $gutter ) / $columns );
 }
 
 //=================================================================
@@ -193,7 +188,7 @@ $fractions: (
 	}
 }
 
-// Column Width
+// Default Column Width
 //-----------------------------------------------------------------
 
 @if $mobile-first == false {
@@ -294,22 +289,30 @@ $fractions: (
 //-----------------------------------------------------------------
 
 @if $magic-columns {
+	
 	.magic-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			@if $mobile-first {
-				@media (min-width: $col-collapse) {
-					@include magic-column-width;
-				}
-			} @else {	
-				@include magic-column-width;
-				@media (max-width: $col-collapse) {
-					~ [class*="$col-namespace"] {
-						width: 100%;
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {	
+			&:first-child {
+				@for $i from 1 through $columns {
+					&:nth-last-child(#{$i}) {
+						&, ~ [class*="#{$col-namespace}"] {	
+							@if $mobile-first {			
+								@media (min-width: $col-collapse) {
+									@include magic-column-width($i);
+								}
+							} @else {
+								@include magic-column-width($i);
+								@media (max-width: $col-collapse) {
+									width: 100%;
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 	}
+	
 }
 
 // Block Columns
@@ -339,33 +342,30 @@ $fractions: (
     }
     $result: $map-reversed; 
     @return $result;
-} // reverse-map
+}
 
+// Reverse $breakpoints map
+// This is to allow the generated CSS to override when scaling
 @if $responsive {
-
-	// Reverse $breakpoints map
-	// This is to allow the generated CSS to override when scaling
-	$reverse-breakpoints: null;
-	@if $mobile-first {
-		$reverse-breakpoints: $breakpoints;
-	} @else {
-		$reverse-breakpoints: reverse-map($breakpoints);	
-	}
-		
-	.#{$row-namespace} {
-	
-		@each $bp, $width in $reverse-breakpoints {
-			@media (#{$scale}-width: $width) {
-				@each $name, $fraction in $fractions {				
-					.#{$bp}-#{$name} {
-						@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+	@if $width-override {
+		$reverse-breakpoints: null;
+		@if $mobile-first {
+			$reverse-breakpoints: $breakpoints;
+		} @else {
+			$reverse-breakpoints: reverse-map($breakpoints);	
+		}	
+		.#{$row-namespace} {
+			@each $bp, $width in $reverse-breakpoints {
+				@media (#{$scale}-width: $width) {
+					@each $name, $fraction in $fractions {				
+						.#{$bp}-#{$name} {
+							@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+						}
 					}
 				}
 			}
 		}
-	
-	} // .#{$row-namespace}
-
+	}
 }
 
 //=================================================================
@@ -392,21 +392,27 @@ $fractions: (
 // Magic Column
 //-----------------------------------------------------------------
 
-@mixin magic-column($columns: $columns, $namespace: $col-namespace, $stack: $col-collapse, $mob-first: true) {
-	@media (min-width: $stack) {
-		&:first-child {
-			@for $i from 1 through $columns {
-				&:nth-last-child(#{$i}) {
-					@if $mob-first {
-						&, ~ [class*="#{$namespace}"] {		
-							width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
-						} ~ [class*="#{$namespace}"] {		
-							margin-left: $gutter;
+@mixin magic-column($columns: $columns, $namespace: $col-namespace, $stack: $col-collapse, $mobile-first: true) {
+	&:first-child {
+		@for $i from 1 through $columns {
+			&:nth-last-child(#{$i}) {
+				&, ~ [class*="#{$namespace}"] {	
+					@if $mobile-first {	
+						margin-left: 0;		
+						@media (min-width: $stack) {
+							@include magic-column-width($i);
+							@include gutter;
+						}
+					} @else {
+						@include magic-column-width($i);
+						@media (max-width: $stack) {
+							width: 100%;
+							margin-left: 0;
 						}
 					}
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -500,5 +506,5 @@ $fractions: (
 
 .client {
 	@include column;
-	@include magic-column(6, client, breakpoint(break-2));
+	@include magic-column(6, client, breakpoint(break-2), false);
 } 
