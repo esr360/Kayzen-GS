@@ -69,15 +69,6 @@ $breakpoints: (
 // Set the maximum width for default vertically stacked columns
 $col-collapse                   : breakpoint(break-3);
 
-// Set min/max width for breakpoints
-$scale                          : null;
-@if $mobile-first {	
-	$scale                      : min; 
-} 
-@else {	
-	$scale                      : max; 
-}
-
 // Fractions
 //-----------------------------------------------------------------
 
@@ -96,6 +87,15 @@ $fractions: (
 //=================================================================
 // Kayzen GS Framework
 //=================================================================
+
+// Set min/max width for breakpoints
+$scale: null;
+@if $mobile-first {	
+	$scale: min; 
+} 
+@else {	
+	$scale: max; 
+}
 
 // Reset $mobile-first to false if $responsive is disabled
 @if $responsive == false {
@@ -326,13 +326,11 @@ $fractions: (
 //-----------------------------------------------------------------
 
 @if $magic-columns {
-	
 	.magic-row {
 		> [class*="#{$col-namespace}"]:not([class*="break"]) {	
 			@include magic-column($semantic: false);
 		}
-	}
-	
+	}	
 }
 
 // Block Columns
