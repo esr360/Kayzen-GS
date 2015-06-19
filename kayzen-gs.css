@@ -493,28 +493,28 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .sidebar {
-  width: 31.66667%;
-  margin-left: 2.5%;
+  width: 100%;
 }
-.sidebar:first-child {
-  margin-left: 0;
-}
-@media (max-width: 720px) {
+@media (min-width: 940px) {
   .sidebar {
-    width: 100%;
+    width: 31.66667%;
+    margin-left: 2.5%;
+  }
+  .sidebar:first-child {
+    margin-left: 0;
   }
 }
 
 .content {
-  width: 65.83333%;
-  margin-left: 2.5%;
+  width: 100%;
 }
-.content:first-child {
-  margin-left: 0;
-}
-@media (max-width: 720px) {
+@media (min-width: 940px) {
   .content {
-    width: 100%;
+    width: 65.83333%;
+    margin-left: 2.5%;
+  }
+  .content:first-child {
+    margin-left: 0;
   }
 }
 
@@ -558,64 +558,159 @@ http://github.com/esr360/Kayzen-GS/
   }
 }
 
-.client {
-  width: 100%;
-  margin-left: 2.5%;
-}
-.client:first-child {
-  margin-left: 0;
-}
 .client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
+  margin-left: 0;
   width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(1), .client:first-child:nth-last-child(1) ~ [class*="client"] {
     width: 100%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(1):first-child, .client:first-child:nth-last-child(1) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
 .client:first-child:nth-last-child(2), .client:first-child:nth-last-child(2) ~ [class*="client"] {
-  width: 48.75%;
+  margin-left: 0;
+  width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(2), .client:first-child:nth-last-child(2) ~ [class*="client"] {
-    width: 100%;
+    width: 48.75%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(2):first-child, .client:first-child:nth-last-child(2) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
 .client:first-child:nth-last-child(3), .client:first-child:nth-last-child(3) ~ [class*="client"] {
-  width: 31.66667%;
+  margin-left: 0;
+  width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(3), .client:first-child:nth-last-child(3) ~ [class*="client"] {
-    width: 100%;
+    width: 31.66667%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(3):first-child, .client:first-child:nth-last-child(3) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
 .client:first-child:nth-last-child(4), .client:first-child:nth-last-child(4) ~ [class*="client"] {
-  width: 23.125%;
+  margin-left: 0;
+  width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(4), .client:first-child:nth-last-child(4) ~ [class*="client"] {
-    width: 100%;
+    width: 23.125%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(4):first-child, .client:first-child:nth-last-child(4) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
 .client:first-child:nth-last-child(5), .client:first-child:nth-last-child(5) ~ [class*="client"] {
-  width: 18%;
+  margin-left: 0;
+  width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(5), .client:first-child:nth-last-child(5) ~ [class*="client"] {
-    width: 100%;
+    width: 18%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(5):first-child, .client:first-child:nth-last-child(5) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
 .client:first-child:nth-last-child(6), .client:first-child:nth-last-child(6) ~ [class*="client"] {
-  width: 14.58333%;
+  margin-left: 0;
+  width: 100%;
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
   .client:first-child:nth-last-child(6), .client:first-child:nth-last-child(6) ~ [class*="client"] {
-    width: 100%;
+    width: 14.58333%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(6):first-child, .client:first-child:nth-last-child(6) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(7), .client:first-child:nth-last-child(7) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(7), .client:first-child:nth-last-child(7) ~ [class*="client"] {
+    width: 12.14286%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(7):first-child, .client:first-child:nth-last-child(7) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(8), .client:first-child:nth-last-child(8) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(8), .client:first-child:nth-last-child(8) ~ [class*="client"] {
+    width: 10.3125%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(8):first-child, .client:first-child:nth-last-child(8) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(9), .client:first-child:nth-last-child(9) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(9), .client:first-child:nth-last-child(9) ~ [class*="client"] {
+    width: 8.88889%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(9):first-child, .client:first-child:nth-last-child(9) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(10), .client:first-child:nth-last-child(10) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(10), .client:first-child:nth-last-child(10) ~ [class*="client"] {
+    width: 7.75%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(10):first-child, .client:first-child:nth-last-child(10) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(11), .client:first-child:nth-last-child(11) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(11), .client:first-child:nth-last-child(11) ~ [class*="client"] {
+    width: 6.81818%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(11):first-child, .client:first-child:nth-last-child(11) ~ [class*="client"]:first-child {
+    margin-left: 0;
+  }
+}
+.client:first-child:nth-last-child(12), .client:first-child:nth-last-child(12) ~ [class*="client"] {
+  margin-left: 0;
+  width: 100%;
+}
+@media (min-width: 720px) {
+  .client:first-child:nth-last-child(12), .client:first-child:nth-last-child(12) ~ [class*="client"] {
+    width: 6.04167%;
+    margin-left: 2.5%;
+  }
+  .client:first-child:nth-last-child(12):first-child, .client:first-child:nth-last-child(12) ~ [class*="client"]:first-child {
     margin-left: 0;
   }
 }
