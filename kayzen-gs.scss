@@ -442,7 +442,7 @@ $scale: null;
 					$span: map-get(fraction($width), span);
 				} @else if type-of($width) == list {
 					$span: nth($width, 1);
-					$columns: nth($width, length($width));			
+					$columns: nth($width, 2);			
 				}
 				@if $flow-columns {
 					@include flow-column-width($span, $columns);
