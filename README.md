@@ -292,3 +292,7 @@ $fractions: (
 	sixth                       : (1, 6)
 );
 ```
+
+### Semantic Grid System
+
+You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
