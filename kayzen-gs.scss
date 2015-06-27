@@ -73,11 +73,11 @@ $col-collapse                   : breakpoint(break-3);
 //-----------------------------------------------------------------
 
 $fractions: (
-	full                        : (span: 1, columns: 1),
-	half                        : (span: 1, columns: 2),
-	third                       : (span: 1, columns: 3),
-	quarter                     : (span: 1, columns: 4),
-	sixth                       : (span: 1, columns: 6)
+	full                        : (1, 1),
+	half                        : (1, 2),
+	third                       : (1, 3),
+	quarter                     : (1, 4),
+	sixth                       : (1, 6)
 );
 
 @function fraction($fraction) {
@@ -376,7 +376,7 @@ $scale: null;
 				@media (#{$scale}-width: $width) {
 					@each $name, $fraction in $fractions {				
 						.#{$bp}-#{$name} {
-							@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+							@include flow-column-width(nth($fraction, 1), nth($fraction, 2));
 						}
 					}
 				}
@@ -437,8 +437,8 @@ $scale: null;
 			}
 			@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
 				@if type-of($width) == string {
-					$columns: map-get(fraction($width), columns);
-					$span: map-get(fraction($width), span);
+					$span: nth(fraction($width), 1);
+					$columns: nth(fraction($width), 2);
 				} @else if type-of($width) == list {
 					$span: nth($width, 1);
 					$columns: nth($width, 2);			
