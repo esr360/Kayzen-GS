@@ -90,7 +90,7 @@
 &lt;/div&gt;
 </code></pre>
 <h4 id="magic-columns">Magic Columns</h4>
-<p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column.</p>
+<p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any <a href="http://en.wikipedia.org/wiki/Widows_and_orphans">widow</a> columns to take up any remaining space.</p>
 <pre><code class="lang-html">&lt;div class=&quot;row magic-row&quot;&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
@@ -115,10 +115,72 @@
 &lt;/div&gt;
 </code></pre>
 <h3 id="custom-configuration">Custom Configuration</h3>
-<blockquote>
-<p>Each row of columns <strong>must</strong> be wrapped inside a paret container with the <strong>row</strong> class.</p>
-</blockquote>
-<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
-    ...
-&lt;/div&gt;
+<h4 id="options">Options</h4>
+<h5 id="support-internet-explorer-6-7-regular-columns-only-">Support Internet Explorer 6 &amp; 7? (regular columns only)</h5>
+<p>Variable : $old-ie
+Type     : boolean
+Default  : true</p>
+<h5 id="enable-responsiveness-">Enable Responsiveness?</h5>
+<p>Variable : $responsive
+Type     : boolean
+Default  : true</p>
+<h5 id="enable-mobile-first-mode-">Enable mobile-first mode?</h5>
+<p>Variable : $mobile-first
+Type     : boolean
+Default  : true</p>
+<h5 id="enable-custom-column-stacking-">Enable custom column stacking?</h5>
+<p>Variable : $column-stacking
+Type     : boolean
+Default  : true</p>
+<h5 id="enable-custom-width-overrides-">Enable custom width overrides?</h5>
+<p>Variable : $width-override
+Type     : boolean
+Default  : true</p>
+<h5 id="generate-flow-columns-">Generate Flow Columns?</h5>
+<p>Variable : $flow-columns
+Type     : boolean
+Default  : true</p>
+<h5 id="generate-magic-columns-">Generate Magic Columns?</h5>
+<p>Variable : $magic-columns
+Type     : boolean
+Default  : true</p>
+<h5 id="generate-block-columns-">Generate Block Columns?</h5>
+<p>Variable : $block-columns
+Type     : boolean
+Default  : true</p>
+<h5 id="set-row-namespace">Set row namespace</h5>
+<p>Variable : $row-namespace
+Type     : string
+Default  : &quot;row&quot;</p>
+<h5 id="set-column-namespace">Set column namespace</h5>
+<p>Variable : $col-namespace
+Type     : string
+Default  : &quot;span&quot;</p>
+<h4 id="grid-system">Grid System</h4>
+<h5 id="how-many-columns-should-your-grid-system-have-">How many columns should your grid system have?</h5>
+<p>Variable : $columns
+Type     : integer
+Default  : 12</p>
+<h5 id="how-big-should-the-gutter-inbetween-your-columns-be-">How big should the gutter inbetween your columns be?</h5>
+<p>Variable : $gutter
+Type     : percentage
+Default  : 2.5%</p>
+<h4 id="breakpoints">Breakpoints</h4>
+<pre><code class="lang-css">$breakpoints: (
+    break-1                     : 460px,
+    break-2                     : 720px,
+    break-3                     : 940px,
+    break-4                     : 1200px
+);
+</code></pre>
+<h5 id="set-the-maximum-width-for-default-vertically-stacked-columns">Set the maximum width for default vertically stacked columns</h5>
+<p>$col-collapse                   : breakpoint(break-3);</p>
+<h4 id="fractions">Fractions</h4>
+<pre><code class="lang-css">$fractions: (
+    full                        : (1, 1),
+    half                        : (1, 2),
+    third                       : (1, 3),
+    quarter                     : (1, 4),
+    sixth                       : (1, 6)
+);
 </code></pre>

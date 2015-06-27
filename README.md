@@ -121,7 +121,7 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 
 #### Magic Columns
 
-Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column.
+Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any [widow](http://en.wikipedia.org/wiki/Widows_and_orphans) columns to take up any remaining space.
 
 
 ```html	
@@ -156,10 +156,105 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ### Custom Configuration
 
-> Each row of columns **must** be wrapped inside a paret container with the **row** class.
+#### Options
 
-```html
-<div class="row">
-	...
-</div>
+##### Support Internet Explorer 6 & 7? (regular columns only)
+
+Variable : $old-ie
+Type     : boolean
+Default  : true
+
+##### Enable Responsiveness?
+
+Variable : $responsive
+Type     : boolean
+Default  : true
+
+##### Enable mobile-first mode?
+
+Variable : $mobile-first
+Type     : boolean
+Default  : true
+
+##### Enable custom column stacking?
+
+Variable : $column-stacking
+Type     : boolean
+Default  : true
+
+##### Enable custom width overrides?
+
+Variable : $width-override
+Type     : boolean
+Default  : true
+
+##### Generate Flow Columns?
+
+Variable : $flow-columns
+Type     : boolean
+Default  : true
+
+##### Generate Magic Columns?
+
+Variable : $magic-columns
+Type     : boolean
+Default  : true
+
+##### Generate Block Columns?
+
+Variable : $block-columns
+Type     : boolean
+Default  : true
+
+##### Set row namespace
+
+Variable : $row-namespace
+Type     : string
+Default  : "row"
+
+##### Set column namespace
+
+Variable : $col-namespace
+Type     : string
+Default  : "span"
+
+#### Grid System
+
+##### How many columns should your grid system have?
+
+Variable : $columns
+Type     : integer
+Default  : 12
+
+##### How big should the gutter inbetween your columns be?
+
+Variable : $gutter
+Type     : percentage
+Default  : 2.5%
+
+#### Breakpoints
+
+```css	
+$breakpoints: (
+	break-1                     : 460px,
+	break-2                     : 720px,
+	break-3                     : 940px,
+	break-4                     : 1200px
+);
+```
+
+##### Set the maximum width for default vertically stacked columns
+
+$col-collapse                   : breakpoint(break-3);
+
+#### Fractions
+
+```css	
+$fractions: (
+	full                        : (1, 1),
+	half                        : (1, 2),
+	third                       : (1, 3),
+	quarter                     : (1, 4),
+	sixth                       : (1, 6)
+);
 ```
