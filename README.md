@@ -158,6 +158,8 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 #### Options
 
+**Warning:** Whilst all options are enabled by default, we strongly recommend disabling any features you don't use, as the default options can result in unnecessary bloated styles.
+
 ##### Support Internet Explorer 6 & 7?
 
 > This setting only affects the regular columns.
