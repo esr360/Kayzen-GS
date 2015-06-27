@@ -49,6 +49,46 @@
 <p>The above columns will stack on top of each other when the screen size is <strong>less</strong> than <strong>720px</strong> (break-2).</p>
 <p>To change the width of a single column manually at specific breakpoints, see the <a href="#">Flow Columns</a> section.</p>
 <h4 id="flow-columns">Flow Columns</h4>
+<p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>The above code will produce something similiar the following:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at <strong>break-1</strong>, 1/3 at <strong>break-2</strong>, and 1/4 at <strong>break-3</strong>, you could add the following helper classes to your columns like so:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;                    
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h4 id="magic-columns">Magic Columns</h4>
 <h4 id="block-columns">Block Columns</h4>
 <h3 id="custom-configuration">Custom Configuration</h3>

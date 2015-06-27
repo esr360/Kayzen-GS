@@ -70,6 +70,55 @@ To change the width of a single column manually at specific breakpoints, see the
 
 #### Flow Columns
 
+Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own **row** container - all your columns for all your rows can be placed in just one main **row** parent element:
+
+```html
+<div class="row flow-row">
+    <div class="span-6">Flow Column</div>
+    <div class="span-6">Flow Column</div>
+    <div class="span-4">Flow Column</div>
+    <div class="span-4">Flow Column</div>
+    <div class="span-4">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+</div>
+```
+
+The above code will produce something similiar the following:
+
+```html
+<div class="row">
+    <div class="span-6">Flow Column</div>
+    <div class="span-6">Flow Column</div>
+</div>
+<div class="row">
+    <div class="span-4">Flow Column</div>
+    <div class="span-4">Flow Column</div>
+    <div class="span-4">Flow Column</div>
+</div>
+<div class="row">
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+    <div class="span-3">Flow Column</div>
+</div>
+```
+
+Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at **break-1**, 1/3 at **break-2**, and 1/4 at **break-3**, you could add the following helper classes to your columns like so:
+	
+```html		
+<div class="row flow-row">                    
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+</div> 
+```
+
 #### Magic Columns
 
 #### Block Columns
