@@ -29,7 +29,7 @@ By default, Kayzen GS comes with reusable classes which can be used to create yo
 </div>
 ```
 
-Based off the default number of columns (**12**), the above code would produce 3 columns, each 4/12's (or 1/3) of the total width of the row.
+Based off the default number of columns (**12**), the above code would produce 3 columns, each 4/12's (or 1/3) of the total width of the row. Using the normal columns, the total span of the columns in a given row may not exceed the number of columns the framework has (12 by default) - for such usage, see [Flow Columns](#).
 
 ```html
 <div class="row">                    
