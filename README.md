@@ -158,79 +158,79 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 #### Options
 
-##### Support Internet Explorer 6 & 7? (regular columns only)
+##### Support Internet Explorer 6 & 7?
 
-Variable : $old-ie
-Type     : boolean
-Default  : true
+* Variable : $old-ie
+* Type     : boolean
+* Default  : true
 
 ##### Enable Responsiveness?
 
-Variable : $responsive
-Type     : boolean
-Default  : true
+* Variable : $responsive
+* Type     : boolean
+* Default  : true
 
 ##### Enable mobile-first mode?
 
-Variable : $mobile-first
-Type     : boolean
-Default  : true
+* Variable : $mobile-first
+* Type     : boolean
+* Default  : true
 
 ##### Enable custom column stacking?
 
-Variable : $column-stacking
-Type     : boolean
-Default  : true
+* Variable : $column-stacking
+* Type     : boolean
+* Default  : true
 
 ##### Enable custom width overrides?
 
-Variable : $width-override
-Type     : boolean
-Default  : true
+* Variable : $width-override
+* Type     : boolean
+* Default  : true
 
 ##### Generate Flow Columns?
 
-Variable : $flow-columns
-Type     : boolean
-Default  : true
+* Variable : $flow-columns
+* Type     : boolean
+* Default  : true
 
 ##### Generate Magic Columns?
 
-Variable : $magic-columns
-Type     : boolean
-Default  : true
+* Variable : $magic-columns
+* Type     : boolean
+* Default  : true
 
 ##### Generate Block Columns?
 
-Variable : $block-columns
-Type     : boolean
-Default  : true
+* Variable : $block-columns
+* Type     : boolean
+* Default  : true
 
 ##### Set row namespace
 
-Variable : $row-namespace
-Type     : string
-Default  : "row"
+* Variable : $row-namespace
+* Type     : string
+* Default  : "row"
 
 ##### Set column namespace
 
-Variable : $col-namespace
-Type     : string
-Default  : "span"
+* Variable : $col-namespace
+* Type     : string
+* Default  : "span"
 
 #### Grid System
 
 ##### How many columns should your grid system have?
 
-Variable : $columns
-Type     : integer
-Default  : 12
+* Variable : $columns
+* Type     : integer
+* Default  : 12
 
 ##### How big should the gutter inbetween your columns be?
 
-Variable : $gutter
-Type     : percentage
-Default  : 2.5%
+* Variable : $gutter
+* Type     : percentage
+* Default  : 2.5%
 
 #### Breakpoints
 
