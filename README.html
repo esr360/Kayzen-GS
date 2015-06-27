@@ -211,6 +211,10 @@
 <li>Default  : 2.5%</li>
 </ul>
 <h4 id="breakpoints">Breakpoints</h4>
+<p>You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. </p>
+<blockquote>
+<p>The helper classes used throughout the grid system are generated from these values.</p>
+</blockquote>
 <pre><code class="lang-css">$breakpoints: (
     break-1                     : 460px,
     break-2                     : 720px,
@@ -219,8 +223,19 @@
 );
 </code></pre>
 <h5 id="set-the-maximum-width-for-default-vertically-stacked-columns">Set the maximum width for default vertically stacked columns</h5>
-<p>$col-collapse                   : breakpoint(break-3);</p>
+<blockquote>
+<p>This is the default width at which your columns should stack.</p>
+</blockquote>
+<ul>
+<li>Variable : $col-collapse</li>
+<li>Type     : length unit</li>
+<li>Default  : breakpoint(break-3) // 940px</li>
+</ul>
 <h4 id="fractions">Fractions</h4>
+<p>You can define any number of fractions as you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. </p>
+<blockquote>
+<p>The helper classes used throughout the grid system are generated from these values.</p>
+</blockquote>
 <pre><code class="lang-css">$fractions: (
     full                        : (1, 1),
     half                        : (1, 2),

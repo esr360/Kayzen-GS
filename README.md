@@ -256,6 +256,10 @@ This setting has a fairly large impact on the behaviour of responsiveness.
 
 #### Breakpoints
 
+You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. 
+
+> The helper classes used throughout the grid system are generated from these values.
+
 ```css	
 $breakpoints: (
 	break-1                     : 460px,
@@ -267,9 +271,17 @@ $breakpoints: (
 
 ##### Set the maximum width for default vertically stacked columns
 
-$col-collapse                   : breakpoint(break-3);
+> This is the default width at which your columns should stack.
+
+* Variable : $col-collapse
+* Type     : length unit
+* Default  : breakpoint(break-3) // 940px
 
 #### Fractions
+
+You can define any number of fractions as you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
+
+> The helper classes used throughout the grid system are generated from these values.
 
 ```css	
 $fractions: (
