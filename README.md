@@ -40,6 +40,28 @@ Based off the default number of columns (**12**), the above code would produce 3
 
 Likewise, the above code would produce 2 columns; one with a width of 3/12's (or 1/4) and one with a width of 9/12's (or 3/4).
 
+#### Responsiveness
+
+Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout, as always these values are completely flexible and customizable (see [Custom Configuration](#)):
+
+* break-1: 460px,
+* break-2: 720px,
+* break-3: 940px,
+* break-4: 1200px
+
+By default, the columns will vertically stack on top of each other when the screen size is **less** than **940px** (break-3).
+
+Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special **helper class** to your row.
+
+```html
+<div class="row break-2">                    
+    <div class="span-3">Sidebar</div>
+    <div class="span-9">Article</div>
+</div>
+```
+
+The above columns will stack on top of each other when the screen size is **less** than **720px** (break-2).
+
 ### Custom Configuration
 
 > Each row of columns **must** be wrapped inside a paret container with the **row** class.
