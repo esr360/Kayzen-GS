@@ -92,8 +92,7 @@ $fractions: (
 $scale: null;
 @if $mobile-first {	
 	$scale: min; 
-} 
-@else {	
+} @else {	
 	$scale: max; 
 }
 
