@@ -44,7 +44,7 @@ Likewise, the above code would produce 2 columns; one with a width of 3/12's (or
 
 #### Responsiveness
 
-Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout, as always these values are completely flexible and customizable (see [Custom Configuration](#)):
+Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#)):
 
 * break-1: 460px,
 * break-2: 720px,
