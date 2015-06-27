@@ -160,11 +160,15 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ##### Support Internet Explorer 6 & 7?
 
+> This setting only affects the regular columns.
+
 * Variable : $old-ie
 * Type     : boolean
 * Default  : true
 
 ##### Enable Responsiveness?
+
+> If disabled, columns will not vertically stack.
 
 * Variable : $responsive
 * Type     : boolean
@@ -172,17 +176,23 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ##### Enable mobile-first mode?
 
+This setting has a fairly large impact on the behaviour of responsiveness. 
+
 * Variable : $mobile-first
 * Type     : boolean
 * Default  : true
 
 ##### Enable custom column stacking?
 
+> This generates the code to override the [default column stacking](#).
+
 * Variable : $column-stacking
 * Type     : boolean
 * Default  : true
 
 ##### Enable custom width overrides?
+
+> This generates the code to allow for [flexible-widthed columns](#).
 
 * Variable : $width-override
 * Type     : boolean
@@ -212,11 +222,23 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 * Type     : string
 * Default  : "row"
 
+```html	
+<div class="row">
+	...
+</div>
+```
+
 ##### Set column namespace
 
 * Variable : $col-namespace
 * Type     : string
 * Default  : "span"
+
+```html	
+<div class="span-4">
+	...
+</div>
+```
 
 #### Grid System
 

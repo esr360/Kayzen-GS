@@ -117,30 +117,43 @@
 <h3 id="custom-configuration">Custom Configuration</h3>
 <h4 id="options">Options</h4>
 <h5 id="support-internet-explorer-6-7-">Support Internet Explorer 6 &amp; 7?</h5>
+<blockquote>
+<p>This setting only affects the regular columns.</p>
+</blockquote>
 <ul>
 <li>Variable : $old-ie</li>
 <li>Type     : boolean</li>
 <li>Default  : true</li>
 </ul>
 <h5 id="enable-responsiveness-">Enable Responsiveness?</h5>
+<blockquote>
+<p>If disabled, columns will not vertically stack.</p>
+</blockquote>
 <ul>
 <li>Variable : $responsive</li>
 <li>Type     : boolean</li>
 <li>Default  : true</li>
 </ul>
 <h5 id="enable-mobile-first-mode-">Enable mobile-first mode?</h5>
+<p>This setting has a fairly large impact on the behaviour of responsiveness. </p>
 <ul>
 <li>Variable : $mobile-first</li>
 <li>Type     : boolean</li>
 <li>Default  : true</li>
 </ul>
 <h5 id="enable-custom-column-stacking-">Enable custom column stacking?</h5>
+<blockquote>
+<p>This generates the code to override the <a href="#">default column stacking</a>.</p>
+</blockquote>
 <ul>
 <li>Variable : $column-stacking</li>
 <li>Type     : boolean</li>
 <li>Default  : true</li>
 </ul>
 <h5 id="enable-custom-width-overrides-">Enable custom width overrides?</h5>
+<blockquote>
+<p>This generates the code to allow for <a href="#">flexible-widthed columns</a>.</p>
+</blockquote>
 <ul>
 <li>Variable : $width-override</li>
 <li>Type     : boolean</li>
@@ -170,12 +183,20 @@
 <li>Type     : string</li>
 <li>Default  : &quot;row&quot;</li>
 </ul>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
 <h5 id="set-column-namespace">Set column namespace</h5>
 <ul>
 <li>Variable : $col-namespace</li>
 <li>Type     : string</li>
 <li>Default  : &quot;span&quot;</li>
 </ul>
+<pre><code class="lang-html">&lt;div class=&quot;span-4&quot;&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
 <h4 id="grid-system">Grid System</h4>
 <h5 id="how-many-columns-should-your-grid-system-have-">How many columns should your grid system have?</h5>
 <ul>
