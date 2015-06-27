@@ -258,7 +258,7 @@ This setting has a fairly large impact on the behaviour of responsiveness.
 
 You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. 
 
-> The helper classes used throughout the grid system are generated from these values.
+> The helper classes used for the default grid system are generated from these values.
 
 ```css	
 $breakpoints: (
@@ -279,9 +279,9 @@ $breakpoints: (
 
 #### Fractions
 
-You can define any number of fractions as you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
+You can define any number of fractions you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
 
-> The helper classes used throughout the grid system are generated from these values.
+> The helper classes used for the default grid system are generated from these values.
 
 ```css	
 $fractions: (
