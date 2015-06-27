@@ -110,12 +110,12 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 	
 ```html		
 <div class="row flow-row">                    
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
 </div> 
 ```
 
@@ -178,11 +178,29 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ##### Enable mobile-first mode?
 
-This setting has a fairly large impact on the behaviour of responsiveness. 
+> Disabling this will improve performance without losing functionality&#42;
 
 * Variable : $mobile-first
 * Type     : boolean
 * Default  : true
+
+This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
+
+&#42;This has a noticable effect when using the [flexible-widthed columns](#). As seen above, with mobile-first enabled we can create a flexible column like so:
+
+```html
+<div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+```
+
+This will create a column that starts out at **100%** width, and will compact to 1/2 at **break-1** or more, 1/3 at **break-2** or more, and 1/4 at **break-3** or more.
+
+With mobile-first disabled, the logic is different, in fact, it is reversed:
+
+```html
+<div class="span-3 break-2-half break-1-full">span-3</div>
+```
+
+Here you are creating a column that is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
 
 ##### Enable custom column stacking?
 
