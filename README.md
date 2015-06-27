@@ -64,6 +64,14 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 The above columns will stack on top of each other when the screen size is **less** than **720px** (break-2).
 
+To change the width of a single column manually at specific breakpoints, see the [Flow Columns](#) section.
+
+#### Flow Columns
+
+#### Magic Columns
+
+#### Block Columns
+
 ### Custom Configuration
 
 > Each row of columns **must** be wrapped inside a paret container with the **row** class.
