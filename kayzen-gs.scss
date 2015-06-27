@@ -393,8 +393,9 @@ $scale: null;
 //-----------------------------------------------------------------
 
 @mixin column (
-	$span: 1, 
-	$columns: 1, 
+	$width: full, 
+	$span: null,
+	$columns: null,
 	$type: null, 
 	$namespace: $col-namespace, 
 	$stack: $col-collapse, 
@@ -402,6 +403,13 @@ $scale: null;
 	$respond-to: null
 ) {
 	@extend %column;
+	@if type-of($width) == string {
+		$span: nth(fraction($width), 1);
+		$columns: nth(fraction($width), 2);
+	} @else if type-of($width) == list {
+		$span: nth($width, 1);
+		$columns: nth($width, 2);			
+	}
 	@if $type == block {
 		display: table-cell;		
 	} 
@@ -476,15 +484,13 @@ $scale: null;
 
 .sidebar {
 	@include column(
-		$span: 4, 
-		$columns: 12
+		$width: (4, 12)
 	);
 }
 
 .content {
 	@include column(
-		$span: 8, 
-		$columns: 12
+		$width: (8, 12)
 	);
 }
 
@@ -496,8 +502,7 @@ $scale: null;
 
 .portfolio-item {
 	@include column(
-		$span: 3, 
-		$columns: 12, 
+		$width: quarter,
 		$type: flow,
 		$mobile-first: false,
 		$respond-to: (
