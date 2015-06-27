@@ -121,7 +121,38 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 
 #### Magic Columns
 
+Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column.
+
+
+```html	
+<div class="row magic-row">
+    <div class="span">magic column</div>
+    <div class="span">magic column</div>
+    <div class="span">magic column</div>
+    <div class="span">magic column</div>
+    <div class="span">magic column</div>
+</div>
+```
+
+In the above example, each column will be 1/5 in width, as there are 5 columns in the row.
+
 #### Block Columns
+
+Block Columns have no gutter (so the columns sit flush with each other) and are of equal height.
+
+```html	
+<div class="row block-row">
+    <div class="span-4">
+        Block Column
+    </div>
+    <div class="span-4">
+        Block Column
+    </div>
+    <div class="span-4">
+        Block Column
+    </div>
+</div>
+```
 
 ### Custom Configuration
 

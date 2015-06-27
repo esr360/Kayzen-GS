@@ -90,7 +90,30 @@
 &lt;/div&gt;
 </code></pre>
 <h4 id="magic-columns">Magic Columns</h4>
+<p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column.</p>
+<pre><code class="lang-html">&lt;div class=&quot;row magic-row&quot;&gt;
+    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>In the above example, each column will be 1/5 in width, as there are 5 columns in the row.</p>
 <h4 id="block-columns">Block Columns</h4>
+<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height.</p>
+<pre><code class="lang-html">&lt;div class=&quot;row block-row&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;
+        Block Column
+    &lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;
+        Block Column
+    &lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;
+        Block Column
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h3 id="custom-configuration">Custom Configuration</h3>
 <blockquote>
 <p>Each row of columns <strong>must</strong> be wrapped inside a paret container with the <strong>row</strong> class.</p>
