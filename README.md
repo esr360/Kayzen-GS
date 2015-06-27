@@ -13,7 +13,9 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ## Documentation
 
-By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. 
+### Getting Started
+
+By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section.
 
 ### Kayzen Grid System
 
