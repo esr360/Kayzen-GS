@@ -39,7 +39,25 @@ By default, Kayzen will work out the box using the values set by default. Just l
 
 ### Default Kayzen Grid System
 
-By default, Kayzen GS comes with reusable classes which can be used to create your website structure. The most basic example of a row of Kayzen columns using the default settings would look something like this:
+To create a basic **row** for your columns to live in, add the `row` class to your element.
+
+```html                
+<div class="row">
+	...
+</div>
+```
+
+> Change *row* to whatever you want in the [Configuration](#).
+
+To create a column with no specified width, add the `span` class to your element.
+
+```html                
+<div class="span">Column</div>
+```
+
+> Change *span* to whatever you want in the [Configuration](#).
+
+By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
 ```html
 <div class="row">                    
