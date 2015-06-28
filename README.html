@@ -445,6 +445,18 @@
 <blockquote>
 <p>You can set any fraction you want, for example you can write <em>1/2</em> instead of <em>6/12</em>.</p>
 </blockquote>
+<p>You can also use numeric values for percentages:</p>
+<pre><code class="lang-css">.portfolio-item {
+    @include column(
+        $type: flow,
+        $respond-to: (
+            (50%, break-1),
+            (100/3, break-2),
+            (25%, break-3)
+        )
+    );
+}
+</code></pre>
 <p>Using the <a href="#">$fractions map</a> you can substitue writing the fraction numbers for the fraction names like so:</p>
 <pre><code class="lang-css">.portfolio-item {
     @include column(
@@ -457,19 +469,7 @@
     );
 }
 </code></pre>
-<p>You can even use numeric values for percentages:</p>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
-            (50%, break-1),
-            (100/3, break-2),
-            (25%, break-3)
-        )
-    );
-}
-</code></pre>
-<p>With <code>$mobile-first</code> set to <strong>false</strong>, to achieve the same result as the example further above the code would be:</p>
+<p>With <code>$mobile-first</code> set to <strong>false</strong>, to achieve the same result as the above example the code would be:</p>
 <pre><code class="lang-css">.portfolio-item {
     @include column(
         $mobile-first: false,

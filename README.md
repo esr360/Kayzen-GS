@@ -545,6 +545,21 @@ We don't need to specify a width by default - the column is 100% width up until 
 
 > You can set any fraction you want, for example you can write *1/2* instead of *6/12*.
 
+You can also use numeric values for percentages:
+
+```css
+.portfolio-item {
+	@include column(
+		$type: flow,
+		$respond-to: (
+			(50%, break-1),
+			(100/3, break-2),
+			(25%, break-3)
+		)
+	);
+}
+```
+
 Using the [$fractions map](#) you can substitue writing the fraction numbers for the fraction names like so:
 
 ```css
@@ -560,22 +575,7 @@ Using the [$fractions map](#) you can substitue writing the fraction numbers for
 }
 ```
 
-You can even use numeric values for percentages:
-
-```css
-.portfolio-item {
-	@include column(
-		$type: flow,
-		$respond-to: (
-			(50%, break-1),
-			(100/3, break-2),
-			(25%, break-3)
-		)
-	);
-}
-```
-
-With `$mobile-first` set to **false**, to achieve the same result as the example further above the code would be:
+With `$mobile-first` set to **false**, to achieve the same result as the above example the code would be:
 
 ```css
 .portfolio-item {
