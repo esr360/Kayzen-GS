@@ -186,7 +186,7 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
 
-&#42;This has a noticable effect when using the [flexible-widthed columns](#). As seen above, with mobile-first enabled we can create a flexible column like so:
+&#42;This has a noticable effect when using the [flexible-widthed columns](#). As seen further above, with mobile-first enabled we can create a flexible column like so:
 
 ```html
 <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
@@ -316,3 +316,67 @@ $fractions: (
 ### Semantic Grid System
 
 You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
+
+#### Creating a Semantic Row
+
+```css
+.main {
+	@include row;
+}
+```
+
+In the above example we are using **main** as our semantic class name.
+
+**Creating a semantic row of Flow Columns:**
+
+
+```css
+.portfolio {
+	@include row(flow);
+}
+```
+
+In the above example, our semantic class name for our row of Flow columns is **portfolio**.
+
+#### Creating a Semantic Column
+
+##### Basic Example
+
+```css
+.sidebar {
+	@include column(
+		$width: (3, 12)
+	);
+}
+```
+
+This will create a column that spans 3 out of 12 columns, so **1/4** or **25%**. Alternatively, you can achieve the same thing with this:
+
+```css
+.sidebar {
+	@include column(
+		$width: quarter
+	);
+}
+```
+
+You can now create your sidebar with the following HTML:
+
+```html
+<div class="sidebar">
+	...
+</div>
+```
+
+##### Adding Responsiveness
+
+The default width for the stacking of semantic columns is set in the [Configuration](#). You can override the default value like so:
+
+```css
+.sidebar {
+	@include column(
+		$width: quarter,
+		$stack: breakpoint(break-2)
+	);
+}
+```
