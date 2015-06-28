@@ -4,7 +4,7 @@
 
 ### Why use inline-block columns?
 
-The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
+The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their [*horizontal* and *vertical* alignment](https://github.com/yahoo/pure/issues/41#issuecomment-21071440), just by setting the `text-align` and `vertical-align` properties respectively. 
 
 > [See Examples](#)
 
@@ -33,6 +33,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
     * [Column Types](#)
     * [Responsiveness](#)
 * [Column Aligning](#)
+* [Solving the Whitespace Issue](#)
 
 ### Getting Started
 
@@ -623,6 +624,10 @@ To **vertically align** your columns relative to the tallest column in the row, 
 	</div>
 </div>
 ```
+
+### Solving the Whitespace Issue
+
+The issue itself is outlined is great detail in [this blog post](http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0) from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the [Github issue](https://github.com/yahoo/pure/issues/41) which has received over 150 posts in over 2 years, amongst some 
 
 ## Help, Support & Contributing
 

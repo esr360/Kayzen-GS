@@ -3,7 +3,7 @@
 <p>A responsive, flexible and dynamic grid system based off inline-block columns.</p>
 </blockquote>
 <h3 id="why-use-inline-block-columns-">Why use inline-block columns?</h3>
-<p>The simple answer is; flexibility. By definition, columns <em>are</em> just inline blocks - it&#39;s the way CSS columns are supposed to work. Creating CSS columns by applying <code>inline-block</code> opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their <em>horizontal</em> and <em>vertical</em> alignment, just by setting the <code>text-align</code> and <code>vertical-align</code> properties respectively. </p>
+<p>The simple answer is; flexibility. By definition, columns <em>are</em> just inline blocks - it&#39;s the way CSS columns are supposed to work. Creating CSS columns by applying <code>inline-block</code> opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their <a href="https://github.com/yahoo/pure/issues/41#issuecomment-21071440"><em>horizontal</em> and <em>vertical</em> alignment</a>, just by setting the <code>text-align</code> and <code>vertical-align</code> properties respectively. </p>
 <blockquote>
 <p><a href="#">See Examples</a></p>
 </blockquote>
@@ -40,6 +40,7 @@
 </ul>
 </li>
 <li><a href="#">Column Aligning</a></li>
+<li><a href="#">Solving the Whitespace Issue</a></li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
 <p>By default, Kayzen will work out the box using the default values in the <a href="#">Configuration</a>. Just load the <strong>kayzen-gs.css</strong> file in your project, and you&#39;re good to go. If you want to configure your own settings, see the see <a href="#">Custom Configuration</a> section. If you want to create your own grid system using semantic class names, see the <a href="#">Semantic Grid System</a> section.</p>
@@ -508,6 +509,8 @@
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
+<h3 id="solving-the-whitespace-issue">Solving the Whitespace Issue</h3>
+<p>The issue itself is outlined is great detail in <a href="http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0">this blog post</a> from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the <a href="https://github.com/yahoo/pure/issues/41">Github issue</a> which has received over 150 posts in over 2 years, amongst some </p>
 <h2 id="help-support-contributing">Help, Support &amp; Contributing</h2>
 <p>For all issues, bugs suggestions and feature requests, please use the <a href="https://github.com/esr360/Kayzen-GS/issues">issues page</a>. Any and all contributions are welcomed!</p>
 <p>Follow <a href="https://twitter.com/ESR360">@esr360</a> on Twitter!</p>
