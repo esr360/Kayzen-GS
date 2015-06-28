@@ -592,6 +592,8 @@ With `$mobile-first` set to **false**, to achieve the same result as the above e
 }
 ```
 
+> Note the requirement of a default value for `$width`.
+
 ### Column Aligning
 
 ## Help, Support & Contributing
