@@ -100,7 +100,7 @@
 </code></pre>
 <p>To change the width of a single column manually at specific breakpoints, see <a href="#">Flexible Columns</a>.</p>
 <h4 id="flow-columns">Flow Columns</h4>
-<p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element:</p>
+<p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element with the <code>flow-row</code> class:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;
     &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
     &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
@@ -143,6 +143,7 @@
 </code></pre>
 <h4 id="magic-columns">Magic Columns</h4>
 <p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any <a href="http://en.wikipedia.org/wiki/Widows_and_orphans">widow</a> columns to take up any remaining space.</p>
+<p>To create a row of Magic Columns, add the <code>magic-row</code> class to your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row magic-row&quot;&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
@@ -153,7 +154,7 @@
 </code></pre>
 <p>In the above example, each column will be 1/5 in width, as there are 5 columns in the row.</p>
 <h4 id="block-columns">Block Columns</h4>
-<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height.</p>
+<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, add the <code>block-row</code> class to your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row block-row&quot;&gt;
     &lt;div class=&quot;span-4&quot;&gt;
         Block Column
@@ -167,6 +168,7 @@
 &lt;/div&gt;
 </code></pre>
 <h3 id="custom-configuration">Custom Configuration</h3>
+<p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a wau to pre-process your CSS from <code>.scss</code> files.</p>
 <h4 id="options">Options</h4>
 <p><strong>Warning:</strong> Whilst all options are enabled by default, it is strongly recommended that you disable any features you don&#39;t use, as the default options can result in unnecessary bloated styles.</p>
 <h5 id="support-internet-explorer-6-7-">Support Internet Explorer 6 &amp; 7?</h5>
@@ -280,6 +282,7 @@
 <p>The helper classes used for the default grid system are generated from these values.</p>
 </blockquote>
 <pre><code class="lang-css">$breakpoints: (
+    break-0                     : 0px,
     break-1                     : 460px,
     break-2                     : 720px,
     break-3                     : 940px,

@@ -117,7 +117,7 @@ To change the width of a single column manually at specific breakpoints, see [Fl
 
 #### Flow Columns
 
-Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own **row** container - all your columns for all your rows can be placed in just one main **row** parent element:
+Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own **row** container - all your columns for all your rows can be placed in just one main **row** parent element with the `flow-row` class:
 
 ```html
 <div class="row flow-row">
@@ -172,6 +172,7 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 
 Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any [widow](http://en.wikipedia.org/wiki/Widows_and_orphans) columns to take up any remaining space.
 
+To create a row of Magic Columns, add the `magic-row` class to your **row**:
 
 ```html	
 <div class="row magic-row">
@@ -187,7 +188,7 @@ In the above example, each column will be 1/5 in width, as there are 5 columns i
 
 #### Block Columns
 
-Block Columns have no gutter (so the columns sit flush with each other) and are of equal height.
+Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, add the `block-row` class to your **row**:
 
 ```html	
 <div class="row block-row">
@@ -204,6 +205,8 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 ```
 
 ### Custom Configuration
+
+Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a wau to pre-process your CSS from `.scss` files.
 
 #### Options
 
@@ -331,6 +334,7 @@ You can set as many different breakpoints as you like to use in the grid system 
 
 ```css	
 $breakpoints: (
+	break-0                     : 0px,
 	break-1                     : 460px,
 	break-2                     : 720px,
 	break-3                     : 940px,
