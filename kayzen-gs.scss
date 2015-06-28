@@ -13,17 +13,20 @@ http://github.com/esr360/Kayzen-GS/
 // Options
 //-----------------------------------------------------------------
 
-// Support Internet Explorer 6 & 7?
+// Support Internet Explorer 6 & 7? (regular columns only)
 $old-ie                         : true;
 
-// Enable Responsive?
+// Enable Responsiveness?
 $responsive                     : true;
 
 // Enable mobile-first mode?
-$mobile-first                   : false;
+$mobile-first                   : true;
 
 // Enable custom column stacking?
 $column-stacking                : true;
+
+// Enable custom width overrides?
+$width-override                 : true;
 
 // Generate Flow Columns?
 $flow-columns                   : true;
@@ -35,10 +38,10 @@ $magic-columns                  : true;
 $block-columns                  : true;
 
 // Set row namespace
-$row-namespace                  : row;
+$row-namespace                  : "row";
 
 // Set column namespace
-$col-namespace                  : span;
+$col-namespace                  : "span";
 
 // Grid System
 //-----------------------------------------------------------------
@@ -53,6 +56,7 @@ $gutter                         : 2.5%; // percentages only
 //-----------------------------------------------------------------
 
 $breakpoints: (
+	break-0                     : 0px,
 	break-1                     : 460px,
 	break-2                     : 720px,
 	break-3                     : 940px,
@@ -66,24 +70,15 @@ $breakpoints: (
 // Set the maximum width for default vertically stacked columns
 $col-collapse                   : breakpoint(break-3);
 
-// Set min/max width for breakpoints
-$scale                          : null;
-@if $mobile-first {	
-	$scale                      : min; 
-} 
-@else {	
-	$scale                      : max; 
-}
-
 // Fractions
 //-----------------------------------------------------------------
 
 $fractions: (
-	full                        : (span: 1, columns: 1),
-	half                        : (span: 1, columns: 2),
-	third                       : (span: 1, columns: 3),
-	quarter                     : (span: 1, columns: 4),
-	sixth                       : (span: 1, columns: 6)
+	full                        : (1, 1),
+	half                        : (1, 2),
+	third                       : (1, 3),
+	quarter                     : (1, 4),
+	sixth                       : (1, 6)
 );
 
 @function fraction($fraction) {
@@ -93,6 +88,14 @@ $fractions: (
 //=================================================================
 // Kayzen GS Framework
 //=================================================================
+
+// Set min/max width for breakpoints
+$scale: null;
+@if $mobile-first {	
+	$scale: min; 
+} @else {	
+	$scale: max; 
+}
 
 // Reset $mobile-first to false if $responsive is disabled
 @if $responsive == false {
@@ -165,26 +168,45 @@ $fractions: (
 }
 
 // Magic Column width mixin
-@mixin magic-column($columns: $columns, $namespace: $col-namespace, $stack: $col-collapse) {
-	@if $responsive {
-		width: 100%;
-		margin-left: 0;
-	} @else {		
-		$stack: 0px;
-	}
-	@media (min-width: $stack) {
-		&:first-child {
-			@for $i from 1 through $columns {
-				&:nth-last-child(#{$i}) {
-					&, ~ [class*="#{$namespace}"] {		
-						width: (100/$i) - ( ( ( (100 / (100/$i) ) - 1) * $gutter ) / $i );
-					} ~ [class*="#{$namespace}"] {		
-						margin-left: $gutter;
+@mixin magic-column-width($columns: $columns) {
+	width: (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * $gutter ) / $columns );
+}
+
+// Magic Column
+//-----------------------------------------------------------------
+
+@mixin magic-column($namespace: $col-namespace, $stack: $col-collapse, $semantic: true) {
+	&:first-child {
+		@for $i from 1 through $columns {
+			&:nth-last-child(#{$i}) {
+				&, ~ [class*="#{$namespace}"] {
+					@if $mobile-first {	
+						@if $semantic {
+							margin-left: 0;	
+							width: 100%;
+						}	
+						@media (min-width: $stack) {
+							@include magic-column-width($i);
+							@if $semantic {
+								@include gutter;
+							}
+						}
+					} @else {
+						@include magic-column-width($i);
+						@if $semantic {
+							@include gutter;
+						}
+						@media (max-width: $stack) {
+							width: 100%;
+							@if $semantic {
+								margin-left: 0;
+							}
+						}
 					}
 				}
 			}
-		}	
-	}
+		}
+	}	
 }
 
 //=================================================================
@@ -203,7 +225,7 @@ $fractions: (
 	}
 }
 
-// Column Width
+// Default Column Width
 //-----------------------------------------------------------------
 
 @if $mobile-first == false {
@@ -221,56 +243,44 @@ $fractions: (
 	
 	@extend %row;
 
-// Default Column Stacking
+// Column Stacking
 //-----------------------------------------------------------------
 
+	@mixin stack-columns {
+		@if $mobile-first {
+			@for $i from 1 through $columns {
+				.#{$col-namespace}-#{$i} {	
+					@include column-width($i, $columns);
+				}
+			}
+			> [class*="#{$col-namespace}"]:not([class*="break"]) {
+				@include gutter;
+			}
+		} @else {
+			> [class*="#{$col-namespace}"]:not([class*="break"]) {
+				width: 100%;
+				margin-left: 0;
+				display: block;
+			}
+		}		
+	}
+
+	// Default Stacking
 	@if $responsive {
 		@media (#{$scale}-width: $col-collapse) {
 			&:not([class*="break"]):not([class*="flow"]) {
-				@if $mobile-first {
-					@for $i from 1 through $columns {
-						.#{$col-namespace}-#{$i} {	
-							@include column-width($i, $columns);
-						}
-					}
-					[class*="#{$col-namespace}"]:not([class*="break"]) {
-						@include gutter;
-					}
-				} @else {
-					[class*="#{$col-namespace}"]:not([class*="break"]) {
-						width: 100%;
-						margin-left: 0;
-						display: block;
-					}
-				}	
+				@include stack-columns;
 			}
 		}
 	}
 
-// Custom Column Stacking
-//-----------------------------------------------------------------
-
+	// Custom Stacking
 	@if $responsive {
 		@if $column-stacking {
 			@each $bp, $width in $breakpoints {
 				@media (#{$scale}-width: $width) {
 					&.#{$bp} {
-						@if $mobile-first {
-							@for $i from 1 through $columns {
-								.#{$col-namespace}-#{$i} {	
-									@include column-width($i, $columns);
-								}
-							}
-							> [class*="#{$col-namespace}"]:not([class*="break"]) {	
-								@include gutter;
-							}
-						} @else {
-							> [class*="#{$col-namespace}"]:not([class*="break"]) {							
-								width: 100%;
-								margin-left: 0;
-								display: block;
-							}
-						}
+						@include stack-columns;
 					}
 				}
 			} 	
@@ -317,10 +327,10 @@ $fractions: (
 
 @if $magic-columns {
 	.magic-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			@include magic-column;
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {	
+			@include magic-column($semantic: false);
 		}
-	}
+	}	
 }
 
 // Block Columns
@@ -350,33 +360,30 @@ $fractions: (
     }
     $result: $map-reversed; 
     @return $result;
-} // reverse-map
+}
 
+// Reverse $breakpoints map
+// This is to allow the generated CSS to override when scaling
 @if $responsive {
-
-	// Reverse $breakpoints map
-	// This is to allow the generated CSS to override when scaling
-	$reverse-breakpoints: null;
-	@if $mobile-first {
-		$reverse-breakpoints: $breakpoints;
-	} @else {
-		$reverse-breakpoints: reverse-map($breakpoints);	
-	}
-		
-	.#{$row-namespace} {
-	
-		@each $bp, $width in $reverse-breakpoints {
-			@media (#{$scale}-width: $width) {
-				@each $name, $fraction in $fractions {				
-					.#{$bp}-#{$name} {
-						@include flow-column-width(map-get($fraction, span), map-get($fraction, columns));
+	@if $width-override {
+		$reverse-breakpoints: null;
+		@if $mobile-first {
+			$reverse-breakpoints: $breakpoints;
+		} @else {
+			$reverse-breakpoints: reverse-map($breakpoints);	
+		}	
+		.#{$row-namespace} {
+			@each $bp, $width in $reverse-breakpoints {
+				@media (#{$scale}-width: $width) {
+					@each $name, $fraction in $fractions {				
+						.#{$bp}-#{$name} {
+							@include flow-column-width(nth($fraction, 1), nth($fraction, 2));
+						}
 					}
 				}
 			}
 		}
-	
-	} // .#{$row-namespace}
-
+	}
 }
 
 //=================================================================
@@ -386,17 +393,81 @@ $fractions: (
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($span: 1, $columns: 1, $type: null) {
+@mixin column (
+	$width: full, 
+	$span: null,
+	$columns: null,
+	$type: null, 
+	$namespace: $col-namespace, 
+	$stack: $col-collapse, 
+	$mobile-first: $mobile-first,
+	$respond-to: null
+) {
 	@extend %column;
+	@if type-of($width) == string {
+		$span: nth(fraction($width), 1);
+		$columns: nth(fraction($width), 2);
+	} @else if type-of($width) == number {
+		$span: $width;
+		$columns: 100;
+	} @else if type-of($width) == list {
+		$span: nth($width, 1);
+		$columns: nth($width, 2);			
+	}
 	@if $type == block {
 		display: table-cell;		
-	}
-	@if $type == flow {	
+	} 
+	@if $type == magic {
+		@include magic-column($namespace, $stack);
+	} @else if $type == flow {	
 		@include flow-column-width($span, $columns);
 		margin-left: $gutter;
 	} @else {
-		@include column-width($span, $columns);
-		@include gutter;
+		@if $mobile-first {
+			width: 100%;
+			@media (min-width: $stack) {
+				@include column-width($span, $columns);
+				@include gutter;
+			}
+		} @else {		
+			@include gutter;
+			@include column-width($span, $columns);
+			@media (max-width: $stack) {
+				margin-left: 0;
+				width: 100%;
+			}
+		}
+	}
+	@if $respond-to {	
+		@each $width, $breakpoint in $respond-to {
+			$columns: null;	$span: null; $respond-scale: null;
+			@if $mobile-first { 
+				$respond-scale: min; 
+			} 
+			@else {
+				$respond-scale: max; 
+			}
+			@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
+				@if type-of($width) == string {
+					$span: nth(fraction($width), 1);
+					$columns: nth(fraction($width), 2);
+				} @else if type-of($width) == number {
+					$span: $width;
+					$columns: 100;
+				} @else if type-of($width) == list {
+					$span: nth($width, 1);
+					$columns: nth($width, 2);			
+				}
+				@if $flow-columns {
+					@include flow-column-width($span, $columns);
+				} @else {
+					@include column-width($span, $columns);
+					@if $mobile-first == false {
+						margin-left: 0;
+					}
+				}
+			}	
+		}
 	}
 }
 
@@ -410,86 +481,8 @@ $fractions: (
 	}
 }
 
-// Custom Responsive Handling
-//-----------------------------------------------------------------
-
-@mixin respond-to($width, $breakpoint, $flow-columns: false, $mob-first: false) {
-	$columns: null;	$span: null; $respond-scale: null;
-	@if $mob-first { $respond-scale: min; } 
-	@else {	$respond-scale: max; }
-	@if $responsive {
-		@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
-			@if type-of($width) == string {
-				$columns: map-get(fraction($width), columns);
-				$span: map-get(fraction($width), span);
-			} @else if type-of($width) == list {
-				$span: nth($width, 1);
-				$columns: nth($width, length($width));			
-			}
-			@if $flow-columns {
-				@include flow-column-width($span, $columns);
-			} @else {
-				@include column-width($span, $columns);
-				@if $mobile-first == false {
-					margin-left: 0;
-				}
-			}
-		}
-	}
-}
-
 //=================================================================
 // Semantic Examples
-// Based off the default value of 12 for $columns
 //=================================================================
 
-.main {
-	@include row;
-}
-
-.sidebar {
-	@include column(4, 12);
-	@include respond-to(full, break-2);
-}
-
-.content {
-	@include column(8, 12);
-	@include respond-to(full, break-2);
-}
-
-// Custom Flow Columns
-
-.portfolio-grid {
-	@include row(flow);	
-}
-
-.portfolio-item {
-	@include column(3, 12, flow);
-	@include respond-to((1, 3), break-3, 1);
-	@include respond-to((1, 2), break-2, 1);
-	@include respond-to((1, 1), break-1, 1);
-}
-
-// Custom Flow Columns - Mobile First
-
-.photo-grid {
-	@include row(flow);	
-}
-
-.photo {
-	@include column($type: flow);
-	@include respond-to(half, break-1, true, true);
-	@include respond-to(third, break-2, true, true);
-	@include respond-to(quarter, break-3, true, true);
-}
-
-// Custom Magic Columns
-
-.clients {
-	@include row;
-}
-
-.client {
-	@include column;
-	@include magic-column(6, client, breakpoint(break-2));
-}
+//@import "semantic-examples";
