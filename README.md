@@ -609,10 +609,18 @@ To horizontally align your columns relative to the tallest column in the row, se
 
 ```html	
 <div class="row">
-	<div class="span-4" style="vertical-align: top">This column is top aligned.</div>
-	<div class="span-4" style="vertical-align: middle">This column is middle aligned.</div>
-	<div class="span-4" style="vertical-align: bottom">This column is bottom aligned.</div>
-  	<div class="span-4" style="vertical-align: middle; height: 200px">This column is top aligned.</div>
+	<div class="span-3" style="vertical-align: top">
+		This column is top aligned.
+	</div>
+	<div class="span-3" style="vertical-align: middle">
+		This column is middle aligned.
+	</div>
+	<div class="span-3" style="vertical-align: bottom">
+		This column is bottom aligned.
+	</div>
+  	<div class="span-3" style="vertical-align: middle; height: 200px">
+		  This column is top aligned.
+	</div>
 </div>
 ```
 
