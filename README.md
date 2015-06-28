@@ -331,12 +331,12 @@ In the above example we are using **main** as our semantic class name.
 
 
 ```css
-.portfolio {
+.portfolio-grid {
 	@include row(flow);
 }
 ```
 
-In the above example, our semantic class name for our row of Flow columns is **portfolio**.
+In the above example, our semantic class name for our row of Flow Columns is **portfolio-grid**.
 
 #### Creating a Semantic Column
 
@@ -350,7 +350,7 @@ In the above example, our semantic class name for our row of Flow columns is **p
 }
 ```
 
-This will create a column that spans 3 out of 12 columns, so **1/4** or **25%**. Alternatively, you can achieve the same thing with this:
+This will create a column that spans 3 out of 12 columns in width, so **1/4** or **25%**. Alternatively, you can achieve the same thing with this:
 
 ```css
 .sidebar {
@@ -360,6 +360,8 @@ This will create a column that spans 3 out of 12 columns, so **1/4** or **25%**.
 }
 ```
 
+> You can use any fraction defined in the [$fractions map](#).
+
 You can now create your sidebar with the following HTML:
 
 ```html
@@ -367,6 +369,8 @@ You can now create your sidebar with the following HTML:
 	...
 </div>
 ```
+
+##### Column Types
 
 ##### Adding Responsiveness
 
@@ -377,6 +381,59 @@ The default width for the stacking of semantic columns is set in the [Configurat
 	@include column(
 		$width: quarter,
 		$stack: breakpoint(break-2)
+	);
+}
+```
+
+###### Flexible-Widthed Columns
+
+When inside a Flow Columns container and with its *$type* set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
+
+```css
+.portfolio-item {
+	@include column(
+		$type: flow,
+		$respond-to: (
+			((6, 12), break-1),
+			((4, 12), break-2),
+			((3, 12), break-3)
+		)
+	);
+}
+```
+
+We don't need to specify a width by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **breal-2** and 3/12's at **break-3**.
+
+> You can set any fraction you want, for example you can write *1/2* instead of *6/12*.
+
+Using the [$fractions map](#) you can substitue writing the fraction numbers for the fraction names like so:
+
+```css
+.portfolio-item {
+	@include column(
+		$type: flow,
+		$respond-to: (
+			(half, break-1),
+			(third, break-2),
+			(quarter, break-3)
+		)
+	);
+}
+```
+
+With *$mobile-first* set to **false**, to achieve the same result as the above example the code would be:
+
+```css
+.portfolio-item {
+	@include column(
+		$mobile-first: false,
+		$type: flow,
+		$width: quarter,
+		$respond-to: (
+			(third, break-3),
+			(half, break-2),
+			(full, break-1)
+		)
 	);
 }
 ```
