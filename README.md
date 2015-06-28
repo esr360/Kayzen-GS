@@ -17,7 +17,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 * [Default Kayzen Grid system](#)
   * [Responsiveness](#)
   * [Flow Columns](#)
-    * [Flexible-Widthed Columns](#)
+    * [Flexible Columns](#)
   * [Magic Columns](#)
   * [Block Columns](#)
 * [Custom Configuration](#)
@@ -49,7 +49,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 
 > Change *row* to whatever you want in the [Configuration](#).
 
-To create a column with no specified width, add the `span` class to your element.
+To create a **column** with no specified width, add the `span` class to your element.
 
 ```html                
 <div class="span">Column</div>
@@ -104,7 +104,7 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 The above columns will stack on top of each other when the screen size is **less** than **720px** (break-2).
 
-To change the width of a single column manually at specific breakpoints, see [Flexible-Widthed Columns](#).
+To change the width of a single column manually at specific breakpoints, see [Flexible Columns](#).
 
 #### Flow Columns
 
@@ -144,7 +144,7 @@ The above code will produce something similiar the following:
 </div>
 ```
 
-##### Flexible-Widthed Columns
+##### Flexible Columns
 
 Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at **break-1**, 1/3 at **break-2**, and 1/4 at **break-3**, you could add the following helper classes to your columns like so:
 	
@@ -226,7 +226,7 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
 
-&#42;This has a noticable effect when using the [flexible-widthed columns](#). As seen further above, with mobile-first enabled we can create a flexible column like so:
+&#42;This has a noticable effect when using the [Flexible Columns](#). As seen further above, with mobile-first enabled we can create a flexible column like so:
 
 ```html
 <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
@@ -252,7 +252,7 @@ Here you are creating a column that is 3/12's by default, and will be forced to 
 
 ##### Enable custom width overrides?
 
-> This generates the code to allow for [flexible-widthed columns](#).
+> This generates the code to allow for [Flexible Columns](#).
 
 * Variable : $width-override
 * Type     : boolean
@@ -458,7 +458,7 @@ The default width for the stacking of semantic columns is set in the [Configurat
 
 This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
 
-###### Flexible-Widthed Columns
+###### Flexible Columns
 
 When inside a Flow Columns container and with its *$type* set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
 
