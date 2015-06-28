@@ -619,7 +619,7 @@ To **vertically align** your columns relative to the tallest column in the row, 
 		This column is bottom aligned.
 	</div>
   	<div class="span-3" style="vertical-align: middle; height: 200px">
-		  This column is top aligned.
+		  This column is middle aligned.
 	</div>
 </div>
 ```
