@@ -415,6 +415,32 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 > You can use any fraction defined in the [$fractions map](#).
 
+Or even this:
+
+```css
+.sidebar {
+	@include column(
+		$width: 25%;
+	);
+}
+```
+
+Note that perhaps surprisingly the above example does **not** produce a `width` value of **25%**, but 25% **minus** the value for [$gutter](#). This is so you can easily create columns using percentages without having to think about the effect of gutters like so:
+
+```css
+.sidebar {
+	@include column(
+		$width: 25%;
+	);
+}
+
+.content {
+	@include column(
+		$width: 75%;
+	);
+}
+```
+
 ##### Column Types
 
 All the column types from the default grid system are also available to use in your semantic framework.

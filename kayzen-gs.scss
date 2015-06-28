@@ -407,6 +407,9 @@ $scale: null;
 	@if type-of($width) == string {
 		$span: nth(fraction($width), 1);
 		$columns: nth(fraction($width), 2);
+	} @else if type-of($width) == number {
+		$span: $width;
+		$columns: 100;
 	} @else if type-of($width) == list {
 		$span: nth($width, 1);
 		$columns: nth($width, 2);			
@@ -448,6 +451,9 @@ $scale: null;
 				@if type-of($width) == string {
 					$span: nth(fraction($width), 1);
 					$columns: nth(fraction($width), 2);
+				} @else if type-of($width) == number {
+					$span: $width;
+					$columns: 100;
 				} @else if type-of($width) == list {
 					$span: nth($width, 1);
 					$columns: nth($width, 2);			

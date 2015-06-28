@@ -343,6 +343,26 @@
 <blockquote>
 <p>You can use any fraction defined in the <a href="#">$fractions map</a>.</p>
 </blockquote>
+<p>Or even this:</p>
+<pre><code class="lang-css">.sidebar {
+    @include column(
+        $width: 25%;
+    );
+}
+</code></pre>
+<p>Note that perhaps surprisingly the above example does <strong>not</strong> produce a <code>width</code> value of <strong>25%</strong>, but 25% <strong>minus</strong> the value for <a href="#">$gutter</a>. This is so you can easily create columns using percentages without having to think about the effect of gutters like so:</p>
+<pre><code class="lang-css">.sidebar {
+    @include column(
+        $width: 25%;
+    );
+}
+
+.content {
+    @include column(
+        $width: 75%;
+    );
+}
+</code></pre>
 <h5 id="column-types">Column Types</h5>
 <p>All the column types from the default grid system are also available to use in your semantic framework.</p>
 <h6 id="flow-columns">Flow Columns</h6>
