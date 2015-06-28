@@ -35,7 +35,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ### Getting Started
 
-By default, Kayzen will work out the box using the values set by default. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section - if you want to create your own grid system using semantic classes, see the [Semantic Grid System](#) section.
+By default, Kayzen will work out the box using the values set by default. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section - if you want to create your own grid system using semantic class names, see the [Semantic Grid System](#) section.
 
 ### Default Kayzen Grid System
 
