@@ -617,3 +617,7 @@ To horizontally align your columns relative to the tallest column in the row, se
 ```
 
 ## Help, Support & Contributing
+
+For all issues, bugs suggestions and feature requests, please use the [issues page](https://github.com/esr360/Kayzen-GS/issues). Any and all contributions are welcomed!
+
+Follow [@esr360](https://twitter.com/ESR360) on Twitter!
