@@ -362,14 +362,6 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 > You can use any fraction defined in the [$fractions map](#).
 
-You can now create your sidebar with the following HTML:
-
-```html
-<div class="sidebar">
-	...
-</div>
-```
-
 ##### Column Types
 
 All the column types from the default grid system are also available to use in your semantic framework.
@@ -389,7 +381,7 @@ All the column types from the default grid system are also available to use in y
 
 ###### Magic Columns
 
-> When creating a Magic Column you must set the *$namespace* variable to match your semantic class name.
+> You must set the *$namespace* variable to match your semantic class name.
 
 ```css
 .portfolio-item {
@@ -478,3 +470,5 @@ With *$mobile-first* set to **false**, to achieve the same result as the above e
 	);
 }
 ```
+
+### Help, Support & Contributing
