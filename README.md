@@ -541,7 +541,7 @@ When inside a Flow Columns container and with its `$type` set to **flow**, you c
 }
 ```
 
-We don't need to specify a width by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **breal-2** and 3/12's at **break-3**.
+A width is not required by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **breal-2** and 3/12's at **break-3**.
 
 > You can set any fraction you want, for example you can write *1/2* instead of *6/12*.
 
