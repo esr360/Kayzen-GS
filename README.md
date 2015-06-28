@@ -644,23 +644,23 @@ The problem is only really an issue in Webkit based browsers - the [letter-spaci
 
 ```css
 %row {
-	// Firefox/IE collapse white-space
+	/* Firefox/IE collapse white-space */
 	letter-spacing: -0.31em;
-	// Webkit collapse white-space
+	/* Webkit collapse white-space */
 	display: table !important;
 	width: 100%;
-	// Opera collapse white-space
+	/* Opera collapse white-space */
 	@at-root {
 		.opera-only :-o-prefocus, & {
 			word-spacing: -0.43em;
 		}
 	}
-	// IE < 8 collapse white-space
+	/* IE < 8 collapse white-space */
 	@if $old-ie {
 		*letter-spacing: normal;
 		*word-spacing: -0.43em;
 	}	
-	// Reset spacing
+	/* Reset spacing */
 	@at-root {
 		* {        
 			letter-spacing: normal;

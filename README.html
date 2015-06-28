@@ -519,23 +519,23 @@ width: 100%;
 <p>With this CSS, you can get inline-block columns to behave exactly as desired in Webkit browsers.</p>
 <p>The problem is only really an issue in Webkit based browsers - the <a href="https://github.com/yahoo/pure/issues/41#issuecomment-18747575">letter-spacing fix</a> actually works just fine in Firefox and Internet Explorer without having to hard code any typeface. With these combined, our <strong>row</strong> mixin looks like this:</p>
 <pre><code class="lang-css">%row {
-    // Firefox/IE collapse white-space
+    /* Firefox/IE collapse white-space */
     letter-spacing: -0.31em;
-    // Webkit collapse white-space
+    /* Webkit collapse white-space */
     display: table !important;
     width: 100%;
-    // Opera collapse white-space
+    /* Opera collapse white-space */
     @at-root {
         .opera-only :-o-prefocus, &amp; {
             word-spacing: -0.43em;
         }
     }
-    // IE &lt; 8 collapse white-space
+    /* IE &lt; 8 collapse white-space */
     @if $old-ie {
         *letter-spacing: normal;
         *word-spacing: -0.43em;
     }    
-    // Reset spacing
+    /* Reset spacing */
     @at-root {
         * {        
             letter-spacing: normal;
