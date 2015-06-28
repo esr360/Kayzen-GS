@@ -420,24 +420,37 @@ Or even this:
 ```css
 .sidebar {
 	@include column(
-		$width: 25%;
+		$width: 25%
 	);
 }
 ```
 
-Note that perhaps surprisingly the above example does **not** produce a `width` value of **25%**, but 25% **minus** the value for [$gutter](#). This is so you can easily create columns using percentages without having to think about the effect of gutters like so:
+Note that perhaps surprisingly the above example does **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#). This is so you can easily create columns using percentages without having to think about the effect of gutters like so:
 
 ```css
 .sidebar {
 	@include column(
-		$width: 25%;
+		$width: 25%
 	);
 }
 
 .content {
 	@include column(
-		$width: 75%;
+		$width: 75%
 	);
+}
+```
+
+Which will produce the following CSS:
+
+```css
+.sidebar {
+	width: 23.125%;
+	margin-left: 2.5%;
+}
+.content {
+	width: 74.375%;
+	margin-left: 2.5%;
 }
 ```
 

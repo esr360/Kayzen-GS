@@ -346,21 +346,31 @@
 <p>Or even this:</p>
 <pre><code class="lang-css">.sidebar {
     @include column(
-        $width: 25%;
+        $width: 25%
     );
 }
 </code></pre>
-<p>Note that perhaps surprisingly the above example does <strong>not</strong> produce a <code>width</code> value of <strong>25%</strong>, but 25% <strong>minus</strong> the value for <a href="#">$gutter</a>. This is so you can easily create columns using percentages without having to think about the effect of gutters like so:</p>
+<p>Note that perhaps surprisingly the above example does <strong>not</strong> produce a <code>width</code> value of <strong>25%</strong>, but rather a calculated value based off the value of the <a href="#">$gutter variable</a>. This is so you can easily create columns using percentages without having to think about the effect of gutters like so:</p>
 <pre><code class="lang-css">.sidebar {
     @include column(
-        $width: 25%;
+        $width: 25%
     );
 }
 
 .content {
     @include column(
-        $width: 75%;
+        $width: 75%
     );
+}
+</code></pre>
+<p>Which will produce the following CSS:</p>
+<pre><code class="lang-css">.sidebar {
+    width: 23.125%;
+    margin-left: 2.5%;
+}
+.content {
+    width: 74.375%;
+    margin-left: 2.5%;
 }
 </code></pre>
 <h5 id="column-types">Column Types</h5>

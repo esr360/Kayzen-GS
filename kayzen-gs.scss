@@ -550,3 +550,15 @@ $scale: null;
 		$stack: breakpoint(break-2)
 	);
 } 
+
+.lorem {
+	@include column(
+		$width: 25%
+	);
+}
+
+.ipsum {
+	@include column(
+		$width: 75%
+	);
+}
