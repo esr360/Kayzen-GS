@@ -14,30 +14,30 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ## Documentation
 
-* [Getting Started](https://github.com/esr360/Kayzen-GS#getting-started)
-* [Default Kayzen Grid system](https://github.com/esr360/Kayzen-GS#default-kayzen-grid-system)
-  * [Responsiveness](https://github.com/esr360/Kayzen-GS#responsiveness)
-  * [Flow Columns](https://github.com/esr360/Kayzen-GS#flow-columns)
-    * [Flexible Columns](https://github.com/esr360/Kayzen-GS#flexible-columns)
-  * [Magic Columns](https://github.com/esr360/Kayzen-GS#magic-columns)
-  * [Block Columns](https://github.com/esr360/Kayzen-GS#block-columns)
-* [Custom Configuration](https://github.com/esr360/Kayzen-GS#custom-configuration)
-  * [Options](https://github.com/esr360/Kayzen-GS#options)
-  * [Grid System](https://github.com/esr360/Kayzen-GS#grid-system)
-  * [Breakpoints](https://github.com/esr360/Kayzen-GS#breakpoints)
-  * [Fractions](https://github.com/esr360/Kayzen-GS#fractions)
-* [Semantic Grid System](https://github.com/esr360/Kayzen-GS#semantic-grid-system)
-  * [Creating a Semantic Row](https://github.com/esr360/Kayzen-GS#creating-a-semantic-row)
-  * [Creating a Semantic Column](https://github.com/esr360/Kayzen-GS#creating-a-semantic-column)
-    * [Basic Example](https://github.com/esr360/Kayzen-GS#basic-example)
-    * [Column Types](https://github.com/esr360/Kayzen-GS#column-types)
-    * [Responsiveness](https://github.com/esr360/Kayzen-GS#responsiveness-1)
-* [Column Aligning](https://github.com/esr360/Kayzen-GS#column-aligning)
-* [Solving the Whitespace Issue](https://github.com/esr360/Kayzen-GS#solving-the-whitespace-issue)
+* [Getting Started](#getting-started)
+* [Default Kayzen Grid system](#default-kayzen-grid-system)
+  * [Responsiveness](#responsiveness)
+  * [Flow Columns](#flow-columns)
+    * [Flexible Columns](#flexible-columns)
+  * [Magic Columns](#magic-columns)
+  * [Block Columns](#block-columns)
+* [Custom Configuration](#custom-configuration)
+  * [Options](#options)
+  * [Grid System](#grid-system)
+  * [Breakpoints](#breakpoints)
+  * [Fractions](#fractions)
+* [Semantic Grid System](#semantic-grid-system)
+  * [Creating a Semantic Row](#creating-a-semantic-row)
+  * [Creating a Semantic Column](#creating-a-semantic-column)
+    * [Basic Example](#basic-example)
+    * [Column Types](#column-types)
+    * [Responsiveness](#responsiveness-1)
+* [Column Aligning](#column-aligning)
+* [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
 ### Getting Started
 
-By default, Kayzen will work out the box using the default values in the [Configuration](#). Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section. If you want to create your own grid system using semantic class names, see the [Semantic Grid System](#) section.
+By default, Kayzen will work out the box using the default values in the [Configuration](#custom-configuration). Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#custom-configuration) section. If you want to create your own grid system using semantic class names, see the [Semantic Grid System](#semantic-grid-system) section.
 
 ### Default Kayzen Grid System
 
