@@ -597,7 +597,7 @@ With `$mobile-first` set to **false**, to achieve the same result as the above e
 
 ### Column Aligning
 
-Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally-align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
+Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
 
 ```html	
 <div class="row" style="text-align: center">
@@ -605,7 +605,7 @@ Whilst Kayzen GS does not come with any classes or mixins to align your columns,
 </div>
 ```
 
-To horizontally align your columns relative to the tallest column in the row, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
+To **vertically align** your columns relative to the tallest column in the row, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
 
 ```html	
 <div class="row">
