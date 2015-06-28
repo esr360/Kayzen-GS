@@ -281,6 +281,13 @@ $scale: null;
 				@media (#{$scale}-width: $width) {
 					&.#{$bp} {
 						@include stack-columns;
+						@if $mobile-first {
+							&.block-row {
+								> [class*="#{$col-namespace}"] {
+									display: table-cell;
+								}
+							}
+						}
 					}
 				}
 			} 	
@@ -338,8 +345,14 @@ $scale: null;
 
 @if $block-columns {
 	.block-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			display: table-cell;
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {			
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					display: table-cell;
+				}
+			} @else {
+				display: table-cell;
+			}
 		}
 	}
 }

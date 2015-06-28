@@ -20,18 +20,30 @@
 	    <link rel="stylesheet" href="kayzen-gs.css">
 		
 		<style>
+			body {
+				font-family: Arial;
+				padding-top: 1rem;
+			}
+			.logo {
+				max-width: 75%;
+			}
 			.container {
 				width: 1200px;
 				max-width: 95%;
 				margin: auto;
 			}
 			[class*="span"],
-			.sidebar, .content, .portfolio-item, .client, .photo {
+			.sidebar, 
+			.content, 
+			.portfolio-item, 
+			.client, 
+			.photo {
 				box-sizing: border-box;
-				padding: 0.5rem;
 				background: rgba(0,0,0,0.2);
-				border-radius: 4px;
-				margin-bottom: 1em;
+				border-radius: 0.25rem;
+				font-size: 0.9rem;
+				padding: 0.5rem;
+				margin-bottom: 1rem;
 			}
 		</style>
 		
@@ -41,27 +53,20 @@
 		
 		<div class="container main-container">
 
-            <h2 class="heading">
-                <a href="https://github.com/esr360/Kayzen-GS" target="blank">
-                    Kayzen GS
-                </a>
-            </h2>
+            <a href="https://github.com/esr360/Kayzen-GS" target="blank">
+				<img class="logo" src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png" alt="Kayzen GS" title="Kayzen GS Logo">
+            </a>
 
-            <h3 class="heading">Regular columns</h3>
-
-            <p>A row of regular columns can contain any number of columns with different span widths so long as the total number doesn't exceed the value defined by the <code>$columns</code> variable. By default, this number is set to <b>12</b>, so our column-spans should add up to this number.</p>
-					
-<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">&lt;a class="icon-lrg-border-grey scroll-top" href="#site-content"&gt;
-    &lt;i class="fa fa-angle-up"&gt;&lt;/i&gt;
-&lt;/a&gt; 
-</pre>
+            <h2>Default Kayzen Grid System</h2>
 			
-            <div class="row break-2">                    
+			<h5>Example</h5>
+			
+            <div class="row">                    
                 <div class="span-6">span-6</div>
                 <div class="span-6">span-6</div>
             </div> 
 
-            <div class="row break-4">                    
+            <div class="row">                    
                 <div class="span-4">span-4</div>
                 <div class="span-4">span-4</div>
                 <div class="span-4">span-4</div>
@@ -89,131 +94,167 @@
                 <div class="span-1">span-1</div>
             </div>
 			
-            <hr class="stripes">
+			<h6>The HTML</h6>
 			
-			<h3 class="heading">Mobile First Columns</h3>
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row">                    
+    &lt;div class="span-4">span-4&lt;/div>
+    &lt;div class="span-4">span-4&lt;/div>
+    &lt;div class="span-4">span-4&lt;/div>
+&lt;/div>
+</pre>
+
+			<div class="row">                    
+			    <div class="span-3">Sidebar</div>
+			    <div class="span-9">Article</div>
+			</div>
+					
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row">                    
+    &lt;div class="span-3">Sidebar&lt;/div>
+    &lt;div class="span-9">Article&lt;/div>
+&lt;/div>
+</pre>
+
+			<h3>Responsiveness</h3>
 			
-            <div class="row flow-row">                    
-				<div class="span break-3-quarter break-2-third break-1-half">span-3</div>
-				<div class="span break-3-quarter break-2-third break-1-half">span-3</div>
-				<div class="span break-3-quarter break-2-third break-1-half">span-3</div>
+			<div class="row break-2">                    
+			    <div class="span-3">Sidebar</div>
+			    <div class="span-9">Article</div>
+			</div>
+					
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row break-2">                    
+    &lt;div class="span-3">Sidebar&lt;/div>
+    &lt;div class="span-9">Article&lt;/div>
+&lt;/div>
+</pre>
+			
+			<div class="row break-4">                    
+			    <div class="span-3">Sidebar</div>
+			    <div class="span-9">Article</div>
+			</div>
+					
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row break-4">                    
+    &lt;div class="span-3">Sidebar&lt;/div>
+    &lt;div class="span-9">Article&lt;/div>
+&lt;/div>
+</pre>
+
+            <div class="row break-0">                    
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
             </div>
+					
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row break-0">                       
+	&lt;div class="span-4">span-4&lt;/div>
+	&lt;div class="span-4">span-4&lt;/div>
+	&lt;div class="span-4">span-4&lt;/div>
+&lt;/div>
+</pre>
+
+			<h3>Flow Columns</h3>
 			
-            <hr class="stripes">
+			<div class="row flow-row">
+			    <div class="span-6">Flow Column</div>
+			    <div class="span-6">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			</div>
+					
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row flow-row">                       
+    &lt;div class="span-6">Flow Column&lt;/div>
+    &lt;div class="span-6">Flow Column&lt;/div>
+    &lt;div class="span-4">Flow Column&lt;/div>
+    &lt;div class="span-4">Flow Column&lt;/div>
+    &lt;div class="span-4">Flow Column&lt;/div>
+    &lt;div class="span-3">Flow Column&lt;/div>
+    &lt;div class="span-3">Flow Column&lt;/div>
+    &lt;div class="span-3">Flow Column&lt;/div>
+    &lt;div class="span-3">Flow Column&lt;/div>
+&lt;/div>
+</pre>
+	
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
-            <h3 class="heading">Flow Columns</h3>
+			<h4>Flexible Columns</h4>
 
-            <p>Flow columns work exactly like regular columns except that each row of columns doesn't need to be placed in it's own <code>row</code> wrapper - you can wrap all of your columns for every row inside just one main <code>row</code> container.</p> 
+			<div class="row flow-row">                    
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+			</div> 
+						
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">                    
+&lt;div class=&quot;row flow-row&quot;&gt;                    
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
-            <div class="row flow-row">
-                <div class="span-6">Flow Column</div>
-                <div class="span-6">Flow Column</div>
-                <div class="span-4">Flow Column</div>
-                <div class="span-4">Flow Column</div>
-                <div class="span-4">Flow Column</div>
-                <div class="span-3">Flow Column</div>
-                <div class="span-3">Flow Column</div>
-                <div class="span-3">Flow Column</div>
-                <div class="span-3">Flow Column</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-                <div class="span-1">FC</div>
-            </div>
+			<h3>Magic Columns</h3>
 			
-			<h4>Adaptable Columns Using Flow Columns</h4>
+			<div class="row magic-row">
+			    <div class="span">magic column</div>
+			    <div class="span">magic column</div>
+			    <div class="span">magic column</div>
+			    <div class="span">magic column</div>
+			    <div class="span">magic column</div>
+			</div>
 			
-            <div class="row flow-row">                    
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>           
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>           
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>           
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-                <div class="span-3 break-1-full break-2-half break-3-third">span-3</div>
-            </div> 
-
-            <hr class="stripes">
-
-            <h3 class="heading">Magic Columns</h3>
-
-            <p>"Magic" columns are so named as each row of magic columns can automatically detect the number of columns within its row, and set the width of each column accordingly (without using any JavaScript!). Each column in a row of magic columns will always be the same width, and will always add up to <b>100%</b> width. Perfect for cases where you know each column will always be the same width, or where you need any "<a href="http://en.wikipedia.org/wiki/Widows_and_orphans" target="blank">widow</a>" columns to take up any remaining space.</p> 
-
-            <div class="row magic-row">
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-            </div>
+			<div class="row magic-row">
+			    <div class="span">magic column</div>
+			    <div class="span">magic column</div>
+			</div>
 			
-            <div class="row magic-row">
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-            </div>
+			<h3>Block Columns</h3>
 			
-            <div class="row magic-row">
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-                <div class="span">magic column</div>
-            </div>
-			
-            <div class="row magic-row">
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-                <div class="span">MC</div>
-            </div>
-			
-            <hr class="stripes">
-
-            <h3 class="heading">Block Columns</h3>
-
-            <p>Block columns are similar to regular columns except that they have no gutter (no margin) and they are all equal height to each other.</p>
-
-            <div class="row block-row">
-                <div class="span-4">
-                    <p>Block Column</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl.</p>
-                </div>
-                <div class="span-4">
-                    <p>Block Column</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et elit posuere, convallis ipsum vitae, accumsan nisl.</p>
-                </div>
-                <div class="span-4">
-                    <p>Block Column</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-
-            <p>To create a row of block columns, simply add the <b>block-columns</b> class to your row which contains the target columns.</p>
-			
-			<hr class="stripes" />
+			<div class="row block-row">
+			    <div class="span-4">
+			        Block Column
+			    </div>
+			    <div class="span-4">
+			        Block Column
+			    </div>
+			    <div class="span-4">
+			        <p>Block Column</p>
+					<p>This column causes the others to grow with it.</p>
+			    </div>
+			</div>
 			
 			<h3 class="heading">Semantic Examples</h3>
 			
