@@ -427,9 +427,6 @@ $scale: null;
 		$span: nth($width, 1);
 		$columns: nth($width, 2);			
 	}
-	@if $type == block {
-		display: table-cell;		
-	} 
 	@if $type == magic {
 		@include magic-column($namespace, $stack);
 	} @else if $type == flow {	
@@ -441,11 +438,18 @@ $scale: null;
 			@media (min-width: $stack) {
 				@include column-width($span, $columns);
 				@include gutter;
+				@if $type == block {
+					display: table-cell;		
+				} 
 			}
 		} @else {		
 			@include gutter;
 			@include column-width($span, $columns);
+			@if $type == block {
+				display: table-cell;		
+			} 
 			@media (max-width: $stack) {
+				display: block;
 				margin-left: 0;
 				width: 100%;
 			}
