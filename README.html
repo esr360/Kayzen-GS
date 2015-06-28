@@ -510,7 +510,42 @@
 &lt;/div&gt;
 </code></pre>
 <h3 id="solving-the-whitespace-issue">Solving the Whitespace Issue</h3>
-<p>The issue itself is outlined is great detail in <a href="http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0">this blog post</a> from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the <a href="https://github.com/yahoo/pure/issues/41">Github issue</a> which has received over 150 posts in over 2 years, amongst some </p>
+<p>The issue itself is outlined is great detail in <a href="http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0">this blog post</a> from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the <a href="https://github.com/yahoo/pure/issues/41">Github issue</a> which has received over 150 posts in over 2 years, amongst some interesting proposed fixes included <a href="https://github.com/yahoo/pure/issues/41#issuecomment-21722831">hard-coding the font-family</a> of your row to <em>Arial</em> so the <a href="https://github.com/yahoo/pure/issues/41#issuecomment-18747575">letter-spacing hack</a> would work consistently. However, this, along with all the other hacky fixes were deemed unsuitable for productional use, so thus the decision to leave inline-block was made.</p>
+<p>And it isn&#39;t only Yahoo&#39;s Pure who have experienced this issue; other great frameworks like <a href="https://github.com/csswizardry/csswizardry-grids">csswizardry-grids</a> also <a href="https://github.com/csswizardry/csswizardry-grids/issues/62">suffer the same problem</a>. </p>
+<p>There is actually a simple way to ignore the whitespace in Webkit based browsers, and that is by adding these two CSS properties to your <strong>row</strong> element:</p>
+<pre><code class="lang-css">display: table;
+width: 100%;
+</code></pre>
+<p>With this CSS, you can get inline-block columns to behave exactly as desired in Webkit browsers.</p>
+<p>The problem is only really an issue in Webkit based browsers - the <a href="https://github.com/yahoo/pure/issues/41#issuecomment-18747575">letter-spacing fix</a> actually works just fine in Firefox and Internet Explorer without having to hard code any typeface. With these combined, our <strong>row</strong> mixin looks like this:</p>
+<pre><code class="lang-css">%row {
+    // Firefox/IE collapse white-space
+    letter-spacing: -0.31em;
+    // Webkit collapse white-space
+    display: table !important;
+    width: 100%;
+    // Opera collapse white-space
+    @at-root {
+        .opera-only :-o-prefocus, &amp; {
+            word-spacing: -0.43em;
+        }
+    }
+    // IE &lt; 8 collapse white-space
+    @if $old-ie {
+        *letter-spacing: normal;
+        *word-spacing: -0.43em;
+    }    
+    // Reset spacing
+    @at-root {
+        * {        
+            letter-spacing: normal;
+            word-spacing: normal;
+            text-rendering: auto;
+        }        
+    }
+}
+</code></pre>
+<p>This mixin allows you to create column rows using the <code>inline-block</code> CSS property for your columns without having to worry about the whitespace that is naturally caused all the way down to IE6.</p>
 <h2 id="help-support-contributing">Help, Support &amp; Contributing</h2>
 <p>For all issues, bugs suggestions and feature requests, please use the <a href="https://github.com/esr360/Kayzen-GS/issues">issues page</a>. Any and all contributions are welcomed!</p>
 <p>Follow <a href="https://twitter.com/ESR360">@esr360</a> on Twitter!</p>
