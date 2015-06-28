@@ -31,6 +31,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
     * [Basic Example](#)
     * [Column Types](#)
     * [Responsiveness](#)
+* [Column Aligning](#)
 
 ### Getting Started
 
@@ -491,5 +492,7 @@ With *$mobile-first* set to **false**, to achieve the same result as the above e
 	);
 }
 ```
+
+### Column Aligning
 
 ## Help, Support & Contributing
