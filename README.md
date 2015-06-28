@@ -1,7 +1,7 @@
 # Kayzen GS
 > A responsive, flexible and dynamic grid system based off inline-block columns.
 
-### Why use inline-block for columns?
+### Why use inline-block columns?
 
 The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
 
@@ -35,7 +35,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ### Getting Started
 
-By default, Kayzen will work out the box using the values set by default. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section - if you want to create your own grid system using semantic class names, see the [Semantic Grid System](#) section.
+By default, Kayzen will work out the box using the default values in the [Configuration](#). Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section. If you want to create your own grid system using semantic class names, see the [Semantic Grid System](#) section.
 
 ### Default Kayzen Grid System
 
@@ -47,7 +47,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 </div>
 ```
 
-> Change *row* to whatever you want in the [Configuration](#).
+> Change the class name *row* to whatever you want in the [Configuration](#).
 
 To create a **column** with no specified width, add the `span` class to your element.
 
@@ -55,7 +55,7 @@ To create a **column** with no specified width, add the `span` class to your ele
 <div class="span">Column</div>
 ```
 
-> Change *span* to whatever you want in the [Configuration](#).
+> Change the class name *span* to whatever you want in the [Configuration](#).
 
 By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
@@ -86,6 +86,7 @@ Likewise, the above code would produce 2 columns; one with a width of 3/12's (or
 
 Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#)):
 
+* break-0: 0px,
 * break-1: 460px,
 * break-2: 720px,
 * break-3: 940px,
@@ -102,7 +103,15 @@ Sometimes you may want different columns to stack at different widths. To overri
 </div>
 ```
 
-The above columns will stack on top of each other when the screen size is **less** than **720px** (break-2).
+The above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
+
+To cause the columns to not stack at all, you can use the `break-0` helper class on your **row**:
+
+```html
+<div class="row break-0">                    
+    ...
+</div>
+```
 
 To change the width of a single column manually at specific breakpoints, see [Flexible Columns](#).
 

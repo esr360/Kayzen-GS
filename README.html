@@ -2,20 +2,20 @@
 <blockquote>
 <p>A responsive, flexible and dynamic grid system based off inline-block columns.</p>
 </blockquote>
-<h3 id="why-use-inline-block-for-columns-">Why use inline-block for columns?</h3>
-<p>The simple answer is; flexibility. By definition, columns <em>are</em> just inline blocks - it&#39;s the way CSS columns are supposed to work. Using the native CSS columns by applying <strong>inline-block</strong> opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their horizontal and vertical alignment, just by setting the <em>text-align</em> and <em>vertical-align</em> properties respectively. </p>
+<h3 id="why-use-inline-block-columns-">Why use inline-block columns?</h3>
+<p>The simple answer is; flexibility. By definition, columns <em>are</em> just inline blocks - it&#39;s the way CSS columns are supposed to work. Creating CSS columns by applying <code>inline-block</code> opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their <em>horizontal</em> and <em>vertical</em> alignment, just by setting the <code>text-align</code> and <code>vertical-align</code> properties respectively. </p>
 <blockquote>
-<p><a href="http://#">See Examples</a></p>
+<p><a href="#">See Examples</a></p>
 </blockquote>
 <h3 id="why-don-t-other-grid-systems-use-inline-block-">Why don&#39;t other grid systems use inline-block?</h3>
 <p>By default, using <strong>inline-block</strong> for columns causes a <a href="http://css-tricks.com/fighting-the-space-between-inline-block-elements/">natural whitespace</a> to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused <a href="http://stackoverflow.com/search?q=inline-block+column">many people many problems</a>, and there are plenty of go-to <a href="http://davidwalsh.name/remove-whitespace-inline-block">hacky and impractical</a> work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen GS allows for the use of completely usable and functional columns which use <strong>inline-block</strong> and have <strong>no white-space</strong>. And to top it all off, they work on all browsers, including <strong>Internet Explorer 6</strong>!</p>
 <h2 id="documentation">Documentation</h2>
 <ul>
 <li><a href="#">Getting Started</a></li>
-<li><a href="#">Kayzen Grid system</a><ul>
+<li><a href="#">Default Kayzen Grid system</a><ul>
 <li><a href="#">Responsiveness</a></li>
 <li><a href="#">Flow Columns</a><ul>
-<li><a href="#">Flexible-Widthed Columns</a></li>
+<li><a href="#">Flexible Columns</a></li>
 </ul>
 </li>
 <li><a href="#">Magic Columns</a></li>
@@ -42,9 +42,23 @@
 <li><a href="#">Column Aligning</a></li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
-<p>By default, Kayzen will work our the box. Just load the <strong>kayzen-gs.css</strong> file in your project, and you&#39;re good to go. If you want to configure your own settings, see the see <a href="#">Custom Configuration</a> section.</p>
-<h3 id="kayzen-grid-system">Kayzen Grid System</h3>
-<p>By default, Kayzen GS comes with reusable classes which can be used to create your website structure (you can easily change these classes and values to whatever you want - see <a href="#">Custom Configuration</a>). The most basic example of a row of Kayzen columns using the default settings would look something like this:</p>
+<p>By default, Kayzen will work out the box using the default values in the <a href="#">Configuration</a>. Just load the <strong>kayzen-gs.css</strong> file in your project, and you&#39;re good to go. If you want to configure your own settings, see the see <a href="#">Custom Configuration</a> section. If you want to create your own grid system using semantic class names, see the <a href="#">Semantic Grid System</a> section.</p>
+<h3 id="default-kayzen-grid-system">Default Kayzen Grid System</h3>
+<p>To create a basic <strong>row</strong> for your columns to live in, add the <code>row</code> class to your element.</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+    ...
+&lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>Change the class name <em>row</em> to whatever you want in the <a href="#">Configuration</a>.</p>
+</blockquote>
+<p>To create a <strong>column</strong> with no specified width, add the <code>span</code> class to your element.</p>
+<pre><code class="lang-html">&lt;div class=&quot;span&quot;&gt;Column&lt;/div&gt;
+</code></pre>
+<blockquote>
+<p>Change the class name <em>span</em> to whatever you want in the <a href="#">Configuration</a>.</p>
+</blockquote>
+<p>By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;                    
     &lt;div class=&quot;span-4&quot;&gt;span-4&lt;/div&gt;
     &lt;div class=&quot;span-4&quot;&gt;span-4&lt;/div&gt;
@@ -65,6 +79,7 @@
 </blockquote>
 <p>Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see <a href="#">Custom Configuration</a>):</p>
 <ul>
+<li>break-0: 0px,</li>
 <li>break-1: 460px,</li>
 <li>break-2: 720px,</li>
 <li>break-3: 940px,</li>
@@ -77,8 +92,13 @@
     &lt;div class=&quot;span-9&quot;&gt;Article&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>The above columns will stack on top of each other when the screen size is <strong>less</strong> than <strong>720px</strong> (break-2).</p>
-<p>To change the width of a single column manually at specific breakpoints, see the <a href="#">Flow Columns</a> section.</p>
+<p>The above columns will now stack on top of each other when the screen size is <strong>less</strong> than <strong>720px</strong> (break-2).</p>
+<p>To cause the columns to not stack at all, you can use the <code>break-0</code> helper class on your <strong>row</strong>:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row break-0&quot;&gt;                    
+    ...
+&lt;/div&gt;
+</code></pre>
+<p>To change the width of a single column manually at specific breakpoints, see <a href="#">Flexible Columns</a>.</p>
 <h4 id="flow-columns">Flow Columns</h4>
 <p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;
@@ -110,7 +130,7 @@
     &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<h5 id="flexible-widthed-columns">Flexible-Widthed Columns</h5>
+<h5 id="flexible-columns">Flexible Columns</h5>
 <p>Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at <strong>break-1</strong>, 1/3 at <strong>break-2</strong>, and 1/4 at <strong>break-3</strong>, you could add the following helper classes to your columns like so:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;                    
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
@@ -177,7 +197,7 @@
 <li>Default  : true</li>
 </ul>
 <p>This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it&#39;s told. If this options is disabled, columns will start out at their specificed width (for example <strong>span-4</strong> would start out at 4/12&#39;s by default), and will be forced to <strong>100%</strong> width as and when it&#39;s told.</p>
-<p>&#42;This has a noticable effect when using the <a href="#">flexible-widthed columns</a>. As seen further above, with mobile-first enabled we can create a flexible column like so:</p>
+<p>&#42;This has a noticable effect when using the <a href="#">Flexible Columns</a>. As seen further above, with mobile-first enabled we can create a flexible column like so:</p>
 <pre><code class="lang-html">&lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
 </code></pre>
 <p>This will create a column that starts out at <strong>100%</strong> width, and will compact to 1/2 at <strong>break-1</strong> or more, 1/3 at <strong>break-2</strong> or more, and 1/4 at <strong>break-3</strong> or more.</p>
@@ -196,7 +216,7 @@
 </ul>
 <h5 id="enable-custom-width-overrides-">Enable custom width overrides?</h5>
 <blockquote>
-<p>This generates the code to allow for <a href="#">flexible-widthed columns</a>.</p>
+<p>This generates the code to allow for <a href="#">Flexible Columns</a>.</p>
 </blockquote>
 <ul>
 <li>Variable : $width-override</li>
@@ -362,7 +382,7 @@
 }
 </code></pre>
 <p>This will cause the columns to stack when the screen size is less than <strong>break-2</strong> as opposed to the default value of <strong>break-3</strong>.</p>
-<h6 id="flexible-widthed-columns">Flexible-Widthed Columns</h6>
+<h6 id="flexible-columns">Flexible Columns</h6>
 <p>When inside a Flow Columns container and with its <em>$type</em> set to <strong>flow</strong>, you can set the width of your column at specific breakpoints using the <strong>respond-to</strong> map. Mobile-first is set to true by default for semantic columns, so the code looks like this:</p>
 <pre><code class="lang-css">.portfolio-item {
     @include column(
