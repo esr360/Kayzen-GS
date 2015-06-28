@@ -671,7 +671,7 @@ The problem is only really an issue in Webkit based browsers - the [letter-spaci
 }
 ```
 
-This mixin allows you to create column rows using the `inline-block` CSS property for your columns without having to worry about the whitespace that is naturally caused.
+This mixin allows you to create column rows using the `inline-block` CSS property for your columns without having to worry about the whitespace that is naturally caused. You can say it looks obscure to your heart's content, but it works, and it works great.
 
 ## Help, Support & Contributing
 
