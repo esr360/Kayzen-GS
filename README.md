@@ -542,7 +542,7 @@ When inside a Flow Columns container and with its `$type` set to **flow**, you c
 }
 ```
 
-A width is not required by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **breal-2** and 3/12's at **break-3**.
+A width is not required by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
 
 > You can set any fraction you want, for example you can write *1, 2* instead of *6, 12*.
 
@@ -596,5 +596,24 @@ With `$mobile-first` set to **false**, to achieve the same result as the above e
 > Note the requirement of a default value for `$width`.
 
 ### Column Aligning
+
+Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally-align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
+
+```html	
+<div class="row" style="text-align: center">
+	<div class="span-6">This column is centrally aligned.</div>
+</div>
+```
+
+To horizontally align your columns relative to the tallest column in the row, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
+
+```html	
+<div class="row">
+	<div class="span-4" style="vertical-align: top">This column is top aligned.</div>
+	<div class="span-4" style="vertical-align: middle">This column is middle aligned.</div>
+	<div class="span-4" style="vertical-align: bottom">This column is bottom aligned.</div>
+  	<div class="span-4" style="vertical-align: middle; height: 200px">This column is top aligned.</div>
+</div>
+```
 
 ## Help, Support & Contributing

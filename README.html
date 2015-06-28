@@ -441,7 +441,7 @@
     );
 }
 </code></pre>
-<p>A width is not required by default - the column is 100% width up until <strong>break-1</strong> where it becomes 6/12&#39;s, then 4/12&#39;s at <strong>breal-2</strong> and 3/12&#39;s at <strong>break-3</strong>.</p>
+<p>A width is not required by default - the column is 100% width up until <strong>break-1</strong> where it becomes 6/12&#39;s, then 4/12&#39;s at <strong>break-2</strong> and 3/12&#39;s at <strong>break-3</strong>.</p>
 <blockquote>
 <p>You can set any fraction you want, for example you can write <em>1, 2</em> instead of <em>6, 12</em>.</p>
 </blockquote>
@@ -487,4 +487,17 @@
 <p>Note the requirement of a default value for <code>$width</code>.</p>
 </blockquote>
 <h3 id="column-aligning">Column Aligning</h3>
+<p>Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To <strong>horizontally-align</strong> a row of columns, simply set the <code>text-align</code> CSS property of your row to either <code>left</code>, <code>right</code> or <code>center</code> as desired:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot; style=&quot;text-align: center&quot;&gt;
+    &lt;div class=&quot;span-6&quot;&gt;This column is centrally aligned.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>To horizontally align your columns relative to the tallest column in the row, set the <code>vertical-align</code> CSS property of your column. By default, this is set to <code>top</code>.</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-4&quot; style=&quot;vertical-align: top&quot;&gt;This column is top aligned.&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot; style=&quot;vertical-align: middle&quot;&gt;This column is middle aligned.&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot; style=&quot;vertical-align: bottom&quot;&gt;This column is bottom aligned.&lt;/div&gt;
+      &lt;div class=&quot;span-4&quot; style=&quot;vertical-align: middle; height: 200px&quot;&gt;This column is top aligned.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h2 id="help-support-contributing">Help, Support &amp; Contributing</h2>
