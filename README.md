@@ -425,7 +425,7 @@ Or even this:
 }
 ```
 
-Note that perhaps surprisingly the above example does **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#). This is so you can easily create columns using percentages without having to think about the effect of gutters like so:
+Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%** for example, but rather a calculated value based off the value of the [$gutter variable](#). This is so you can easily create columns using percentages without having to think about the effect of gutters like so:
 
 ```css
 .sidebar {
