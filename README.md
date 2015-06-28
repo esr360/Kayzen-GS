@@ -447,7 +447,7 @@ Note that perhaps surprisingly the above example does **not** produce a `width` 
 }
 ```
 
-Which will produce the following CSS, assuming a value of **2.5%** for `$gutter`:
+Which will produce the following CSS, assuming the default value of **2.5%** for `$gutter`:
 
 ```css
 .sidebar {
