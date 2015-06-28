@@ -353,26 +353,39 @@
 <p>Note that perhaps surprisingly the above example does <strong>not</strong> produce a <code>width</code> value of <strong>25%</strong>, but rather a calculated value based off the value of the <a href="#">$gutter variable</a>. This is so you can easily create columns using percentages without having to think about the effect of gutters like so:</p>
 <pre><code class="lang-css">.sidebar {
     @include column(
-        $width: 25%
+        $width: 20%
     );
 }
 
 .content {
     @include column(
-        $width: 75%
+        $width: 70%
+    );
+}
+
+.promo {
+    @include column(
+        $width: 10%
     );
 }
 </code></pre>
 <p>Which will produce the following CSS:</p>
 <pre><code class="lang-css">.sidebar {
-    width: 23.125%;
+    width: 18%;
     margin-left: 2.5%;
 }
+
 .content {
-    width: 74.375%;
+    width: 69.25%;
+    margin-left: 2.5%;
+}
+
+.promo {
+    width: 7.75%;
     margin-left: 2.5%;
 }
 </code></pre>
+<p>Note that the <strong>first-child</strong> in a row of normal columns has its <code>margin-left</code> removed (this is <em>not</em> the case for <a href="#">Flow Columns</a>).</p>
 <h5 id="column-types">Column Types</h5>
 <p>All the column types from the default grid system are also available to use in your semantic framework.</p>
 <h6 id="flow-columns">Flow Columns</h6>

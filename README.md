@@ -430,13 +430,19 @@ Note that perhaps surprisingly the above example does **not** produce a `width` 
 ```css
 .sidebar {
 	@include column(
-		$width: 25%
+		$width: 20%
 	);
 }
 
 .content {
 	@include column(
-		$width: 75%
+		$width: 70%
+	);
+}
+
+.promo {
+	@include column(
+		$width: 10%
 	);
 }
 ```
@@ -445,14 +451,22 @@ Which will produce the following CSS:
 
 ```css
 .sidebar {
-	width: 23.125%;
-	margin-left: 2.5%;
+    width: 18%;
+    margin-left: 2.5%;
 }
+
 .content {
-	width: 74.375%;
-	margin-left: 2.5%;
+    width: 69.25%;
+    margin-left: 2.5%;
+}
+
+.promo {
+    width: 7.75%;
+    margin-left: 2.5%;
 }
 ```
+
+Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#)).
 
 ##### Column Types
 

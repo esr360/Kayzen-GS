@@ -26,7 +26,7 @@ http://github.com/esr360/Kayzen-GS/
   width: 102.5%;
 }
 
-[class*="span"], .sidebar, .content, .portfolio-item, .photo, .client, .lorem, .ipsum {
+[class*="span"], .sidebar, .content, .portfolio-item, .photo, .client, .lorem, .ipsum, .dipsum {
   display: inline-block;
   vertical-align: top;
   *display: inline;
@@ -781,7 +781,7 @@ http://github.com/esr360/Kayzen-GS/
 }
 @media (min-width: 940px) {
   .lorem {
-    width: 23.125%;
+    width: 18%;
     margin-left: 2.5%;
   }
   .lorem:first-child {
@@ -794,10 +794,23 @@ http://github.com/esr360/Kayzen-GS/
 }
 @media (min-width: 940px) {
   .ipsum {
-    width: 74.375%;
+    width: 69.25%;
     margin-left: 2.5%;
   }
   .ipsum:first-child {
+    margin-left: 0;
+  }
+}
+
+.dipsum {
+  width: 100%;
+}
+@media (min-width: 940px) {
+  .dipsum {
+    width: 7.75%;
+    margin-left: 2.5%;
+  }
+  .dipsum:first-child {
     margin-left: 0;
   }
 }

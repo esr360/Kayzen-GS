@@ -553,12 +553,18 @@ $scale: null;
 
 .lorem {
 	@include column(
-		$width: 25%
+		$width: 20%
 	);
 }
 
 .ipsum {
 	@include column(
-		$width: 75%
+		$width: 70%
+	);
+}
+
+.dipsum {
+	@include column(
+		$width: 10%
 	);
 }
