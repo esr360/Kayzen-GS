@@ -4,7 +4,7 @@
 
 ### Why use inline-block columns?
 
-The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their [*horizontal* and *vertical* alignment](https://github.com/yahoo/pure/issues/41#issuecomment-21071440), just by setting the `text-align` and `vertical-align` properties respectively. 
+The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
 
 > [See Examples](#)
 
