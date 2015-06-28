@@ -13,6 +13,25 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ## Documentation
 
+* [Getting Started](#)
+* [Kayzen Grid system](#)
+  * [Responsiveness](#)
+  * [Flow Columns](#)
+    * [Flexible-Widthed Columns](#)
+  * [Magic Columns](#)
+  * [Block Columns](#)
+* [Custom Configuration](#)
+  * [Options](#)
+  * [Grid System](#)
+  * [Breakpoints](#)
+  * [Fractions](#)
+* [Semantic Grid System](#)
+  * [Creating a Semantic Row](#)
+  * [Creating a Semantic Column](#)
+    * [Basic Example](#)
+    * [Column Types](#)
+    * [Responsiveness](#)
+
 ### Getting Started
 
 By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section.
@@ -405,7 +424,7 @@ All the column types from the default grid system are also available to use in y
 }
 ```
 
-##### Adding Responsiveness
+##### Responsiveness
 
 The default width for the stacking of semantic columns is set in the [Configuration](#). You can override the default value like so:
 
@@ -473,4 +492,4 @@ With *$mobile-first* set to **false**, to achieve the same result as the above e
 }
 ```
 
-### Help, Support & Contributing
+## Help, Support & Contributing
