@@ -14,7 +14,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 ## Documentation
 
 * [Getting Started](#)
-* [Kayzen Grid system](#)
+* [Default Kayzen Grid system](#)
   * [Responsiveness](#)
   * [Flow Columns](#)
     * [Flexible-Widthed Columns](#)
@@ -35,11 +35,11 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ### Getting Started
 
-By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section.
+By default, Kayzen will work our the box. Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#) section - if you want to create your own grid system using semantic classes, see the [Semantic Grid System](#) section.
 
-### Kayzen Grid System
+### Default Kayzen Grid System
 
-By default, Kayzen GS comes with reusable classes which can be used to create your website structure (you can easily change these classes and values to whatever you want - see [Custom Configuration](#)). The most basic example of a row of Kayzen columns using the default settings would look something like this:
+By default, Kayzen GS comes with reusable classes which can be used to create your website structure. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
 ```html
 <div class="row">                    
@@ -86,7 +86,7 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 The above columns will stack on top of each other when the screen size is **less** than **720px** (break-2).
 
-To change the width of a single column manually at specific breakpoints, see the [Flow Columns](#) section.
+To change the width of a single column manually at specific breakpoints, see [Flexible-Widthed Columns](#).
 
 #### Flow Columns
 
