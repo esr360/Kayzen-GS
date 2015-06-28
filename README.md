@@ -106,6 +106,8 @@ The above code will produce something similiar the following:
 </div>
 ```
 
+##### Flexible-Widthed Columns
+
 Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at **break-1**, 1/3 at **break-2**, and 1/4 at **break-3**, you could add the following helper classes to your columns like so:
 	
 ```html		
