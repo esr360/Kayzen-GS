@@ -1,6 +1,6 @@
 <h1 id="kayzen-gs">Kayzen GS</h1>
 <blockquote>
-<p>A responsive, flexible and dynamic grid system that uses &quot;inline-block&quot; columns.</p>
+<p>A responsive, flexible and dynamic grid system based off inline-block columns.</p>
 </blockquote>
 <h3 id="why-use-inline-block-for-columns-">Why use inline-block for columns?</h3>
 <p>The simple answer is; flexibility. By definition, columns <em>are</em> just inline blocks - it&#39;s the way CSS columns are supposed to work. Using the native CSS columns by applying <strong>inline-block</strong> opens up a whole world of flexibility for your columns - the most useful benefit being the ability to set their horizontal and vertical alignment, just by setting the <em>text-align</em> and <em>vertical-align</em> properties respectively. </p>
@@ -294,6 +294,37 @@
 &lt;/div&gt;
 </code></pre>
 <h5 id="column-types">Column Types</h5>
+<p>All the column types from the default grid system are also available to use in your semantic framework.</p>
+<h6 id="flow-columns">Flow Columns</h6>
+<blockquote>
+<p>Ensure that your semantic row container is also set to <em>flow</em>.</p>
+</blockquote>
+<pre><code class="lang-css">.portfolio-item {
+    @include column(
+        $type: flow,
+        $width: (3, 12)
+    );
+}
+</code></pre>
+<h6 id="magic-columns">Magic Columns</h6>
+<blockquote>
+<p>When creating a Magic Column you must set the <em>$namespace</em> variable to match your semantic class name.</p>
+</blockquote>
+<pre><code class="lang-css">.portfolio-item {
+    @include column(
+        $type: magic, 
+        $namespace: portfolio-item
+    );
+}
+</code></pre>
+<h6 id="block-columns">Block Columns</h6>
+<pre><code class="lang-css">.portfolio-item {
+    @include column(
+        $type: block,
+        $width: (3, 12)
+    );
+}
+</code></pre>
 <h5 id="adding-responsiveness">Adding Responsiveness</h5>
 <p>The default width for the stacking of semantic columns is set in the <a href="#">Configuration</a>. You can override the default value like so:</p>
 <pre><code class="lang-css">.sidebar {
@@ -303,6 +334,7 @@
     );
 }
 </code></pre>
+<p>This will cause the columns to stack when the screen size is less than <strong>break-2</strong> as opposed to the default value of <strong>break-3</strong>.</p>
 <h6 id="flexible-widthed-columns">Flexible-Widthed Columns</h6>
 <p>When inside a Flow Columns container and with its <em>$type</em> set to <strong>flow</strong>, you can set the width of your column at specific breakpoints using the <strong>respond-to</strong> map. Mobile-first is set to true by default for semantic columns, so the code looks like this:</p>
 <pre><code class="lang-css">.portfolio-item {

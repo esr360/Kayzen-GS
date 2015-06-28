@@ -1,5 +1,5 @@
 # Kayzen GS
-> A responsive, flexible and dynamic grid system that uses "inline-block" columns.
+> A responsive, flexible and dynamic grid system based off inline-block columns.
 
 ### Why use inline-block for columns?
 
@@ -372,6 +372,45 @@ You can now create your sidebar with the following HTML:
 
 ##### Column Types
 
+All the column types from the default grid system are also available to use in your semantic framework.
+
+###### Flow Columns
+
+> Ensure that your semantic row container is also set to *flow*.
+
+```css
+.portfolio-item {
+	@include column(
+		$type: flow,
+		$width: (3, 12)
+	);
+}
+```
+
+###### Magic Columns
+
+> When creating a Magic Column you must set the *$namespace* variable to match your semantic class name.
+
+```css
+.portfolio-item {
+	@include column(
+		$type: magic, 
+		$namespace: portfolio-item
+	);
+} 
+```
+
+###### Block Columns
+
+```css
+.portfolio-item {
+	@include column(
+		$type: block,
+		$width: (3, 12)
+	);
+}
+```
+
 ##### Adding Responsiveness
 
 The default width for the stacking of semantic columns is set in the [Configuration](#). You can override the default value like so:
@@ -384,6 +423,8 @@ The default width for the stacking of semantic columns is set in the [Configurat
 	);
 }
 ```
+
+This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
 
 ###### Flexible-Widthed Columns
 

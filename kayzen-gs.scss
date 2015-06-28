@@ -20,7 +20,7 @@ $old-ie                         : true;
 $responsive                     : true;
 
 // Enable mobile-first mode?
-$mobile-first                   : false;
+$mobile-first                   : true;
 
 // Enable custom column stacking?
 $column-stacking                : true;
@@ -539,7 +539,6 @@ $scale: null;
 .client {
 	@include column(
 		$type: magic, 
-		$columns: 6, 
 		$namespace: client, 
 		$stack: breakpoint(break-2)
 	);
