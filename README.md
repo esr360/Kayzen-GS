@@ -474,7 +474,7 @@ All the column types from the default grid system are also available to use in y
 
 ###### Flow Columns
 
-> Ensure that your semantic row container is also set to *flow*.
+> Ensure that your semantic row container is also set to `flow`.
 
 ```css
 .portfolio-item {
@@ -487,7 +487,7 @@ All the column types from the default grid system are also available to use in y
 
 ###### Magic Columns
 
-> You must set the *$namespace* variable to match your semantic class name.
+> You must set the `$namespace` variable to match your semantic class name.
 
 ```css
 .portfolio-item {
@@ -526,7 +526,7 @@ This will cause the columns to stack when the screen size is less than **break-2
 
 ###### Flexible Columns
 
-When inside a Flow Columns container and with its *$type* set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
+When inside a Flow Columns container and with its `$type` set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
 
 ```css
 .portfolio-item {
@@ -560,7 +560,22 @@ Using the [$fractions map](#) you can substitue writing the fraction numbers for
 }
 ```
 
-With *$mobile-first* set to **false**, to achieve the same result as the above example the code would be:
+You can even use numeric values for percentages:
+
+```css
+.portfolio-item {
+	@include column(
+		$type: flow,
+		$respond-to: (
+			(50%, break-1),
+			(100/3, break-2),
+			(25%, break-3)
+		)
+	);
+}
+```
+
+With `$mobile-first` set to **false**, to achieve the same result as the example further above the code would be:
 
 ```css
 .portfolio-item {
