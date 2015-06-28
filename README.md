@@ -1,4 +1,5 @@
-# Kayzen GS
+![Kayzen GS](https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png "Kayzen GS Logo")
+
 > A responsive, flexible and dynamic grid system based off inline-block columns.
 
 ### Why use inline-block columns?
