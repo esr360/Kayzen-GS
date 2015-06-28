@@ -1,0 +1,69 @@
+//=================================================================
+// Semantic Examples
+//=================================================================
+
+.main {
+	@include row;
+}
+
+.sidebar {
+	@include column(
+		$width: (4, 12)
+	);
+}
+
+.content {
+	@include column(
+		$width: (8, 12)
+	);
+}
+
+// Custom Flow Columns
+
+.portfolio-grid {
+	@include row(flow);	
+}
+
+.portfolio-item {
+	@include column(
+		$width: quarter,
+		$type: flow,
+		$mobile-first: false,
+		$respond-to: (
+			(third, break-3),
+			(half, break-2),
+			(full, break-1)
+		)
+	);
+}
+
+// Custom Flow Columns - Mobile First
+
+.photo-grid {
+	@include row(flow);	
+}
+
+.photo {
+	@include column(
+		$type: flow,
+		$respond-to: (
+			((6, 12), break-1),
+			((4, 12), break-2),
+			((3, 12), break-3)
+		)
+	);
+}
+
+// Custom Magic Columns
+
+.clients {
+	@include row;
+}
+
+.client {
+	@include column(
+		$type: magic, 
+		$namespace: client, 
+		$stack: breakpoint(break-2)
+	);
+} 
