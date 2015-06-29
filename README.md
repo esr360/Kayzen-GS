@@ -2,11 +2,11 @@
 
 > A responsive, flexible and dynamic grid system based off inline-block columns.
 
-[View Examples](http://kayzen.gs)
-
 ### Why use inline-block columns?
 
 The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
+
+> [See Examples](http://kayzen.gs)
 
 ### Why don't other grid systems use inline-block?
 
@@ -39,6 +39,12 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 By default, Kayzen will work out the box using the default values in the [Configuration](#custom-configuration). Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#custom-configuration) section. If you want to create your own grid system using semantic class names, see the [Semantic Grid System](#semantic-grid-system) section.
 
+#### Install with Bower
+
+```html
+bower install Kayzen-GS
+```
+
 ### Default Kayzen Grid System
 
 To create a basic **row** for your columns to live in, add the `row` class to your element.
@@ -68,8 +74,6 @@ By default, Kayzen GS comes with reusable classes which can be used to create yo
     <div class="span-4">span-4</div>
 </div>
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#basic-example)
 
 Based off the default number of columns (**12**), the above code would produce 3 columns, each 4/12's (or 1/3) of the total width of the row.
 
@@ -107,8 +111,6 @@ Sometimes you may want different columns to stack at different widths. To overri
 </div>
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#responsiveness)
-
 The above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
 
 To cause the columns to not stack at all, you can use the `break-0` helper class on your **row**:
@@ -138,8 +140,6 @@ Flow Columns are more flexible than regular columns - each visual row of columns
     <div class="span-3">Flow Column</div>
 </div>
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns)
 
 The above code will produce something similiar the following:
 
@@ -176,8 +176,6 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 </div> 
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#flexible-columns)
-
 #### Magic Columns
 
 Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any [widow](http://en.wikipedia.org/wiki/Widows_and_orphans) columns to take up any remaining space.
@@ -193,8 +191,6 @@ To create a row of Magic Columns, add the `magic-row` class to your **row**:
     <div class="span">magic column</div>
 </div>
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#magic-columns)
 
 In the above example, each column will be 1/5 in width, as there are 5 columns in the row.
 
@@ -215,8 +211,6 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
     </div>
 </div>
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#block-columns)
 
 ### Custom Configuration
 
@@ -384,8 +378,6 @@ $fractions: (
 
 You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
 
-[View Examples](http://esr360.github.io/Kayzen-GS/#semantic-examples)
-
 #### Creating a Semantic Row
 
 ```css
@@ -501,8 +493,6 @@ All the column types from the default grid system are also available to use in y
 }
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
-
 ###### Magic Columns
 
 > You must set the `$namespace` variable to match your semantic class name.
@@ -516,8 +506,6 @@ All the column types from the default grid system are also available to use in y
 } 
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#magic-columns-semantic)
-
 ###### Block Columns
 
 ```css
@@ -528,8 +516,6 @@ All the column types from the default grid system are also available to use in y
 	);
 }
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#block-columns-semantic)
 
 ##### Responsiveness
 
@@ -543,8 +529,6 @@ The default width for the stacking of semantic columns is set in the [Configurat
 	);
 }
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#responsiveness-semantic)
 
 This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
 
@@ -564,8 +548,6 @@ When inside a Flow Columns container and with its `$type` set to **flow**, you c
 	);
 }
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
 
 A width is not required by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
 
@@ -648,8 +630,6 @@ To **vertically align** your columns relative to the tallest column in the row, 
 	</div>
 </div>
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#column-aligning)
 
 ### Solving the Whitespace Issue
 
