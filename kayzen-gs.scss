@@ -281,6 +281,13 @@ $scale: null;
 				@media (#{$scale}-width: $width) {
 					&.#{$bp} {
 						@include stack-columns;
+						@if $mobile-first {
+							&.block-row {
+								> [class*="#{$col-namespace}"] {
+									display: table-cell;
+								}
+							}
+						}
 					}
 				}
 			} 	
@@ -338,8 +345,14 @@ $scale: null;
 
 @if $block-columns {
 	.block-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {
-			display: table-cell;
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {			
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					display: table-cell;
+				}
+			} @else {
+				display: table-cell;
+			}
 		}
 	}
 }
@@ -414,9 +427,6 @@ $scale: null;
 		$span: nth($width, 1);
 		$columns: nth($width, 2);			
 	}
-	@if $type == block {
-		display: table-cell;		
-	} 
 	@if $type == magic {
 		@include magic-column($namespace, $stack);
 	} @else if $type == flow {	
@@ -428,11 +438,18 @@ $scale: null;
 			@media (min-width: $stack) {
 				@include column-width($span, $columns);
 				@include gutter;
+				@if $type == block {
+					display: table-cell;		
+				} 
 			}
 		} @else {		
 			@include gutter;
 			@include column-width($span, $columns);
+			@if $type == block {
+				display: table-cell;		
+			} 
 			@media (max-width: $stack) {
+				display: block;
 				margin-left: 0;
 				width: 100%;
 			}
