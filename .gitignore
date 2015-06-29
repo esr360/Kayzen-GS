@@ -17,6 +17,9 @@ $RECYCLE.BIN/
 # Prepros
 *.cfg
 
+# Readme HTML file
+README.html
+
 # =========================
 # Operating System Files
 # =========================
