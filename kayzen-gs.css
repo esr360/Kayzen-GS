@@ -597,7 +597,7 @@ http://github.com/esr360/Kayzen-GS/
 }
 
 .portfolio-item {
-  width: 22.5%;
+  width: 97.5%;
   margin-left: 2.5%;
 }
 @media (min-width: 460px) {
@@ -608,6 +608,11 @@ http://github.com/esr360/Kayzen-GS/
 @media (min-width: 720px) {
   .portfolio-item {
     width: 30.83333%;
+  }
+}
+@media (min-width: 940px) {
+  .portfolio-item {
+    width: 22.5%;
   }
 }
 
