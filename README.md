@@ -6,7 +6,7 @@
 
 The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
 
-> [See Examples](#)
+> [See Examples](http://kayzen.gs)
 
 ### Why don't other grid systems use inline-block?
 
@@ -49,7 +49,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 </div>
 ```
 
-> Change the class name *row* to whatever you want in the [Configuration](#).
+> Change the class name *row* to whatever you want in the [Configuration](#set-row-namespace).
 
 To create a **column** with no specified width, add the `span` class to your element.
 
@@ -57,7 +57,7 @@ To create a **column** with no specified width, add the `span` class to your ele
 <div class="span">Column</div>
 ```
 
-> Change the class name *span* to whatever you want in the [Configuration](#).
+> Change the class name *span* to whatever you want in the [Configuration](#set-column-namespace).
 
 By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
@@ -80,13 +80,13 @@ Based off the default number of columns (**12**), the above code would produce 3
 
 Likewise, the above code would produce 2 columns; one with a width of 3/12's (or 1/4) and one with a width of 9/12's (or 3/4).
 
- Using these normal columns, the total span of the columns in a given row may not exceed the number of columns the framework has (12 by default) - for such usage, see [Flow Columns](#).
+ Using these normal columns, the total span of the columns in a given row may not exceed the number of columns the framework has (12 by default) - for such usage, see [Flow Columns](#flow-columns).
 
 #### Responsiveness
 
-> Responsiveness can be disabled [(?)](#)
+> Responsiveness can be disabled [(?)](#enable-responsiveness)
 
-Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#)):
+Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
 
 * break-0: 0px,
 * break-1: 460px,
@@ -115,7 +115,7 @@ To cause the columns to not stack at all, you can use the `break-0` helper class
 </div>
 ```
 
-To change the width of a single column manually at specific breakpoints, see [Flexible Columns](#).
+To change the width of a single column manually at specific breakpoints, see [Flexible Columns](#flexible-columns).
 
 #### Flow Columns
 
@@ -240,7 +240,7 @@ Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a wau 
 
 This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
 
-&#42;This has a noticable effect when using the [Flexible Columns](#). As seen further above, with mobile-first enabled we can create a flexible column like so:
+&#42;This has a noticable effect when using the [Flexible Columns](#flexible-columns). As seen further above, with mobile-first enabled we can create a flexible column like so:
 
 ```html
 <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
@@ -258,7 +258,7 @@ Here you are creating a column that is 3/12's by default, and will be forced to 
 
 ##### Enable custom column stacking?
 
-> This generates the code to override the [default column stacking](#).
+> This generates the code to override the [default column stacking](#responsiveness).
 
 * Variable : $column-stacking
 * Type     : boolean
@@ -266,7 +266,7 @@ Here you are creating a column that is 3/12's by default, and will be forced to 
 
 ##### Enable custom width overrides?
 
-> This generates the code to allow for [Flexible Columns](#).
+> This generates the code to allow for [Flexible Columns](#flexible-columns).
 
 * Variable : $width-override
 * Type     : boolean
@@ -415,7 +415,7 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 }
 ```
 
-> You can use any fraction defined in the [$fractions map](#).
+> You can use any fraction defined in the [$fractions map](#fractions).
 
 Or even this:
 
@@ -427,7 +427,7 @@ Or even this:
 }
 ```
 
-Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#). This is so you can easily create columns without having to think about the effect of gutters like so:
+Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#how-big-should-the-gutter-inbetween-your-columns-be). This is so you can easily create columns without having to think about the effect of gutters like so:
 
 ```css
 .sidebar {
@@ -468,7 +468,7 @@ Which will produce the following CSS, assuming the default value of **2.5%** for
 }
 ```
 
-Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#)).
+Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#flow-columns-1)).
 
 ##### Column Types
 
@@ -513,7 +513,7 @@ All the column types from the default grid system are also available to use in y
 
 ##### Responsiveness
 
-The default width for the stacking of semantic columns is set in the [Configuration](#). You can override the default value like so:
+The default width for the stacking of semantic columns is set in the [Configuration](#set-the-maximum-width-for-default-vertically-stacked-columns). You can override the default value like so:
 
 ```css
 .sidebar {
@@ -562,7 +562,7 @@ You can also use numeric values for percentages:
 }
 ```
 
-Using the [$fractions map](#) you can substitue writing the fraction numbers for the fraction names like so:
+Using the [$fractions map](#fractions) you can substitue writing the fraction numbers for the fraction names like so:
 
 ```css
 .portfolio-item {
