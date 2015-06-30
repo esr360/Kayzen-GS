@@ -5,784 +5,502 @@ Made by @esr360
 http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
-.row, .main, .portfolio-grid, .product-grid, .features {
-  letter-spacing: -0.31em;
-  display: table !important;
-  width: 100%;
-  *letter-spacing: normal;
-  *word-spacing: -0.43em;
-}
-.opera-only :-o-prefocus, .row, .main, .portfolio-grid, .product-grid, .features {
-  word-spacing: -0.43em;
-}
-* {
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-rendering: auto;
+
+//=================================================================
+// Configuration
+//=================================================================
+
+// Options
+//-----------------------------------------------------------------
+
+// Support Internet Explorer 6 & 7? (regular columns only)
+$old-ie                         : true;
+
+// Enable Responsiveness?
+$responsive                     : true;
+
+// Enable mobile-first mode?
+$mobile-first                   : true;
+
+// Enable custom column stacking?
+$column-stacking                : true;
+
+// Enable custom width overrides?
+$width-override                 : true;
+
+// Generate Flow Columns?
+$flow-columns                   : true;
+
+// Generate Magic Columns?
+$magic-columns                  : true;
+
+// Generate Block Columns?
+$block-columns                  : true;
+
+// Set row namespace
+$row-namespace                  : "row";
+
+// Set column namespace
+$col-namespace                  : "span";
+
+// Grid System
+//-----------------------------------------------------------------
+
+// How many columns should your grid system have?
+$columns                        : 12;
+
+// How big should the gutter inbetween your columns be?
+$gutter                         : 2.5%; // percentages only
+
+// Breakpoints
+//-----------------------------------------------------------------
+
+$breakpoints: (
+	break-0                     : 0px,
+	break-1                     : 460px,
+	break-2                     : 720px,
+	break-3                     : 940px,
+	break-4                     : 1200px
+);
+
+@function breakpoint($breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
 }
 
-.flow-row, .portfolio-grid {
-  margin-left: -2.5%;
-  width: 102.5%;
+// Set the maximum width for default vertically stacked columns
+$col-collapse                   : breakpoint(break-3);
+
+// Fractions
+//-----------------------------------------------------------------
+
+$fractions: (
+	full                        : (1, 1),
+	half                        : (1, 2),
+	third                       : (1, 3),
+	quarter                     : (1, 4),
+	sixth                       : (1, 6)
+);
+
+@function fraction($fraction) {
+    @return map-get($fractions, $fraction);
 }
 
-[class*="span"], .sidebar, .content, .portfolio-item, .product, .feature {
-  display: inline-block;
-  vertical-align: top;
-  *display: inline;
-  zoom: 1;
+//=================================================================
+// Kayzen GS Framework
+//=================================================================
+
+// Set min/max width for breakpoints
+$scale: null;
+@if $mobile-first {	
+	$scale: min; 
+} @else {	
+	$scale: max; 
 }
 
-[class*="span"] {
-  width: 100%;
+// Reset $mobile-first to false if $responsive is disabled
+@if $responsive == false {
+	$mobile-first: false;
 }
 
-@media (min-width: 940px) {
-  .row:not([class*="break"]):not([class*="flow"]) .span-1 {
-    width: 6.04167%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-2 {
-    width: 14.58333%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-3 {
-    width: 23.125%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-4 {
-    width: 31.66667%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-5 {
-    width: 40.20833%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-6 {
-    width: 48.75%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-7 {
-    width: 57.29167%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-8 {
-    width: 65.83333%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-9 {
-    width: 74.375%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-10 {
-    width: 82.91667%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-11 {
-    width: 91.45833%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) .span-12 {
-    width: 100%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row:not([class*="break"]):not([class*="flow"]) > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-}
-@media (min-width: 0px) {
-  .row.break-0 .span-1 {
-    width: 6.04167%;
-  }
-  .row.break-0 .span-2 {
-    width: 14.58333%;
-  }
-  .row.break-0 .span-3 {
-    width: 23.125%;
-  }
-  .row.break-0 .span-4 {
-    width: 31.66667%;
-  }
-  .row.break-0 .span-5 {
-    width: 40.20833%;
-  }
-  .row.break-0 .span-6 {
-    width: 48.75%;
-  }
-  .row.break-0 .span-7 {
-    width: 57.29167%;
-  }
-  .row.break-0 .span-8 {
-    width: 65.83333%;
-  }
-  .row.break-0 .span-9 {
-    width: 74.375%;
-  }
-  .row.break-0 .span-10 {
-    width: 82.91667%;
-  }
-  .row.break-0 .span-11 {
-    width: 91.45833%;
-  }
-  .row.break-0 .span-12 {
-    width: 100%;
-  }
-  .row.break-0 > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row.break-0 > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-  .row.break-0.block-row > [class*="span"] {
-    display: table-cell;
-  }
-}
-@media (min-width: 460px) {
-  .row.break-1 .span-1 {
-    width: 6.04167%;
-  }
-  .row.break-1 .span-2 {
-    width: 14.58333%;
-  }
-  .row.break-1 .span-3 {
-    width: 23.125%;
-  }
-  .row.break-1 .span-4 {
-    width: 31.66667%;
-  }
-  .row.break-1 .span-5 {
-    width: 40.20833%;
-  }
-  .row.break-1 .span-6 {
-    width: 48.75%;
-  }
-  .row.break-1 .span-7 {
-    width: 57.29167%;
-  }
-  .row.break-1 .span-8 {
-    width: 65.83333%;
-  }
-  .row.break-1 .span-9 {
-    width: 74.375%;
-  }
-  .row.break-1 .span-10 {
-    width: 82.91667%;
-  }
-  .row.break-1 .span-11 {
-    width: 91.45833%;
-  }
-  .row.break-1 .span-12 {
-    width: 100%;
-  }
-  .row.break-1 > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row.break-1 > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-  .row.break-1.block-row > [class*="span"] {
-    display: table-cell;
-  }
-}
-@media (min-width: 720px) {
-  .row.break-2 .span-1 {
-    width: 6.04167%;
-  }
-  .row.break-2 .span-2 {
-    width: 14.58333%;
-  }
-  .row.break-2 .span-3 {
-    width: 23.125%;
-  }
-  .row.break-2 .span-4 {
-    width: 31.66667%;
-  }
-  .row.break-2 .span-5 {
-    width: 40.20833%;
-  }
-  .row.break-2 .span-6 {
-    width: 48.75%;
-  }
-  .row.break-2 .span-7 {
-    width: 57.29167%;
-  }
-  .row.break-2 .span-8 {
-    width: 65.83333%;
-  }
-  .row.break-2 .span-9 {
-    width: 74.375%;
-  }
-  .row.break-2 .span-10 {
-    width: 82.91667%;
-  }
-  .row.break-2 .span-11 {
-    width: 91.45833%;
-  }
-  .row.break-2 .span-12 {
-    width: 100%;
-  }
-  .row.break-2 > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row.break-2 > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-  .row.break-2.block-row > [class*="span"] {
-    display: table-cell;
-  }
-}
-@media (min-width: 940px) {
-  .row.break-3 .span-1 {
-    width: 6.04167%;
-  }
-  .row.break-3 .span-2 {
-    width: 14.58333%;
-  }
-  .row.break-3 .span-3 {
-    width: 23.125%;
-  }
-  .row.break-3 .span-4 {
-    width: 31.66667%;
-  }
-  .row.break-3 .span-5 {
-    width: 40.20833%;
-  }
-  .row.break-3 .span-6 {
-    width: 48.75%;
-  }
-  .row.break-3 .span-7 {
-    width: 57.29167%;
-  }
-  .row.break-3 .span-8 {
-    width: 65.83333%;
-  }
-  .row.break-3 .span-9 {
-    width: 74.375%;
-  }
-  .row.break-3 .span-10 {
-    width: 82.91667%;
-  }
-  .row.break-3 .span-11 {
-    width: 91.45833%;
-  }
-  .row.break-3 .span-12 {
-    width: 100%;
-  }
-  .row.break-3 > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row.break-3 > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-  .row.break-3.block-row > [class*="span"] {
-    display: table-cell;
-  }
-}
-@media (min-width: 1200px) {
-  .row.break-4 .span-1 {
-    width: 6.04167%;
-  }
-  .row.break-4 .span-2 {
-    width: 14.58333%;
-  }
-  .row.break-4 .span-3 {
-    width: 23.125%;
-  }
-  .row.break-4 .span-4 {
-    width: 31.66667%;
-  }
-  .row.break-4 .span-5 {
-    width: 40.20833%;
-  }
-  .row.break-4 .span-6 {
-    width: 48.75%;
-  }
-  .row.break-4 .span-7 {
-    width: 57.29167%;
-  }
-  .row.break-4 .span-8 {
-    width: 65.83333%;
-  }
-  .row.break-4 .span-9 {
-    width: 74.375%;
-  }
-  .row.break-4 .span-10 {
-    width: 82.91667%;
-  }
-  .row.break-4 .span-11 {
-    width: 91.45833%;
-  }
-  .row.break-4 .span-12 {
-    width: 100%;
-  }
-  .row.break-4 > [class*="span"]:not([class*="break"]) {
-    margin-left: 2.5%;
-  }
-  .row.break-4 > [class*="span"]:not([class*="break"]):first-child {
-    margin-left: 0;
-  }
-  .row.break-4.block-row > [class*="span"] {
-    display: table-cell;
-  }
+// Column Row
+//-----------------------------------------------------------------
+
+%row {
+	// Firefox/IE collapse white-space
+	letter-spacing: -1em;
+	// Webkit collapse white-space
+	display: table !important;
+	width: 100%;
+	// Opera collapse white-space
+	@at-root {
+		.opera-only :-o-prefocus, & {
+			letter-spacing: normal;
+			word-spacing: -0.43em;
+		}
+	}
+	// IE < 8 collapse white-space
+	@if $old-ie {
+		*letter-spacing: normal;
+		*word-spacing: -0.43em;
+	}	
+	// Reset spacing
+	@at-root {
+		* {        
+			letter-spacing: normal;
+			word-spacing: normal;
+			text-rendering: auto;
+		}		
+	}
 }
 
-.flow-row .span-1 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-1 {
-    width: 5.83333%;
-  }
-}
-.flow-row .span-2 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-2 {
-    width: 14.16667%;
-  }
-}
-.flow-row .span-3 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-3 {
-    width: 22.5%;
-  }
-}
-.flow-row .span-4 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-4 {
-    width: 30.83333%;
-  }
-}
-.flow-row .span-5 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-5 {
-    width: 39.16667%;
-  }
-}
-.flow-row .span-6 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-6 {
-    width: 47.5%;
-  }
-}
-.flow-row .span-7 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-7 {
-    width: 55.83333%;
-  }
-}
-.flow-row .span-8 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-8 {
-    width: 64.16667%;
-  }
-}
-.flow-row .span-9 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-9 {
-    width: 72.5%;
-  }
-}
-.flow-row .span-10 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-10 {
-    width: 80.83333%;
-  }
-}
-.flow-row .span-11 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-11 {
-    width: 89.16667%;
-  }
-}
-.flow-row .span-12 {
-  width: 97.5%;
-}
-@media (min-width: 940px) {
-  .flow-row .span-12 {
-    width: 97.5%;
-  }
-}
-.flow-row > [class*="span"] {
-  margin-left: 2.5%;
+%flow-row {
+	margin-left: -$gutter;
+	width: 100% + $gutter;
 }
 
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(1) ~ [class*="span"] {
-    width: 100%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
-    width: 48.75%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
-    width: 31.66667%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
-    width: 23.125%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
-    width: 18%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
-    width: 14.58333%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
-    width: 12.14286%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
-    width: 10.3125%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
-    width: 8.88889%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
-    width: 7.75%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
-    width: 6.81818%;
-  }
-}
-@media (min-width: 940px) {
-  .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
-    width: 6.04167%;
-  }
+// Single Column
+//-----------------------------------------------------------------
+
+%column {
+	display: inline-block;
+	vertical-align: top;
+	// IE < 8: fake inline-block
+	@if $old-ie {
+		*display: inline;
+		zoom: 1; 
+	}
 }
 
-@media (min-width: 940px) {
-  .block-row > [class*="span"]:not([class*="break"]) {
-    display: table-cell;
-  }
+@mixin gutter {
+	margin-left: $gutter;
+	&:first-child {
+		margin-left: 0;
+	}
 }
 
-@media (min-width: 0px) {
-  .row .break-0-full {
-    width: 97.5%;
-  }
-  .row .break-0-half {
-    width: 47.5%;
-  }
-  .row .break-0-third {
-    width: 30.83333%;
-  }
-  .row .break-0-quarter {
-    width: 22.5%;
-  }
-  .row .break-0-sixth {
-    width: 14.16667%;
-  }
-}
-@media (min-width: 460px) {
-  .row .break-1-full {
-    width: 97.5%;
-  }
-  .row .break-1-half {
-    width: 47.5%;
-  }
-  .row .break-1-third {
-    width: 30.83333%;
-  }
-  .row .break-1-quarter {
-    width: 22.5%;
-  }
-  .row .break-1-sixth {
-    width: 14.16667%;
-  }
-}
-@media (min-width: 720px) {
-  .row .break-2-full {
-    width: 97.5%;
-  }
-  .row .break-2-half {
-    width: 47.5%;
-  }
-  .row .break-2-third {
-    width: 30.83333%;
-  }
-  .row .break-2-quarter {
-    width: 22.5%;
-  }
-  .row .break-2-sixth {
-    width: 14.16667%;
-  }
-}
-@media (min-width: 940px) {
-  .row .break-3-full {
-    width: 97.5%;
-  }
-  .row .break-3-half {
-    width: 47.5%;
-  }
-  .row .break-3-third {
-    width: 30.83333%;
-  }
-  .row .break-3-quarter {
-    width: 22.5%;
-  }
-  .row .break-3-sixth {
-    width: 14.16667%;
-  }
-}
-@media (min-width: 1200px) {
-  .row .break-4-full {
-    width: 97.5%;
-  }
-  .row .break-4-half {
-    width: 47.5%;
-  }
-  .row .break-4-third {
-    width: 30.83333%;
-  }
-  .row .break-4-quarter {
-    width: 22.5%;
-  }
-  .row .break-4-sixth {
-    width: 14.16667%;
-  }
+// Column width mixin
+@mixin column-width($span, $columns) {
+	width: ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * $gutter ) / ( $columns / $span ) );
 }
 
-.sidebar {
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .sidebar {
-    width: 23.125%;
-    margin-left: 2.5%;
-  }
-  .sidebar:first-child {
-    margin-left: 0;
-  }
+// Flow Column width mixin
+@mixin flow-column-width($span, $columns) {
+	width: ((100/$columns) * $span) - $gutter;
 }
 
-.content {
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .content {
-    width: 74.375%;
-    margin-left: 2.5%;
-  }
-  .content:first-child {
-    margin-left: 0;
-  }
+// Magic Column width mixin
+@mixin magic-column-width($columns: $columns) {
+	width: (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * $gutter ) / $columns );
 }
 
-.portfolio-item {
-  width: 97.5%;
-  margin-left: 2.5%;
-}
-@media (min-width: 460px) {
-  .portfolio-item {
-    width: 47.5%;
-  }
-}
-@media (min-width: 720px) {
-  .portfolio-item {
-    width: 30.83333%;
-  }
-}
-@media (min-width: 940px) {
-  .portfolio-item {
-    width: 22.5%;
-  }
+// Magic Column
+//-----------------------------------------------------------------
+
+@mixin magic-column($namespace: $col-namespace, $stack: $col-collapse, $semantic: true) {
+	&:first-child {
+		@for $i from 1 through $columns {
+			&:nth-last-child(#{$i}) {
+				&, ~ [class*="#{$namespace}"] {
+					@if $mobile-first {	
+						@if $semantic {
+							margin-left: 0;	
+							width: 100%;
+						}	
+						@media (min-width: $stack) {
+							@include magic-column-width($i);
+							@if $semantic {
+								@include gutter;
+							}
+						}
+					} @else {
+						@include magic-column-width($i);
+						@if $semantic {
+							@include gutter;
+						}
+						@media (max-width: $stack) {
+							width: 100%;
+							@if $semantic {
+								margin-left: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
 }
 
-.product:first-child:nth-last-child(1), .product:first-child:nth-last-child(1) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(1), .product:first-child:nth-last-child(1) ~ [class*="product"] {
-    width: 100%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(1):first-child, .product:first-child:nth-last-child(1) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(2), .product:first-child:nth-last-child(2) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(2), .product:first-child:nth-last-child(2) ~ [class*="product"] {
-    width: 48.75%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(2):first-child, .product:first-child:nth-last-child(2) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(3), .product:first-child:nth-last-child(3) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(3), .product:first-child:nth-last-child(3) ~ [class*="product"] {
-    width: 31.66667%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(3):first-child, .product:first-child:nth-last-child(3) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(4), .product:first-child:nth-last-child(4) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(4), .product:first-child:nth-last-child(4) ~ [class*="product"] {
-    width: 23.125%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(4):first-child, .product:first-child:nth-last-child(4) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(5), .product:first-child:nth-last-child(5) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(5), .product:first-child:nth-last-child(5) ~ [class*="product"] {
-    width: 18%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(5):first-child, .product:first-child:nth-last-child(5) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(6), .product:first-child:nth-last-child(6) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(6), .product:first-child:nth-last-child(6) ~ [class*="product"] {
-    width: 14.58333%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(6):first-child, .product:first-child:nth-last-child(6) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(7), .product:first-child:nth-last-child(7) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(7), .product:first-child:nth-last-child(7) ~ [class*="product"] {
-    width: 12.14286%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(7):first-child, .product:first-child:nth-last-child(7) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(8), .product:first-child:nth-last-child(8) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(8), .product:first-child:nth-last-child(8) ~ [class*="product"] {
-    width: 10.3125%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(8):first-child, .product:first-child:nth-last-child(8) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(9), .product:first-child:nth-last-child(9) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(9), .product:first-child:nth-last-child(9) ~ [class*="product"] {
-    width: 8.88889%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(9):first-child, .product:first-child:nth-last-child(9) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(10), .product:first-child:nth-last-child(10) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(10), .product:first-child:nth-last-child(10) ~ [class*="product"] {
-    width: 7.75%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(10):first-child, .product:first-child:nth-last-child(10) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(11), .product:first-child:nth-last-child(11) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(11), .product:first-child:nth-last-child(11) ~ [class*="product"] {
-    width: 6.81818%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(11):first-child, .product:first-child:nth-last-child(11) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
-}
-.product:first-child:nth-last-child(12), .product:first-child:nth-last-child(12) ~ [class*="product"] {
-  margin-left: 0;
-  width: 100%;
-}
-@media (min-width: 940px) {
-  .product:first-child:nth-last-child(12), .product:first-child:nth-last-child(12) ~ [class*="product"] {
-    width: 6.04167%;
-    margin-left: 2.5%;
-  }
-  .product:first-child:nth-last-child(12):first-child, .product:first-child:nth-last-child(12) ~ [class*="product"]:first-child {
-    margin-left: 0;
-  }
+//=================================================================
+// Kayzen GS Generator
+//=================================================================
+	
+// Individual Column
+//-----------------------------------------------------------------
+
+[class*="#{$col-namespace}"] {
+	@extend %column;
+	@if $mobile-first {
+		width: 100%;
+	} @else {		
+		@include gutter;
+	}
 }
 
-.feature {
-  width: 100%;
+// Default Column Width
+//-----------------------------------------------------------------
+
+@if $mobile-first == false {
+	@for $i from 1 through $columns {
+		.#{$col-namespace}-#{$i} {	
+			@include column-width($i, $columns);
+		}
+	}	
 }
-@media (min-width: 940px) {
-  .feature {
-    width: 31.66667%;
-    margin-left: 2.5%;
-    display: table-cell;
-  }
-  .feature:first-child {
-    margin-left: 0;
-  }
+	
+// Column Row
+//-----------------------------------------------------------------
+
+.#{$row-namespace} {
+	
+	@extend %row;
+
+// Column Stacking
+//-----------------------------------------------------------------
+
+	@mixin stack-columns {
+		@if $mobile-first {
+			@for $i from 1 through $columns {
+				.#{$col-namespace}-#{$i} {	
+					@include column-width($i, $columns);
+				}
+			}
+			> [class*="#{$col-namespace}"]:not([class*="break"]) {
+				@include gutter;
+			}
+		} @else {
+			> [class*="#{$col-namespace}"]:not([class*="break"]) {
+				width: 100%;
+				margin-left: 0;
+				display: block;
+			}
+		}		
+	}
+
+	// Default Stacking
+	@if $responsive {
+		@media (#{$scale}-width: $col-collapse) {
+			&:not([class*="break"]):not([class*="flow"]) {
+				@include stack-columns;
+			}
+		}
+	}
+
+	// Custom Stacking
+	@if $responsive {
+		@if $column-stacking {
+			@each $bp, $width in $breakpoints {
+				@media (#{$scale}-width: $width) {
+					&.#{$bp} {
+						@include stack-columns;
+						@if $mobile-first {
+							&.block-row {
+								> [class*="#{$col-namespace}"] {
+									display: table-cell;
+								}
+							}
+						}
+					}
+				}
+			} 	
+		} 
+	}
+
+} // row
+
+// Flow Columns
+//-----------------------------------------------------------------
+
+@if $flow-columns {
+	.flow-row {
+		@extend %flow-row;
+		@for $i from 1 through $columns {
+			.#{$col-namespace}-#{$i} {		
+				@if $mobile-first {
+					width: (100% - $gutter);
+					@media (min-width: $col-collapse) {
+						@include flow-column-width($i, $columns);
+					}
+				} @else {
+					@include flow-column-width($i, $columns);
+				}
+			}
+		}
+		> [class*="#{$col-namespace}"] {
+			margin-left: $gutter;
+			&:not([class*="break"]) {
+				@if $responsive {
+					@if $mobile-first == false {
+						@media (max-width: $col-collapse) {
+							width: (100% - $gutter);
+						}
+					}
+				}
+			}
+		}
+	}
 }
+
+// Magic Columns
+//-----------------------------------------------------------------
+
+@if $magic-columns {
+	.magic-row {
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {	
+			@include magic-column($semantic: false);
+		}
+	}	
+}
+
+// Block Columns
+//-----------------------------------------------------------------
+
+@if $block-columns {
+	.block-row {
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {			
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					display: table-cell;
+				}
+			} @else {
+				display: table-cell;
+			}
+		}
+	}
+}
+
+// Column Width Overrides
+// For Flow Columns only
+//-----------------------------------------------------------------
+
+// Reverse map function
+// http://git.io/vLfuz
+@function reverse-map ($map) {	
+    $keys: map-keys($map);
+    $map-reversed: ();    
+    @for $i from length($keys) through 1 {
+        $map-reversed: map-merge(
+            $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
+        );
+    }
+    $result: $map-reversed; 
+    @return $result;
+}
+
+// Reverse $breakpoints map
+// This is to allow the generated CSS to override when scaling
+@if $responsive {
+	@if $width-override {
+		$reverse-breakpoints: null;
+		@if $mobile-first {
+			$reverse-breakpoints: $breakpoints;
+		} @else {
+			$reverse-breakpoints: reverse-map($breakpoints);	
+		}	
+		.#{$row-namespace} {
+			@each $bp, $width in $reverse-breakpoints {
+				@media (#{$scale}-width: $width) {
+					@each $name, $fraction in $fractions {				
+						.#{$bp}-#{$name} {
+							@include flow-column-width(nth($fraction, 1), nth($fraction, 2));
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//=================================================================
+// Semantic Grid System Framework
+//=================================================================
+
+// Custom Column
+//-----------------------------------------------------------------
+
+@mixin column (
+	$width: full, 
+	$span: null,
+	$columns: null,
+	$type: null, 
+	$namespace: $col-namespace, 
+	$stack: $col-collapse, 
+	$mobile-first: $mobile-first,
+	$respond-to: null
+) {
+	@extend %column;
+	@if type-of($width) == string {
+		$span: nth(fraction($width), 1);
+		$columns: nth(fraction($width), 2);
+	} @else if type-of($width) == number {
+		$span: $width;
+		$columns: 100;
+	} @else if type-of($width) == list {
+		$span: nth($width, 1);
+		$columns: nth($width, 2);			
+	}
+	@if $type == magic {
+		@include magic-column($namespace, $stack);
+	} @else if $type == flow {	
+		@include flow-column-width($span, $columns);
+		margin-left: $gutter;
+	} @else {
+		@if $mobile-first {
+			width: 100%;
+			@media (min-width: $stack) {
+				@include column-width($span, $columns);
+				@include gutter;
+				@if $type == block {
+					display: table-cell;		
+				} 
+			}
+		} @else {		
+			@include gutter;
+			@include column-width($span, $columns);
+			@if $type == block {
+				display: table-cell;		
+			} 
+			@media (max-width: $stack) {
+				display: block;
+				margin-left: 0;
+				width: 100%;
+			}
+		}
+	}
+	@if $respond-to {	
+		@each $width, $breakpoint in $respond-to {
+			$columns: null;	$span: null; $respond-scale: null;
+			@if $mobile-first { 
+				$respond-scale: min; 
+			} 
+			@else {
+				$respond-scale: max; 
+			}
+			@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
+				@if type-of($width) == string {
+					$span: nth(fraction($width), 1);
+					$columns: nth(fraction($width), 2);
+				} @else if type-of($width) == number {
+					$span: $width;
+					$columns: 100;
+				} @else if type-of($width) == list {
+					$span: nth($width, 1);
+					$columns: nth($width, 2);			
+				}
+				@if $flow-columns {
+					@include flow-column-width($span, $columns);
+				} @else {
+					@include column-width($span, $columns);
+					@if $mobile-first == false {
+						margin-left: 0;
+					}
+				}
+			}	
+		}
+	}
+}
+
+// Custom Row
+//-----------------------------------------------------------------
+
+@mixin row($type: null) {
+	@extend %row;
+	@if $type == flow {		
+		@extend %flow-row;
+	}
+}
+
+//=================================================================
+// Semantic Examples
+//=================================================================
+
+@import "semantic-examples";
