@@ -700,6 +700,13 @@ The problem is only really an issue in Webkit based browsers - the [letter-spaci
 			text-rendering: auto;
 		}		
 	}
+	/* Pseudo element to help with vertical aligning */
+	&:after {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
 }
 ```
 
