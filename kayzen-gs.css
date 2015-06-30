@@ -20,6 +20,12 @@ http://github.com/esr360/Kayzen-GS/
   word-spacing: normal;
   text-rendering: auto;
 }
+.row:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
 
 .flow-row {
   margin-left: -2.5%;
