@@ -489,6 +489,9 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+.block-row:after {
+  display: none;
+}
 
 @media (min-width: 0px) {
   .row .break-0-full {
@@ -777,6 +780,10 @@ http://github.com/esr360/Kayzen-GS/
   .product:first-child:nth-last-child(12):first-child, .product:first-child:nth-last-child(12) ~ [class*="product"]:first-child {
     margin-left: 0;
   }
+}
+
+.features:after {
+  display: none;
 }
 
 .feature {
