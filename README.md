@@ -636,7 +636,7 @@ Whilst Kayzen GS does not come with any classes or mixins to align your columns,
 </div>
 ```
 
-To **vertically align** your columns relative to the tallest column in the row, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
+To **vertically align** your columns, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
 
 ```html	
 <div class="row" style="height: 200px">
