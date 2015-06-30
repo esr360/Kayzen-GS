@@ -361,6 +361,9 @@ $scale: null;
 				display: table-cell;
 			}
 		}
+		&:after {
+			display: none;
+		}
 	}
 }
 
@@ -502,6 +505,10 @@ $scale: null;
 	@extend %row;
 	@if $type == flow {		
 		@extend %flow-row;
+	} @else if $type == block {		
+		&:after {
+			display: none;
+		}
 	}
 }
 
@@ -509,4 +516,4 @@ $scale: null;
 // Semantic Examples
 //=================================================================
 
-//@import "semantic-examples";
+@import "semantic-examples";
