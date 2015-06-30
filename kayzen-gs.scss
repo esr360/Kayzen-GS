@@ -130,6 +130,13 @@ $scale: null;
 			text-rendering: auto;
 		}		
 	}
+	// Pseudo class to allow for vertical-aligning
+	&:before {
+		content: "";
+		width: 100%;
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 %flow-row {
@@ -502,4 +509,4 @@ $scale: null;
 // Semantic Examples
 //=================================================================
 
-//@import "semantic-examples";
+@import "semantic-examples";
