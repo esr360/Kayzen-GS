@@ -114,7 +114,6 @@ $scale: null;
 	// Opera collapse white-space
 	@at-root {
 		.opera-only :-o-prefocus, & {
-			letter-spacing: normal;
 			word-spacing: -0.43em;
 		}
 	}

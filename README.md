@@ -684,7 +684,6 @@ The problem is only really an issue in Webkit based browsers - the [letter-spaci
 	/* Opera collapse white-space */
 	@at-root {
 		.opera-only :-o-prefocus, & {
-			letter-spacing: normal;
 			word-spacing: -0.43em;
 		}
 	}
