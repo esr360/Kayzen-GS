@@ -133,7 +133,7 @@ $scale: null;
 	// Pseudo class to allow for vertical-aligning
 	&:before {
 		content: "";
-		width: 100%;
+		height: 100%;
 		display: inline-block;
 		vertical-align: middle;
 	}
