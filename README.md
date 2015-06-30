@@ -39,6 +39,12 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 By default, Kayzen will work out the box using the default values in the [Configuration](#custom-configuration). Just load the **kayzen-gs.css** file in your project, and you're good to go. If you want to configure your own settings, see the see [Custom Configuration](#custom-configuration) section. If you want to create your own grid system using semantic class names, see the [Semantic Grid System](#semantic-grid-system) section.
 
+#### Install with Bower
+
+```html
+bower install Kayzen-GS
+```
+
 ### Default Kayzen Grid System
 
 To create a basic **row** for your columns to live in, add the `row` class to your element.
@@ -633,7 +639,7 @@ Whilst Kayzen GS does not come with any classes or mixins to align your columns,
 To **vertically align** your columns relative to the tallest column in the row, set the `vertical-align` CSS property of your column. By default, this is set to `top`.
 
 ```html	
-<div class="row">
+<div class="row" style="height: 200px">
 	<div class="span-3" style="vertical-align: top">
 		This column is top aligned.
 	</div>
@@ -643,7 +649,7 @@ To **vertically align** your columns relative to the tallest column in the row, 
 	<div class="span-3" style="vertical-align: bottom">
 		This column is bottom aligned.
 	</div>
-  	<div class="span-3" style="vertical-align: middle; height: 200px">
+  	<div class="span-3" style="vertical-align: middle">
 		  This column is middle aligned.
 	</div>
 </div>
