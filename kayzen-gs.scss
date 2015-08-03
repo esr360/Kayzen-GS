@@ -130,6 +130,8 @@ $scale: null;
 			text-rendering: auto;
 		}		
 	}
+	// Required for some third-party sliders
+	table-layout: fixed;
 	// Pseudo element to help with vertical aligning
 	&:after {
 		content: "";
