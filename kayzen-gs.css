@@ -3,7 +3,7 @@
 Kayzen GS
 Made by @esr360
 http://github.com/esr360/Kayzen-GS/
-	
+
 -----------------------------------------------------------------*/
 .row {
   letter-spacing: -1em;
@@ -13,14 +13,17 @@ http://github.com/esr360/Kayzen-GS/
   *word-spacing: -0.43em;
   table-layout: fixed;
 }
+
 .opera-only :-o-prefocus, .row {
   word-spacing: -0.43em;
 }
+
 * {
   letter-spacing: normal;
   word-spacing: normal;
   text-rendering: auto;
 }
+
 .row:after {
   content: "";
   display: inline-block;
@@ -88,6 +91,7 @@ http://github.com/esr360/Kayzen-GS/
     margin-left: 0;
   }
 }
+
 @media (min-width: 0px) {
   .row.break-0 .span-1 {
     width: 6.04167%;
@@ -135,6 +139,7 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+
 @media (min-width: 460px) {
   .row.break-1 .span-1 {
     width: 6.04167%;
@@ -182,6 +187,7 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+
 @media (min-width: 720px) {
   .row.break-2 .span-1 {
     width: 6.04167%;
@@ -229,6 +235,7 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+
 @media (min-width: 940px) {
   .row.break-3 .span-1 {
     width: 6.04167%;
@@ -276,6 +283,7 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+
 @media (min-width: 1200px) {
   .row.break-4 .span-1 {
     width: 6.04167%;
@@ -327,99 +335,291 @@ http://github.com/esr360/Kayzen-GS/
 .flow-row .span-1 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-1 {
     width: 5.83333%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-1 {
+    left: 8.33333%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-1 {
+    right: 8.33333%;
+    position: relative;
+  }
+}
+
 .flow-row .span-2 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-2 {
     width: 14.16667%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-2 {
+    left: 16.66667%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-2 {
+    right: 16.66667%;
+    position: relative;
+  }
+}
+
 .flow-row .span-3 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-3 {
     width: 22.5%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-3 {
+    left: 25%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-3 {
+    right: 25%;
+    position: relative;
+  }
+}
+
 .flow-row .span-4 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-4 {
     width: 30.83333%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-4 {
+    left: 33.33333%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-4 {
+    right: 33.33333%;
+    position: relative;
+  }
+}
+
 .flow-row .span-5 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-5 {
     width: 39.16667%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-5 {
+    left: 41.66667%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-5 {
+    right: 41.66667%;
+    position: relative;
+  }
+}
+
 .flow-row .span-6 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-6 {
     width: 47.5%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-6 {
+    left: 50%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-6 {
+    right: 50%;
+    position: relative;
+  }
+}
+
 .flow-row .span-7 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-7 {
     width: 55.83333%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-7 {
+    left: 58.33333%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-7 {
+    right: 58.33333%;
+    position: relative;
+  }
+}
+
 .flow-row .span-8 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-8 {
     width: 64.16667%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-8 {
+    left: 66.66667%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-8 {
+    right: 66.66667%;
+    position: relative;
+  }
+}
+
 .flow-row .span-9 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-9 {
     width: 72.5%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-9 {
+    left: 75%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-9 {
+    right: 75%;
+    position: relative;
+  }
+}
+
 .flow-row .span-10 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-10 {
     width: 80.83333%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-10 {
+    left: 83.33333%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-10 {
+    right: 83.33333%;
+    position: relative;
+  }
+}
+
 .flow-row .span-11 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-11 {
     width: 89.16667%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-11 {
+    left: 91.66667%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-11 {
+    right: 91.66667%;
+    position: relative;
+  }
+}
+
 .flow-row .span-12 {
   width: 97.5%;
 }
+
 @media (min-width: 940px) {
   .flow-row .span-12 {
     width: 97.5%;
   }
 }
+
+@media (min-width: 940px) {
+  .flow-row .push-12 {
+    left: 100%;
+    position: relative;
+  }
+}
+
+@media (min-width: 940px) {
+  .flow-row .pull-12 {
+    right: 100%;
+    position: relative;
+  }
+}
+
 .flow-row > [class*="span"] {
   margin-left: 2.5%;
 }
@@ -429,56 +629,67 @@ http://github.com/esr360/Kayzen-GS/
     width: 100%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(2) ~ [class*="span"] {
     width: 48.75%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(3) ~ [class*="span"] {
     width: 31.66667%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(4) ~ [class*="span"] {
     width: 23.125%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(5) ~ [class*="span"] {
     width: 18%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(6) ~ [class*="span"] {
     width: 14.58333%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(7) ~ [class*="span"] {
     width: 12.14286%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(8) ~ [class*="span"] {
     width: 10.3125%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(9) ~ [class*="span"] {
     width: 8.88889%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(10) ~ [class*="span"] {
     width: 7.75%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(11) ~ [class*="span"] {
     width: 6.81818%;
   }
 }
+
 @media (min-width: 940px) {
   .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12), .magic-row > [class*="span"]:not([class*="break"]):first-child:nth-last-child(12) ~ [class*="span"] {
     width: 6.04167%;
@@ -490,6 +701,7 @@ http://github.com/esr360/Kayzen-GS/
     display: table-cell;
   }
 }
+
 .block-row:after {
   display: none;
 }
@@ -511,6 +723,7 @@ http://github.com/esr360/Kayzen-GS/
     width: 14.16667%;
   }
 }
+
 @media (min-width: 460px) {
   .row .break-1-full {
     width: 97.5%;
@@ -528,6 +741,7 @@ http://github.com/esr360/Kayzen-GS/
     width: 14.16667%;
   }
 }
+
 @media (min-width: 720px) {
   .row .break-2-full {
     width: 97.5%;
@@ -545,6 +759,7 @@ http://github.com/esr360/Kayzen-GS/
     width: 14.16667%;
   }
 }
+
 @media (min-width: 940px) {
   .row .break-3-full {
     width: 97.5%;
@@ -562,6 +777,7 @@ http://github.com/esr360/Kayzen-GS/
     width: 14.16667%;
   }
 }
+
 @media (min-width: 1200px) {
   .row .break-4-full {
     width: 97.5%;

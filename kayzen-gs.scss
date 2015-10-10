@@ -3,7 +3,7 @@
 Kayzen GS
 Made by @esr360
 http://github.com/esr360/Kayzen-GS/
-	
+
 -----------------------------------------------------------------*/
 
 //=================================================================
@@ -91,10 +91,10 @@ $fractions: (
 
 // Set min/max width for breakpoints
 $scale: null;
-@if $mobile-first {	
-	$scale: min; 
-} @else {	
-	$scale: max; 
+@if $mobile-first {
+	$scale: min;
+} @else {
+	$scale: max;
 }
 
 // Reset $mobile-first to false if $responsive is disabled
@@ -121,14 +121,14 @@ $scale: null;
 	@if $old-ie {
 		*letter-spacing: normal;
 		*word-spacing: -0.43em;
-	}	
+	}
 	// Reset spacing
 	@at-root {
-		* {        
+		* {
 			letter-spacing: normal;
 			word-spacing: normal;
 			text-rendering: auto;
-		}		
+		}
 	}
 	// Required for some third-party sliders
 	table-layout: fixed;
@@ -155,7 +155,7 @@ $scale: null;
 	// IE < 8: fake inline-block
 	@if $old-ie {
 		*display: inline;
-		zoom: 1; 
+		zoom: 1;
 	}
 }
 
@@ -176,6 +176,16 @@ $scale: null;
 	width: ((100/$columns) * $span) - $gutter;
 }
 
+// Push column
+@mixin push-column($span, $columns) {
+	left: (100/$columns) * $span + 0%;
+}
+
+// Pull column
+@mixin pull-column($span, $columns) {
+	right: (100/$columns) * $span + 0%;
+}
+
 // Magic Column width mixin
 @mixin magic-column-width($columns: $columns) {
 	width: (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * $gutter ) / $columns );
@@ -189,11 +199,11 @@ $scale: null;
 		@for $i from 1 through $columns {
 			&:nth-last-child(#{$i}) {
 				&, ~ [class*="#{$namespace}"] {
-					@if $mobile-first {	
+					@if $mobile-first {
 						@if $semantic {
-							margin-left: 0;	
+							margin-left: 0;
 							width: 100%;
-						}	
+						}
 						@media (min-width: $stack) {
 							@include magic-column-width($i);
 							@if $semantic {
@@ -215,13 +225,13 @@ $scale: null;
 				}
 			}
 		}
-	}	
+	}
 }
 
 //=================================================================
 // Kayzen GS Generator
 //=================================================================
-	
+
 // Individual Column
 //-----------------------------------------------------------------
 
@@ -229,28 +239,59 @@ $scale: null;
 	@extend %column;
 	@if $mobile-first {
 		width: 100%;
-	} @else {		
+	} @else {
 		@include gutter;
 	}
 }
+
+// Push and Pull Columns
+//-----------------------------------------------------------------
+
+[class*="push-"],
+[class*="pull-"] {
+	position: relative;
+}
+
 
 // Default Column Width
 //-----------------------------------------------------------------
 
 @if $mobile-first == false {
 	@for $i from 1 through $columns {
-		.#{$col-namespace}-#{$i} {	
+		.#{$col-namespace}-#{$i} {
 			@include column-width($i, $columns);
 		}
-	}	
+	}
 }
-	
+
 // Column Row
 //-----------------------------------------------------------------
 
 .#{$row-namespace} {
-	
+
 	@extend %row;
+
+	@for $i from 1 through $columns {
+		.push-#{$i} {
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					@include push-column($i, $columns);
+				}
+			} @else {
+				@include push-column($i, $columns);
+			}
+		}
+
+		.pull-#{$i} {
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					@include pull-column($i, $columns);
+				}
+			} @else {
+				@include pull-column($i, $columns);
+			}
+		}
+	}
 
 // Column Stacking
 //-----------------------------------------------------------------
@@ -258,7 +299,7 @@ $scale: null;
 	@mixin stack-columns {
 		@if $mobile-first {
 			@for $i from 1 through $columns {
-				.#{$col-namespace}-#{$i} {	
+				.#{$col-namespace}-#{$i} {
 					@include column-width($i, $columns);
 				}
 			}
@@ -271,7 +312,7 @@ $scale: null;
 				margin-left: 0;
 				display: block;
 			}
-		}		
+		}
 	}
 
 	// Default Stacking
@@ -299,8 +340,8 @@ $scale: null;
 						}
 					}
 				}
-			} 	
-		} 
+			}
+		}
 	}
 
 } // row
@@ -312,7 +353,7 @@ $scale: null;
 	.flow-row {
 		@extend %flow-row;
 		@for $i from 1 through $columns {
-			.#{$col-namespace}-#{$i} {		
+			.#{$col-namespace}-#{$i} {
 				@if $mobile-first {
 					width: (100% - $gutter);
 					@media (min-width: $col-collapse) {
@@ -343,10 +384,10 @@ $scale: null;
 
 @if $magic-columns {
 	.magic-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {	
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			@include magic-column($semantic: false);
 		}
-	}	
+	}
 }
 
 // Block Columns
@@ -354,7 +395,7 @@ $scale: null;
 
 @if $block-columns {
 	.block-row {
-		> [class*="#{$col-namespace}"]:not([class*="break"]) {			
+		> [class*="#{$col-namespace}"]:not([class*="break"]) {
 			@if $mobile-first {
 				@media (min-width: $col-collapse) {
 					display: table-cell;
@@ -375,15 +416,15 @@ $scale: null;
 
 // Reverse map function
 // http://git.io/vLfuz
-@function reverse-map ($map) {	
+@function reverse-map ($map) {
     $keys: map-keys($map);
-    $map-reversed: ();    
+    $map-reversed: ();
     @for $i from length($keys) through 1 {
         $map-reversed: map-merge(
             $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
         );
     }
-    $result: $map-reversed; 
+    $result: $map-reversed;
     @return $result;
 }
 
@@ -395,12 +436,12 @@ $scale: null;
 		@if $mobile-first {
 			$reverse-breakpoints: $breakpoints;
 		} @else {
-			$reverse-breakpoints: reverse-map($breakpoints);	
-		}	
+			$reverse-breakpoints: reverse-map($breakpoints);
+		}
 		.#{$row-namespace} {
 			@each $bp, $width in $reverse-breakpoints {
 				@media (#{$scale}-width: $width) {
-					@each $name, $fraction in $fractions {				
+					@each $name, $fraction in $fractions {
 						.#{$bp}-#{$name} {
 							@include flow-column-width(nth($fraction, 1), nth($fraction, 2));
 						}
@@ -419,12 +460,12 @@ $scale: null;
 //-----------------------------------------------------------------
 
 @mixin column (
-	$width: full, 
+	$width: full,
 	$span: null,
 	$columns: null,
-	$type: null, 
-	$namespace: $col-namespace, 
-	$stack: $col-collapse, 
+	$type: null,
+	$namespace: $col-namespace,
+	$stack: $col-collapse,
 	$mobile-first: $mobile-first,
 	$respond-to: null
 ) {
@@ -437,11 +478,11 @@ $scale: null;
 		$columns: 100;
 	} @else if type-of($width) == list {
 		$span: nth($width, 1);
-		$columns: nth($width, 2);			
+		$columns: nth($width, 2);
 	}
 	@if $type == magic {
 		@include magic-column($namespace, $stack);
-	} @else if $type == flow {	
+	} @else if $type == flow {
 		@include flow-column-width($span, $columns);
 		margin-left: $gutter;
 	} @else {
@@ -451,15 +492,15 @@ $scale: null;
 				@include column-width($span, $columns);
 				@include gutter;
 				@if $type == block {
-					display: table-cell;		
-				} 
+					display: table-cell;
+				}
 			}
-		} @else {		
+		} @else {
 			@include gutter;
 			@include column-width($span, $columns);
 			@if $type == block {
-				display: table-cell;		
-			} 
+				display: table-cell;
+			}
 			@media (max-width: $stack) {
 				display: block;
 				margin-left: 0;
@@ -467,14 +508,14 @@ $scale: null;
 			}
 		}
 	}
-	@if $respond-to {	
+	@if $respond-to {
 		@each $width, $breakpoint in $respond-to {
 			$columns: null;	$span: null; $respond-scale: null;
-			@if $mobile-first { 
-				$respond-scale: min; 
-			} 
+			@if $mobile-first {
+				$respond-scale: min;
+			}
 			@else {
-				$respond-scale: max; 
+				$respond-scale: max;
 			}
 			@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
 				@if type-of($width) == string {
@@ -485,7 +526,7 @@ $scale: null;
 					$columns: 100;
 				} @else if type-of($width) == list {
 					$span: nth($width, 1);
-					$columns: nth($width, 2);			
+					$columns: nth($width, 2);
 				}
 				@if $flow-columns {
 					@include flow-column-width($span, $columns);
@@ -495,7 +536,7 @@ $scale: null;
 						margin-left: 0;
 					}
 				}
-			}	
+			}
 		}
 	}
 }
@@ -505,9 +546,9 @@ $scale: null;
 
 @mixin row($type: null) {
 	@extend %row;
-	@if $type == flow {		
+	@if $type == flow {
 		@extend %flow-row;
-	} @else if $type == block {		
+	} @else if $type == block {
 		&:after {
 			display: none;
 		}
