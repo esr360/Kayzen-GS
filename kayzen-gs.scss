@@ -244,6 +244,15 @@ $scale: null;
 	}
 }
 
+// Push and Pull Columns
+//-----------------------------------------------------------------
+
+[class*="push-"],
+[class*="pull-"] {
+	position: relative;
+}
+
+
 // Default Column Width
 //-----------------------------------------------------------------
 
@@ -261,6 +270,28 @@ $scale: null;
 .#{$row-namespace} {
 
 	@extend %row;
+
+	@for $i from 1 through $columns {
+		.push-#{$i} {
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					@include push-column($i, $columns);
+				}
+			} @else {
+				@include push-column($i, $columns);
+			}
+		}
+
+		.pull-#{$i} {
+			@if $mobile-first {
+				@media (min-width: $col-collapse) {
+					@include pull-column($i, $columns);
+				}
+			} @else {
+				@include pull-column($i, $columns);
+			}
+		}
+	}
 
 // Column Stacking
 //-----------------------------------------------------------------
@@ -330,30 +361,6 @@ $scale: null;
 					}
 				} @else {
 					@include flow-column-width($i, $columns);
-				}
-			}
-
-			.push-#{$i} {
-				@if $mobile-first {
-					@media (min-width: $col-collapse) {
-						@include push-column($i, $columns);
-						position: relative;
-					}
-				} @else {
-					@include push-column($i, $columns);
-					position: relative;
-				}
-			}
-
-			.pull-#{$i} {
-				@if $mobile-first {
-					@media (min-width: $col-collapse) {
-						@include pull-column($i, $columns);
-						position: relative;
-					}
-				} @else {
-					@include pull-column($i, $columns);
-					position: relative;
 				}
 			}
 		}
