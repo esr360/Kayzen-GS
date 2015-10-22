@@ -1,0 +1,33 @@
+// Flow Columns Row
+@if map-get-deep($grid, settings, flow-columns) {
+    @at-root .#{map-get-deep($grid, options, row-namespace)}--flow {
+        &:not([class*="no-gutter"]) {
+            margin-left: -#{map-get-deep($grid, options, gutter)};
+            width: 100% + map-get-deep($grid, options, gutter);
+        }
+        @for $i from 1 through map-get-deep($grid, options, columns) {
+            > .#{map-get-deep($grid, options, col-namespace)}-#{$i} {		
+                @if map-get-deep($grid, settings, mobile-first) {
+                    width: (100% - map-get-deep($grid, options, gutter));
+                    @media (min-width: map-get-deep($grid, options, col-collapse)) {
+                        width: flow-column-width($i, map-get-deep($grid, options, columns));
+                    }
+                } @else {
+                    width: flow-column-width($i, map-get-deep($grid, options, columns));
+                }
+            }
+        }
+        &:not([class*="no-gutter"]) > #{$col-selector} {
+            margin-left: map-get-deep($grid, options, gutter);
+        } 
+        > #{$col-selector}:not([class*="collapse"]) {
+            @if map-get-deep($grid, settings, responsive) {
+                @if not map-get-deep($grid, settings, mobile-first) {
+                    @media (max-width: map-get-deep($grid, options, col-collapse)) {
+                        width: (100% - map-get-deep($grid, options, gutter));
+                    }
+                }
+            }
+        }
+    }
+}

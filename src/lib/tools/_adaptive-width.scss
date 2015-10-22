@@ -1,0 +1,24 @@
+@if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, width-override) {
+
+    // Reverse $breakpoints map
+    // This is to allow the generated CSS to override when scaling
+    $reverse-breakpoints: if(
+        map-get-deep($grid, settings, mobile-first),
+        map-get-deep($grid, breakpoints),
+        reverse-map(map-get-deep($grid, breakpoints))
+    );
+    
+    @each $bp, $width in $reverse-breakpoints {
+        @media (#{$scale}-width: $width) {
+            @each $name, $fraction in map-get-deep($grid, fractions) {		
+                &.#{$bp}-#{$name} {
+                    width: flow-column-width(nth($fraction, 1), nth($fraction, 2));
+                    @at-root #{$row-no-gutter} & {
+                        width: no-gutter-column-width(nth($fraction, 1), nth($fraction, 2));
+                    }
+                }
+            }
+        }
+    }
+
+} //@if (responsive) & (width-override)

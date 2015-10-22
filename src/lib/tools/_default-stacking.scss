@@ -1,0 +1,8 @@
+// Default Stacking
+@if map-get-deep($grid, settings, responsive) {
+    @media (#{$scale}-width: map-get-deep($grid, options, col-collapse)) {
+        &:not([class*="collapse"]):not([class*="flow"]) {
+            @include stack-columns;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+// Grid Row
+@at-root .#{map-get-deep($grid, options, row-namespace)}--grid {
+    > #{$col-selector} {
+        margin-bottom: map-get-deep($grid, options, gutter);
+    }
+}

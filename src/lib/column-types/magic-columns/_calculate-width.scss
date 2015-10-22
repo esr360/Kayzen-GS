@@ -1,0 +1,4 @@
+// Magic Column width
+@function magic-column-width($columns: $columns) {
+	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * map-get-deep($grid, options, gutter) ) / $columns );
+}

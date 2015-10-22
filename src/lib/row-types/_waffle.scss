@@ -1,0 +1,6 @@
+// Waffle Row
+@at-root .#{map-get-deep($grid, options, row-namespace)}--waffle {
+    > #{$col-selector} {
+        margin-bottom: 0;
+    }
+}

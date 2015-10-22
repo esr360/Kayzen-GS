@@ -1,0 +1,14 @@
+// Custom Row
+//-----------------------------------------------------------------
+
+@mixin row($type: null) {
+	@extend %row;
+	@if $type == flow {		
+		margin-left: -#{map-get-deep($grid, options, gutter)};
+		width: 100% + map-get-deep($grid, options, gutter);
+	} @else if $type == block {		
+		&:after {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,59 @@
+//-----------------------------------------------------------------
+// Config
+//-----------------------------------------------------------------
+
+$grid: map-merge((
+    name                : grid,
+    output-JSON         : true,
+    options: (
+        base-width      : 1200px,
+        max-width       : 90%,
+        small-width     : 940px,
+        full-width      : 100%,
+        columns         : 12,
+        gutter          : 3%,
+        col-collapse    : 940px,
+        row-namespace   : "row",
+        col-namespace   : "span",
+    ),
+    settings: (
+        old-ie          : true,
+        responsive      : true,
+        mobile-first    : false,
+        column-stacking : true,
+        width-override  : true,
+        flow-columns    : true,
+        magic-columns   : true,
+        block-columns   : true,
+        no-gutter       : true,
+        reverse-columns : true
+    ),
+    breakpoints: (
+        break-0         : 0px,
+        break-1         : 460px,
+        break-2         : 720px,
+        break-3         : 940px,
+        break-4         : 1200px,
+        break-5         : 1400px
+    ),
+    fractions: (
+        full            : (1, 1),
+        half            : (1, 2),
+        third           : (1, 3),
+        quarter         : (1, 4),
+        sixth           : (1, 6)
+    )
+), $custom) !global;
+
+// Set min/max width for breakpoints
+$scale: if(map-get-deep($grid, settings, mobile-first), min, max);
+
+// Reset "mobile-first" to false if "responsive" is disabled
+@if not map-get-deep($grid, settings, responsive) {
+    $grid: map-merge-deep((settings: (
+        mobile-first: false
+    )), $grid);
+}
+
+// Column Selector
+$col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !global;

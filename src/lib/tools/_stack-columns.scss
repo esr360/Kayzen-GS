@@ -1,0 +1,21 @@
+// Column Stacking
+//-------------------------------------------------------------
+
+@mixin stack-columns {
+	@if map-get-deep($grid, settings, mobile-first) {
+		@for $i from 1 through map-get-deep($grid, options, columns) {
+			.#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
+				width: column-width($i, map-get-deep($grid, options, columns));
+			}
+		}
+		> #{$col-selector}:not([class*="collapse"]) {
+			@include gutter;
+		}
+	} @else {
+		> #{$col-selector}:not([class*="collapse"]) {
+			width: 100%;
+			margin-left: 0;
+			display: block;
+		}
+	}		
+}

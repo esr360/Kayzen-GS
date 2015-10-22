@@ -1,0 +1,17 @@
+// Custom Stacking
+@if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, column-stacking) {
+    @each $bp, $width in map-get-deep($grid, breakpoints) {
+        @media (#{$scale}-width: $width) {
+            &.collapse-#{$bp} {
+                @include stack-columns;
+                @if map-get-deep($grid, settings, mobile-first) {
+                    @at-root .#{map-get-deep($grid, options, row-namespace)}--block {
+                        > #{$col-selector} {
+                            display: table-cell;
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}

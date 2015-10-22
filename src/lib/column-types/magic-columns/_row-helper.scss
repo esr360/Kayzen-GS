@@ -1,0 +1,10 @@
+// Magic Columns Row
+@if map-get-deep($grid, settings, magic-columns) {
+    @at-root .#{map-get-deep($grid, options, row-namespace)}--magic {
+        > #{$col-selector}:not([class*="collapse"]) {	
+            @include magic-column((
+                semantic: false
+            ));
+        }
+    }
+}

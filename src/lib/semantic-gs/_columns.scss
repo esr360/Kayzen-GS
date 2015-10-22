@@ -1,0 +1,94 @@
+// Custom Column
+//-----------------------------------------------------------------
+
+@mixin column($grid: ()) {
+	
+	$grid: map-merge((
+		width        : full, 
+		type         : null, 
+		namespace    : map-get-deep($grid, options, col-namespace), 
+		stack        : map-get-deep($grid, options, col-collapse), 
+		mobile-first : map-get-deep($grid, settings, mobile-first),
+		respond-to   : null
+	), $grid);
+	
+	$grid: $grid !global;
+	
+	@extend %column;
+	
+	$span: null;
+	$columns: null; 
+			
+	@if type-of(map-get-deep($grid, width)) == string {
+		$span: nth(fraction(map-get-deep($grid, width)), 1);
+		$columns: nth(fraction(map-get-deep($grid, width)), 2);
+	} @else if type-of(map-get-deep($grid, width)) == number {
+		$span: map-get-deep($grid, width);
+		$columns: 100;	
+	} @else if type-of(map-get-deep($grid, width)) == list {	
+		$span: nth(map-get-deep($grid, width), 1);
+		$columns: nth(map-get-deep($grid, width), 2);				
+	}
+	
+	@if map-get-deep($grid, type) == magic {
+		width: magic-column($namespace, $stack);
+	} @else if map-get-deep($grid, type) == flow {		
+		width: flow-column-width($span, $columns);
+		margin-left: map-get-deep($grid, options, gutter);
+	} @else {
+		@if map-get-deep($grid, mobile-first) {
+			width: 100%;
+			@media (min-width: $stack) {
+				width: column-width($span, $columns);
+				@include gutter;
+				@if $type == block {
+					display: table-cell;		
+				} 
+			}	
+		} @else {			
+			@include gutter;
+			width: column-width($span, $columns);
+			@if map-get-deep($grid, type) == block {
+				display: table-cell;		
+			} 
+			@media (max-width: map-get-deep($grid, stack)) {
+				display: block;
+				margin-left: 0;
+				width: 100%;
+			}	
+		}
+	}
+	
+	@if map-get-deep($grid, respond-to) {
+		@each $width, $breakpoint in map-get-deep($grid, respond-to) {
+			$columns: null;	$span: null; $respond-scale: null;	
+			@if map-get-deep($grid, mobile-first) { 
+				$respond-scale: min; 
+			} 
+			@else {
+				$respond-scale: max; 
+			}
+			@media (#{$respond-scale}-width: breakpoint($breakpoint)) {
+				@if type-of($width) == string {
+					$span: nth(fraction($width), 1);
+					$columns: nth(fraction($width), 2);
+				} @else if type-of($width) == number {
+					$span: $width;
+					$columns: 100;
+				} @else if type-of($width) == list {
+					$span: nth($width, 1);
+					$columns: nth($width, 2);			
+				}
+				@if map-get-deep($grid, flow-columns) {
+					width: flow-column-width($span, $columns);	
+				} @else {	
+					width: column-width($span, $columns);
+					@if not map-get-deep($grid, mobile-first) {
+						margin-left: 0;
+					}	
+				}		
+			}		
+		}
+	}
+	
+} // @mixin column

@@ -1,0 +1,4 @@
+// No gutter width
+@function no-gutter-column-width($span, $columns) {
+	@return percentage($span/$columns);
+}
