@@ -22,8 +22,6 @@
        ".gitattributes",
        ".gitignore",
        "bower.json",
-       "README.html",
-       "README.md",
        "semantic-examples.scss"
     ]
  }
