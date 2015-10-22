@@ -10,345 +10,315 @@ http://github.com/esr360/Kayzen-GS/
 	
 -----------------------------------------------------------------*/
 
-//-----------------------------------------------------------------
-// Config
-//-----------------------------------------------------------------
-
-$grid: map-merge-deep((
-    name                : grid,
-    output-JSON         : true,
-    options: (
-        base-width      : 1200px,
-        max-width       : 90%,
-        small-width     : 940px,
-        full-width      : 100%,
-        columns         : 12,
-        gutter          : 3%,
-        col-collapse    : 940px,
-        row-namespace   : "row",
-        col-namespace   : "span",
-    ),
-    settings: (
-        old-ie          : true,
-        responsive      : true,
-        mobile-first    : false,
-        column-stacking : true,
-        width-override  : true,
-        flow-columns    : true,
-        magic-columns   : true,
-        block-columns   : true,
-        no-gutter       : true,
-        reverse-columns : true
-    ),
-    breakpoints: (
-        break-0         : 0px,
-        break-1         : 460px,
-        break-2         : 720px,
-        break-3         : 940px,
-        break-4         : 1200px,
-        break-5         : 1400px
-    ),
-    fractions: (
-        full            : (1, 1),
-        half            : (1, 2),
-        third           : (1, 3),
-        quarter         : (1, 4),
-        sixth           : (1, 6)
-    )
-), $custom) !global;
-
-// Set min/max width for breakpoints
-$scale: if(map-get-deep($grid, settings, mobile-first), min, max);
-
-// Reset "mobile-first" to false if "responsive" is disabled
-@if not map-get-deep($grid, settings, responsive) {
-    $grid: map-merge-deep((settings: (
-        mobile-first: false
-    )), $grid);
-}
-
-// Column Selector
-$col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !global;
-
-//-------------------------------------------------------------
-// Row
-//-------------------------------------------------------------
-
-%row {
-    // Firefox/IE collapse white-space
-    letter-spacing: -1em;
-    // Webkit collapse white-space
-    display: table;
-    width: 100%;
-    // Opera collapse white-space
-    @at-root {
-        .opera-only :-o-prefocus, & {
-            word-spacing: -0.43em;
-        }
-    }
-    // IE < 8 collapse white-space
-    @if map-get-deep($grid, settings, old-ie) {
-        *letter-spacing: normal;
-        *word-spacing: -0.43em;
-    }	
-    // Required for some third-party sliders
-    table-layout: fixed;
-    // Reset spacing
-    @at-root {
-        * {        
-            letter-spacing: normal;
-            word-spacing: normal;
-            text-rendering: auto;
-        }		
-    }
-}
-
-@include component(#{map-get-deep($grid, options, row-namespace)}) {
+@mixin grid($custom: ()) {
+        
+    //-----------------------------------------------------------------
+    // Config
+    //-----------------------------------------------------------------
     
-    @extend %row;
+    $grid: map-merge((
+        name                : grid,
+        output-JSON         : true,
+        options: (
+            base-width      : 1200px,
+            max-width       : 90%,
+            small-width     : 940px,
+            full-width      : 100%,
+            columns         : 12,
+            gutter          : 3%,
+            col-collapse    : 940px,
+            row-namespace   : "row",
+            col-namespace   : "span",
+        ),
+        settings: (
+            old-ie          : true,
+            responsive      : true,
+            mobile-first    : false,
+            column-stacking : true,
+            width-override  : true,
+            flow-columns    : true,
+            magic-columns   : true,
+            block-columns   : true,
+            no-gutter       : true,
+            reverse-columns : true
+        ),
+        breakpoints: (
+            break-0         : 0px,
+            break-1         : 460px,
+            break-2         : 720px,
+            break-3         : 940px,
+            break-4         : 1200px,
+            break-5         : 1400px
+        ),
+        fractions: (
+            full            : (1, 1),
+            half            : (1, 2),
+            third           : (1, 3),
+            quarter         : (1, 4),
+            sixth           : (1, 6)
+        )
+    ), $custom) !global;
     
-    // No Gutter Row
-    @if map-get-deep($grid, settings, no-gutter) {
-        @include modifier(no-gutter) {
-            $row-no-gutter: (&) !global;
-        }
+    // Set min/max width for breakpoints
+    $scale: if(map-get-deep($grid, settings, mobile-first), min, max);
+    
+    // Reset "mobile-first" to false if "responsive" is disabled
+    @if not map-get-deep($grid, settings, responsive) {
+        $grid: map-merge-deep((settings: (
+            mobile-first: false
+        )), $grid);
     }
     
-    // Grid Row
-    @include modifier(grid) {
-        > #{$col-selector} {
-            margin-bottom: map-get-deep($config, options, gutter);
-        }
-    }
+    // Column Selector
+    $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !global;
     
-    // Waffle Row
-    @include modifier(waffle) {
-        > #{$col-selector} {
-            margin-bottom: 0;
-        }
-    }
+    //-------------------------------------------------------------
+    // Row
+    //-------------------------------------------------------------
     
-    // Flow Columns Row
-    @if map-get-deep($grid, settings, flow-columns) {
-        @include modifier(flow) {
-            &:not([class*="no-gutter"]) {
-                margin-left: -#{map-get-deep($grid, options, gutter)};
-                width: 100% + map-get-deep($grid, options, gutter);
+    %row {
+        // Firefox/IE collapse white-space
+        letter-spacing: -1em;
+        // Webkit collapse white-space
+        display: table;
+        width: 100%;
+        // Opera collapse white-space
+        @at-root {
+            .opera-only :-o-prefocus, & {
+                word-spacing: -0.43em;
             }
-            @for $i from 1 through map-get-deep($grid, options, columns) {
-                > .#{map-get-deep($grid, options, col-namespace)}-#{$i} {		
-                    @if map-get-deep($grid, settings, mobile-first) {
-                        width: (100% - map-get-deep($grid, options, gutter));
-                        @media (min-width: map-get-deep($grid, options, col-collapse)) {
+        }
+        // IE < 8 collapse white-space
+        @if map-get-deep($grid, settings, old-ie) {
+            *letter-spacing: normal;
+            *word-spacing: -0.43em;
+        }	
+        // Required for some third-party sliders
+        table-layout: fixed;
+        // Reset spacing
+        @at-root {
+            * {        
+                letter-spacing: normal;
+                word-spacing: normal;
+                text-rendering: auto;
+            }		
+        }
+    }
+    
+    .#{map-get-deep($grid, options, row-namespace)} {
+        
+        @extend %row;
+        
+        // No Gutter Row
+        @if map-get-deep($grid, settings, no-gutter) {
+            @at-root .#{map-get-deep($grid, options, row-namespace)}--no-gutter {
+                $row-no-gutter: (&) !global;
+            }
+        }
+        
+        // Grid Row
+        @at-root .#{map-get-deep($grid, options, row-namespace)}--grid {
+            > #{$col-selector} {
+                margin-bottom: map-get-deep($grid, options, gutter);
+            }
+        }
+        
+        // Waffle Row
+        @at-root .#{map-get-deep($grid, options, row-namespace)}--waffle {
+            > #{$col-selector} {
+                margin-bottom: 0;
+            }
+        }
+        
+        // Flow Columns Row
+        @if map-get-deep($grid, settings, flow-columns) {
+            @at-root .#{map-get-deep($grid, options, row-namespace)}--flow {
+                &:not([class*="no-gutter"]) {
+                    margin-left: -#{map-get-deep($grid, options, gutter)};
+                    width: 100% + map-get-deep($grid, options, gutter);
+                }
+                @for $i from 1 through map-get-deep($grid, options, columns) {
+                    > .#{map-get-deep($grid, options, col-namespace)}-#{$i} {		
+                        @if map-get-deep($grid, settings, mobile-first) {
+                            width: (100% - map-get-deep($grid, options, gutter));
+                            @media (min-width: map-get-deep($grid, options, col-collapse)) {
+                                width: flow-column-width($i, map-get-deep($grid, options, columns));
+                            }
+                        } @else {
                             width: flow-column-width($i, map-get-deep($grid, options, columns));
                         }
-                    } @else {
-                        width: flow-column-width($i, map-get-deep($grid, options, columns));
                     }
                 }
-            }
-            &:not([class*="no-gutter"]) > #{$col-selector} {
-                margin-left: map-get-deep($grid, options, gutter);
-            } 
-            > #{$col-selector}:not([class*="collapse"]) {
-                @if map-get-deep($grid, settings, responsive) {
-                    @if not map-get-deep($grid, settings, mobile-first) {
-                        @media (max-width: map-get-deep($grid, options, col-collapse)) {
-                            width: (100% - map-get-deep($grid, options, gutter));
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    // Magic Columns Row
-    @if map-get-deep($grid, settings, magic-columns) {
-        @include modifier(magic) {
-            > #{$col-selector}:not([class*="collapse"]) {	
-                @include magic-column((
-                    semantic: false
-                ));
-            }
-        }
-    }
-    
-    // Block Columns Row
-    @if map-get-deep($grid, settings, block-columns) {
-        @include modifier(block) {
-            > #{$col-selector}:not([class*="collapse"]) {			
-                @if map-get-deep($grid, settings, mobile-first) {
-                    @media (min-width: map-get-deep($grid, options, col-collapse)) {
-                        display: table-cell;
-                    }
-                } @else {
-                    display: table-cell;
-                }
-            }
-            &:after {
-                display: none;
-            }
-        }
-    }
-    
-    // Default Stacking
-    @if map-get-deep($grid, settings, responsive) {
-        @media (#{$scale}-width: map-get-deep($grid, options, col-collapse)) {
-            &:not([class*="collapse"]):not([class*="flow"]) {
-                @include stack-columns;
-            }
-        }
-    }
-
-    // Custom Stacking
-    @if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, column-stacking) {
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
-            @media (#{$scale}-width: $width) {
-                &.collapse-#{$bp} {
-                    @include stack-columns;
-                    @if map-get-deep($grid, settings, mobile-first) {
-                        @include modifier(block) {
-                            > #{$col-selector} {
-                                display: table-cell;
+                &:not([class*="no-gutter"]) > #{$col-selector} {
+                    margin-left: map-get-deep($grid, options, gutter);
+                } 
+                > #{$col-selector}:not([class*="collapse"]) {
+                    @if map-get-deep($grid, settings, responsive) {
+                        @if not map-get-deep($grid, settings, mobile-first) {
+                            @media (max-width: map-get-deep($grid, options, col-collapse)) {
+                                width: (100% - map-get-deep($grid, options, gutter));
                             }
                         }
                     }
                 }
             }
-        } 
-    }
-    
-    // Reverse Column Order
-    @if map-get-deep($grid, settings, reverse-columns) {
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
-            @media (#{$scale}-width: $width) {
-                &.reverse-#{$bp} {
-                    transform: rotate(180deg);
-                    text-align: right;
-                    > #{$col-selector} {
-                        transform: scale(-1);
-                    }
-                }
-            }
         }
-    }
-    
-} // component(row)
-
-//-------------------------------------------------------------
-// Single Column
-//-------------------------------------------------------------
-
-%column {
-    display: inline-block;
-    vertical-align: top;
-    // IE < 8: fake inline-block
-    @if map-get-deep($grid, settings, old-ie) {
-        *display: inline;
-        zoom: 1; 
-    }
-}
-
-#{$col-selector} {
-    
-    @extend %column;
-    
-    @if map-get-deep($grid, settings, mobile-first) {
-        width: 100%;
-    } @else {	
-        @at-root {
-            .#{map-get-deep($grid, options, row-namespace)},
-            [class*="#{map-get-deep($grid, options, row-namespace)}-"]:not([class*="-no-gutter"]):not([class*="-flow"]) {
-                > #{$col-selector} {
-                    @include gutter;
-                }
-            }
-        }
-    }
-    
-    // Default Column Width
-    @if not map-get-deep($grid, settings, mobile-first) {
-        @for $i from 1 through map-get-deep($grid, options, columns) {
-            @at-root {
-                .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
-                    width: column-width($i, map-get-deep($grid, options, columns));
-                }
-                #{$row-no-gutter} {
-                    .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
-                        width: no-gutter-column-width($i, map-get-deep($grid, options, columns));
-                    }
-                }
-            }
-        }	
-    }
-    
-// Custom Width Overrides
-//-------------------------------------------------------------
-
-    @if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, width-override) {
-            
-        // Reverse $breakpoints map
-        // This is to allow the generated CSS to override when scaling
-        $reverse-breakpoints: if(
-            map-get-deep($grid, settings, mobile-first),
-            map-get-deep($grid, breakpoints),
-            reverse-map(map-get-deep($grid, breakpoints))
-        );
         
-        @each $bp, $width in $reverse-breakpoints {
-            @media (#{$scale}-width: $width) {
-                @each $name, $fraction in map-get-deep($grid, fractions) {		
-                    &.#{$bp}-#{$name} {
-                        width: flow-column-width(nth($fraction, 1), nth($fraction, 2));
-                        @at-root #{$row-no-gutter} & {
-                            width: no-gutter-column-width(nth($fraction, 1), nth($fraction, 2));
+        // Magic Columns Row
+        @if map-get-deep($grid, settings, magic-columns) {
+            @at-root .#{map-get-deep($grid, options, row-namespace)}--magic {
+                > #{$col-selector}:not([class*="collapse"]) {	
+                    @include magic-column((
+                        semantic: false
+                    ));
+                }
+            }
+        }
+        
+        // Block Columns Row
+        @if map-get-deep($grid, settings, block-columns) {
+            @at-root .#{map-get-deep($grid, options, row-namespace)}--block {
+                > #{$col-selector}:not([class*="collapse"]) {			
+                    @if map-get-deep($grid, settings, mobile-first) {
+                        @media (min-width: map-get-deep($grid, options, col-collapse)) {
+                            display: table-cell;
+                        }
+                    } @else {
+                        display: table-cell;
+                    }
+                }
+                &:after {
+                    display: none;
+                }
+            }
+        }
+        
+        // Default Stacking
+        @if map-get-deep($grid, settings, responsive) {
+            @media (#{$scale}-width: map-get-deep($grid, options, col-collapse)) {
+                &:not([class*="collapse"]):not([class*="flow"]) {
+                    @include stack-columns;
+                }
+            }
+        }
+    
+        // Custom Stacking
+        @if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, column-stacking) {
+            @each $bp, $width in map-get-deep($grid, breakpoints) {
+                @media (#{$scale}-width: $width) {
+                    &.collapse-#{$bp} {
+                        @include stack-columns;
+                        @if map-get-deep($grid, settings, mobile-first) {
+                            @at-root .#{map-get-deep($grid, options, row-namespace)}--block {
+                                > #{$col-selector} {
+                                    display: table-cell;
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+        
+        // Reverse Column Order
+        @if map-get-deep($grid, settings, reverse-columns) {
+            @each $bp, $width in map-get-deep($grid, breakpoints) {
+                @media (#{$scale}-width: $width) {
+                    &.reverse-#{$bp} {
+                        transform: rotate(180deg);
+                        text-align: right;
+                        > #{$col-selector} {
+                            transform: scale(-1);
                         }
                     }
                 }
             }
         }
+        
+    } // component(row)
     
-    } //@if (responsive) & (width-override)
-
-} // $col-selector
+    //-------------------------------------------------------------
+    // Single Column
+    //-------------------------------------------------------------
+    
+    %column {
+        display: inline-block;
+        vertical-align: top;
+        // IE < 8: fake inline-block
+        @if map-get-deep($grid, settings, old-ie) {
+            *display: inline;
+            zoom: 1; 
+        }
+    }
+    
+    #{$col-selector} {
+        
+        @extend %column;
+        
+        @if map-get-deep($grid, settings, mobile-first) {
+            width: 100%;
+        } @else {	
+            @at-root {
+                .#{map-get-deep($grid, options, row-namespace)},
+                [class*="#{map-get-deep($grid, options, row-namespace)}-"]:not([class*="-no-gutter"]):not([class*="-flow"]) {
+                    > #{$col-selector} {
+                        @include gutter;
+                    }
+                }
+            }
+        }
+        
+        // Default Column Width
+        @if not map-get-deep($grid, settings, mobile-first) {
+            @for $i from 1 through map-get-deep($grid, options, columns) {
+                @at-root {
+                    .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
+                        width: column-width($i, map-get-deep($grid, options, columns));
+                    }
+                    #{$row-no-gutter} {
+                        .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
+                            width: no-gutter-column-width($i, map-get-deep($grid, options, columns));
+                        }
+                    }
+                }
+            }	
+        }
+        
+    // Custom Width Overrides
+    //-------------------------------------------------------------
+    
+        @if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, width-override) {
+                
+            // Reverse $breakpoints map
+            // This is to allow the generated CSS to override when scaling
+            $reverse-breakpoints: if(
+                map-get-deep($grid, settings, mobile-first),
+                map-get-deep($grid, breakpoints),
+                reverse-map(map-get-deep($grid, breakpoints))
+            );
+            
+            @each $bp, $width in $reverse-breakpoints {
+                @media (#{$scale}-width: $width) {
+                    @each $name, $fraction in map-get-deep($grid, fractions) {		
+                        &.#{$bp}-#{$name} {
+                            width: flow-column-width(nth($fraction, 1), nth($fraction, 2));
+                            @at-root #{$row-no-gutter} & {
+                                width: no-gutter-column-width(nth($fraction, 1), nth($fraction, 2));
+                            }
+                        }
+                    }
+                }
+            }
+        
+        } //@if (responsive) & (width-override)
+    
+    } // $col-selector
+	
+} // @mixin grid
 
 //-------------------------------------------------------------
 // Functions
 //-------------------------------------------------------------
-
-// Column Widths
-//-------------------------------------------------------------
-
-// Default width
-@function column-width($span, $columns) {
-	@return ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * map-get-deep($grid, options, gutter) ) / ( $columns / $span ) );
-}
-
-// Flow Column width
-@function flow-column-width($span, $columns) {
-	@return ((100/$columns) * $span) - map-get-deep($grid, options, gutter);
-}
-
-// Magic Column width
-@function magic-column-width($columns: $columns) {
-	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * map-get-deep($grid, options, gutter) ) / $columns );
-}
-
-// No gutter width
-@function no-gutter-column-width($span, $columns) {
-	@return percentage($span/$columns);
-}
-
-// Config
-//-------------------------------------------------------------
-
-@function breakpoint($breakpoint) {
-    @return map-get(map-get($grid, breakpoints), $breakpoint);
-}
-
-@function fraction($fraction) {
-    @return map-get(map-get($grid, fractions), $fraction);
-}
 
 // Reverse Map Function
 // http://git.io/vLfuz
@@ -406,6 +376,40 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
         $map: map-get($map, $key);
     }
     @return $map;
+}
+
+// Column Widths
+//-------------------------------------------------------------
+
+// Default width
+@function column-width($span, $columns) {
+	@return ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * map-get-deep($grid, options, gutter) ) / ( $columns / $span ) );
+}
+
+// Flow Column width
+@function flow-column-width($span, $columns) {
+	@return ((100/$columns) * $span) - map-get-deep($grid, options, gutter);
+}
+
+// Magic Column width
+@function magic-column-width($columns: $columns) {
+	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * map-get-deep($grid, options, gutter) ) / $columns );
+}
+
+// No gutter width
+@function no-gutter-column-width($span, $columns) {
+	@return percentage($span/$columns);
+}
+
+// Config
+//-------------------------------------------------------------
+
+@function breakpoint($breakpoint) {
+    @return map-get(map-get($grid, breakpoints), $breakpoint);
+}
+
+@function fraction($fraction) {
+    @return map-get(map-get($grid, fractions), $fraction);
 }
 
 //-------------------------------------------------------------
@@ -511,42 +515,42 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($config: ()) {
+@mixin column($grid: ()) {
 	
-	$config: map-merge((
+	$grid: map-merge((
 		width        : full, 
 		type         : null, 
 		namespace    : map-get-deep($grid, options, col-namespace), 
 		stack        : map-get-deep($grid, options, col-collapse), 
 		mobile-first : map-get-deep($grid, settings, mobile-first),
 		respond-to   : null
-	), $config);
+	), $grid);
 	
-	$config: $config !global;
+	$grid: $grid !global;
 	
 	@extend %column;
 	
 	$span: null;
 	$columns: null; 
 			
-	@if type-of(map-get-deep($config, width)) == string {
-		$span: nth(fraction(map-get-deep($config, width)), 1);
-		$columns: nth(fraction(map-get-deep($config, width)), 2);
-	} @else if type-of(map-get-deep($config, width)) == number {
-		$span: map-get-deep($config, width);
+	@if type-of(map-get-deep($grid, width)) == string {
+		$span: nth(fraction(map-get-deep($grid, width)), 1);
+		$columns: nth(fraction(map-get-deep($grid, width)), 2);
+	} @else if type-of(map-get-deep($grid, width)) == number {
+		$span: map-get-deep($grid, width);
 		$columns: 100;	
-	} @else if type-of(map-get-deep($config, width)) == list {	
-		$span: nth(map-get-deep($config, width), 1);
-		$columns: nth(map-get-deep($config, width), 2);				
+	} @else if type-of(map-get-deep($grid, width)) == list {	
+		$span: nth(map-get-deep($grid, width), 1);
+		$columns: nth(map-get-deep($grid, width), 2);				
 	}
 	
-	@if map-get-deep($config, type) == magic {
+	@if map-get-deep($grid, type) == magic {
 		width: magic-column($namespace, $stack);
-	} @else if map-get-deep($config, type) == flow {		
+	} @else if map-get-deep($grid, type) == flow {		
 		width: flow-column-width($span, $columns);
 		margin-left: map-get-deep($grid, options, gutter);
 	} @else {
-		@if map-get-deep($config, mobile-first) {
+		@if map-get-deep($grid, mobile-first) {
 			width: 100%;
 			@media (min-width: $stack) {
 				width: column-width($span, $columns);
@@ -558,10 +562,10 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
 		} @else {			
 			@include gutter;
 			width: column-width($span, $columns);
-			@if map-get-deep($config, type) == block {
+			@if map-get-deep($grid, type) == block {
 				display: table-cell;		
 			} 
-			@media (max-width: map-get-deep($config, stack)) {
+			@media (max-width: map-get-deep($grid, stack)) {
 				display: block;
 				margin-left: 0;
 				width: 100%;
@@ -569,10 +573,10 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
 		}
 	}
 	
-	@if map-get-deep($config, respond-to) {
-		@each $width, $breakpoint in map-get-deep($config, respond-to) {
+	@if map-get-deep($grid, respond-to) {
+		@each $width, $breakpoint in map-get-deep($grid, respond-to) {
 			$columns: null;	$span: null; $respond-scale: null;	
-			@if map-get-deep($config, mobile-first) { 
+			@if map-get-deep($grid, mobile-first) { 
 				$respond-scale: min; 
 			} 
 			@else {
@@ -593,7 +597,7 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
 					width: flow-column-width($span, $columns);	
 				} @else {	
 					width: column-width($span, $columns);
-					@if not map-get-deep($config, mobile-first) {
+					@if not map-get-deep($grid, mobile-first) {
 						margin-left: 0;
 					}	
 				}		
@@ -602,3 +606,5 @@ $col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !glob
 	}
 	
 } // @mixin column
+
+@include grid;
