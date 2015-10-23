@@ -2,9 +2,8 @@
 // Config
 //-----------------------------------------------------------------
 
-$grid: map-merge((
+$grid: (
     name                : grid,
-    output-JSON         : true,
     options: (
         base-width      : 1200px,
         max-width       : 90%,
@@ -43,7 +42,9 @@ $grid: map-merge((
         quarter         : (1, 4),
         sixth           : (1, 6)
     )
-), $custom) !global;
+) !global;
+
+@import 'lib/functions/quick-config';
 
 // Set min/max width for breakpoints
 $scale: if(setting(mobile-first), min, max);

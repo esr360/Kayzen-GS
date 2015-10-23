@@ -16,7 +16,7 @@
 				$map-old: map-set($map-old, $key, $merged-value);	
 			} @else {
 				// Otherwise check $overwrite
-				@if $overwrite{
+				@if $overwrite {
 					$map-old: map-set($map-old, $key, $new-value);
 				}
 			}

@@ -1,0 +1,43 @@
+//-----------------------------------------------------------------
+// Core Column Mixin
+//-----------------------------------------------------------------
+
+@mixin column($custom: ()) {
+
+	//-------------------------------------------------------------
+	// Config
+	//-------------------------------------------------------------
+    
+	$config: map-merge-deep((
+        
+        // Default Options
+		'core'    : false,
+        'display' : 'inline-block',
+        'gutter'  : false,
+        'width'   : 100%
+        
+	), $custom) !global;
+
+	//-------------------------------------------------------------
+	// Styles
+	//-------------------------------------------------------------
+        
+    width: config('width');
+    
+    @if config('core') {
+        display: config('display');
+        @if config('display') == 'inline-block' {
+            vertical-align: top;
+            // IE < 8: fake inline-block
+            @if setting('old-ie') {
+                *display: inline;
+                zoom: 1; 
+            }
+        }
+    }
+    
+    @if config('gutter') {
+        @include gutter;
+    }
+    
+} // column()

@@ -1,0 +1,10 @@
+
+.#{option(row-namespace)}--flow {
+    @for $i from 1 through option(columns) {
+        
+        > .#{option(col-namespace)}-#{$i} {
+            width: flow-column-width($i, option(columns));
+        }
+        
+    }
+}

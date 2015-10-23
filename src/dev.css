@@ -1,0 +1,121 @@
+.span-1 {
+  width: 5.58333%;
+}
+
+.span-2 {
+  width: 14.16667%;
+}
+
+.span-3 {
+  width: 22.75%;
+}
+
+.span-4 {
+  width: 31.33333%;
+}
+
+.span-5 {
+  width: 39.91667%;
+}
+
+.span-6 {
+  width: 48.5%;
+}
+
+.span-7 {
+  width: 57.08333%;
+}
+
+.span-8 {
+  width: 65.66667%;
+}
+
+.span-9 {
+  width: 74.25%;
+}
+
+.span-10 {
+  width: 82.83333%;
+}
+
+.span-11 {
+  width: 91.41667%;
+}
+
+.span-12 {
+  width: 100%;
+}
+
+.row--flow > .span-1 {
+  width: 5.33333%;
+}
+.row--flow > .span-2 {
+  width: 13.66667%;
+}
+.row--flow > .span-3 {
+  width: 22%;
+}
+.row--flow > .span-4 {
+  width: 30.33333%;
+}
+.row--flow > .span-5 {
+  width: 38.66667%;
+}
+.row--flow > .span-6 {
+  width: 47%;
+}
+.row--flow > .span-7 {
+  width: 55.33333%;
+}
+.row--flow > .span-8 {
+  width: 63.66667%;
+}
+.row--flow > .span-9 {
+  width: 72%;
+}
+.row--flow > .span-10 {
+  width: 80.33333%;
+}
+.row--flow > .span-11 {
+  width: 88.66667%;
+}
+.row--flow > .span-12 {
+  width: 97%;
+}
+
+.row--no-gutter > .span-1 {
+  width: 8.33333%;
+}
+.row--no-gutter > .span-2 {
+  width: 16.66667%;
+}
+.row--no-gutter > .span-3 {
+  width: 25%;
+}
+.row--no-gutter > .span-4 {
+  width: 33.33333%;
+}
+.row--no-gutter > .span-5 {
+  width: 41.66667%;
+}
+.row--no-gutter > .span-6 {
+  width: 50%;
+}
+.row--no-gutter > .span-7 {
+  width: 58.33333%;
+}
+.row--no-gutter > .span-8 {
+  width: 66.66667%;
+}
+.row--no-gutter > .span-9 {
+  width: 75%;
+}
+.row--no-gutter > .span-10 {
+  width: 83.33333%;
+}
+.row--no-gutter > .span-11 {
+  width: 91.66667%;
+}
+.row--no-gutter > .span-12 {
+  width: 100%;
+}

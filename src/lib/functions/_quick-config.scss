@@ -18,5 +18,5 @@
 }
 
 @function config($options...) {
-    @return map-get-deep($options);
+    @return map-get-deep($config, $options...);
 }
