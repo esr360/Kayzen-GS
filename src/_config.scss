@@ -46,14 +46,17 @@ $grid: map-merge((
 ), $custom) !global;
 
 // Set min/max width for breakpoints
-$scale: if(map-get-deep($grid, settings, mobile-first), min, max);
+$scale: if(setting(mobile-first), min, max);
 
 // Reset "mobile-first" to false if "responsive" is disabled
-@if not map-get-deep($grid, settings, responsive) {
+@if not setting(responsive) {
     $grid: map-merge-deep((settings: (
         mobile-first: false
     )), $grid);
 }
 
 // Column Selector
-$col-selector: '[class*="#{map-get-deep($grid, options, col-namespace)}"]' !global;
+$col-namespace: '[class*="#{option(col-namespace)}"]' !global;
+
+// Row Selector
+$row-namespace: '.#{option(row-namespace)}' !global;

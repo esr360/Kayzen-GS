@@ -1,0 +1,46 @@
+//-----------------------------------------------------------------
+// Core Row Mixin
+//-----------------------------------------------------------------
+
+@mixin row($config: ()) {
+    
+	$config: map-merge-deep((
+        
+		core  : false
+        
+	), $config);
+    
+    #{$row-namespace} {
+        
+        @if config(core) {
+            // Firefox/IE collapse white-space
+            letter-spacing: -1em;
+            // Webkit collapse white-space
+            display: table;
+            width: 100%;
+            // Opera collapse white-space
+            @at-root {
+                .opera-only :-o-prefocus, & {
+                    word-spacing: -0.43em;
+                }
+            }
+            // IE < 8 collapse white-space
+            @if setting(old-ie) {
+                *letter-spacing: normal;
+                *word-spacing: -0.43em;
+            }	
+            // Required for some third-party sliders
+            table-layout: fixed;
+            // Reset spacing
+            @at-root {
+                * {        
+                    letter-spacing: normal;
+                    word-spacing: normal;
+                    text-rendering: auto;
+                }		
+            }
+        }
+        
+    } // $row-namespace
+    
+} // row()

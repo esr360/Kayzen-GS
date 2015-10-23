@@ -1,0 +1,8 @@
+// Default Column Width
+@if not setting(mobile-first) {
+    @for $i from 1 through option(columns) {
+        .#{option(col-namespace)}-#{$i} {	
+            width: column-width($i, option(columns));
+        }
+    }	
+}

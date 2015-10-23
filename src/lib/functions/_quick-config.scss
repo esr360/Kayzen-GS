@@ -1,0 +1,22 @@
+// Quick Config
+//-----------------------------------------------------------------
+
+@function option($option) {
+    @return map-get-deep($grid, 'options', $option);
+}
+
+@function setting($setting) {
+    @return map-get-deep($grid, 'settings', $setting);
+}
+
+@function breakpoint($breakpoint) {
+    @return map-get-deep($grid, 'breakpoints', $breakpoint);
+}
+
+@function fraction($fraction) {
+    @return map-get-deep($grid, 'fractions', $fraction);
+}
+
+@function config($options...) {
+    @return map-get-deep($options);
+}

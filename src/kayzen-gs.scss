@@ -17,32 +17,6 @@ http://github.com/esr360/Kayzen-GS/
     //-------------------------------------------------------------
     
     %row {
-        // Firefox/IE collapse white-space
-        letter-spacing: -1em;
-        // Webkit collapse white-space
-        display: table;
-        width: 100%;
-        // Opera collapse white-space
-        @at-root {
-            .opera-only :-o-prefocus, & {
-                word-spacing: -0.43em;
-            }
-        }
-        // IE < 8 collapse white-space
-        @if map-get-deep($grid, settings, old-ie) {
-            *letter-spacing: normal;
-            *word-spacing: -0.43em;
-        }	
-        // Required for some third-party sliders
-        table-layout: fixed;
-        // Reset spacing
-        @at-root {
-            * {        
-                letter-spacing: normal;
-                word-spacing: normal;
-                text-rendering: auto;
-            }		
-        }
     }
     
     .#{map-get-deep($grid, options, row-namespace)} {
@@ -58,47 +32,12 @@ http://github.com/esr360/Kayzen-GS/
     //-------------------------------------------------------------
     
     %column {
-        display: inline-block;
-        vertical-align: top;
-        // IE < 8: fake inline-block
-        @if map-get-deep($grid, settings, old-ie) {
-            *display: inline;
-            zoom: 1; 
-        }
     }
     
     #{$col-selector} {
         
         @extend %column;
-        
-        @if map-get-deep($grid, settings, mobile-first) {
-            width: 100%;
-        } @else {	
-            @at-root {
-                .#{map-get-deep($grid, options, row-namespace)},
-                [class*="#{map-get-deep($grid, options, row-namespace)}-"]:not([class*="-no-gutter"]):not([class*="-flow"]) {
-                    > #{$col-selector} {
-                        @include gutter;
-                    }
-                }
-            }
-        }
-        
-        // Default Column Width
-        @if not map-get-deep($grid, settings, mobile-first) {
-            @for $i from 1 through map-get-deep($grid, options, columns) {
-                @at-root {
-                    .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
-                        width: column-width($i, map-get-deep($grid, options, columns));
-                    }
-                    #{$row-no-gutter} {
-                        .#{map-get-deep($grid, options, col-namespace)}-#{$i} {	
-                            width: no-gutter-column-width($i, map-get-deep($grid, options, columns));
-                        }
-                    }
-                }
-            }	
-        }
+       
         
     // Custom Width Overrides
     //-------------------------------------------------------------
@@ -117,13 +56,6 @@ http://github.com/esr360/Kayzen-GS/
 // Config
 //-------------------------------------------------------------
 
-@function breakpoint($breakpoint) {
-    @return map-get(map-get($grid, breakpoints), $breakpoint);
-}
-
-@function fraction($fraction) {
-    @return map-get(map-get($grid, fractions), $fraction);
-}
 
 //-------------------------------------------------------------
 // Utilities
