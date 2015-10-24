@@ -1,6 +1,6 @@
 // Flow Columns Row
 @if map-get-deep($grid, settings, flow-columns) {
-    @at-root .#{map-get-deep($grid, options, row-namespace)}--flow {
+    @at-root .#{option(row-namespace)}--flow {
         &:not([class*="no-gutter"]) {
             margin-left: -#{map-get-deep($grid, options, gutter)};
             width: 100% + map-get-deep($grid, options, gutter);

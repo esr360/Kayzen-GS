@@ -7,8 +7,6 @@
 
 @import 'lib/tools/gutter';
 
-@import 'core/column/core';
-
 @import 'lib/column-types/default-columns/calculate-width';
 @import 'lib/column-types/default-columns/generate-cols';
 
@@ -17,3 +15,7 @@
 
 @import 'lib/column-types/no-gutter-columns/calculate-width';
 @import 'lib/column-types/no-gutter-columns/generate-cols';
+
+@import 'core/column/core';
+@import 'core/row/core';
+@import 'core/core';

@@ -16,9 +16,9 @@ $grid: (
         col-namespace   : "span",
     ),
     settings: (
-        old-ie          : true,
+        old-ie          : false,
         responsive      : true,
-        mobile-first    : false,
+        mobile-first    : true,
         column-stacking : true,
         width-override  : true,
         flow-columns    : true,
@@ -55,9 +55,3 @@ $scale: if(setting(mobile-first), min, max);
         mobile-first: false
     )), $grid);
 }
-
-// Column Selector
-$col-namespace: '[class*="#{option(col-namespace)}"]' !global;
-
-// Row Selector
-$row-namespace: '.#{option(row-namespace)}' !global;

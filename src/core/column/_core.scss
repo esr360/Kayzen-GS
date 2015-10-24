@@ -2,7 +2,7 @@
 // Core Column Mixin
 //-----------------------------------------------------------------
 
-@mixin column($custom: ()) {
+@mixin column-core($custom: ()) {
 
 	//-------------------------------------------------------------
 	// Config
@@ -11,18 +11,20 @@
 	$config: map-merge-deep((
         
         // Default Options
-		'core'    : false,
-        'display' : 'inline-block',
+		'core'    : true,
+        'display' : inline-block,
         'gutter'  : false,
-        'width'   : 100%
+        'width'   : null
         
 	), $custom) !global;
 
 	//-------------------------------------------------------------
 	// Styles
 	//-------------------------------------------------------------
-        
-    width: config('width');
+    
+    @if config('width') != 'null' {
+        width: config('width');
+    }
     
     @if config('core') {
         display: config('display');
@@ -40,4 +42,4 @@
         @include gutter;
     }
     
-} // column()
+} // column-core()

@@ -1,5 +1,5 @@
 // Custom Stacking
-@if map-get-deep($grid, settings, responsive) and map-get-deep($grid, settings, column-stacking) {
+@if setting(responsive) and setting($grid, settings, column-stacking) {
     @each $bp, $width in map-get-deep($grid, breakpoints) {
         @media (#{$scale}-width: $width) {
             &.collapse-#{$bp} {

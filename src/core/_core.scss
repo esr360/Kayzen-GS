@@ -1,0 +1,21 @@
+.#{option('row-namespace')} {
+    
+    @include row-core;
+    
+    &:not([class*="--break"]) {
+    
+        @media (min-width: option(col-collapse)) {
+            @include default-columns;
+        }
+    
+    }
+    
+    @each $bp, $width in map-get-deep($grid, breakpoints) {
+        &--#{$bp} {
+            @media (#{$scale}-width: $width) {
+                @include default-columns;
+            }
+        }
+    }
+    
+}
