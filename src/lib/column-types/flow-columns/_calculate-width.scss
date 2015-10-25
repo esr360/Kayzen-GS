@@ -1,4 +1,4 @@
 // Flow Column width
 @function flow-column-width($span, $columns) {
-	@return ((100/$columns) * $span) - map-get-deep($grid, options, gutter);
+	@return ((100/$columns) * $span) - option(gutter);
 }

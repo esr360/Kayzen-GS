@@ -23,7 +23,7 @@
         }
     }
 
-    @each $bp, $width in map-get-deep($grid, breakpoints) {
+    @each $bp, $width in kayzenGS(breakpoints) {
         &.#{option('row-namespace')}--#{$bp} {
             @if setting(mobile-first) {
                 @media (#{$scale}-width: $width) {
@@ -67,7 +67,7 @@
             }
         }
     
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
+        @each $bp, $width in kayzenGS(breakpoints) {
             &.#{option('row-namespace')}--#{$bp} {
                 @if setting(mobile-first) {
                     @media (#{$scale}-width: $width) {
@@ -106,7 +106,7 @@
                 }
             }
             
-            @each $bp, $width in map-get-deep($grid, breakpoints) {
+            @each $bp, $width in kayzenGS(breakpoints) {
                 &.#{option('row-namespace')}--#{$bp} {
                     @if setting(mobile-first) {
                         @media (#{$scale}-width: $width) {
@@ -156,7 +156,7 @@
             }
         }
         
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
+        @each $bp, $width in kayzenGS(breakpoints) {
             &.#{option('row-namespace')}--#{$bp} {
                 @if setting(mobile-first) {
                     @media (#{$scale}-width: $width) {
@@ -181,7 +181,7 @@
             @include reverse-order;
         }
                     
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
+        @each $bp, $width in kayzenGS(breakpoints) {
             @media (#{$scale}-width: $width) {
                 &.reverse-#{$bp} {
                     @include reverse-order;

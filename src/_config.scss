@@ -2,7 +2,7 @@
 // Config
 //-----------------------------------------------------------------
 
-$grid: (
+$kayzenGS: (
     name                : grid,
     options: (
         base-width      : 1200px,
@@ -51,7 +51,7 @@ $scale: if(setting(mobile-first), min, max);
 
 // Reset "mobile-first" to false if "responsive" is disabled
 @if not setting(responsive) {
-    $grid: map-merge-deep((settings: (
+    $kayzenGS: map-merge-deep((settings: (
         mobile-first: false
-    )), $grid);
+    )), $kayzenGS);
 }

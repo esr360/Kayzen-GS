@@ -4,8 +4,8 @@
     // This is to allow the generated CSS to override when scaling
     $reverse-breakpoints: if(
         setting(mobile-first),
-        map-get-deep($grid, breakpoints),
-        reverse-map(map-get-deep($grid, breakpoints))
+        kayzenGS(breakpoints),
+        reverse-map(kayzenGS(breakpoints))
     );
 
     > [class*="#{option('col-namespace')}"] {
@@ -17,7 +17,7 @@
         
         @each $bp, $width in $reverse-breakpoints {
             @media (#{$scale}-width: $width) {
-                @each $name, $fraction in map-get-deep($grid, fractions) {		
+                @each $name, $fraction in kayzenGS(fractions) {		
                     &.#{$bp}-#{$name} {
                         width: flow-column-width(nth($fraction, 1), nth($fraction, 2));
                     }

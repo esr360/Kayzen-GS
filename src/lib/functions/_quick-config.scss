@@ -1,20 +1,24 @@
 // Quick Config
 //-----------------------------------------------------------------
 
+@function kayzenGS($option) {
+    @return map-get-deep($kayzenGS, $option);
+}
+
 @function option($option) {
-    @return map-get-deep($grid, 'options', $option);
+    @return map-get-deep($kayzenGS, 'options', $option);
 }
 
 @function setting($setting) {
-    @return map-get-deep($grid, 'settings', $setting);
+    @return map-get-deep($kayzenGS, 'settings', $setting);
 }
 
 @function breakpoint($breakpoint) {
-    @return map-get-deep($grid, 'breakpoints', $breakpoint);
+    @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
 }
 
 @function fraction($fraction) {
-    @return map-get-deep($grid, 'fractions', $fraction);
+    @return map-get-deep($kayzenGS, 'fractions', $fraction);
 }
 
 @function config($options...) {

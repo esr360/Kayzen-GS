@@ -1,4 +1,4 @@
 // Default width
 @function column-width($span, $columns) {
-	@return ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * map-get-deep($grid, options, gutter) ) / ( $columns / $span ) );
+	@return ( (100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * option(gutter) ) / ( $columns / $span ) );
 }
