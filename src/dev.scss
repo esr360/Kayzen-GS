@@ -33,3 +33,48 @@
 
 @import 'lib/semantic-gs/row';
 @import 'lib/semantic-gs/columns';
+
+//
+
+.default-default {
+    @include column((
+        width : (3, 12)
+    ));
+}
+
+.default-percent {
+    @include column((
+        width : 25%
+    ));
+}
+
+.default-fraction {
+    @include column((
+        width : quarter
+    ));
+}
+
+.flow-default {
+    @include column((
+        type  : flow,
+        width : quarter
+    ));
+}
+
+.magic-default {
+    @include column((
+        type  : magic,
+        width : quarter
+    ));
+}
+
+.flow-respond-to {
+    @include column((
+        type: flow,
+        respond-to: (
+            ((6, 12), break-1),
+            ((4, 12), break-2),
+            ((3, 12), break-3)
+        )
+    ));
+}

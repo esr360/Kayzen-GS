@@ -129,6 +129,9 @@
     
     &--no-gutter {
         
+        @include custom-pull(no-gutter);
+        @include custom-push(no-gutter);
+        
         @include no-gutter-columns;
         
     }

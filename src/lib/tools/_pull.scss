@@ -11,7 +11,7 @@
             } @else if $col-type == 'flow' {
                 left: calc(-#{flow-column-width($i, option(columns))} - #{option(gutter)});
             } @else if $col-type == 'no-gutter' {
-                left: calc(-#{no-gutter-column-width($i, option(columns))} - #{option(gutter)});
+                left: calc(-#{no-gutter-column-width($i, option(columns))});
             }
         }      
     }     
