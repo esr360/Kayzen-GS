@@ -4,6 +4,7 @@
 @mixin stack-columns($flow: false) {
     > [class*="#{option(col-namespace)}"] {
         display: block;
+        left: auto; // resets push/pull
         @if not $flow {
             width: 100% !important;
             margin-left: 0;

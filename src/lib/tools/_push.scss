@@ -1,4 +1,4 @@
-@mixin custom-push {
+@mixin custom-push($col-type: default) {
     
     [class*="push-"] {
         position: relative;
@@ -6,7 +6,13 @@
         
     @for $i from 1 through option(columns) {       
         .push-#{$i} {
-            left: calc(#{column-width($i, option(columns))} + #{option(gutter)});
+            @if $col-type == 'default' {
+                left: calc(#{column-width($i, option(columns))} + #{option(gutter)});
+            } @else if $col-type == 'flow' {
+                left: calc(#{flow-column-width($i, option(columns))} + #{option(gutter)});
+            } @else if $col-type == 'no-gutter' {
+                left: calc(#{no-gutter-column-width($i, option(columns))} + #{option(gutter)});
+            }
         }      
     }     
     

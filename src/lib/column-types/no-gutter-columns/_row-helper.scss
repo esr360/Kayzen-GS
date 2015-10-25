@@ -1,6 +1,0 @@
-// No Gutter Row
-@if map-get-deep($grid, settings, no-gutter) {
-    @at-root .#{map-get-deep($grid, options, row-namespace)}--no-gutter {
-        $row-no-gutter: (&) !global;
-    }
-}
