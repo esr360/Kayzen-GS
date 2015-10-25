@@ -1,10 +1,19 @@
-
-.#{option(row-namespace)}--flow {
+@mixin flow-columns {
+   
+    &.#{option('row-namespace')}:not([class="no-gutter"]) {
+        margin-left: -#{option(gutter)};
+        width: 100% + option(gutter);
+    }
+    
+    > [class*="#{option('col-namespace')}"] {
+        @include column-core;
+        @include gutter($flush: false);  
+    }
+    
     @for $i from 1 through option(columns) {
-        
         > .#{option(col-namespace)}-#{$i} {
             width: flow-column-width($i, option(columns));
         }
-        
     }
+   
 }

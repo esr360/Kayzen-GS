@@ -2,20 +2,46 @@
     
     @include row-core;
     
-    &:not([class*="--break"]) {
+    // Default Columns
+    //-------------------------------------------------------------
     
-        @media (min-width: option(col-collapse)) {
-            @include default-columns;
-        }
+    &:not(&--flow) {
     
-    }
-    
-    @each $bp, $width in map-get-deep($grid, breakpoints) {
-        &--#{$bp} {
-            @media (#{$scale}-width: $width) {
+        &:not([class*="break"]) {
+            @media (min-width: option(col-collapse)) {
                 @include default-columns;
             }
         }
+    
+        @each $bp, $width in map-get-deep($grid, breakpoints) {
+            &.#{option('row-namespace')}--#{$bp} {
+                @media (#{$scale}-width: $width) {
+                    @include default-columns;
+                }
+            }
+        }
+        
+    }
+    
+    // Flow Columns
+    //-------------------------------------------------------------
+    
+    &--flow {
+        
+        &:not([class*="break"]) {
+            @media (min-width: option(col-collapse)) {
+                @include flow-columns;
+            }
+        }
+    
+        @each $bp, $width in map-get-deep($grid, breakpoints) {
+            &.#{option('row-namespace')}--#{$bp} {
+                @media (#{$scale}-width: $width) {
+                    @include flow-columns;
+                }
+            }
+        }
+        
     }
     
 }
