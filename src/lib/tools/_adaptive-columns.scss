@@ -1,4 +1,4 @@
-@mixin adaptive-column {
+@mixin kgs-adaptive-columns {
     
     // Reverse $breakpoints map
     // This is to allow the generated CSS to override when scaling
@@ -11,8 +11,8 @@
     > [class*="#{option('col-namespace')}"] {
     
         &[class*="break"] {
-            @include column-core;
-            @include gutter($flush: false);
+            @include kgs-column-core;
+            @include kgs-gutter($flush: false);
         }
         
         @each $bp, $width in $reverse-breakpoints {

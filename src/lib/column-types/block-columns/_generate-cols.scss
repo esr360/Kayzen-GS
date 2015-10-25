@@ -1,4 +1,4 @@
-@mixin block-columns {
+@mixin kgs-block-columns {
     
     > [class*="#{option('col-namespace')}"] {
         display: table-cell;

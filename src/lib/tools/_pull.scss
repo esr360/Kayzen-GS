@@ -1,4 +1,4 @@
-@mixin custom-pull($col-type: default) {
+@mixin kgs-pull($col-type: default) {
     
     [class*="pull-"] {
         position: relative;

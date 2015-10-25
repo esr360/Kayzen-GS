@@ -1,13 +1,13 @@
 // Default Column Width
-@mixin no-gutter-columns {
+@mixin kgs-no-gutter-columns {
     
     > [class*="#{option('col-namespace')}"] {
-        @include column-core;
+        @include kgs-column-core;
     }
             
     @for $i from 1 through option(columns) {
         > .#{option(col-namespace)}-#{$i} {	
-            width: no-gutter-column-width($i, option(columns));
+            width: kgs-no-gutter-width($i, option(columns));
         }
     }
     

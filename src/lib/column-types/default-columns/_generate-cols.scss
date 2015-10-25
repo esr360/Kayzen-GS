@@ -1,13 +1,13 @@
-@mixin default-columns {
+@mixin kgs-default-columns {
         
     > [class*="#{option('col-namespace')}"] {
-        @include column-core;
-        @include gutter;  
+        @include kgs-column-core;
+        @include kgs-gutter;  
     }
         
     @for $i from 1 through option(columns) {       
         > .#{option('col-namespace')}-#{$i} {
-            width: column-width($i, option(columns))
+            width: kgs-default-width($i, option(columns))
         }      
     }  
     

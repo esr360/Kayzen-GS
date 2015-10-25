@@ -1,16 +1,16 @@
-@mixin magic-columns {
+@mixin kgs-magic-columns {
     
 	> [class*="#{option('col-namespace')}"] {
         
-        @include column-core;
-        @include gutter;  
+        @include kgs-column-core;
+        @include kgs-gutter;  
         
         &:first-child {
             margin-left: 0;
             @for $i from 1 through option(columns) {
                 &:nth-last-child(#{$i}) {
                     &, ~ [class*="#{option('col-namespace')}"] {
-                        width: magic-column-width($i);
+                        width: kgs-magic-width($i);
                     }
                 }
             }

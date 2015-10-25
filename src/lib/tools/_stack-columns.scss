@@ -1,7 +1,7 @@
 // Column Stacking
 //-------------------------------------------------------------
 
-@mixin stack-columns($flow: false) {
+@mixin kgs-stack-columns($flow: false) {
     > [class*="#{option(col-namespace)}"] {
         display: block;
         left: auto; // resets push/pull

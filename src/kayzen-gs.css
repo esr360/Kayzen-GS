@@ -5,6 +5,27 @@ Made by @esr360
 https://github.com/esr360/Kayzen-GS
 	
 -----------------------------------------------------------------*/
+/*-----------------------------------------------------------------
+
+Kayzen GS
+Made by @esr360
+https://github.com/esr360/Kayzen-GS
+	
+-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------
+
+Kayzen GS
+Made by @esr360
+https://github.com/esr360/Kayzen-GS
+	
+-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------
+
+Kayzen GS
+Made by @esr360
+https://github.com/esr360/Kayzen-GS
+	
+-----------------------------------------------------------------*/
 .row,
 [class*="row--"] {
   letter-spacing: -1em;
@@ -130,103 +151,103 @@ https://github.com/esr360/Kayzen-GS
   position: relative;
 }
 .row--flow .pull-1 {
-  left: -webkit-calc(-5.33333% - 3%);
-  left: calc(-5.33333% - 3%);
+  left: -webkit-calc(-flow-column-width(1, 12) - 3%);
+  left: calc(-flow-column-width(1, 12) - 3%);
 }
 .row--flow .pull-2 {
-  left: -webkit-calc(-13.66667% - 3%);
-  left: calc(-13.66667% - 3%);
+  left: -webkit-calc(-flow-column-width(2, 12) - 3%);
+  left: calc(-flow-column-width(2, 12) - 3%);
 }
 .row--flow .pull-3 {
-  left: -webkit-calc(-22% - 3%);
-  left: calc(-22% - 3%);
+  left: -webkit-calc(-flow-column-width(3, 12) - 3%);
+  left: calc(-flow-column-width(3, 12) - 3%);
 }
 .row--flow .pull-4 {
-  left: -webkit-calc(-30.33333% - 3%);
-  left: calc(-30.33333% - 3%);
+  left: -webkit-calc(-flow-column-width(4, 12) - 3%);
+  left: calc(-flow-column-width(4, 12) - 3%);
 }
 .row--flow .pull-5 {
-  left: -webkit-calc(-38.66667% - 3%);
-  left: calc(-38.66667% - 3%);
+  left: -webkit-calc(-flow-column-width(5, 12) - 3%);
+  left: calc(-flow-column-width(5, 12) - 3%);
 }
 .row--flow .pull-6 {
-  left: -webkit-calc(-47% - 3%);
-  left: calc(-47% - 3%);
+  left: -webkit-calc(-flow-column-width(6, 12) - 3%);
+  left: calc(-flow-column-width(6, 12) - 3%);
 }
 .row--flow .pull-7 {
-  left: -webkit-calc(-55.33333% - 3%);
-  left: calc(-55.33333% - 3%);
+  left: -webkit-calc(-flow-column-width(7, 12) - 3%);
+  left: calc(-flow-column-width(7, 12) - 3%);
 }
 .row--flow .pull-8 {
-  left: -webkit-calc(-63.66667% - 3%);
-  left: calc(-63.66667% - 3%);
+  left: -webkit-calc(-flow-column-width(8, 12) - 3%);
+  left: calc(-flow-column-width(8, 12) - 3%);
 }
 .row--flow .pull-9 {
-  left: -webkit-calc(-72% - 3%);
-  left: calc(-72% - 3%);
+  left: -webkit-calc(-flow-column-width(9, 12) - 3%);
+  left: calc(-flow-column-width(9, 12) - 3%);
 }
 .row--flow .pull-10 {
-  left: -webkit-calc(-80.33333% - 3%);
-  left: calc(-80.33333% - 3%);
+  left: -webkit-calc(-flow-column-width(10, 12) - 3%);
+  left: calc(-flow-column-width(10, 12) - 3%);
 }
 .row--flow .pull-11 {
-  left: -webkit-calc(-88.66667% - 3%);
-  left: calc(-88.66667% - 3%);
+  left: -webkit-calc(-flow-column-width(11, 12) - 3%);
+  left: calc(-flow-column-width(11, 12) - 3%);
 }
 .row--flow .pull-12 {
-  left: -webkit-calc(-97% - 3%);
-  left: calc(-97% - 3%);
+  left: -webkit-calc(-flow-column-width(12, 12) - 3%);
+  left: calc(-flow-column-width(12, 12) - 3%);
 }
 .row--flow [class*="push-"] {
   position: relative;
 }
 .row--flow .push-1 {
-  left: -webkit-calc(5.33333% + 3%);
-  left: calc(5.33333% + 3%);
+  left: -webkit-calc(flow-column-width(1, 12) + 3%);
+  left: calc(flow-column-width(1, 12) + 3%);
 }
 .row--flow .push-2 {
-  left: -webkit-calc(13.66667% + 3%);
-  left: calc(13.66667% + 3%);
+  left: -webkit-calc(flow-column-width(2, 12) + 3%);
+  left: calc(flow-column-width(2, 12) + 3%);
 }
 .row--flow .push-3 {
-  left: -webkit-calc(22% + 3%);
-  left: calc(22% + 3%);
+  left: -webkit-calc(flow-column-width(3, 12) + 3%);
+  left: calc(flow-column-width(3, 12) + 3%);
 }
 .row--flow .push-4 {
-  left: -webkit-calc(30.33333% + 3%);
-  left: calc(30.33333% + 3%);
+  left: -webkit-calc(flow-column-width(4, 12) + 3%);
+  left: calc(flow-column-width(4, 12) + 3%);
 }
 .row--flow .push-5 {
-  left: -webkit-calc(38.66667% + 3%);
-  left: calc(38.66667% + 3%);
+  left: -webkit-calc(flow-column-width(5, 12) + 3%);
+  left: calc(flow-column-width(5, 12) + 3%);
 }
 .row--flow .push-6 {
-  left: -webkit-calc(47% + 3%);
-  left: calc(47% + 3%);
+  left: -webkit-calc(flow-column-width(6, 12) + 3%);
+  left: calc(flow-column-width(6, 12) + 3%);
 }
 .row--flow .push-7 {
-  left: -webkit-calc(55.33333% + 3%);
-  left: calc(55.33333% + 3%);
+  left: -webkit-calc(flow-column-width(7, 12) + 3%);
+  left: calc(flow-column-width(7, 12) + 3%);
 }
 .row--flow .push-8 {
-  left: -webkit-calc(63.66667% + 3%);
-  left: calc(63.66667% + 3%);
+  left: -webkit-calc(flow-column-width(8, 12) + 3%);
+  left: calc(flow-column-width(8, 12) + 3%);
 }
 .row--flow .push-9 {
-  left: -webkit-calc(72% + 3%);
-  left: calc(72% + 3%);
+  left: -webkit-calc(flow-column-width(9, 12) + 3%);
+  left: calc(flow-column-width(9, 12) + 3%);
 }
 .row--flow .push-10 {
-  left: -webkit-calc(80.33333% + 3%);
-  left: calc(80.33333% + 3%);
+  left: -webkit-calc(flow-column-width(10, 12) + 3%);
+  left: calc(flow-column-width(10, 12) + 3%);
 }
 .row--flow .push-11 {
-  left: -webkit-calc(88.66667% + 3%);
-  left: calc(88.66667% + 3%);
+  left: -webkit-calc(flow-column-width(11, 12) + 3%);
+  left: calc(flow-column-width(11, 12) + 3%);
 }
 .row--flow .push-12 {
-  left: -webkit-calc(97% + 3%);
-  left: calc(97% + 3%);
+  left: -webkit-calc(flow-column-width(12, 12) + 3%);
+  left: calc(flow-column-width(12, 12) + 3%);
 }
 .row--flow > [class*="span"] {
   display: inline-block;
@@ -328,104 +349,104 @@ https://github.com/esr360/Kayzen-GS
 }
 @media (max-width: 1400px) {
   .row--flow > [class*="span"].break-5-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-5-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-5-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-5-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-5-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 @media (max-width: 1200px) {
   .row--flow > [class*="span"].break-4-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-4-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-4-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-4-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-4-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 @media (max-width: 940px) {
   .row--flow > [class*="span"].break-3-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-3-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-3-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-3-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-3-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 @media (max-width: 720px) {
   .row--flow > [class*="span"].break-2-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-2-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-2-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-2-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-2-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 @media (max-width: 460px) {
   .row--flow > [class*="span"].break-1-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-1-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-1-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-1-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-1-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 @media (max-width: 0px) {
   .row--flow > [class*="span"].break-0-full {
-    width: 97%;
+    width: flow-column-width(1, 1);
   }
   .row--flow > [class*="span"].break-0-half {
-    width: 47%;
+    width: flow-column-width(1, 2);
   }
   .row--flow > [class*="span"].break-0-third {
-    width: 30.33333%;
+    width: flow-column-width(1, 3);
   }
   .row--flow > [class*="span"].break-0-quarter {
-    width: 22%;
+    width: flow-column-width(1, 4);
   }
   .row--flow > [class*="span"].break-0-sixth {
-    width: 13.66667%;
+    width: flow-column-width(1, 6);
   }
 }
 .row--magic > [class*="span"] {
@@ -535,103 +556,103 @@ https://github.com/esr360/Kayzen-GS
   position: relative;
 }
 .row--no-gutter .pull-1 {
-  left: -webkit-calc(-8.33333%);
-  left: calc(-8.33333%);
+  left: -webkit-calc(-no-gutter-column-width(1, 12));
+  left: calc(-no-gutter-column-width(1, 12));
 }
 .row--no-gutter .pull-2 {
-  left: -webkit-calc(-16.66667%);
-  left: calc(-16.66667%);
+  left: -webkit-calc(-no-gutter-column-width(2, 12));
+  left: calc(-no-gutter-column-width(2, 12));
 }
 .row--no-gutter .pull-3 {
-  left: -webkit-calc(-25%);
-  left: calc(-25%);
+  left: -webkit-calc(-no-gutter-column-width(3, 12));
+  left: calc(-no-gutter-column-width(3, 12));
 }
 .row--no-gutter .pull-4 {
-  left: -webkit-calc(-33.33333%);
-  left: calc(-33.33333%);
+  left: -webkit-calc(-no-gutter-column-width(4, 12));
+  left: calc(-no-gutter-column-width(4, 12));
 }
 .row--no-gutter .pull-5 {
-  left: -webkit-calc(-41.66667%);
-  left: calc(-41.66667%);
+  left: -webkit-calc(-no-gutter-column-width(5, 12));
+  left: calc(-no-gutter-column-width(5, 12));
 }
 .row--no-gutter .pull-6 {
-  left: -webkit-calc(-50%);
-  left: calc(-50%);
+  left: -webkit-calc(-no-gutter-column-width(6, 12));
+  left: calc(-no-gutter-column-width(6, 12));
 }
 .row--no-gutter .pull-7 {
-  left: -webkit-calc(-58.33333%);
-  left: calc(-58.33333%);
+  left: -webkit-calc(-no-gutter-column-width(7, 12));
+  left: calc(-no-gutter-column-width(7, 12));
 }
 .row--no-gutter .pull-8 {
-  left: -webkit-calc(-66.66667%);
-  left: calc(-66.66667%);
+  left: -webkit-calc(-no-gutter-column-width(8, 12));
+  left: calc(-no-gutter-column-width(8, 12));
 }
 .row--no-gutter .pull-9 {
-  left: -webkit-calc(-75%);
-  left: calc(-75%);
+  left: -webkit-calc(-no-gutter-column-width(9, 12));
+  left: calc(-no-gutter-column-width(9, 12));
 }
 .row--no-gutter .pull-10 {
-  left: -webkit-calc(-83.33333%);
-  left: calc(-83.33333%);
+  left: -webkit-calc(-no-gutter-column-width(10, 12));
+  left: calc(-no-gutter-column-width(10, 12));
 }
 .row--no-gutter .pull-11 {
-  left: -webkit-calc(-91.66667%);
-  left: calc(-91.66667%);
+  left: -webkit-calc(-no-gutter-column-width(11, 12));
+  left: calc(-no-gutter-column-width(11, 12));
 }
 .row--no-gutter .pull-12 {
-  left: -webkit-calc(-100%);
-  left: calc(-100%);
+  left: -webkit-calc(-no-gutter-column-width(12, 12));
+  left: calc(-no-gutter-column-width(12, 12));
 }
 .row--no-gutter [class*="push-"] {
   position: relative;
 }
 .row--no-gutter .push-1 {
-  left: -webkit-calc(8.33333%);
-  left: calc(8.33333%);
+  left: -webkit-calc(no-gutter-column-width(1, 12));
+  left: calc(no-gutter-column-width(1, 12));
 }
 .row--no-gutter .push-2 {
-  left: -webkit-calc(16.66667%);
-  left: calc(16.66667%);
+  left: -webkit-calc(no-gutter-column-width(2, 12));
+  left: calc(no-gutter-column-width(2, 12));
 }
 .row--no-gutter .push-3 {
-  left: -webkit-calc(25%);
-  left: calc(25%);
+  left: -webkit-calc(no-gutter-column-width(3, 12));
+  left: calc(no-gutter-column-width(3, 12));
 }
 .row--no-gutter .push-4 {
-  left: -webkit-calc(33.33333%);
-  left: calc(33.33333%);
+  left: -webkit-calc(no-gutter-column-width(4, 12));
+  left: calc(no-gutter-column-width(4, 12));
 }
 .row--no-gutter .push-5 {
-  left: -webkit-calc(41.66667%);
-  left: calc(41.66667%);
+  left: -webkit-calc(no-gutter-column-width(5, 12));
+  left: calc(no-gutter-column-width(5, 12));
 }
 .row--no-gutter .push-6 {
-  left: -webkit-calc(50%);
-  left: calc(50%);
+  left: -webkit-calc(no-gutter-column-width(6, 12));
+  left: calc(no-gutter-column-width(6, 12));
 }
 .row--no-gutter .push-7 {
-  left: -webkit-calc(58.33333%);
-  left: calc(58.33333%);
+  left: -webkit-calc(no-gutter-column-width(7, 12));
+  left: calc(no-gutter-column-width(7, 12));
 }
 .row--no-gutter .push-8 {
-  left: -webkit-calc(66.66667%);
-  left: calc(66.66667%);
+  left: -webkit-calc(no-gutter-column-width(8, 12));
+  left: calc(no-gutter-column-width(8, 12));
 }
 .row--no-gutter .push-9 {
-  left: -webkit-calc(75%);
-  left: calc(75%);
+  left: -webkit-calc(no-gutter-column-width(9, 12));
+  left: calc(no-gutter-column-width(9, 12));
 }
 .row--no-gutter .push-10 {
-  left: -webkit-calc(83.33333%);
-  left: calc(83.33333%);
+  left: -webkit-calc(no-gutter-column-width(10, 12));
+  left: calc(no-gutter-column-width(10, 12));
 }
 .row--no-gutter .push-11 {
-  left: -webkit-calc(91.66667%);
-  left: calc(91.66667%);
+  left: -webkit-calc(no-gutter-column-width(11, 12));
+  left: calc(no-gutter-column-width(11, 12));
 }
 .row--no-gutter .push-12 {
-  left: -webkit-calc(100%);
-  left: calc(100%);
+  left: -webkit-calc(no-gutter-column-width(12, 12));
+  left: calc(no-gutter-column-width(12, 12));
 }
 .row--no-gutter > [class*="span"] {
   display: inline-block;
@@ -827,63 +848,63 @@ https://github.com/esr360/Kayzen-GS
 }
 
 .pull-1 {
-  left: -webkit-calc(-5.58333% - 3%);
-  left: calc(-5.58333% - 3%);
+  left: -webkit-calc(-column-width(1, 12) - 3%);
+  left: calc(-column-width(1, 12) - 3%);
 }
 
 .pull-2 {
-  left: -webkit-calc(-14.16667% - 3%);
-  left: calc(-14.16667% - 3%);
+  left: -webkit-calc(-column-width(2, 12) - 3%);
+  left: calc(-column-width(2, 12) - 3%);
 }
 
 .pull-3 {
-  left: -webkit-calc(-22.75% - 3%);
-  left: calc(-22.75% - 3%);
+  left: -webkit-calc(-column-width(3, 12) - 3%);
+  left: calc(-column-width(3, 12) - 3%);
 }
 
 .pull-4 {
-  left: -webkit-calc(-31.33333% - 3%);
-  left: calc(-31.33333% - 3%);
+  left: -webkit-calc(-column-width(4, 12) - 3%);
+  left: calc(-column-width(4, 12) - 3%);
 }
 
 .pull-5 {
-  left: -webkit-calc(-39.91667% - 3%);
-  left: calc(-39.91667% - 3%);
+  left: -webkit-calc(-column-width(5, 12) - 3%);
+  left: calc(-column-width(5, 12) - 3%);
 }
 
 .pull-6 {
-  left: -webkit-calc(-48.5% - 3%);
-  left: calc(-48.5% - 3%);
+  left: -webkit-calc(-column-width(6, 12) - 3%);
+  left: calc(-column-width(6, 12) - 3%);
 }
 
 .pull-7 {
-  left: -webkit-calc(-57.08333% - 3%);
-  left: calc(-57.08333% - 3%);
+  left: -webkit-calc(-column-width(7, 12) - 3%);
+  left: calc(-column-width(7, 12) - 3%);
 }
 
 .pull-8 {
-  left: -webkit-calc(-65.66667% - 3%);
-  left: calc(-65.66667% - 3%);
+  left: -webkit-calc(-column-width(8, 12) - 3%);
+  left: calc(-column-width(8, 12) - 3%);
 }
 
 .pull-9 {
-  left: -webkit-calc(-74.25% - 3%);
-  left: calc(-74.25% - 3%);
+  left: -webkit-calc(-column-width(9, 12) - 3%);
+  left: calc(-column-width(9, 12) - 3%);
 }
 
 .pull-10 {
-  left: -webkit-calc(-82.83333% - 3%);
-  left: calc(-82.83333% - 3%);
+  left: -webkit-calc(-column-width(10, 12) - 3%);
+  left: calc(-column-width(10, 12) - 3%);
 }
 
 .pull-11 {
-  left: -webkit-calc(-91.41667% - 3%);
-  left: calc(-91.41667% - 3%);
+  left: -webkit-calc(-column-width(11, 12) - 3%);
+  left: calc(-column-width(11, 12) - 3%);
 }
 
 .pull-12 {
-  left: -webkit-calc(-100% - 3%);
-  left: calc(-100% - 3%);
+  left: -webkit-calc(-column-width(12, 12) - 3%);
+  left: calc(-column-width(12, 12) - 3%);
 }
 
 [class*="push-"] {
@@ -891,112 +912,112 @@ https://github.com/esr360/Kayzen-GS
 }
 
 .push-1 {
-  left: -webkit-calc(5.58333% + 3%);
-  left: calc(5.58333% + 3%);
+  left: -webkit-calc(column-width(1, 12) + 3%);
+  left: calc(column-width(1, 12) + 3%);
 }
 
 .push-2 {
-  left: -webkit-calc(14.16667% + 3%);
-  left: calc(14.16667% + 3%);
+  left: -webkit-calc(column-width(2, 12) + 3%);
+  left: calc(column-width(2, 12) + 3%);
 }
 
 .push-3 {
-  left: -webkit-calc(22.75% + 3%);
-  left: calc(22.75% + 3%);
+  left: -webkit-calc(column-width(3, 12) + 3%);
+  left: calc(column-width(3, 12) + 3%);
 }
 
 .push-4 {
-  left: -webkit-calc(31.33333% + 3%);
-  left: calc(31.33333% + 3%);
+  left: -webkit-calc(column-width(4, 12) + 3%);
+  left: calc(column-width(4, 12) + 3%);
 }
 
 .push-5 {
-  left: -webkit-calc(39.91667% + 3%);
-  left: calc(39.91667% + 3%);
+  left: -webkit-calc(column-width(5, 12) + 3%);
+  left: calc(column-width(5, 12) + 3%);
 }
 
 .push-6 {
-  left: -webkit-calc(48.5% + 3%);
-  left: calc(48.5% + 3%);
+  left: -webkit-calc(column-width(6, 12) + 3%);
+  left: calc(column-width(6, 12) + 3%);
 }
 
 .push-7 {
-  left: -webkit-calc(57.08333% + 3%);
-  left: calc(57.08333% + 3%);
+  left: -webkit-calc(column-width(7, 12) + 3%);
+  left: calc(column-width(7, 12) + 3%);
 }
 
 .push-8 {
-  left: -webkit-calc(65.66667% + 3%);
-  left: calc(65.66667% + 3%);
+  left: -webkit-calc(column-width(8, 12) + 3%);
+  left: calc(column-width(8, 12) + 3%);
 }
 
 .push-9 {
-  left: -webkit-calc(74.25% + 3%);
-  left: calc(74.25% + 3%);
+  left: -webkit-calc(column-width(9, 12) + 3%);
+  left: calc(column-width(9, 12) + 3%);
 }
 
 .push-10 {
-  left: -webkit-calc(82.83333% + 3%);
-  left: calc(82.83333% + 3%);
+  left: -webkit-calc(column-width(10, 12) + 3%);
+  left: calc(column-width(10, 12) + 3%);
 }
 
 .push-11 {
-  left: -webkit-calc(91.41667% + 3%);
-  left: calc(91.41667% + 3%);
+  left: -webkit-calc(column-width(11, 12) + 3%);
+  left: calc(column-width(11, 12) + 3%);
 }
 
 .push-12 {
-  left: -webkit-calc(100% + 3%);
-  left: calc(100% + 3%);
+  left: -webkit-calc(column-width(12, 12) + 3%);
+  left: calc(column-width(12, 12) + 3%);
 }
 
 .default-default {
-  width: 22.75%;
+  width: column-width(3, 12);
 }
 
 .default-percent {
-  width: 22.75%;
+  width: column-width(25%, 100);
 }
 
 .default-fraction {
-  width: 22.75%;
+  width: column-width(1, 4);
 }
 
 .flow-default {
-  width: 22.75%;
+  width: column-width(1, 4);
 }
 
 .magic-default:first-child {
   margin-left: 0;
 }
 .magic-default:first-child:nth-last-child(1), .magic-default:first-child:nth-last-child(1) ~ .span {
-  width: 100%;
+  width: magic-column-width(1);
 }
 .magic-default:first-child:nth-last-child(2), .magic-default:first-child:nth-last-child(2) ~ .span {
-  width: 48.5%;
+  width: magic-column-width(2);
 }
 .magic-default:first-child:nth-last-child(3), .magic-default:first-child:nth-last-child(3) ~ .span {
-  width: 31.33333%;
+  width: magic-column-width(3);
 }
 .magic-default:first-child:nth-last-child(4), .magic-default:first-child:nth-last-child(4) ~ .span {
-  width: 22.75%;
+  width: magic-column-width(4);
 }
 
 .flow-respond-to {
-  width: 100%;
+  width: column-width(1, 1);
 }
 @media (max-width: 460px) {
   .flow-respond-to {
-    width: 47%;
+    width: flow-column-width(6, 12);
   }
 }
 @media (max-width: 720px) {
   .flow-respond-to {
-    width: 30.33333%;
+    width: flow-column-width(4, 12);
   }
 }
 @media (max-width: 940px) {
   .flow-respond-to {
-    width: 22%;
+    width: flow-column-width(3, 12);
   }
 }

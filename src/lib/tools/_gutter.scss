@@ -1,7 +1,7 @@
 // Gutter
 //-------------------------------------------------------------
 
-@mixin gutter($flush: true) {
+@mixin kgs-gutter($flush: true) {
 	margin-left: option(gutter);
     @if $flush {
         &:first-child {

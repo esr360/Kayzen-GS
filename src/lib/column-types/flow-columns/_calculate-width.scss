@@ -1,4 +1,4 @@
 // Flow Column width
-@function flow-column-width($span, $columns) {
+@function kgs-flow-width($span, $columns) {
 	@return ((100/$columns) * $span) - option(gutter);
 }

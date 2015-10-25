@@ -1,7 +1,23 @@
+/*-----------------------------------------------------------------
+
+Kayzen GS
+Made by @esr360
+https://github.com/esr360/Kayzen-GS
+	
+-----------------------------------------------------------------*/
+
+//-----------------------------------------------------------------
+// Row
+//-----------------------------------------------------------------
+
 .#{option('row-namespace')},
 [class*="#{option('row-namespace')}--"] {    
-    @include row-core;
+    @include kgs-row-core;
 }
+
+//-----------------------------------------------------------------
+// Column Types
+//-----------------------------------------------------------------
 
 .#{option('row-namespace')} {
     
@@ -11,13 +27,13 @@
     @if (option(mobile-first), '&:not([class*="break"])', '&') {
         @if setting(mobile-first) {
             @media (min-width: option(col-collapse)) {
-                @include default-columns;
+                @include kgs-default-columns;
             }
         } @else {
-            @include default-columns; 
+            @include kgs-default-columns; 
             &:not([class*="break"]) {
                 @media (max-width: option(col-collapse)) {
-                    @include stack-columns;
+                    @include kgs-stack-columns;
                 }
             }
         }
@@ -27,11 +43,11 @@
         &.#{option('row-namespace')}--#{$bp} {
             @if setting(mobile-first) {
                 @media (#{$scale}-width: $width) {
-                    @include default-columns;
+                    @include kgs-default-columns;
                 }
             } @else {
                 @media (#{$scale}-width: $width) {
-                    @include stack-columns;
+                    @include kgs-stack-columns;
                 }
             }
         }
@@ -46,22 +62,22 @@
         margin-left: -#{option(gutter)};
         width: 100% + option(gutter);
         
-        @include custom-pull(flow);
-        @include custom-push(flow);
+        @include kgs-pull(flow);
+        @include kgs-push(flow);
         
         @if (option(mobile-first), '&:not([class*="break"])', '&') {
             @if setting(mobile-first) {
                 @media (min-width: option(col-collapse)) {
-                    @include flow-columns;
+                    @include kgs-flow-columns;
                 }
             } @else {
-                @include flow-columns;
+                @include kgs-flow-columns;
                 > [class*="#{option(col-namespace)}"] {
                     margin-left: #{option(gutter)};
                 } 
                 &:not([class*="break"]) {
                     @media (max-width: option(col-collapse)) {
-                        @include stack-columns($flow: true);
+                        @include kgs-stack-columns($flow: true);
                     }
                 }
             }
@@ -71,18 +87,18 @@
             &.#{option('row-namespace')}--#{$bp} {
                 @if setting(mobile-first) {
                     @media (#{$scale}-width: $width) {
-                        @include flow-columns;
+                        @include kgs-flow-columns;
                     }
                 } @else {
                     @media (#{$scale}-width: $width) {
-                        @include stack-columns($flow: true);
+                        @include kgs-stack-columns($flow: true);
                     }
                 }
             }
         }
         
         // Adaptive Columns     
-        @include adaptive-column;
+        @include kgs-adaptive-columns;
         
     }
     
@@ -95,13 +111,13 @@
             
             @if setting(mobile-first) {
                 @media (min-width: option(col-collapse)) {
-                    @include magic-columns;
+                    @include kgs-magic-columns;
                 }
             } @else {
-                @include magic-columns;
+                @include kgs-magic-columns;
                 &:not([class*="break"]) {
                     @media (max-width: option(col-collapse)) {
-                        @include stack-columns;
+                        @include kgs-stack-columns;
                     }
                 }
             }
@@ -110,11 +126,11 @@
                 &.#{option('row-namespace')}--#{$bp} {
                     @if setting(mobile-first) {
                         @media (#{$scale}-width: $width) {
-                            @include magic-columns;
+                            @include kgs-magic-columns;
                         }
                     } @else {
                         @media (#{$scale}-width: $width) {
-                            @include stack-columns;
+                            @include kgs-stack-columns;
                         }
                     }
                 }
@@ -129,10 +145,9 @@
     
     &--no-gutter {
         
-        @include custom-pull(no-gutter);
-        @include custom-push(no-gutter);
-        
-        @include no-gutter-columns;
+        @include kgs-pull(no-gutter);
+        @include kgs-push(no-gutter);
+        @include kgs-no-gutter-columns;
         
     }
     
@@ -144,13 +159,13 @@
         @if (option(mobile-first), '&:not([class*="break"])', '&') {
             @if setting(mobile-first) {
                 @media (min-width: option(col-collapse)) {
-                    @include block-columns;
+                    @include kgs-block-columns;
                 }
             } @else {
-                @include block-columns;
+                @include kgs-block-columns;
                 &:not([class*="break"]) {
                     @media (max-width: option(col-collapse)) {
-                        @include stack-columns;
+                        @include kgs-stack-columns;
                     }
                 }
             }
@@ -160,11 +175,11 @@
             &.#{option('row-namespace')}--#{$bp} {
                 @if setting(mobile-first) {
                     @media (#{$scale}-width: $width) {
-                        @include block-columns;
+                        @include kgs-block-columns;
                     }
                 } @else {
                     @media (#{$scale}-width: $width) {
-                        @include stack-columns;
+                        @include kgs-stack-columns;
                     }
                 }
             }
@@ -178,13 +193,13 @@
     &--reverse {
         
         &:not([class*="reverse-break"]) {
-            @include reverse-order;
+            @include kgs-reverse-order;
         }
                     
         @each $bp, $width in kayzenGS(breakpoints) {
             @media (#{$scale}-width: $width) {
                 &.reverse-#{$bp} {
-                    @include reverse-order;
+                    @include kgs-reverse-order;
                 }
             }
         }
@@ -192,10 +207,10 @@
     }
     
 }
-
     
+//-----------------------------------------------------------------
 // Custom Push/Pull
-//-------------------------------------------------------------
+//-----------------------------------------------------------------
 
-@include custom-pull;
-@include custom-push;
+@include kgs-pull;
+@include kgs-push;
