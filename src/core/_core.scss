@@ -15,8 +15,10 @@
             }
         } @else {
             @include default-columns; 
-            @media (max-width: option(col-collapse)) {
-                @include stack-columns;
+            &:not([class*="break"]) {
+                @media (max-width: option(col-collapse)) {
+                    @include stack-columns;
+                }
             }
         }
     }
@@ -76,6 +78,7 @@
             }
         }
         
+        // Adaptive Columns     
         @include adaptive-column;
         
     }
@@ -116,21 +119,57 @@
             
         }
         
-    }
+    } // &--magic
     
     // Block Columns
     //-------------------------------------------------------------
     
     &--block {
         
-        @media (min-width: option(col-collapse)) {
-            @include block-columns;
+        @if (option(mobile-first), '&:not([class*="break"])', '&') {
+            @if setting(mobile-first) {
+                @media (min-width: option(col-collapse)) {
+                    @include block-columns;
+                }
+            } @else {
+                @include block-columns;
+                &:not([class*="break"]) {
+                    @media (max-width: option(col-collapse)) {
+                        @include stack-columns;
+                    }
+                }
+            }
         }
         
         @each $bp, $width in map-get-deep($grid, breakpoints) {
             &.#{option('row-namespace')}--#{$bp} {
-                @media (#{$scale}-width: $width) {
-                    @include block-columns;
+                @if setting(mobile-first) {
+                    @media (#{$scale}-width: $width) {
+                        @include block-columns;
+                    }
+                } @else {
+                    @media (#{$scale}-width: $width) {
+                        @include stack-columns;
+                    }
+                }
+            }
+        }
+        
+    } // &--block
+    
+    // Reverse Column Order
+    //-------------------------------------------------------------
+
+    &--reverse {
+        
+        &:not([class*="reverse-break"]) {
+            @include reverse-order;
+        }
+                    
+        @each $bp, $width in map-get-deep($grid, breakpoints) {
+            @media (#{$scale}-width: $width) {
+                &.reverse-#{$bp} {
+                    @include reverse-order;
                 }
             }
         }

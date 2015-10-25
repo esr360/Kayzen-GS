@@ -1,12 +1,12 @@
 // Default Column Width
 @if not setting(mobile-first) {
     .#{option(row-namespace)}--no-gutter {
-        @for $i from 1 through option(columns) {
         
+        @for $i from 1 through option(columns) {
             > .#{option(col-namespace)}-#{$i} {	
                 width: no-gutter-column-width($i, option(columns));
             }
-        
         }
+        
     }	
 }

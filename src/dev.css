@@ -97,7 +97,7 @@
   width: 100%;
 }
 @media (max-width: 940px) {
-  .row > [class*="span"] {
+  .row:not([class*="break"]) > [class*="span"] {
     display: block;
     width: 100% !important;
     margin-left: 0;
@@ -438,38 +438,144 @@
     margin-left: 0;
   }
 }
-@media (min-width: 940px) {
-  .row--block > [class*="span"] {
-    display: table-cell;
+.row--block > [class*="span"] {
+  display: table-cell;
+}
+@media (max-width: 940px) {
+  .row--block:not([class*="break"]) > [class*="span"] {
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 0px) {
   .row--block.row--break-0 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 460px) {
   .row--block.row--break-1 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 720px) {
   .row--block.row--break-2 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 940px) {
   .row--block.row--break-3 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 1200px) {
   .row--block.row--break-4 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
   }
 }
 @media (max-width: 1400px) {
   .row--block.row--break-5 > [class*="span"] {
-    display: table-cell;
+    display: block;
+    width: 100% !important;
+    margin-left: 0;
+  }
+}
+.row--reverse:not([class*="reverse-break"]) {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  text-align: right;
+}
+.row--reverse:not([class*="reverse-break"]) > [class*="span"] {
+  -webkit-transform: scale(-1);
+      -ms-transform: scale(-1);
+          transform: scale(-1);
+}
+@media (max-width: 0px) {
+  .row--reverse.reverse-break-0 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-0 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
+  }
+}
+@media (max-width: 460px) {
+  .row--reverse.reverse-break-1 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-1 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
+  }
+}
+@media (max-width: 720px) {
+  .row--reverse.reverse-break-2 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-2 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
+  }
+}
+@media (max-width: 940px) {
+  .row--reverse.reverse-break-3 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-3 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
+  }
+}
+@media (max-width: 1200px) {
+  .row--reverse.reverse-break-4 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-4 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
+  }
+}
+@media (max-width: 1400px) {
+  .row--reverse.reverse-break-5 {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+    text-align: right;
+  }
+  .row--reverse.reverse-break-5 > [class*="span"] {
+    -webkit-transform: scale(-1);
+        -ms-transform: scale(-1);
+            transform: scale(-1);
   }
 }

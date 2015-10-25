@@ -1,14 +1,10 @@
 // Reverse Column Order
-@if map-get-deep($grid, settings, reverse-columns) {
-    @each $bp, $width in map-get-deep($grid, breakpoints) {
-        @media (#{$scale}-width: $width) {
-            &.reverse-#{$bp} {
-                transform: rotate(180deg);
-                text-align: right;
-                > #{$col-selector} {
-                    transform: scale(-1);
-                }
-            }
-        }
+@mixin reverse-order {
+    
+    transform: rotate(180deg);
+    text-align: right;
+    > [class*="#{option('col-namespace')}"] {
+        transform: scale(-1);
     }
+    
 }
