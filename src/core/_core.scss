@@ -1,43 +1,136 @@
-.#{option('row-namespace')} {
-    
+.#{option('row-namespace')},
+[class*="#{option('row-namespace')}--"] {    
     @include row-core;
+}
+
+.#{option('row-namespace')} {
     
     // Default Columns
     //-------------------------------------------------------------
     
-    &:not(&--flow) {
-    
-        &:not([class*="break"]) {
+    @if (option(mobile-first), '&:not([class*="break"])', '&') {
+        @if setting(mobile-first) {
             @media (min-width: option(col-collapse)) {
                 @include default-columns;
             }
+        } @else {
+            @include default-columns; 
+            @media (max-width: option(col-collapse)) {
+                @include stack-columns;
+            }
         }
-    
-        @each $bp, $width in map-get-deep($grid, breakpoints) {
-            &.#{option('row-namespace')}--#{$bp} {
+    }
+
+    @each $bp, $width in map-get-deep($grid, breakpoints) {
+        &.#{option('row-namespace')}--#{$bp} {
+            @if setting(mobile-first) {
                 @media (#{$scale}-width: $width) {
                     @include default-columns;
                 }
+            } @else {
+                @media (#{$scale}-width: $width) {
+                    @include stack-columns;
+                }
             }
         }
-        
     }
+        
     
     // Flow Columns
     //-------------------------------------------------------------
     
     &--flow {
         
-        &:not([class*="break"]) {
-            @media (min-width: option(col-collapse)) {
+        margin-left: -#{option(gutter)};
+        width: 100% + option(gutter);
+        
+        @if (option(mobile-first), '&:not([class*="break"])', '&') {
+            @if setting(mobile-first) {
+                @media (min-width: option(col-collapse)) {
+                    @include flow-columns;
+                }
+            } @else {
                 @include flow-columns;
+                > [class*="#{option(col-namespace)}"] {
+                    margin-left: #{option(gutter)};
+                } 
+                &:not([class*="break"]) {
+                    @media (max-width: option(col-collapse)) {
+                        @include stack-columns($flow: true);
+                    }
+                }
             }
         }
     
         @each $bp, $width in map-get-deep($grid, breakpoints) {
             &.#{option('row-namespace')}--#{$bp} {
+                @if setting(mobile-first) {
+                    @media (#{$scale}-width: $width) {
+                        @include flow-columns;
+                    }
+                } @else {
+                    @media (#{$scale}-width: $width) {
+                        @include stack-columns($flow: true);
+                    }
+                }
+            }
+        }
+        
+        @include adaptive-column;
+        
+    }
+    
+    // Magic Columns
+    //-------------------------------------------------------------
+    
+    &--magic {
+        
+        @if (option(mobile-first), '&:not([class*="break"])', '&') {
+            
+            @if setting(mobile-first) {
+                @media (min-width: option(col-collapse)) {
+                    @include magic-columns;
+                }
+            } @else {
+                @include magic-columns;
+                &:not([class*="break"]) {
+                    @media (max-width: option(col-collapse)) {
+                        @include stack-columns;
+                    }
+                }
+            }
+            
+            @each $bp, $width in map-get-deep($grid, breakpoints) {
+                &.#{option('row-namespace')}--#{$bp} {
+                    @if setting(mobile-first) {
+                        @media (#{$scale}-width: $width) {
+                            @include magic-columns;
+                        }
+                    } @else {
+                        @media (#{$scale}-width: $width) {
+                            @include stack-columns;
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    // Block Columns
+    //-------------------------------------------------------------
+    
+    &--block {
+        
+        @media (min-width: option(col-collapse)) {
+            @include block-columns;
+        }
+        
+        @each $bp, $width in map-get-deep($grid, breakpoints) {
+            &.#{option('row-namespace')}--#{$bp} {
                 @media (#{$scale}-width: $width) {
-                    @include flow-columns;
+                    @include block-columns;
                 }
             }
         }

@@ -1,10 +1,5 @@
 @mixin flow-columns {
-   
-    &.#{option('row-namespace')}:not([class="no-gutter"]) {
-        margin-left: -#{option(gutter)};
-        width: 100% + option(gutter);
-    }
-    
+                        
     > [class*="#{option('col-namespace')}"] {
         @include column-core;
         @include gutter($flush: false);  

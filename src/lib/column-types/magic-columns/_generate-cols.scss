@@ -1,0 +1,21 @@
+@mixin magic-columns {
+    
+	> [class*="#{option('col-namespace')}"] {
+        
+        @include column-core;
+        @include gutter;  
+        
+        &:first-child {
+            margin-left: 0;
+            @for $i from 1 through option(columns) {
+                &:nth-last-child(#{$i}) {
+                    &, ~ [class*="#{option('col-namespace')}"] {
+                        width: magic-column-width($i);
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

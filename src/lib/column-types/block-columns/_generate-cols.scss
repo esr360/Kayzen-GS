@@ -1,0 +1,7 @@
+@mixin block-columns {
+    
+    > [class*="#{option('col-namespace')}"] {
+        display: table-cell;
+    }
+    
+}
