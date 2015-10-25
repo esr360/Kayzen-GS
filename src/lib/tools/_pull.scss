@@ -1,0 +1,13 @@
+@mixin custom-pull {
+    
+    [class*="pull-"] {
+        position: relative;
+    }
+        
+    @for $i from 1 through option(columns) {       
+        .pull-#{$i} {
+            left: calc(-#{column-width($i, option(columns))} - #{option(gutter)});
+        }      
+    }     
+    
+}
