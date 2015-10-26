@@ -3,5 +3,5 @@
 //-----------------------------------------------------------------
 
 @function kgs-magic-width($columns: $columns) {
-	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * option(gutter) ) / $columns );
+	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * kgs-option(gutter) ) / $columns );
 }

@@ -12,7 +12,7 @@
         reverse-map(kayzenGS(breakpoints))
     );
 
-    > [class*="#{option('col-namespace')}"] {
+    > [class*="#{kgs-option('col-namespace')}"] {
     
         &[class*="break"] {
             @include kgs-column-core;

@@ -5,8 +5,8 @@
 @mixin row($type: null) {
 	@extend %row;
 	@if $type == flow {		
-		margin-left: -#{option(gutter)};
-		width: 100% + option(gutter);
+		margin-left: -#{kgs-option(gutter)};
+		width: 100% + kgs-option(gutter);
 	} @else if $type == block {		
 		&:after {
 			display: none;

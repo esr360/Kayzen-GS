@@ -6,7 +6,7 @@
     
     transform: rotate(180deg);
     text-align: right;
-    > [class*="#{option('col-namespace')}"] {
+    > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
     }
     

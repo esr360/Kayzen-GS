@@ -8,14 +8,14 @@
         position: relative;
     }
         
-    @for $i from 1 through option(columns) {       
+    @for $i from 1 through kgs-option(columns) {       
         .push-#{$i} {
             @if $col-type == 'default' {
-                left: calc(#{column-width($i, option(columns))} + #{option(gutter)});
+                left: calc(#{column-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
             } @else if $col-type == 'flow' {
-                left: calc(#{flow-column-width($i, option(columns))} + #{option(gutter)});
+                left: calc(#{flow-column-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
             } @else if $col-type == 'no-gutter' {
-                left: calc(#{no-gutter-column-width($i, option(columns))});
+                left: calc(#{no-gutter-column-width($i, kgs-option(columns))});
             }
         }      
     }     

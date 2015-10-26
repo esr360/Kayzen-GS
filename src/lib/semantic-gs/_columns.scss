@@ -11,8 +11,8 @@
 	$config: map-merge((
 		width        : full, 
 		type         : null, 
-		namespace    : option(col-namespace), 
-		stack        : option(col-collapse), 
+		namespace    : kgs-option(col-namespace), 
+		stack        : kgs-option(col-collapse), 
 		mobile-first : setting(mobile-first),
 		respond-to   : null
 	), $config);

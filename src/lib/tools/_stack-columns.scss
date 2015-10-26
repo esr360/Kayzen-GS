@@ -3,14 +3,14 @@
 //-----------------------------------------------------------------
 
 @mixin kgs-stack-columns($flow: false) {
-    > [class*="#{option(col-namespace)}"] {
+    > [class*="#{kgs-option(col-namespace)}"] {
         display: block;
         left: auto; // resets push/pull
         @if not $flow {
             width: 100% !important;
             margin-left: 0;
         } @else {
-            width: 100% - option(gutter);
+            width: 100% - kgs-option(gutter);
         }
     }
 }

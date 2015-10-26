@@ -4,13 +4,13 @@
 
 @mixin kgs-no-gutter-columns {
     
-    > [class*="#{option('col-namespace')}"] {
+    > [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
     }
             
-    @for $i from 1 through option(columns) {
-        > .#{option(col-namespace)}-#{$i} {	
-            width: kgs-no-gutter-width($i, option(columns));
+    @for $i from 1 through kgs-option(columns) {
+        > .#{kgs-option(col-namespace)}-#{$i} {	
+            width: kgs-no-gutter-width($i, kgs-option(columns));
         }
     }
     
