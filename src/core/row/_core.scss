@@ -16,7 +16,7 @@
         }
     }
     // IE < 8 collapse white-space
-    @if setting(old-ie) {
+    @if kgs-setting(old-ie) {
         *letter-spacing: normal;
         *word-spacing: -0.43em;
     }	

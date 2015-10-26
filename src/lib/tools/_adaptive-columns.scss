@@ -7,7 +7,7 @@
     // Reverse $breakpoints map
     // This is to allow the generated CSS to override when scaling
     $reverse-breakpoints: if(
-        setting(mobile-first),
+        kgs-setting(mobile-first),
         kayzenGS(breakpoints),
         reverse-map(kayzenGS(breakpoints))
     );
@@ -23,7 +23,7 @@
             @media (#{$scale}-width: $width) {
                 @each $name, $fraction in kayzenGS(fractions) {		
                     &.#{$bp}-#{$name} {
-                        width: flow-column-width(nth($fraction, 1), nth($fraction, 2));
+                        width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
                     }
                 }
             }

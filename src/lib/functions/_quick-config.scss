@@ -10,7 +10,7 @@
     @return map-get-deep($kayzenGS, 'options', $option);
 }
 
-@function setting($setting) {
+@function kgs-setting($setting) {
     @return map-get-deep($kayzenGS, 'settings', $setting);
 }
 

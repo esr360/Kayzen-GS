@@ -31,7 +31,7 @@
         @if config('display') == 'inline-block' {
             vertical-align: top;
             // IE < 8: fake inline-block
-            @if setting('old-ie') {
+            @if kgs-setting('old-ie') {
                 *display: inline;
                 zoom: 1; 
             }

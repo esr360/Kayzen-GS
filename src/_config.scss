@@ -47,10 +47,10 @@ $kayzenGS: (
 @import 'lib/functions/quick-config';
 
 // Set min/max width for breakpoints
-$scale: if(setting(mobile-first), min, max);
+$scale: if(kgs-setting(mobile-first), min, max);
 
 // Reset "mobile-first" to false if "responsive" is disabled
-@if not setting(responsive) {
+@if not kgs-setting(responsive) {
     $kayzenGS: map-merge-deep((settings: (
         mobile-first: false
     )), $kayzenGS);

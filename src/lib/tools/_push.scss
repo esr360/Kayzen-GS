@@ -11,11 +11,11 @@
     @for $i from 1 through kgs-option(columns) {       
         .push-#{$i} {
             @if $col-type == 'default' {
-                left: calc(#{column-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
+                left: calc(#{kgs-default-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
             } @else if $col-type == 'flow' {
-                left: calc(#{flow-column-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
+                left: calc(#{kgs-flow-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
             } @else if $col-type == 'no-gutter' {
-                left: calc(#{no-gutter-column-width($i, kgs-option(columns))});
+                left: calc(#{kgs-no-gutter-width($i, kgs-option(columns))});
             }
         }      
     }     

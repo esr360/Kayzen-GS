@@ -13,7 +13,7 @@
 		type         : null, 
 		namespace    : kgs-option(col-namespace), 
 		stack        : kgs-option(col-collapse), 
-		mobile-first : setting(mobile-first),
+		mobile-first : kgs-setting(mobile-first),
 		respond-to   : null
 	), $config);
 	
@@ -50,7 +50,7 @@
     
     // if flow column
     @else if config(type) == flow {
-		width: flow-column-width($span, $columns);
+		width: kgs-flow-width($span, $columns);
 	} 
 	
     // if magic column
@@ -60,7 +60,7 @@
             @for $i from 1 through $columns {
                 &:nth-last-child(#{$i}) {
                     &, ~ .#{config('namespace')} {
-                        width: magic-column-width($i);
+                        width: kgs-magic-width($i);
                     }
                 }
             }
@@ -69,7 +69,7 @@
     
     // all other column types
     @else {		
-        width: column-width($span, $columns);
+        width: kgs-default-width($span, $columns);
 	}
     
 	//-------------------------------------------------------------
@@ -109,12 +109,12 @@
                 
                 // if flow column
                 @if config(type) == 'flow' {
-                    width: flow-column-width($span, $columns);	
+                    width: kgs-flow-width($span, $columns);	
                 } 
                 
                 // all other column types
                 @else {	
-                    width: column-width($span, $columns);	
+                    width: kgs-default-width($span, $columns);	
                 }
                         
             }
