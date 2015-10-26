@@ -62,11 +62,11 @@
   margin-left: 3%;
   width: 97%;
 }
-@media (max-width: 460px) {
+@media (max-width: 940px) {
   .portfolio-item {
     display: inline-block;
     vertical-align: top;
-    width: 47%;
+    width: 22%;
   }
 }
 @media (max-width: 720px) {
@@ -76,11 +76,11 @@
     width: 30.33333%;
   }
 }
-@media (max-width: 940px) {
+@media (max-width: 460px) {
   .portfolio-item {
     display: inline-block;
     vertical-align: top;
-    width: 22%;
+    width: 47%;
   }
 }
 
