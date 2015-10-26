@@ -2,15 +2,24 @@
 // Stack Columns
 //-----------------------------------------------------------------
 
-@mixin kgs-stack-columns($flow: false) {
-    > [class*="#{kgs-option(col-namespace)}"] {
+@mixin kgs-stack-columns($type: null, $core: false) {
+    
+    $selector: if(
+        $core, '&', '> [class*="#{kgs-option(col-namespace)}"]'
+    );
+    
+    #{$selector} {
         display: block;
         left: auto; // resets push/pull
-        @if not $flow {
+        @if $type == 'flow' {
+            width: 100% - kgs-option(gutter);
+        } @else if $type == 'magic' {
             width: 100% !important;
             margin-left: 0;
-        } @else {
-            width: 100% - kgs-option(gutter);
+        } @else if $type == null {
+            width: 100%;
+            margin-left: 0;
         }
     }
+    
 }

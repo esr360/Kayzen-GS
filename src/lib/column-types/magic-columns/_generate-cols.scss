@@ -8,17 +8,7 @@
         
         @include kgs-column-core;
         @include kgs-gutter;  
-        
-        &:first-child {
-            margin-left: 0;
-            @for $i from 1 through kgs-option(columns) {
-                &:nth-last-child(#{$i}) {
-                    &, ~ [class*="#{kgs-option('col-namespace')}"] {
-                        width: kgs-magic-width($i);
-                    }
-                }
-            }
-        }
+        @include kgs-magic-column-core;
         
     }
     

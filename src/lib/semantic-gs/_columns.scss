@@ -2,7 +2,7 @@
 // Custom Column
 //-----------------------------------------------------------------
 
-@mixin column($config: ()) {
+@mixin column($custom: ()) {
 
 	//-------------------------------------------------------------
 	// Config
@@ -11,11 +11,12 @@
 	$config: map-merge((
 		width        : full, 
 		type         : null, 
-		namespace    : kgs-option(col-namespace), 
+		namespace    : &, 
 		stack        : kgs-option(col-collapse), 
-		mobile-first : kgs-setting(mobile-first),
+		//mobile-first : kgs-setting(mobile-first),
+		mobile-first : false,
 		respond-to   : null
-	), $config);
+	), $custom);
 	
 	$config: $config !global;
 	
@@ -45,31 +46,62 @@
 	}
     
 	//-------------------------------------------------------------
-	// Set Column Width
+	// Apply Styles
 	//-------------------------------------------------------------
     
+    @if kgs-config('mobile-first') {
+        @media (min-width: kgs-config(stack)) {
+            @include kgs-column-core;
+        }
+    } @else {
+        @include kgs-column-core;
+    }
+    
     // if flow column
-    @else if kgs-config(type) == flow {
-		width: kgs-flow-width($span, $columns);
+    @if kgs-config(type) == flow {
+        @include kgs-gutter(false);
+        width: kgs-flow-width($span, $columns);
 	} 
 	
     // if magic column
-	@if kgs-config(type) == magic {
-        &:first-child {
-            margin-left: 0;
-            @for $i from 1 through $columns {
-                &:nth-last-child(#{$i}) {
-                    &, ~ .#{kgs-config('namespace')} {
-                        width: kgs-magic-width($i);
-                    }
-                }
+	@else if kgs-config(type) == magic {
+        @if kgs-config('mobile-first') {
+            @media (min-width: kgs-config(stack)) {
+                @include kgs-column-core;
+                @include kgs-gutter;
+                @include kgs-magic-column-core('#{kgs-config('namespace')}');
+            }
+        } @else {
+            @include kgs-column-core;
+            @include kgs-gutter;
+            @include kgs-magic-column-core('#{kgs-config('namespace')}');
+            @media (max-width: kgs-config(stack)) {
+                @include kgs-stack-columns($type: 'magic', $core: true);
             }
         }
 	}
     
     // all other column types
-    @else {		
-        width: kgs-default-width($span, $columns);
+    @else {	
+        @if kgs-config('mobile-first') {
+            width: 100%;
+            @media (min-width: kgs-config('stack')) {
+                @include kgs-gutter;
+                width: kgs-default-width($span, $columns);
+                @if kgs-config('type') == block {
+                    display: table-cell;		
+                } 
+            }
+        } @else {		
+            @include kgs-gutter;
+            width: kgs-default-width($span, $columns);
+            @if kgs-config('type') == block {
+                display: table-cell;		
+            } 
+            @media (max-width: kgs-config('stack')) {
+                @include kgs-stack-columns($core: true);
+            }
+        }
 	}
     
 	//-------------------------------------------------------------
@@ -106,6 +138,8 @@
                     $span: nth($width, 1);
                     $columns: nth($width, 2);			
                 }
+                
+                @include kgs-column-core;
                 
                 // if flow column
                 @if kgs-config(type) == 'flow' {

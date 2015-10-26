@@ -3,43 +3,13 @@
 //-----------------------------------------------------------------
 
 @mixin kgs-column-core($custom: ()) {
-
-	//-------------------------------------------------------------
-	// Config
-	//-------------------------------------------------------------
     
-	$config: map-merge-deep((
-        
-        // Default Options
-		'core'    : true,
-        'display' : inline-block,
-        'gutter'  : false,
-        'width'   : null
-        
-	), $custom) !global;
-
-	//-------------------------------------------------------------
-	// Styles
-	//-------------------------------------------------------------
-    
-    @if kgs-config('width') != 'null' {
-        width: kgs-config('width');
-    }
-    
-    @if kgs-config('core') {
-        display: kgs-config('display');
-        @if kgs-config('display') == 'inline-block' {
-            vertical-align: top;
-            // IE < 8: fake inline-block
-            @if kgs-setting('old-ie') {
-                *display: inline;
-                zoom: 1; 
-            }
-        }
-    }
-    
-    @if kgs-config('gutter') {
-        @include kgs-gutter;
+    display: inline-block;
+    vertical-align: top;
+    // IE < 8: fake inline-block
+    @if kgs-setting('old-ie') {
+        *display: inline;
+        zoom: 1; 
     }
     
 } // column-core()

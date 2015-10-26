@@ -3,7 +3,7 @@
 //-----------------------------------------------------------------
 
 @mixin row($type: null) {
-	@extend %row;
+	@include kgs-row-core;
 	@if $type == flow {		
 		margin-left: -#{kgs-option(gutter)};
 		width: 100% + kgs-option(gutter);

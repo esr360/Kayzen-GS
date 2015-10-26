@@ -42,6 +42,7 @@
 @import 'lib/column-types/flow-columns/calculate-width';
 @import 'lib/column-types/flow-columns/generate-cols';
 
+@import 'lib/column-types/magic-columns/core';
 @import 'lib/column-types/magic-columns/calculate-width';
 @import 'lib/column-types/magic-columns/generate-cols';
 
@@ -64,5 +65,3 @@
 
 @import 'lib/semantic-gs/row';
 @import 'lib/semantic-gs/columns';
-
-@import 'semantic-examples'

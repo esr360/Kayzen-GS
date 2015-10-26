@@ -16,6 +16,7 @@ https://github.com/esr360/Kayzen-GS
 [class*="row--"] {
   word-spacing: -0.43em;
 }
+
 * {
   letter-spacing: normal;
   word-spacing: normal;
@@ -70,7 +71,7 @@ https://github.com/esr360/Kayzen-GS
   .row:not([class*="break"]) > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -78,7 +79,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-0 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -86,7 +87,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-1 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -94,7 +95,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-2 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -102,7 +103,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-3 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -110,7 +111,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-4 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -118,7 +119,7 @@ https://github.com/esr360/Kayzen-GS
   .row.row--break-5 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -680,7 +681,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block:not([class*="break"]) > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -688,7 +689,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-0 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -696,7 +697,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-1 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -704,7 +705,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-2 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -712,7 +713,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-3 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -720,7 +721,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-4 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -728,7 +729,7 @@ https://github.com/esr360/Kayzen-GS
   .row--block.row--break-5 > [class*="span"] {
     display: block;
     left: auto;
-    width: 100% !important;
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -948,55 +949,4 @@ https://github.com/esr360/Kayzen-GS
 .push-12 {
   left: -webkit-calc(100% + 3%);
   left: calc(100% + 3%);
-}
-
-.default-default {
-  width: 22.75%;
-}
-
-.default-percent {
-  width: 22.75%;
-}
-
-.default-fraction {
-  width: 22.75%;
-}
-
-.flow-default {
-  width: 22.75%;
-}
-
-.magic-default:first-child {
-  margin-left: 0;
-}
-.magic-default:first-child:nth-last-child(1), .magic-default:first-child:nth-last-child(1) ~ .span {
-  width: 100%;
-}
-.magic-default:first-child:nth-last-child(2), .magic-default:first-child:nth-last-child(2) ~ .span {
-  width: 48.5%;
-}
-.magic-default:first-child:nth-last-child(3), .magic-default:first-child:nth-last-child(3) ~ .span {
-  width: 31.33333%;
-}
-.magic-default:first-child:nth-last-child(4), .magic-default:first-child:nth-last-child(4) ~ .span {
-  width: 22.75%;
-}
-
-.flow-respond-to {
-  width: 100%;
-}
-@media (max-width: 460px) {
-  .flow-respond-to {
-    width: 47%;
-  }
-}
-@media (max-width: 720px) {
-  .flow-respond-to {
-    width: 30.33333%;
-  }
-}
-@media (max-width: 940px) {
-  .flow-respond-to {
-    width: 22%;
-  }
 }
