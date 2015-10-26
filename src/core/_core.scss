@@ -35,22 +35,22 @@ https://github.com/esr360/Kayzen-GS
     
     @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
         @if kgs-setting(mobile-first) {
-            @media (min-width: kgs-option(col-collapse)) {
+            @media (min-width: kgs-option('col-collapse')) {
                 @include kgs-default-columns;
             }
         } @else {
             @include kgs-default-columns; 
             &:not([class*="break"]) {
-                @media (max-width: kgs-option(col-collapse)) {
+                @media (max-width: kgs-option('col-collapse')) {
                     @include kgs-stack-columns;
                 }
             }
         }
     }
 
-    @each $bp, $width in kayzenGS(breakpoints) {
+    @each $bp, $width in kayzenGS('breakpoints') {
         &.#{kgs-option('row-namespace')}--#{$bp} {
-            @if kgs-setting(mobile-first) {
+            @if kgs-setting('mobile-first') {
                 @media (#{$kgs-scale}-width: $width) {
                     @include kgs-default-columns;
                 }
@@ -60,8 +60,7 @@ https://github.com/esr360/Kayzen-GS
                 }
             }
         }
-    }
-        
+    }        
     
     // Flow Columns
     //-------------------------------------------------------------
@@ -71,7 +70,7 @@ https://github.com/esr360/Kayzen-GS
         &--flow {
             
             margin-left: -#{kgs-option(gutter)};
-            width: calc(100% + kgs-option(gutter));
+            width: 100% + kgs-option(gutter);
             
             @include kgs-pull(flow);
             @include kgs-push(flow);
