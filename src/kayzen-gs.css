@@ -5,6 +5,12 @@ Made by @esr360
 https://github.com/esr360/Kayzen-GS
 	
 -----------------------------------------------------------------*/
+* {
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-rendering: auto;
+}
+
 .row,
 [class*="row--"] {
   letter-spacing: -1em;
@@ -15,12 +21,6 @@ https://github.com/esr360/Kayzen-GS
 .opera-only :-o-prefocus, .row,
 [class*="row--"] {
   word-spacing: -0.43em;
-}
-
-* {
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-rendering: auto;
 }
 
 .row > [class*="span"] {

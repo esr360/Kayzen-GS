@@ -6,6 +6,13 @@ https://github.com/esr360/Kayzen-GS
 	
 -----------------------------------------------------------------*/
 
+// Reset Spacing
+* {        
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+}
+
 @if kgs-setting('kayzen-gs') {
     
 //-----------------------------------------------------------------
@@ -15,13 +22,6 @@ https://github.com/esr360/Kayzen-GS
 .#{kgs-option('row-namespace')},
 [class*="#{kgs-option('row-namespace')}--"] {
     @include kgs-row-core;
-}
-
-// Reset Spacing
-* {        
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-rendering: auto;
 }
 
 //-----------------------------------------------------------------
