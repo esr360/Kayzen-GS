@@ -6,7 +6,7 @@
 	@include kgs-row-core;
 	@if $type == flow {		
 		margin-left: -#{kgs-option(gutter)};
-		width: calc(100% + kgs-option(gutter));
+		width: 100% + kgs-option(gutter);
 	} @else if $type == block {		
 		&:after {
 			display: none;

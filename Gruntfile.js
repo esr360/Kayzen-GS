@@ -10,11 +10,13 @@ module.exports = function(grunt) {
 
     // App Scripts
     var _core = [
-        'src/_config.scss',
         'src/lib/functions/*',
+        'src/_config.scss',
         'src/lib/tools/*',
         'src/lib/column-types/**/*',
-        'src/core/**/*',
+        'src/core/column/*',
+        'src/core/row/*',
+        'src/core/*',
         'src/lib/semantic-gs/*'
     ];
 
@@ -44,6 +46,9 @@ module.exports = function(grunt) {
         //---------------------------------------------------------
         
         sass: {
+            options: {
+                "sourcemap=none": ''
+            },
             dev: {
                 options: {
                     style: 'expanded'

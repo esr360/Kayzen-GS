@@ -27,6 +27,7 @@
 .portfolio-item {
     @include column((
         type : flow,
+        width : (3, 12),
         respond-to : (
             ((6, 12), break-1),
             ((4, 12), break-2),

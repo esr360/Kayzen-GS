@@ -12,7 +12,7 @@
         display: block;
         left: auto; // resets push/pull
         @if $type == 'flow' {
-            width: calc(100% - kgs-option(gutter));
+            width: 100% - kgs-option(gutter);
         } @else if $type == 'magic' {
             width: 100% !important;
             margin-left: 0;
