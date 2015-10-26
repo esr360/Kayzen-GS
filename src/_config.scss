@@ -42,7 +42,37 @@ $kayzenGS: (
     )
 ) !default;
 
-@import 'lib/functions/quick-config';
+//-----------------------------------------------------------------
+// Quick Config
+//-----------------------------------------------------------------
+
+@function kayzenGS($option) {
+    @return map-get-deep($kayzenGS, $option);
+}
+
+@function kgs-option($option) {
+    @return map-get-deep($kayzenGS, 'options', $option);
+}
+
+@function kgs-setting($setting) {
+    @return map-get-deep($kayzenGS, 'settings', $setting);
+}
+
+@function kgs-breakpoint($breakpoint) {
+    @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
+}
+
+@function kgs-fraction($fraction) {
+    @return map-get-deep($kayzenGS, 'fractions', $fraction);
+}
+
+@function kgs-config($options...) {
+    @return map-get-deep($config, $options...);
+}
+
+//-----------------------------------------------------------------
+// Preperation
+//-----------------------------------------------------------------
 
 // Set min/max width for breakpoints
 $kgs-scale: if(kgs-setting('mobile-first'), min, max);
