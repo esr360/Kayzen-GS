@@ -1,12 +1,10 @@
 ![Kayzen GS](https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png "Kayzen GS Logo")
 
-> A responsive, flexible and dynamic grid system based off inline-block columns.
-
 [View Examples](http://kayzen.gs)
 
 ### Overview
 
-Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for building the scaffolding for any project.
+> Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.
 
 Some of the core features of Kayzen GS are:
 
