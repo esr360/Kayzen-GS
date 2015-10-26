@@ -3,12 +3,7 @@
 //-----------------------------------------------------------------
 
 $kayzenGS: (
-    name                : grid,
     options: (
-        base-width      : 1200px,
-        max-width       : 90%,
-        small-width     : 940px,
-        full-width      : 100%,
         columns         : 12,
         gutter          : 3%,
         col-collapse    : 940px,
@@ -26,7 +21,9 @@ $kayzenGS: (
         magic-columns   : true,
         block-columns   : true,
         no-gutter       : true,
-        reverse-columns : true
+        reverse-columns : true,
+        push-columns    : true,
+        pull-columns    : true
     ),
     breakpoints: (
         break-0         : 0px,
