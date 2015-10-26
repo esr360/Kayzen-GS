@@ -22,13 +22,13 @@
 	// Styles
 	//-------------------------------------------------------------
     
-    @if config('width') != 'null' {
-        width: config('width');
+    @if kgs-config('width') != 'null' {
+        width: kgs-config('width');
     }
     
-    @if config('core') {
-        display: config('display');
-        @if config('display') == 'inline-block' {
+    @if kgs-config('core') {
+        display: kgs-config('display');
+        @if kgs-config('display') == 'inline-block' {
             vertical-align: top;
             // IE < 8: fake inline-block
             @if kgs-setting('old-ie') {
@@ -38,8 +38,8 @@
         }
     }
     
-    @if config('gutter') {
-        @include gutter;
+    @if kgs-config('gutter') {
+        @include kgs-gutter;
     }
     
 } // column-core()

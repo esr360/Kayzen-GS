@@ -14,14 +14,14 @@
     @return map-get-deep($kayzenGS, 'settings', $setting);
 }
 
-@function breakpoint($breakpoint) {
+@function kgs-breakpoint($breakpoint) {
     @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
 }
 
-@function fraction($fraction) {
+@function kgs-fraction($fraction) {
     @return map-get-deep($kayzenGS, 'fractions', $fraction);
 }
 
-@function config($options...) {
+@function kgs-config($options...) {
     @return map-get-deep($config, $options...);
 }

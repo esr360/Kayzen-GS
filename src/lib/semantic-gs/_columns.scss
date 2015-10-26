@@ -27,21 +27,21 @@
 	//-------------------------------------------------------------
     
     // if 'width' is a fraction e.g. 'quarter'
-	@if type-of(config(width)) == string {
-		$span: nth(fraction(config(width)), 1);
-		$columns: nth(fraction(config(width)), 2);
+	@if type-of(kgs-config(width)) == string {
+		$span: nth(kgs-fraction(kgs-config(width)), 1);
+		$columns: nth(kgs-fraction(kgs-config(width)), 2);
 	} 
     
     // if 'width' is a percentage e.g. 25%
-    @else if type-of(config(width)) == number {
-		$span: config(width);
+    @else if type-of(kgs-config(width)) == number {
+		$span: kgs-config(width);
 		$columns: 100;	
 	} 
     
     // if 'width' is a (span, columns) format e.g. (3, 12)
-    @else if type-of(config(width)) == list {
-		$span: nth(config(width), 1);
-		$columns: nth(config(width), 2);	
+    @else if type-of(kgs-config(width)) == list {
+		$span: nth(kgs-config(width), 1);
+		$columns: nth(kgs-config(width), 2);	
 	}
     
 	//-------------------------------------------------------------
@@ -49,17 +49,17 @@
 	//-------------------------------------------------------------
     
     // if flow column
-    @else if config(type) == flow {
+    @else if kgs-config(type) == flow {
 		width: kgs-flow-width($span, $columns);
 	} 
 	
     // if magic column
-	@if config(type) == magic {
+	@if kgs-config(type) == magic {
         &:first-child {
             margin-left: 0;
             @for $i from 1 through $columns {
                 &:nth-last-child(#{$i}) {
-                    &, ~ .#{config('namespace')} {
+                    &, ~ .#{kgs-config('namespace')} {
                         width: kgs-magic-width($i);
                     }
                 }
@@ -76,23 +76,23 @@
 	// Adaptive Widths
 	//-------------------------------------------------------------
 	
-    @if config(respond-to) {
+    @if kgs-config(respond-to) {
         
-        @each $width, $breakpoint in config(respond-to) {
+        @each $width, $breakpoint in kgs-config(respond-to) {
             
             $columns: null;	
             $span: null; 
             
             $respond-scale: if(
-                config(mobile-first), min, max
+                kgs-config(mobile-first), min, max
             );
             
-            @media (#{$respond-scale}-width: breakpoint($breakpoint)) {
+            @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
                 
                 // if 'width' is a fraction e.g. 'quarter'
                 @if type-of($width) == string {
-                    $span: nth(fraction($width), 1);
-                    $columns: nth(fraction($width), 2);
+                    $span: nth(kgs-fraction($width), 1);
+                    $columns: nth(kgs-fraction($width), 2);
                 } 
                 
                 // if 'width' is a percentage e.g. 25%
@@ -108,7 +108,7 @@
                 }
                 
                 // if flow column
-                @if config(type) == 'flow' {
+                @if kgs-config(type) == 'flow' {
                     width: kgs-flow-width($span, $columns);	
                 } 
                 
