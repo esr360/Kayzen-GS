@@ -1,4 +1,7 @@
-// Magic Column width
+//-----------------------------------------------------------------
+// Calculate Magic Column Width
+//-----------------------------------------------------------------
+
 @function kgs-magic-width($columns: $columns) {
 	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * option(gutter) ) / $columns );
 }

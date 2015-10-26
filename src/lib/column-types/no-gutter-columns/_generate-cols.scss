@@ -1,4 +1,7 @@
-// Default Column Width
+//-----------------------------------------------------------------
+// Generate No-Gutter Columns
+//-----------------------------------------------------------------
+
 @mixin kgs-no-gutter-columns {
     
     > [class*="#{option('col-namespace')}"] {
