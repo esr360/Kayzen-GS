@@ -3,7 +3,7 @@
     "description":"A responsive, flexible and dynamic grid system based off inline-block columns.",
     "version":"2.0.0",
     "main":[
-        "kayzen-gs.scss"	
+        "src/kayzen-gs.scss"	
     ],
     "keywords":[
         "css",
