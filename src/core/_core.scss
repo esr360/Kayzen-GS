@@ -51,11 +51,11 @@ https://github.com/esr360/Kayzen-GS
     @each $bp, $width in kayzenGS(breakpoints) {
         &.#{kgs-option('row-namespace')}--#{$bp} {
             @if kgs-setting(mobile-first) {
-                @media (#{$scale}-width: $width) {
+                @media (#{$kgs-scale}-width: $width) {
                     @include kgs-default-columns;
                 }
             } @else {
-                @media (#{$scale}-width: $width) {
+                @media (#{$kgs-scale}-width: $width) {
                     @include kgs-stack-columns;
                 }
             }
@@ -95,11 +95,11 @@ https://github.com/esr360/Kayzen-GS
         @each $bp, $width in kayzenGS(breakpoints) {
             &.#{kgs-option('row-namespace')}--#{$bp} {
                 @if kgs-setting(mobile-first) {
-                    @media (#{$scale}-width: $width) {
+                    @media (#{$kgs-scale}-width: $width) {
                         @include kgs-flow-columns;
                     }
                 } @else {
-                    @media (#{$scale}-width: $width) {
+                    @media (#{$kgs-scale}-width: $width) {
                         @include kgs-stack-columns($type: flow);
                     }
                 }
@@ -134,11 +134,11 @@ https://github.com/esr360/Kayzen-GS
             @each $bp, $width in kayzenGS(breakpoints) {
                 &.#{kgs-option('row-namespace')}--#{$bp} {
                     @if kgs-setting(mobile-first) {
-                        @media (#{$scale}-width: $width) {
+                        @media (#{$kgs-scale}-width: $width) {
                             @include kgs-magic-columns;
                         }
                     } @else {
-                        @media (#{$scale}-width: $width) {
+                        @media (#{$kgs-scale}-width: $width) {
                             @include kgs-stack-columns($type: magic);
                         }
                     }
@@ -183,11 +183,11 @@ https://github.com/esr360/Kayzen-GS
         @each $bp, $width in kayzenGS(breakpoints) {
             &.#{kgs-option('row-namespace')}--#{$bp} {
                 @if kgs-setting(mobile-first) {
-                    @media (#{$scale}-width: $width) {
+                    @media (#{$kgs-scale}-width: $width) {
                         @include kgs-block-columns;
                     }
                 } @else {
-                    @media (#{$scale}-width: $width) {
+                    @media (#{$kgs-scale}-width: $width) {
                         @include kgs-stack-columns;
                     }
                 }
@@ -206,7 +206,7 @@ https://github.com/esr360/Kayzen-GS
         }
                     
         @each $bp, $width in kayzenGS(breakpoints) {
-            @media (#{$scale}-width: $width) {
+            @media (#{$kgs-scale}-width: $width) {
                 &.reverse-#{$bp} {
                     @include kgs-reverse-order;
                 }

@@ -20,7 +20,7 @@
         }
         
         @each $bp, $width in $reverse-breakpoints {
-            @media (#{$scale}-width: $width) {
+            @media (#{$kgs-scale}-width: $width) {
                 @each $name, $fraction in kayzenGS(fractions) {		
                     &.#{$bp}-#{$name} {
                         width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
