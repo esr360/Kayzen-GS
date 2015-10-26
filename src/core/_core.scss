@@ -67,7 +67,7 @@ https://github.com/esr360/Kayzen-GS
     &--flow {
         
         margin-left: -#{kgs-option(gutter)};
-        width: 100% + kgs-option(gutter);
+        width: calc(100% + kgs-option(gutter));
         
         @include kgs-pull(flow);
         @include kgs-push(flow);
