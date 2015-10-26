@@ -6,13 +6,14 @@
 
 > Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.
 
-Some of the core features of Kayzen GS are:
+Some of the core features of Kayzen GS include:
 
 * Specify any number of columns
 * Infinitely nestable rows
 * Easily set vertical/horizontal align
 * Create semantic rows and columns
 * Uses inline-block columns
+* Specify column/row selector names
 * Specify gutter width
 * Multiple column types
 * Reverse column order
@@ -35,12 +36,13 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
   * [Responsiveness](#responsiveness)
   * [Flow Columns](#flow-columns)
-    * [Flexible Columns](#flexible-columns)
+  * [Adaptive Columns](#adaptive-columns)
   * [Magic Columns](#magic-columns)
   * [Block Columns](#block-columns)
+  * [No Gutter Columns](#no-gutter-columns)
 * [Custom Configuration](#custom-configuration)
   * [Options](#options)
-  * [Grid System](#grid-system)
+  * [Settings](#settings)
   * [Breakpoints](#breakpoints)
   * [Fractions](#fractions)
 * [Semantic Grid System](#semantic-grid-system)
@@ -60,9 +62,9 @@ There are several ways to use the Kayzen GS framework depending on how much you 
 
 If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the `kayzen-gs.min.css` file in your project and you're good to go.
 
-#### Sass
+#### Using Sass
 
-If you're using Sass, to include Kayzen GS in your project ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the project, or you can do one of the following:
+If you're using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the project, or you can do one of the following:
 
 ##### Install as Git Submodule
 
