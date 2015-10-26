@@ -66,67 +66,132 @@ https://github.com/esr360/Kayzen-GS
     // Flow Columns
     //-------------------------------------------------------------
     
-    &--flow {
+    @if kgs-setting('flow-columns') {
         
-        margin-left: -#{kgs-option(gutter)};
-        width: calc(100% + kgs-option(gutter));
-        
-        @include kgs-pull(flow);
-        @include kgs-push(flow);
-        
-        @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
-            @if kgs-setting(mobile-first) {
-                @media (min-width: kgs-option(col-collapse)) {
-                    @include kgs-flow-columns;
-                }
-            } @else {
-                @include kgs-flow-columns;
-                > [class*="#{kgs-option(col-namespace)}"] {
-                    margin-left: #{kgs-option(gutter)};
-                } 
-                &:not([class*="break"]) {
-                    @media (max-width: kgs-option(col-collapse)) {
-                        @include kgs-stack-columns($type: flow);
-                    }
-                }
-            }
-        }
-    
-        @each $bp, $width in kayzenGS(breakpoints) {
-            &.#{kgs-option('row-namespace')}--#{$bp} {
+        &--flow {
+            
+            margin-left: -#{kgs-option(gutter)};
+            width: calc(100% + kgs-option(gutter));
+            
+            @include kgs-pull(flow);
+            @include kgs-push(flow);
+            
+            @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
                 @if kgs-setting(mobile-first) {
-                    @media (#{$kgs-scale}-width: $width) {
+                    @media (min-width: kgs-option(col-collapse)) {
                         @include kgs-flow-columns;
                     }
                 } @else {
-                    @media (#{$kgs-scale}-width: $width) {
-                        @include kgs-stack-columns($type: flow);
+                    @include kgs-flow-columns;
+                    > [class*="#{kgs-option(col-namespace)}"] {
+                        margin-left: #{kgs-option(gutter)};
+                    } 
+                    &:not([class*="break"]) {
+                        @media (max-width: kgs-option(col-collapse)) {
+                            @include kgs-stack-columns($type: flow);
+                        }
                     }
                 }
             }
-        }
         
-        // Adaptive Columns     
-        @include kgs-adaptive-columns;
-        
-    }
+            @each $bp, $width in kayzenGS(breakpoints) {
+                &.#{kgs-option('row-namespace')}--#{$bp} {
+                    @if kgs-setting(mobile-first) {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-flow-columns;
+                        }
+                    } @else {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-stack-columns($type: flow);
+                        }
+                    }
+                }
+            }
+            
+            // Adaptive Columns 
+            @if kgs-setting('adaptive-columns') {    
+                @include kgs-adaptive-columns;
+            }
+            
+        } // &--flow
+    
+    } // kgs-setting()
     
     // Magic Columns
     //-------------------------------------------------------------
-    
-    &--magic {
+
+    @if kgs-setting('magic-columns') {
         
-        @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
+        &--magic {
             
-            @if kgs-setting(mobile-first) {
-                @media (min-width: kgs-option(col-collapse)) {
+            @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
+                
+                @if kgs-setting(mobile-first) {
+                    @media (min-width: kgs-option(col-collapse)) {
+                        @include kgs-magic-columns;
+                    }
+                } @else {
                     @include kgs-magic-columns;
+                    &:not([class*="break"]) {
+                        @media (max-width: kgs-option(col-collapse)) {
+                            @include kgs-stack-columns($type: magic);
+                        }
+                    }
                 }
-            } @else {
-                @include kgs-magic-columns;
-                &:not([class*="break"]) {
-                    @media (max-width: kgs-option(col-collapse)) {
-                        @include kgs-stack-columns($type: magic);
+                
+                @each $bp, $width in kayzenGS(breakpoints) {
+                    &.#{kgs-option('row-namespace')}--#{$bp} {
+                        @if kgs-setting(mobile-first) {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-magic-columns;
+                            }
+                        } @else {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-stack-columns($type: magic);
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
+        } // &--magic
+        
+    } // kgs-setting()
+    
+    // No Gutter Columns
+    //-------------------------------------------------------------
+    
+    @if kgs-setting('no-gutter-columns') {
+        
+        &--no-gutter {
+            
+            @include kgs-pull(no-gutter);
+            @include kgs-push(no-gutter);
+            @include kgs-no-gutter-columns;
+            
+        }
+        
+    } // kgs-setting()
+    
+    // Block Columns
+    //-------------------------------------------------------------
+    
+    @if kgs-setting('block-columns') {
+        
+        &--block {
+            
+            @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
+                @if kgs-setting(mobile-first) {
+                    @media (min-width: kgs-option(col-collapse)) {
+                        @include kgs-block-columns;
+                    }
+                } @else {
+                    @include kgs-block-columns;
+                    &:not([class*="break"]) {
+                        @media (max-width: kgs-option(col-collapse)) {
+                            @include kgs-stack-columns;
+                        }
                     }
                 }
             }
@@ -135,93 +200,55 @@ https://github.com/esr360/Kayzen-GS
                 &.#{kgs-option('row-namespace')}--#{$bp} {
                     @if kgs-setting(mobile-first) {
                         @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-magic-columns;
+                            @include kgs-block-columns;
                         }
                     } @else {
                         @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-stack-columns($type: magic);
+                            @include kgs-stack-columns;
                         }
+                    }
+                }
+            }
+            
+        } // &--block
+        
+    } // kgs-setting()
+    
+    // Reverse Column Order
+    //-------------------------------------------------------------
+
+    @if kgs-setting('reverse-columns') {
+        
+        &--reverse {
+            
+            &:not([class*="reverse-break"]) {
+                @include kgs-reverse-order;
+            }
+                        
+            @each $bp, $width in kayzenGS(breakpoints) {
+                @media (#{$kgs-scale}-width: $width) {
+                    &.reverse-#{$bp} {
+                        @include kgs-reverse-order;
                     }
                 }
             }
             
         }
         
-    } // &--magic
+    } // kgs-setting()
     
-    // No Gutter Columns
-    //-------------------------------------------------------------
-    
-    &--no-gutter {
-        
-        @include kgs-pull(no-gutter);
-        @include kgs-push(no-gutter);
-        @include kgs-no-gutter-columns;
-        
-    }
-    
-    // Block Columns
-    //-------------------------------------------------------------
-    
-    &--block {
-        
-        @if (kgs-option(mobile-first), '&:not([class*="break"])', '&') {
-            @if kgs-setting(mobile-first) {
-                @media (min-width: kgs-option(col-collapse)) {
-                    @include kgs-block-columns;
-                }
-            } @else {
-                @include kgs-block-columns;
-                &:not([class*="break"]) {
-                    @media (max-width: kgs-option(col-collapse)) {
-                        @include kgs-stack-columns;
-                    }
-                }
-            }
-        }
-        
-        @each $bp, $width in kayzenGS(breakpoints) {
-            &.#{kgs-option('row-namespace')}--#{$bp} {
-                @if kgs-setting(mobile-first) {
-                    @media (#{$kgs-scale}-width: $width) {
-                        @include kgs-block-columns;
-                    }
-                } @else {
-                    @media (#{$kgs-scale}-width: $width) {
-                        @include kgs-stack-columns;
-                    }
-                }
-            }
-        }
-        
-    } // &--block
-    
-    // Reverse Column Order
-    //-------------------------------------------------------------
-
-    &--reverse {
-        
-        &:not([class*="reverse-break"]) {
-            @include kgs-reverse-order;
-        }
-                    
-        @each $bp, $width in kayzenGS(breakpoints) {
-            @media (#{$kgs-scale}-width: $width) {
-                &.reverse-#{$bp} {
-                    @include kgs-reverse-order;
-                }
-            }
-        }
-        
-    }
-    
-}
+} // row
     
 //-----------------------------------------------------------------
 // Custom Push/Pull
 //-----------------------------------------------------------------
 
-@include kgs-pull;
-@include kgs-push;
-
+@if kgs-setting('pull-columns') {
+    @include kgs-pull;
 }
+
+@if kgs-setting('push-columns') {
+    @include kgs-push;
+}
+
+} // kgs-setting
