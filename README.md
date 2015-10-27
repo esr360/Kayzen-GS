@@ -41,7 +41,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
   * [Block Columns](#block-columns)
   * [No Gutter Columns](#no-gutter-columns)
   * [Reverse Column Order](#reverse-column-order)
-  * [Push/Pull Columns](#push-pull-columns)
+  * [Push/Pull Columns](#pushpull-columns)
 * [Custom Configuration](#custom-configuration)
   * [Options](#options)
   * [Settings](#settings)
