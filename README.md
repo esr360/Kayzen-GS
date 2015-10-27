@@ -555,7 +555,7 @@ You can use Kayzen GS to build your own grid system using semantic class names w
 
 In the above example we are using **main** as our semantic class name.
 
-**Creating a semantic row of Flow Columns:**
+**Creating a semantic row for Flow Columns:**
 
 
 ```css
@@ -678,10 +678,10 @@ All the column types from the default grid system are also available to use in y
 
 ```css
 .portfolio-item {
-	@include column(
+	@include column((
 		'type'  : 'block',
 		'width' : (3, 12)
-	);
+	));
 }
 ```
 
