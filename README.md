@@ -393,11 +393,13 @@ $kayzenGS: (
 
 #### Options
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Option          | Type     | Default  |
+| --------------- | -------- | -------- |
+| `columns`       | number[integer]   | 12 |
+| `gutter`        | number   | 3% |
+| `col-break`     | number   | $1 |
+| `row-namespace` | string   | $1 |
+| `col-namespace` | string   | $1 |
 
 ##### How many columns should your grid system have?
 
