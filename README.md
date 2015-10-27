@@ -457,43 +457,61 @@ Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** o
 
 Default  : true
 
+This option generates the code required for the [custom breakpoint stacking](#responsiveness) feature.
+
 ##### 'adaptive-columns'
 
 Default  : true
+
+This option generates the code required for [adaptive columns](#adaptive-columns).
 
 ##### 'flow-columns'
 
 Default  : true
 
+This option generates the code required for [flow columns](#flow-columns).
+
 ##### 'magic-columns'
 
 Default  : true
+
+This option generates the code required for [magic columns](#magic-columns).
 
 ##### 'block-columns'
 
 Default  : true
 
+This option generates the code required for [block columns](#block-columns).
+
 ##### 'no-gutter-columns'
 
 Default  : true
+
+This option generates the code required for [no-gutter columns](#no-gutter-columns).
 
 ##### 'reverse-columns'
 
 Default  : true
 
+This option generates the code required to [reverse columns](#reverse-columns).
+
 ##### 'pull-columns'
 
 Default  : true
+
+This option generates the code required to [pull columns](#pull-columns).
 
 ##### 'push-columns'
 
 Default  : true
 
+This option generates the code required to [push columns](#push-columns).
+
 #### Breakpoints
 
-You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. 
+Kayzen GS allows you to specify any number of breakpoints. Amend the `breakpoints` map in the config as you desire.
 
-> The helper classes used for the default grid system are generated from these values.
+> These values are used to generate the helper classes. Be wary not to include too many values here.
 
 ```scss	
 'breakpoints' : (
@@ -507,9 +525,9 @@ You can set as many different breakpoints as you like to use in the grid system 
 
 #### Fractions
 
-You can define any number of fractions you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
+This is where you can define the names for any fractions you wish to use in your grid system.
 
-> The helper classes used for the default grid system are generated from these values.
+> These values are used to generate the helper classes. Be wary not to include too many values here.
 
 ```scss	
 'fractions' : (
@@ -542,7 +560,7 @@ In the above example we are using **main** as our semantic class name.
 
 ```css
 .portfolio-grid {
-	@include row(flow);
+	@include row('flow');
 }
 ```
 
@@ -554,9 +572,9 @@ In the above example, our semantic class name for our row of Flow Columns is **p
 
 ```css
 .sidebar {
-	@include column(
-		$width: (3, 12)
-	);
+	@include column((
+		'width' : (3, 12)
+	));
 }
 ```
 
@@ -564,9 +582,9 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 ```css
 .sidebar {
-	@include column(
-		$width: quarter
-	);
+	@include column((
+		'width' : 'quarter'
+	));
 }
 ```
 
@@ -576,9 +594,9 @@ Or even this:
 
 ```css
 .sidebar {
-	@include column(
-		$width: 25%
-	);
+	@include column((
+		'width' : 25%
+	));
 }
 ```
 
@@ -586,21 +604,21 @@ Note that perhaps surprisingly the above examples do **not** produce a `width` v
 
 ```css
 .sidebar {
-	@include column(
-		$width: 20%
-	);
+	@include column((
+		'width' : 20%
+	));
 }
 
 .content {
 	@include column(
-		$width: 70%
-	);
+		'width' : 70%
+	));
 }
 
 .promo {
 	@include column(
-		$width: 10%
-	);
+		'width' : 10%
+	));
 }
 ```
 
@@ -635,10 +653,10 @@ All the column types from the default grid system are also available to use in y
 
 ```css
 .portfolio-item {
-	@include column(
-		$type: flow,
-		$width: (3, 12)
-	);
+	@include column((
+		'type'  : 'flow',
+		'width' : (3, 12)
+	));
 }
 ```
 
@@ -646,13 +664,10 @@ All the column types from the default grid system are also available to use in y
 
 ###### Magic Columns
 
-> You must set the `$namespace` variable to match your semantic class name.
-
 ```css
 .portfolio-item {
 	@include column(
-		$type: magic, 
-		$namespace: portfolio-item
+		'type' : 'magic'
 	);
 } 
 ```
@@ -664,8 +679,8 @@ All the column types from the default grid system are also available to use in y
 ```css
 .portfolio-item {
 	@include column(
-		$type: block,
-		$width: (3, 12)
+		'type'  : 'block',
+		'width' : (3, 12)
 	);
 }
 ```
@@ -678,10 +693,10 @@ The default width for the stacking of semantic columns is set in the [Configurat
 
 ```css
 .sidebar {
-	@include column(
-		$width: quarter,
-		$stack: breakpoint(break-2)
-	);
+	@include column((
+		'width' : 'quarter',
+		'stack' : breakpoint(break-2)
+	));
 }
 ```
 
@@ -695,14 +710,14 @@ When inside a Flow Columns container and with its `$type` set to **flow**, you c
 
 ```css
 .portfolio-item {
-	@include column(
-		$type: flow,
-		$respond-to: (
-			((6, 12), break-1),
-			((4, 12), break-2),
-			((3, 12), break-3)
+	@include column((
+		'type' : 'flow',
+		'respond-to' : (
+			((6, 12), 'break-1'),
+			((4, 12), 'break-2'),
+			((3, 12), 'break-3')
 		)
-	);
+	));
 }
 ```
 
@@ -716,14 +731,14 @@ You can also use numeric values for percentages:
 
 ```css
 .portfolio-item {
-	@include column(
-		$type: flow,
-		$respond-to: (
-			(50%, break-1),
-			(100/3, break-2),
-			(25%, break-3)
+	@include column((
+		'type' : 'flow',
+		'respond-to' : (
+			(50%, 'break-1'),
+			(100/3, 'break-2'),
+			(25%, 'break-3')
 		)
-	);
+	));
 }
 ```
 
@@ -731,35 +746,35 @@ Using the [$fractions map](#fractions) you can substitue writing the fraction nu
 
 ```css
 .portfolio-item {
-	@include column(
-		$type: flow,
-		$respond-to: (
-			(half, break-1),
-			(third, break-2),
-			(quarter, break-3)
+	@include column((
+		'type' : 'flow',
+		'respond-to' : (
+			('half', 'break-1'),
+			('third', 'break-2'),
+			('quarter', 'break-3')
 		)
-	);
+	));
 }
 ```
 
-With `$mobile-first` set to **false**, to achieve the same result as the above example the code would be:
+With `mobile-first` set to **false**, to achieve the same result as the above example the code would be:
 
 ```css
 .portfolio-item {
-	@include column(
-		$mobile-first: false,
-		$type: flow,
-		$width: quarter,
-		$respond-to: (
-			(third, break-3),
-			(half, break-2),
-			(full, break-1)
+	@include column((
+		'mobile-first' : false,
+		'type'         : 'flow',
+		'width'        : 'quarter',
+		'respond-to' : (
+			('third', 'break-3'),
+			('half', 'break-2'),
+			('full', 'break-1')
 		)
-	);
+	));
 }
 ```
 
-> Note the requirement of a default value for `$width`.
+> Note the requirement of a default value for `width`.
 
 ### Column Aligning
 
