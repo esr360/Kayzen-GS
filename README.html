@@ -128,33 +128,33 @@
 <h4 id="flow-columns">Flow Columns</h4>
 <p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element with the <code>row-flow</code> class:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;
-    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#flow-columns">View Demo</a></p>
 <p>The above code will produce something similiar the following:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-6&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
-    &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p>As with normal columns you can add helper classes to your row of flow columns:</p>
@@ -165,22 +165,22 @@
 <h5 id="adaptive-columns">Adaptive Columns</h5>
 <p>Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the <a href="#">fraction</a> values from the configurtion:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p>If <code>mobile-first</code> is enabled (by default it is <em>disabled</em>), instead your code would look somthing like:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#flexible-columns">View Demo</a></p>
@@ -205,9 +205,7 @@
 <h4 id="block-columns">Block Columns</h4>
 <p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, use the <code>row-block</code> class for your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-block&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    ...
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#block-columns">View Demo</a></p>
@@ -219,9 +217,7 @@
 <h4 id="no-gutter-columns">No-Gutter Columns</h4>
 <p>No-Gutter Columns are just like regular columns except they have no gutter. To create a row of No-Gutter Columns, use the <code>row-no-gutter</code> class for your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-no-gutter&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    ...
 &lt;/div&gt;
 </code></pre>
 <p>As with normal columns you can add helper classes to your row of no-gutter columns:</p>
@@ -232,16 +228,12 @@
 <h4 id="reverse-column-order">Reverse Column Order</h4>
 <p>To reverse the order of all columns in a given row, the <code>row-reverse</code> helper class is used:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row row-reverse&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    ...
 &lt;/div&gt;
 </code></pre>
 <p>When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a seperate helper class of <code>reverse-break-3</code>, adding the appropriate breakpoint value as desired:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row reverse-break-3&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    ...
 &lt;/div&gt;
 </code></pre>
 <h4 id="push-pull-columns">Push/Pull Columns</h4>

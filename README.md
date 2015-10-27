@@ -169,15 +169,15 @@ Flow Columns are more flexible than regular columns - each visual row of columns
 
 ```html
 <div class="row-flow">
-    <div class="span-6">Flow Column</div>
-    <div class="span-6">Flow Column</div>
-    <div class="span-4">Flow Column</div>
-    <div class="span-4">Flow Column</div>
-    <div class="span-4">Flow Column</div>
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
+    <div class="span-6">...</div>
+    <div class="span-6">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
 </div>
 ```
 
@@ -187,19 +187,19 @@ The above code will produce something similiar the following:
 
 ```html
 <div class="row">
-    <div class="span-6">Flow Column</div>
-    <div class="span-6">Flow Column</div>
+    <div class="span-6">...</div>
+    <div class="span-6">...</div>
 </div>
 <div class="row">
-    <div class="span-4">Flow Column</div>
-    <div class="span-4">Flow Column</div>
-    <div class="span-4">Flow Column</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
 </div>
 <div class="row">
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
-    <div class="span-3">Flow Column</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
+    <div class="span-3">...</div>
 </div>
 ```
 
@@ -217,12 +217,12 @@ Adaptive Columns allow for more flexibility - they allow you to specify a custom
 	
 ```html		
 <div class="row-flow">                    
-    <div class="span-3 break-2-half break-1-full">span-3</div>
-    <div class="span-3 break-2-half break-1-full">span-3</div>
-    <div class="span-3 break-2-half break-1-full">span-3</div>
-    <div class="span-3 break-2-half break-1-full">span-3</div>
-    <div class="span-3 break-2-half break-1-full">span-3</div>
-    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-2-half break-1-full">...</div>
 </div> 
 ```
 
@@ -230,12 +230,12 @@ If `mobile-first` is enabled (by default it is *disabled*), instead your code wo
 
 ```html	
 <div class="row-flow">                    
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
-    <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
+    <div class="span break-1-half break-2-third break-3-quarter">...</div>
 </div> 
 ```
 
@@ -275,9 +275,7 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ```html	
 <div class="row-block">
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
+    ...
 </div>
 ```
 
@@ -297,9 +295,7 @@ No-Gutter Columns are just like regular columns except they have no gutter. To c
 
 ```html	
 <div class="row-no-gutter">
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
+    ...
 </div>
 ```
 
@@ -317,9 +313,7 @@ To reverse the order of all columns in a given row, the `row-reverse` helper cla
 
 ```html
 <div class="row row-reverse">
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
+    ...
 </div>
 ```
 
@@ -327,9 +321,7 @@ When columns become stacked, the left one becomes the top and the right one beco
 
 ```html
 <div class="row reverse-break-3">
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
-    <div class="span-4">...</div>
+    ...
 </div>
 ```
 
