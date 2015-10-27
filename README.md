@@ -453,39 +453,39 @@ With mobile-first disabled, the logic is different, in fact, it is reversed:
 
 Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
 
-##### `custom-stacking`
+##### 'custom-stacking'
 
 Default  : true
 
-##### `adaptive-columns`
+##### 'adaptive-columns'
 
 Default  : true
 
-##### `flow-columns`
+##### 'flow-columns'
 
 Default  : true
 
-##### `magic-columns`
+##### 'magic-columns'
 
 Default  : true
 
-##### `block-columns`
+##### 'block-columns'
 
 Default  : true
 
-##### `no-gutter-columns`
+##### 'no-gutter-columns'
 
 Default  : true
 
-##### `reverse-columns`
+##### 'reverse-columns'
 
 Default  : true
 
-##### `pull-columns`
+##### 'pull-columns'
 
 Default  : true
 
-##### `push-columns`
+##### 'push-columns'
 
 Default  : true
 
