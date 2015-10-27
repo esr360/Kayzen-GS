@@ -401,58 +401,6 @@ $kayzenGS: (
 | `row-namespace` | string              | 'row'    |
 | `col-namespace` | string              | 'span'   |
 
-##### How many columns should your grid system have?
-
-* Variable : $columns
-* Type     : integer
-* Default  : 12
-
-##### How big should the gutter inbetween your columns be?
-
-* Variable : $gutter
-* Type     : percentage
-* Default  : 2.5%
-
-#### Breakpoints
-
-You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. 
-
-> The helper classes used for the default grid system are generated from these values.
-
-```css	
-$breakpoints: (
-	break-0                     : 0px,
-	break-1                     : 460px,
-	break-2                     : 720px,
-	break-3                     : 940px,
-	break-4                     : 1200px
-);
-```
-
-##### Set the maximum width for default vertically stacked columns
-
-> This is the default width at which your columns should stack.
-
-* Variable : $col-collapse
-* Type     : length unit
-* Default  : breakpoint(break-3) // 940px
-
-#### Fractions
-
-You can define any number of fractions you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
-
-> The helper classes used for the default grid system are generated from these values.
-
-```css	
-$fractions: (
-	full                        : (1, 1),
-	half                        : (1, 2),
-	third                       : (1, 3),
-	quarter                     : (1, 4),
-	sixth                       : (1, 6)
-);
-```
-
 #### Settings
 
 **Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use to optimise the generated CSS.
@@ -533,28 +481,44 @@ Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** o
 * Type     : boolean
 * Default  : true
 
-##### Set row namespace
+#### Breakpoints
 
-* Variable : $row-namespace
-* Type     : string
-* Default  : "row"
+You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. 
 
-```html	
-<div class="row">
-	...
-</div>
+> The helper classes used for the default grid system are generated from these values.
+
+```css	
+$breakpoints: (
+	break-0                     : 0px,
+	break-1                     : 460px,
+	break-2                     : 720px,
+	break-3                     : 940px,
+	break-4                     : 1200px
+);
 ```
 
-##### Set column namespace
+##### Set the maximum width for default vertically stacked columns
 
-* Variable : $col-namespace
-* Type     : string
-* Default  : "span"
+> This is the default width at which your columns should stack.
 
-```html	
-<div class="span-4">
-	...
-</div>
+* Variable : $col-collapse
+* Type     : length unit
+* Default  : breakpoint(break-3) // 940px
+
+#### Fractions
+
+You can define any number of fractions you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. 
+
+> The helper classes used for the default grid system are generated from these values.
+
+```css	
+$fractions: (
+	full                        : (1, 1),
+	half                        : (1, 2),
+	third                       : (1, 3),
+	quarter                     : (1, 4),
+	sixth                       : (1, 6)
+);
 ```
 
 ### Semantic Grid System
