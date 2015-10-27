@@ -40,27 +40,31 @@ https://github.com/esr360/Kayzen-GS
             }
         } @else {
             @include kgs-default-columns; 
-            &:not([class*="break"]) {
-                @media (max-width: kgs-option('col-break')) {
-                    @include kgs-stack-columns;
+            @if kgs-setting('responsive') {
+                &:not([class*="break"]) {
+                    @media (max-width: kgs-option('col-break')) {
+                        @include kgs-stack-columns;
+                    }
                 }
             }
         }
     }
 
-    @each $bp, $width in kayzenGS('breakpoints') {
-        &.#{kgs-option('row-namespace')}--#{$bp} {
-            @if kgs-setting('mobile-first') {
-                @media (#{$kgs-scale}-width: $width) {
-                    @include kgs-default-columns;
-                }
-            } @else {
-                @media (#{$kgs-scale}-width: $width) {
-                    @include kgs-stack-columns;
+    @if kgs-setting('responsive') {
+        @each $bp, $width in kayzenGS('breakpoints') {
+            &.#{kgs-option('row-namespace')}--#{$bp} {
+                @if kgs-setting('mobile-first') {
+                    @media (#{$kgs-scale}-width: $width) {
+                        @include kgs-default-columns;
+                    }
+                } @else {
+                    @media (#{$kgs-scale}-width: $width) {
+                        @include kgs-stack-columns;
+                    }
                 }
             }
         }
-    }        
+    }  
     
     // Flow Columns
     //-------------------------------------------------------------
@@ -85,31 +89,37 @@ https://github.com/esr360/Kayzen-GS
                     > [class*="#{kgs-option(col-namespace)}"] {
                         margin-left: #{kgs-option(gutter)};
                     } 
-                    &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-break')) {
-                            @include kgs-stack-columns($type: 'flow');
+                    @if kgs-setting('responsive') {
+                        &:not([class*="break"]) {
+                            @media (max-width: kgs-option('col-break')) {
+                                @include kgs-stack-columns($type: 'flow');
+                            }
                         }
                     }
                 }
             }
-        
-            @each $bp, $width in kayzenGS('breakpoints') {
-                &.#{kgs-option('row-namespace')}--#{$bp} {
-                    @if kgs-setting('mobile-first') {
-                        @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-flow-columns;
-                        }
-                    } @else {
-                        @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-stack-columns($type: 'flow');
+            
+            @if kgs-setting('responsive') {
+                @each $bp, $width in kayzenGS('breakpoints') {
+                    &.#{kgs-option('row-namespace')}--#{$bp} {
+                        @if kgs-setting('mobile-first') {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-flow-columns;
+                            }
+                        } @else {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-stack-columns($type: 'flow');
+                            }
                         }
                     }
                 }
             }
             
             // Adaptive Columns 
-            @if kgs-setting('adaptive-columns') {    
-                @include kgs-adaptive-columns;
+            @if kgs-setting('responsive') {
+                @if kgs-setting('adaptive-columns') {    
+                    @include kgs-adaptive-columns;
+                }
             }
             
         } // &--flow
@@ -131,22 +141,26 @@ https://github.com/esr360/Kayzen-GS
                     }
                 } @else {
                     @include kgs-magic-columns;
-                    &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-break')) {
-                            @include kgs-stack-columns($type: magic);
+                    @if kgs-setting('responsive') {
+                        &:not([class*="break"]) {
+                            @media (max-width: kgs-option('col-break')) {
+                                @include kgs-stack-columns($type: magic);
+                            }
                         }
                     }
                 }
                 
-                @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}--#{$bp} {
-                        @if kgs-setting('mobile-first') {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-magic-columns;
-                            }
-                        } @else {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-stack-columns($type: magic);
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.#{kgs-option('row-namespace')}--#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-magic-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns($type: magic);
+                                }
                             }
                         }
                     }
@@ -187,23 +201,27 @@ https://github.com/esr360/Kayzen-GS
                     }
                 } @else {
                     @include kgs-block-columns;
-                    &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-break')) {
-                            @include kgs-stack-columns;
+                    @if kgs-setting('responsive') {
+                        &:not([class*="break"]) {
+                            @media (max-width: kgs-option('col-break')) {
+                                @include kgs-stack-columns;
+                            }
                         }
                     }
                 }
             }
             
-            @each $bp, $width in kayzenGS('breakpoints') {
-                &.#{kgs-option('row-namespace')}--#{$bp} {
-                    @if kgs-setting('mobile-first') {
-                        @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-block-columns;
-                        }
-                    } @else {
-                        @media (#{$kgs-scale}-width: $width) {
-                            @include kgs-stack-columns;
+            @if kgs-setting('responsive') {
+                @each $bp, $width in kayzenGS('breakpoints') {
+                    &.#{kgs-option('row-namespace')}--#{$bp} {
+                        @if kgs-setting('mobile-first') {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-block-columns;
+                            }
+                        } @else {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-stack-columns;
+                            }
                         }
                     }
                 }
@@ -223,11 +241,13 @@ https://github.com/esr360/Kayzen-GS
             &:not([class*="reverse-break"]) {
                 @include kgs-reverse-order;
             }
-                        
-            @each $bp, $width in kayzenGS('breakpoints') {
-                @media (#{$kgs-scale}-width: $width) {
-                    &.reverse-#{$bp} {
-                        @include kgs-reverse-order;
+            
+            @if kgs-setting('responsive') {
+                @each $bp, $width in kayzenGS('breakpoints') {
+                    @media (#{$kgs-scale}-width: $width) {
+                        &.reverse-#{$bp} {
+                            @include kgs-reverse-order;
+                        }
                     }
                 }
             }
