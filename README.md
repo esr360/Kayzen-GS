@@ -455,21 +455,39 @@ Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** o
 
 ##### `custom-stacking`
 
+Default  : true
+
 ##### `adaptive-columns`
+
+Default  : true
 
 ##### `flow-columns`
 
+Default  : true
+
 ##### `magic-columns`
+
+Default  : true
 
 ##### `block-columns`
 
+Default  : true
+
 ##### `no-gutter-columns`
+
+Default  : true
 
 ##### `reverse-columns`
 
+Default  : true
+
 ##### `pull-columns`
 
+Default  : true
+
 ##### `push-columns`
+
+Default  : true
 
 #### Breakpoints
 
