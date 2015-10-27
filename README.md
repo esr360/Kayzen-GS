@@ -320,7 +320,7 @@ As with normal columns you can add helper classes to your row of no-gutter colum
 
 ### Custom Configuration
 
-Kayzen GS is built in **Sass**/Scss, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
+Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
 #### Options
 
