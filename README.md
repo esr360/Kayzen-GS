@@ -319,7 +319,13 @@ As with normal columns you can add helper classes to your row of no-gutter colum
 
 Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
-All config for Kayzen GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherevere you want (before includeing Kayzen GS) and ensure it has all the required values.
+The configuration is found in the following file:
+
+```
+src/_config.scss
+```
+
+All config for Kayzen GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen GS) and ensure it has all the required values.
 
 ```scss
 $kayzenGS: (

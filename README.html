@@ -233,7 +233,9 @@
 <h4 id="push-pull-columns">Push/Pull Columns</h4>
 <h3 id="custom-configuration">Custom Configuration</h3>
 <p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a way to pre-process your CSS from <code>.scss</code> files.</p>
-<p>All config for Kayzen GS is contained within a single variable; <code>$kayzenGS</code>, as a Sass map. This variable has a <code>!default</code> flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherevere you want (before includeing Kayzen GS) and ensure it has all the required values.</p>
+<p>The configuration is found in the following file:</p>
+<pre><code>src/_config.scss
+</code></pre><p>All config for Kayzen GS is contained within a single variable; <code>$kayzenGS</code>, as a Sass map. This variable has a <code>!default</code> flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen GS) and ensure it has all the required values.</p>
 <pre><code class="lang-scss">$kayzenGS: (
     &#39;options&#39; : (
         &#39;columns&#39;           : 12,
