@@ -50,9 +50,6 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 * [Semantic Grid System](#semantic-grid-system)
   * [Creating a Semantic Row](#creating-a-semantic-row)
   * [Creating a Semantic Column](#creating-a-semantic-column)
-    * [Basic Example](#basic-example)
-    * [Column Types](#column-types)
-    * [Responsiveness](#responsiveness-1)
 * [Column Aligning](#column-aligning)
 * [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
