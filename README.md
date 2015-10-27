@@ -1,10 +1,10 @@
 ![Kayzen GS](https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png "Kayzen GS Logo")
 
-[View Examples](http://kayzen.gs)
-
 ### Overview
 
 > Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.
+
+[View Examples](http://kayzen.gs)
 
 Some of the core features of Kayzen GS include:
 
@@ -40,6 +40,8 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
   * [Magic Columns](#magic-columns)
   * [Block Columns](#block-columns)
   * [No Gutter Columns](#no-gutter-columns)
+  * [Reverse Column Order](#reverse-column-order)
+  * [Push/Pull Columns](#push-pull-columns)
 * [Custom Configuration](#custom-configuration)
   * [Options](#options)
   * [Settings](#settings)
@@ -64,7 +66,7 @@ If you aren't using Sass, to use the default compiled and minified grid system, 
 
 #### Using Sass
 
-If you're using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the project, or you can do one of the following:
+If you're using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
 
 ##### Install as Git Submodule
 
@@ -81,6 +83,8 @@ bower install Kayzen-GS
 Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file, and that's it.
 
 ### Default Kayzen Grid System
+
+> The below examples are based off the default values in the `_config.scss` file.
 
 To create a basic **row** for your columns to live in, add the `row` class to your element.
 
@@ -142,7 +146,7 @@ By default, the columns will vertically stack on top of each other when the scre
 Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special **helper class** to your row.
 
 ```html
-<div class="row break-2">                    
+<div class="row row-break-2">                    
     <div class="span-3">Sidebar</div>
     <div class="span-9">Article</div>
 </div>
@@ -150,24 +154,24 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 [View Demo](http://esr360.github.io/Kayzen-GS/#responsiveness)
 
-The above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
+Using the `row-break-2` class, the above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
 
-To cause the columns to not stack at all, you can use the `break-0` helper class on your **row**:
+To cause the columns to not stack at all, you can use the `row-break-0` helper class on your **row**:
 
 ```html
-<div class="row break-0">                    
+<div class="row row-break-0">                    
     ...
 </div>
 ```
 
-To change the width of a single column manually at specific breakpoints, see [Flexible Columns](#flexible-columns).
+To change the width of a single column manually at specific breakpoints, see [Adaptive Columns](#flexible-columns).
 
 #### Flow Columns
 
-Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own **row** container - all your columns for all your rows can be placed in just one main **row** parent element with the `flow-row` class:
+Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own **row** container - all your columns for all your rows can be placed in just one main **row** parent element with the `row-flow` class:
 
 ```html
-<div class="row flow-row">
+<div class="row-flow">
     <div class="span-6">Flow Column</div>
     <div class="span-6">Flow Column</div>
     <div class="span-4">Flow Column</div>
@@ -202,12 +206,33 @@ The above code will produce something similiar the following:
 </div>
 ```
 
-##### Flexible Columns
+As with normal columns you can add helper classes to your row of flow columns:
 
-Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at **break-1**, 1/3 at **break-2**, and 1/4 at **break-3**, you could add the following helper classes to your columns like so:
+```html
+<div class="row-flow row-break-2">                    
+    ...
+</div>
+```
+
+##### Adaptive Columns
+
+Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the [fraction](#) values from the configiguration:
 	
 ```html		
-<div class="row flow-row">                    
+<div class="row-flow">                    
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+    <div class="span-3 break-2-half break-1-full">span-3</div>
+</div> 
+```
+
+If `mobile-first` is enabled, instead your code would look somthing like:
+
+```html	
+<div class="row-flow">                    
     <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
     <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
     <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
@@ -223,10 +248,10 @@ Flow Columns allow for more flexibility - the main benefit being the ability to 
 
 Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any [widow](http://en.wikipedia.org/wiki/Widows_and_orphans) columns to take up any remaining space.
 
-To create a row of Magic Columns, add the `magic-row` class to your **row**:
+To create a row of Magic Columns, use the `row-magic` class for your **row**:
 
 ```html	
-<div class="row magic-row">
+<div class="row-magic">
     <div class="span">magic column</div>
     <div class="span">magic column</div>
     <div class="span">magic column</div>
@@ -239,12 +264,20 @@ To create a row of Magic Columns, add the `magic-row` class to your **row**:
 
 In the above example, each column will be 1/5 in width, as there are 5 columns in the row.
 
+As with normal columns you can add helper classes to your row of magic columns:
+
+```html
+<div class="row-magic row-break-2">                    
+    ...
+</div>
+```
+
 #### Block Columns
 
-Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, add the `block-row` class to your **row**:
+Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, use the `row-block` class for your **row**:
 
 ```html	
-<div class="row block-row">
+<div class="row-block">
     <div class="span-4">
         Block Column
     </div>
@@ -258,6 +291,14 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 ```
 
 [View Demo](http://esr360.github.io/Kayzen-GS/#block-columns)
+
+As with normal columns you can add helper classes to your row of block columns:
+
+```html
+<div class="row-block row-break-2">                    
+    ...
+</div>
+```
 
 ### Custom Configuration
 

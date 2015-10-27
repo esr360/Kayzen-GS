@@ -1,9 +1,9 @@
 <p><img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png" alt="Kayzen GS" title="Kayzen GS Logo"></p>
-<p><a href="http://kayzen.gs">View Examples</a></p>
 <h3 id="overview">Overview</h3>
 <blockquote>
 <p>Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.</p>
 </blockquote>
+<p><a href="http://kayzen.gs">View Examples</a></p>
 <p>Some of the core features of Kayzen GS include:</p>
 <ul>
 <li>Specify any number of columns</li>
@@ -34,6 +34,8 @@
 <li><a href="#magic-columns">Magic Columns</a></li>
 <li><a href="#block-columns">Block Columns</a></li>
 <li><a href="#no-gutter-columns">No Gutter Columns</a></li>
+<li><a href="#reverse-column-order">Reverse Column Order</a></li>
+<li><a href="#push-pull-columns">Push/Pull Columns</a></li>
 </ul>
 </li>
 <li><a href="#custom-configuration">Custom Configuration</a><ul>
@@ -61,13 +63,16 @@
 <h4 id="plain-css">Plain CSS</h4>
 <p>If you aren&#39;t using Sass, to use the default compiled and minified grid system, download the core files and load the <code>kayzen-gs.min.css</code> file in your project and you&#39;re good to go.</p>
 <h4 id="using-sass">Using Sass</h4>
-<p>If you&#39;re using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS <code>src</code> directory in your project. You can either manually download or clone the project, or you can do one of the following:</p>
+<p>If you&#39;re using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS <code>src</code> directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:</p>
 <h5 id="install-as-git-submodule">Install as Git Submodule</h5>
 <pre><code>git submodule add https://github.com/esr360/Kayzen-GS.git
 </code></pre><h5 id="install-with-bower">Install with Bower</h5>
 <pre><code>bower install Kayzen-GS
 </code></pre><p>Once you have a copy of Kayzen GS in your project, import the <code>kayzen-gs.scss</code> file from the root of the <code>src</code> directory into your project&#39;s main Sass file, and that&#39;s it.</p>
 <h3 id="default-kayzen-grid-system">Default Kayzen Grid System</h3>
+<blockquote>
+<p>The below examples are based off the default values in the <code>_config.scss</code> file.</p>
+</blockquote>
 <p>To create a basic <strong>row</strong> for your columns to live in, add the <code>row</code> class to your element.</p>
 <pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
     ...
@@ -112,22 +117,22 @@
 </ul>
 <p>By default, the columns will vertically stack on top of each other when the screen size is <strong>less</strong> than <strong>940px</strong> (break-3).</p>
 <p>Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special <strong>helper class</strong> to your row.</p>
-<pre><code class="lang-html">&lt;div class=&quot;row break-2&quot;&gt;                    
+<pre><code class="lang-html">&lt;div class=&quot;row row-break-2&quot;&gt;                    
     &lt;div class=&quot;span-3&quot;&gt;Sidebar&lt;/div&gt;
     &lt;div class=&quot;span-9&quot;&gt;Article&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#responsiveness">View Demo</a></p>
-<p>The above columns will now stack on top of each other when the screen size is <strong>less</strong> than <strong>720px</strong> (break-2).</p>
-<p>To cause the columns to not stack at all, you can use the <code>break-0</code> helper class on your <strong>row</strong>:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row break-0&quot;&gt;                    
+<p>Using the <code>row-break-2</code> class, the above columns will now stack on top of each other when the screen size is <strong>less</strong> than <strong>720px</strong> (break-2).</p>
+<p>To cause the columns to not stack at all, you can use the <code>row-break-0</code> helper class on your <strong>row</strong>:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row row-break-0&quot;&gt;                    
     ...
 &lt;/div&gt;
 </code></pre>
-<p>To change the width of a single column manually at specific breakpoints, see <a href="#flexible-columns">Flexible Columns</a>.</p>
+<p>To change the width of a single column manually at specific breakpoints, see <a href="#flexible-columns">Adaptive Columns</a>.</p>
 <h4 id="flow-columns">Flow Columns</h4>
-<p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element with the <code>flow-row</code> class:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;
+<p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element with the <code>row-flow</code> class:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;
     &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
     &lt;div class=&quot;span-6&quot;&gt;Flow Column&lt;/div&gt;
     &lt;div class=&quot;span-4&quot;&gt;Flow Column&lt;/div&gt;
@@ -157,9 +162,24 @@
     &lt;div class=&quot;span-3&quot;&gt;Flow Column&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<h5 id="flexible-columns">Flexible Columns</h5>
-<p>Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at <strong>break-1</strong>, 1/3 at <strong>break-2</strong>, and 1/4 at <strong>break-3</strong>, you could add the following helper classes to your columns like so:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row flow-row&quot;&gt;                    
+<p>As with normal columns you can add helper classes to your row of flow columns:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-flow row-break-2&quot;&gt;                    
+    ...
+&lt;/div&gt;
+</code></pre>
+<h5 id="adaptive-columns">Adaptive Columns</h5>
+<p>Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the <a href="#">fraction</a> values from the configiguration:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>If <code>mobile-first</code> is enabled, instead your code would look somthing like:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
@@ -171,8 +191,8 @@
 <p><a href="http://esr360.github.io/Kayzen-GS/#flexible-columns">View Demo</a></p>
 <h4 id="magic-columns">Magic Columns</h4>
 <p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any <a href="http://en.wikipedia.org/wiki/Widows_and_orphans">widow</a> columns to take up any remaining space.</p>
-<p>To create a row of Magic Columns, add the <code>magic-row</code> class to your <strong>row</strong>:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row magic-row&quot;&gt;
+<p>To create a row of Magic Columns, use the <code>row-magic</code> class for your <strong>row</strong>:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-magic&quot;&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
     &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
@@ -182,9 +202,14 @@
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#magic-columns">View Demo</a></p>
 <p>In the above example, each column will be 1/5 in width, as there are 5 columns in the row.</p>
+<p>As with normal columns you can add helper classes to your row of magic columns:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-magic row-break-2&quot;&gt;                    
+    ...
+&lt;/div&gt;
+</code></pre>
 <h4 id="block-columns">Block Columns</h4>
-<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, add the <code>block-row</code> class to your <strong>row</strong>:</p>
-<pre><code class="lang-html">&lt;div class=&quot;row block-row&quot;&gt;
+<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, use the <code>row-block</code> class for your <strong>row</strong>:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-block&quot;&gt;
     &lt;div class=&quot;span-4&quot;&gt;
         Block Column
     &lt;/div&gt;
@@ -197,6 +222,11 @@
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#block-columns">View Demo</a></p>
+<p>As with normal columns you can add helper classes to your row of block columns:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-block row-break-2&quot;&gt;                    
+    ...
+&lt;/div&gt;
+</code></pre>
 <h3 id="custom-configuration">Custom Configuration</h3>
 <p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a wau to pre-process your CSS from <code>.scss</code> files.</p>
 <h4 id="options">Options</h4>
