@@ -230,7 +230,28 @@
 &lt;/div&gt;
 </code></pre>
 <h4 id="reverse-column-order">Reverse Column Order</h4>
+<p>To reverse the order of all columns in a given row, the <code>row-reverse</code> helper class is used:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row row-reverse&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a further helper class of <code>reverse-break-3</code>, adding the appropriate breakpoint value as desired:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row row-reverse reverse-break-3&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 <h4 id="push-pull-columns">Push/Pull Columns</h4>
+<p>It is possible to push or pull your columns using the following helper classes:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span-6 push-6&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-6 pull-6&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>In the above example, the columns&#39; order would effectivaly be reversed. Naturally you can use any number between 1 and 12 (or whatever number you have set for <code>columns</code>).</p>
 <h3 id="custom-configuration">Custom Configuration</h3>
 <p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a way to pre-process your CSS from <code>.scss</code> files.</p>
 <p>The configuration is found in the following file:</p>

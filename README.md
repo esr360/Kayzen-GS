@@ -313,7 +313,38 @@ As with normal columns you can add helper classes to your row of no-gutter colum
 
 #### Reverse Column Order
 
+To reverse the order of all columns in a given row, the `row-reverse` helper class is used:
+
+```html
+<div class="row row-reverse">
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+</div>
+```
+
+When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a further helper class of `reverse-break-3`, adding the appropriate breakpoint value as desired:
+
+```html
+<div class="row row-reverse reverse-break-3">
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+</div>
+```
+
 #### Push/Pull Columns
+
+It is possible to push or pull your columns using the following helper classes:
+
+```html
+<div class="row">
+    <div class="span-6 push-6">...</div>
+    <div class="span-6 pull-6">...</div>
+</div>
+```
+
+In the above example, the columns' order would effectivaly be reversed. Naturally you can use any number between 1 and 12 (or whatever number you have set for `columns`).
 
 ### Custom Configuration
 
