@@ -453,39 +453,23 @@ With mobile-first disabled, the logic is different, in fact, it is reversed:
 
 Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
 
-##### Enable custom column stacking?
+##### `custom-stacking`
 
-> This generates the code to override the [default column stacking](#responsiveness).
+##### `adaptive-columns`
 
-* Variable : $column-stacking
-* Type     : boolean
-* Default  : true
+##### `flow-columns`
 
-##### Enable custom width overrides?
+##### `magic-columns`
 
-> This generates the code to allow for [Flexible Columns](#flexible-columns).
+##### `block-columns`
 
-* Variable : $width-override
-* Type     : boolean
-* Default  : true
+##### `no-gutter-columns`
 
-##### Generate Flow Columns?
+##### `reverse-columns`
 
-* Variable : $flow-columns
-* Type     : boolean
-* Default  : true
+##### `pull-columns`
 
-##### Generate Magic Columns?
-
-* Variable : $magic-columns
-* Type     : boolean
-* Default  : true
-
-##### Generate Block Columns?
-
-* Variable : $block-columns
-* Type     : boolean
-* Default  : true
+##### `push-columns`
 
 #### Breakpoints
 
@@ -493,23 +477,15 @@ You can set as many different breakpoints as you like to use in the grid system 
 
 > The helper classes used for the default grid system are generated from these values.
 
-```css	
-$breakpoints: (
-	break-0                     : 0px,
-	break-1                     : 460px,
-	break-2                     : 720px,
-	break-3                     : 940px,
-	break-4                     : 1200px
+```scss	
+'breakpoints' : (
+	'break-0' : 0px,
+	'break-1' : 460px,
+	'break-2' : 720px,
+	'break-3' : 940px,
+	'break-4' : 1200px
 );
 ```
-
-##### Set the maximum width for default vertically stacked columns
-
-> This is the default width at which your columns should stack.
-
-* Variable : $col-collapse
-* Type     : length unit
-* Default  : breakpoint(break-3) // 940px
 
 #### Fractions
 
@@ -517,13 +493,13 @@ You can define any number of fractions you desire, and call them what you want. 
 
 > The helper classes used for the default grid system are generated from these values.
 
-```css	
-$fractions: (
-	full                        : (1, 1),
-	half                        : (1, 2),
-	third                       : (1, 3),
-	quarter                     : (1, 4),
-	sixth                       : (1, 6)
+```scss	
+'fractions' : (
+	'full'    : (1, 1),
+	'half'    : (1, 2),
+	'third'   : (1, 3),
+	'quarter' : (1, 4),
+	'sixth'   : (1, 6)
 );
 ```
 
