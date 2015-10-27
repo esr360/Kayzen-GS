@@ -411,13 +411,13 @@ This is where you set which features of Kayzen GS you want to use in your projec
 
 ##### `kayzen-gs`
 
-**Default**  : true
+Default  : true
 
 This setting outputs the Kayzen GS grid system. Disable this option only if you intend to use Kayzen GS to generate a custom, semantic grid system.
 
 ##### `old-ie`
 
-**Default**  : false
+Default  : false
 
 > This setting only affects regular columns.
 
@@ -425,13 +425,13 @@ Enabling this setting will allow default columns to work on Internet Explorer 6 
 
 ##### `responsive`
 
-**Default**  : true
+Default  : true
 
 If disabled, columns will not stack vertically.
 
 ##### `mobile-first`
 
-**Default**  : false
+Default  : false
 
 > Disabling this improves performance without losing functionality&#42;
 
