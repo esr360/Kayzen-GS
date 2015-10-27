@@ -59,11 +59,11 @@
 <li><a href="#solving-the-whitespace-issue">Solving the Whitespace Issue</a></li>
 </ul>
 <h3 id="getting-started">Getting Started</h3>
-<p>There are several ways to use the Kayzen GS framework depending on how much you want to customize it.</p>
+<p>There are several ways to use the Kayzen GS framework depending on how much you want to customize it:</p>
 <h4 id="plain-css">Plain CSS</h4>
 <p>If you aren&#39;t using Sass, to use the default compiled and minified grid system, download the core files and load the <code>kayzen-gs.min.css</code> file in your project and you&#39;re good to go.</p>
 <h4 id="using-sass">Using Sass</h4>
-<p>If you&#39;re using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS <code>src</code> directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:</p>
+<p>If you&#39;re using Sass, ensure you have a copy of the Kayzen GS <code>src</code> directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:</p>
 <h5 id="install-as-git-submodule">Install as Git Submodule</h5>
 <pre><code>git submodule add https://github.com/esr360/Kayzen-GS.git
 </code></pre><h5 id="install-with-bower">Install with Bower</h5>
@@ -107,7 +107,7 @@
 <blockquote>
 <p>Responsiveness can be disabled <a href="#enable-responsiveness">(?)</a></p>
 </blockquote>
-<p>Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see <a href="#breakpoints">Custom Configuration</a>):</p>
+<p>Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see <a href="#breakpoints">Custom Configuration</a>):</p>
 <ul>
 <li>break-0: 0px,</li>
 <li>break-1: 460px,</li>
@@ -116,7 +116,7 @@
 <li>break-4: 1200px</li>
 </ul>
 <p>By default, the columns will vertically stack on top of each other when the screen size is <strong>less</strong> than <strong>940px</strong> (break-3).</p>
-<p>Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special <strong>helper class</strong> to your row.</p>
+<p>Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special <strong>helper class</strong> to your row:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row row-break-2&quot;&gt;                    
     &lt;div class=&quot;span-3&quot;&gt;Sidebar&lt;/div&gt;
     &lt;div class=&quot;span-9&quot;&gt;Article&lt;/div&gt;
@@ -168,7 +168,7 @@
 &lt;/div&gt;
 </code></pre>
 <h5 id="adaptive-columns">Adaptive Columns</h5>
-<p>Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the <a href="#">fraction</a> values from the configiguration:</p>
+<p>Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the <a href="#">fraction</a> values from the configurtion:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
     &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
     &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
@@ -178,7 +178,7 @@
     &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p>If <code>mobile-first</code> is enabled, instead your code would look somthing like:</p>
+<p>If <code>mobile-first</code> is enabled (by default it is <em>disabled</em>), instead your code would look somthing like:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;                    
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
@@ -193,11 +193,11 @@
 <p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any <a href="http://en.wikipedia.org/wiki/Widows_and_orphans">widow</a> columns to take up any remaining space.</p>
 <p>To create a row of Magic Columns, use the <code>row-magic</code> class for your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-magic&quot;&gt;
-    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
-    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
-    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
-    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
-    &lt;div class=&quot;span&quot;&gt;magic column&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#magic-columns">View Demo</a></p>
@@ -210,15 +210,9 @@
 <h4 id="block-columns">Block Columns</h4>
 <p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, use the <code>row-block</code> class for your <strong>row</strong>:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-block&quot;&gt;
-    &lt;div class=&quot;span-4&quot;&gt;
-        Block Column
-    &lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;
-        Block Column
-    &lt;/div&gt;
-    &lt;div class=&quot;span-4&quot;&gt;
-        Block Column
-    &lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#block-columns">View Demo</a></p>
@@ -227,10 +221,25 @@
     ...
 &lt;/div&gt;
 </code></pre>
+<h4 id="no-gutter-columns">No-Gutter Columns</h4>
+<p>No-Gutter Columns are just like regular columns except they have no gutter. To create a row of No-Gutter Columns, use the <code>row-no-gutter</code> class for your <strong>row</strong>:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-no-gutter&quot;&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;span-4&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>As with normal columns you can add helper classes to your row of no-gutter columns:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row-no-gutter row-break-2&quot;&gt;                    
+    ...
+&lt;/div&gt;
+</code></pre>
+<h4 id="reverse-column-order">Reverse Column Order</h4>
+<h4 id="push-pull-columns">Push/Pull Columns</h4>
 <h3 id="custom-configuration">Custom Configuration</h3>
-<p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a wau to pre-process your CSS from <code>.scss</code> files.</p>
+<p>Kayzen GS is built in <strong>Sass</strong>/Scss, so to make the most it you will need a way to pre-process your CSS from <code>.scss</code> files.</p>
 <h4 id="options">Options</h4>
-<p><strong>Warning:</strong> Whilst all options are enabled by default, it is strongly recommended that you disable any features you don&#39;t use, as the default options can result in unnecessary bloated styles.</p>
+<p><strong>Warning:</strong> Whilst most options are enabled by default, it is strongly recommended that you disable any features you don&#39;t use, as the default options can result in unnecessary bloated styles.</p>
 <h5 id="support-internet-explorer-6-7-">Support Internet Explorer 6 &amp; 7?</h5>
 <blockquote>
 <p>This setting only affects the regular columns.</p>
@@ -266,7 +275,7 @@
 <p>With mobile-first disabled, the logic is different, in fact, it is reversed:</p>
 <pre><code class="lang-html">&lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
 </code></pre>
-<p>Here you are creating a column that is 3/12&#39;s by default, and will be forced to 1/2 at <strong>break-2</strong> or less, and 100% width at <strong>break-1</strong> or less, thus achieving the same behaviour as the above example with mobile-first enabled.</p>
+<p>Here the column is 3/12&#39;s by default, and will be forced to 1/2 at <strong>break-2</strong> or less, and 100% width at <strong>break-1</strong> or less, thus achieving the same behaviour as the above example with mobile-first enabled.</p>
 <h5 id="enable-custom-column-stacking-">Enable custom column stacking?</h5>
 <blockquote>
 <p>This generates the code to override the <a href="#responsiveness">default column stacking</a>.</p>

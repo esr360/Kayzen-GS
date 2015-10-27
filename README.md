@@ -58,7 +58,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ### Getting Started
 
-There are several ways to use the Kayzen GS framework depending on how much you want to customize it.
+There are several ways to use the Kayzen GS framework depending on how much you want to customize it:
 
 #### Plain CSS 
 
@@ -66,7 +66,7 @@ If you aren't using Sass, to use the default compiled and minified grid system, 
 
 #### Using Sass
 
-If you're using Sass, to include Kayzen GS in your project, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
+If you're using Sass, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
 
 ##### Install as Git Submodule
 
@@ -133,7 +133,7 @@ Using these normal columns, the total span of the columns in a given row may not
 
 > Responsiveness can be disabled [(?)](#enable-responsiveness)
 
-Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
+Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
 
 * break-0: 0px,
 * break-1: 460px,
@@ -143,7 +143,7 @@ Kayzen GS columns are responsive out the box - the following breakpoint classes 
 
 By default, the columns will vertically stack on top of each other when the screen size is **less** than **940px** (break-3).
 
-Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special **helper class** to your row.
+Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special **helper class** to your row:
 
 ```html
 <div class="row row-break-2">                    
@@ -216,7 +216,7 @@ As with normal columns you can add helper classes to your row of flow columns:
 
 ##### Adaptive Columns
 
-Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the [fraction](#) values from the configiguration:
+Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the [fraction](#) values from the configurtion:
 	
 ```html		
 <div class="row-flow">                    
@@ -229,7 +229,7 @@ Adaptive Columns allow for more flexibility - they allow you to specify a custom
 </div> 
 ```
 
-If `mobile-first` is enabled, instead your code would look somthing like:
+If `mobile-first` is enabled (by default it is *disabled*), instead your code would look somthing like:
 
 ```html	
 <div class="row-flow">                    
@@ -252,11 +252,11 @@ To create a row of Magic Columns, use the `row-magic` class for your **row**:
 
 ```html	
 <div class="row-magic">
-    <div class="span">magic column</div>
-    <div class="span">magic column</div>
-    <div class="span">magic column</div>
-    <div class="span">magic column</div>
-    <div class="span">magic column</div>
+    <div class="span">...</div>
+    <div class="span">...</div>
+    <div class="span">...</div>
+    <div class="span">...</div>
+    <div class="span">...</div>
 </div>
 ```
 
@@ -278,15 +278,9 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
 
 ```html	
 <div class="row-block">
-    <div class="span-4">
-        Block Column
-    </div>
-    <div class="span-4">
-        Block Column
-    </div>
-    <div class="span-4">
-        Block Column
-    </div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
 </div>
 ```
 
@@ -300,13 +294,37 @@ As with normal columns you can add helper classes to your row of block columns:
 </div>
 ```
 
+#### No-Gutter Columns
+
+No-Gutter Columns are just like regular columns except they have no gutter. To create a row of No-Gutter Columns, use the `row-no-gutter` class for your **row**:
+
+```html	
+<div class="row-no-gutter">
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+    <div class="span-4">...</div>
+</div>
+```
+
+As with normal columns you can add helper classes to your row of no-gutter columns:
+
+```html
+<div class="row-no-gutter row-break-2">                    
+    ...
+</div>
+```
+
+#### Reverse Column Order
+
+#### Push/Pull Columns
+
 ### Custom Configuration
 
-Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a wau to pre-process your CSS from `.scss` files.
+Kayzen GS is built in **Sass**/Scss, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
 #### Options
 
-**Warning:** Whilst all options are enabled by default, it is strongly recommended that you disable any features you don't use, as the default options can result in unnecessary bloated styles.
+**Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use, as the default options can result in unnecessary bloated styles.
 
 ##### Support Internet Explorer 6 & 7?
 
@@ -348,7 +366,7 @@ With mobile-first disabled, the logic is different, in fact, it is reversed:
 <div class="span-3 break-2-half break-1-full">span-3</div>
 ```
 
-Here you are creating a column that is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
+Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
 
 ##### Enable custom column stacking?
 
