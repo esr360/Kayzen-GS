@@ -393,13 +393,13 @@ $kayzenGS: (
 
 #### Options
 
-| Option          | Type     | Default  |
-| --------------- | -------- | -------- |
-| `columns`       | number[integer]   | 12 |
-| `gutter`        | number   | 3% |
-| `col-break`     | number   | $1 |
-| `row-namespace` | string   | $1 |
-| `col-namespace` | string   | $1 |
+| Option          | Type                | Default  |
+| --------------- | ------------------- | -------- |
+| `columns`       | number [integer]    | 12       |
+| `gutter`        | number [percentage] | 3%       |
+| `col-break`     | number [length]     | 940px    |
+| `row-namespace` | string              | 'row'    |
+| `col-namespace` | string              | 'span'   |
 
 ##### How many columns should your grid system have?
 
