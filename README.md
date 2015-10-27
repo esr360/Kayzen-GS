@@ -393,6 +393,8 @@ $kayzenGS: (
 
 #### Options
 
+The 'options' form the basic foundation for your grid system. This is where you set the core options for your grid system.
+
 | Option          | Type                | Default  |
 | --------------- | ------------------- | -------- |
 | `columns`       | number [integer]    | 12       |
@@ -403,9 +405,11 @@ $kayzenGS: (
 
 #### Settings
 
-**Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use to optimise the generated CSS.
+> **Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use to optimise the generated CSS.
 
-##### Support Internet Explorer 6 & 7?
+This is where you set which features of Kayzen GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
+
+##### `kayzen-gs`
 
 > This setting only affects the regular columns.
 
