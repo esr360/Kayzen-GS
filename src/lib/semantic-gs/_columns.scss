@@ -12,8 +12,8 @@
 		'width'        : 'full', 
 		'type'         : null, 
 		'namespace'    : &, 
-		'stack'        : kgs-option(col-collapse), 
-		'mobile-first' : kgs-setting(mobile-first),
+		'stack'        : kgs-option('col-break'), 
+		'mobile-first' : kgs-setting('mobile-first'),
 		'respond-to'   : null
 	), $custom);
 	

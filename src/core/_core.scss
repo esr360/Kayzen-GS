@@ -35,13 +35,13 @@ https://github.com/esr360/Kayzen-GS
     
     @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
         @if kgs-setting('mobile-first') {
-            @media (min-width: kgs-option('col-collapse')) {
+            @media (min-width: kgs-option('col-break')) {
                 @include kgs-default-columns;
             }
         } @else {
             @include kgs-default-columns; 
             &:not([class*="break"]) {
-                @media (max-width: kgs-option('col-collapse')) {
+                @media (max-width: kgs-option('col-break')) {
                     @include kgs-stack-columns;
                 }
             }
@@ -77,7 +77,7 @@ https://github.com/esr360/Kayzen-GS
             
             @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
                 @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option(col-collapse)) {
+                    @media (min-width: kgs-option(col-break)) {
                         @include kgs-flow-columns;
                     }
                 } @else {
@@ -86,7 +86,7 @@ https://github.com/esr360/Kayzen-GS
                         margin-left: #{kgs-option(gutter)};
                     } 
                     &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-collapse')) {
+                        @media (max-width: kgs-option('col-break')) {
                             @include kgs-stack-columns($type: 'flow');
                         }
                     }
@@ -126,13 +126,13 @@ https://github.com/esr360/Kayzen-GS
             @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
                 
                 @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option('col-collapse')) {
+                    @media (min-width: kgs-option('col-break')) {
                         @include kgs-magic-columns;
                     }
                 } @else {
                     @include kgs-magic-columns;
                     &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-collapse')) {
+                        @media (max-width: kgs-option('col-break')) {
                             @include kgs-stack-columns($type: magic);
                         }
                     }
@@ -182,13 +182,13 @@ https://github.com/esr360/Kayzen-GS
             
             @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
                 @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option('col-collapse')) {
+                    @media (min-width: kgs-option('col-break')) {
                         @include kgs-block-columns;
                     }
                 } @else {
                     @include kgs-block-columns;
                     &:not([class*="break"]) {
-                        @media (max-width: kgs-option('col-collapse')) {
+                        @media (max-width: kgs-option('col-break')) {
                             @include kgs-stack-columns;
                         }
                     }
