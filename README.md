@@ -411,10 +411,14 @@ This is where you set which features of Kayzen GS you want to use in your projec
 
 ##### `kayzen-gs`
 
+* Default  : true
+
+This setting outputs the Kayzen GS grid system. Disable this option only if you intend to use Kayzen GS to generate a custom, semantic grid system.
+
+##### Support Internet Explorer 6 & 7?
+
 > This setting only affects the regular columns.
 
-* Variable : $old-ie
-* Type     : boolean
 * Default  : true
 
 ##### Enable Responsiveness?
