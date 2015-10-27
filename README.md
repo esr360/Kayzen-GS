@@ -393,13 +393,13 @@ $kayzenGS: (
 
 #### Options
 
-| Option          | Type                | Default  |
-| --------------- | ------------------- | -------- |
-| `columns`       | number [integer]    | 12       |
-| `gutter`        | number [percentage] | 3%       |
-| `col-break`     | number [length]     | 940px    |
-| `row-namespace` | string              | 'row'    |
-| `col-namespace` | string              | 'span'   |
+| Option          | Type                | Description                                          | Default |
+| --------------- | ------------------- | ---------------------------------------------------- |-------- |
+| `columns`       | number [integer]    | The number of columns for your grid system           | 12      |
+| `gutter`        | number [percentage] | The size of the gutter inbetween columns             | 3%      |
+| `col-break`     | number [length]     | The default width at which your columns should stack | 940px   |
+| `row-namespace` | string              | The name for your row selector                       |'row'    |
+| `col-namespace` | string              | The name for your column selector                    |'span'   |
 
 ##### How many columns should your grid system have?
 
