@@ -319,9 +319,52 @@ As with normal columns you can add helper classes to your row of no-gutter colum
 
 Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
+All config for Kayzen GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherevere you want (before includeing Kayzen GS) and ensure it has all the required values.
+
+```scss
+$kayzenGS: (
+    'options' : (
+        'columns'           : 12,
+        'gutter'            : 3%,
+        'col-break'         : 940px,
+        'row-namespace'     : 'row',
+        'col-namespace'     : 'span',
+    ),
+    'settings' : (
+        'kayzen-gs'         : true,
+        'old-ie'            : false,
+        'responsive'        : true,
+        'mobile-first'      : false,
+        'custom-stacking'   : true,
+        'adaptive-columns'  : true,
+        'flow-columns'      : true,
+        'magic-columns'     : true,
+        'block-columns'     : true,
+        'no-gutter-columns' : true,
+        'reverse-columns'   : true,
+        'pull-columns'      : true,
+        'push-columns'      : true
+    ),
+    'breakpoints' : (
+        'break-0'           : 0px,
+        'break-1'           : 460px,
+        'break-2'           : 720px,
+        'break-3'           : 940px,
+        'break-4'           : 1200px
+    ),
+    'fractions' : (
+        'full'              : (1, 1),
+        'half'              : (1, 2),
+        'third'             : (1, 3),
+        'quarter'           : (1, 4),
+        'sixth'             : (1, 6)
+    )
+) !default;
+```
+
 #### Options
 
-**Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use, as the default options can result in unnecessary bloated styles.
+**Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use to optimise the generated CSS.
 
 ##### Support Internet Explorer 6 & 7?
 
@@ -805,6 +848,6 @@ This mixin allows you to create column rows using the `inline-block` CSS propert
 
 ## Help, Support & Contributing
 
-For all issues, bugs suggestions and feature requests, please use the [issues page](https://github.com/esr360/Kayzen-GS/issues). Any and all contributions are welcomed!
+For all issues, bugs, suggestions and feature requests, please use the [issues page](https://github.com/esr360/Kayzen-GS/issues). Any and all contributions are welcomed!
 
 Follow [@esr360](https://twitter.com/ESR360) on Twitter!

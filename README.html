@@ -233,8 +233,48 @@
 <h4 id="push-pull-columns">Push/Pull Columns</h4>
 <h3 id="custom-configuration">Custom Configuration</h3>
 <p>Kayzen GS is built in <strong>Sass</strong>/SCSS, so to make the most it you will need a way to pre-process your CSS from <code>.scss</code> files.</p>
+<p>All config for Kayzen GS is contained within a single variable; <code>$kayzenGS</code>, as a Sass map. This variable has a <code>!default</code> flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherevere you want (before includeing Kayzen GS) and ensure it has all the required values.</p>
+<pre><code class="lang-scss">$kayzenGS: (
+    &#39;options&#39; : (
+        &#39;columns&#39;           : 12,
+        &#39;gutter&#39;            : 3%,
+        &#39;col-break&#39;         : 940px,
+        &#39;row-namespace&#39;     : &#39;row&#39;,
+        &#39;col-namespace&#39;     : &#39;span&#39;,
+    ),
+    &#39;settings&#39; : (
+        &#39;kayzen-gs&#39;         : true,
+        &#39;old-ie&#39;            : false,
+        &#39;responsive&#39;        : true,
+        &#39;mobile-first&#39;      : false,
+        &#39;custom-stacking&#39;   : true,
+        &#39;adaptive-columns&#39;  : true,
+        &#39;flow-columns&#39;      : true,
+        &#39;magic-columns&#39;     : true,
+        &#39;block-columns&#39;     : true,
+        &#39;no-gutter-columns&#39; : true,
+        &#39;reverse-columns&#39;   : true,
+        &#39;pull-columns&#39;      : true,
+        &#39;push-columns&#39;      : true
+    ),
+    &#39;breakpoints&#39; : (
+        &#39;break-0&#39;           : 0px,
+        &#39;break-1&#39;           : 460px,
+        &#39;break-2&#39;           : 720px,
+        &#39;break-3&#39;           : 940px,
+        &#39;break-4&#39;           : 1200px
+    ),
+    &#39;fractions&#39; : (
+        &#39;full&#39;              : (1, 1),
+        &#39;half&#39;              : (1, 2),
+        &#39;third&#39;             : (1, 3),
+        &#39;quarter&#39;           : (1, 4),
+        &#39;sixth&#39;             : (1, 6)
+    )
+) !default;
+</code></pre>
 <h4 id="options">Options</h4>
-<p><strong>Warning:</strong> Whilst most options are enabled by default, it is strongly recommended that you disable any features you don&#39;t use, as the default options can result in unnecessary bloated styles.</p>
+<p><strong>Warning:</strong> Whilst most options are enabled by default, it is strongly recommended that you disable any features you don&#39;t use to optimise the generated CSS.</p>
 <h5 id="support-internet-explorer-6-7-">Support Internet Explorer 6 &amp; 7?</h5>
 <blockquote>
 <p>This setting only affects the regular columns.</p>
@@ -624,5 +664,5 @@ width: 100%;
 </code></pre>
 <p>This mixin allows you to create column rows using the <code>inline-block</code> CSS property for your columns without having to worry about the whitespace that is naturally caused. You can say it looks obscure to your heart&#39;s content, but it works, and it works great.</p>
 <h2 id="help-support-contributing">Help, Support &amp; Contributing</h2>
-<p>For all issues, bugs suggestions and feature requests, please use the <a href="https://github.com/esr360/Kayzen-GS/issues">issues page</a>. Any and all contributions are welcomed!</p>
+<p>For all issues, bugs, suggestions and feature requests, please use the <a href="https://github.com/esr360/Kayzen-GS/issues">issues page</a>. Any and all contributions are welcomed!</p>
 <p>Follow <a href="https://twitter.com/ESR360">@esr360</a> on Twitter!</p>
