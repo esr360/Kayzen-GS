@@ -547,7 +547,7 @@ You can use Kayzen GS to build your own grid system using semantic class names w
 
 #### Creating a Semantic Row
 
-```css
+```scss
 .main {
 	@include row;
 }
@@ -558,7 +558,7 @@ In the above example we are using **main** as our semantic class name.
 **Creating a semantic row for Flow Columns:**
 
 
-```css
+```scss
 .portfolio-grid {
 	@include row('flow');
 }
@@ -570,7 +570,7 @@ In the above example, our semantic class name for our row of Flow Columns is **p
 
 ##### Basic Example
 
-```css
+```scss
 .sidebar {
 	@include column((
 		'width' : (3, 12)
@@ -580,7 +580,7 @@ In the above example, our semantic class name for our row of Flow Columns is **p
 
 This will create a column that spans 3 out of 12 columns in width, so **1/4** or **25%**. Alternatively, you can achieve the same thing with this:
 
-```css
+```scss
 .sidebar {
 	@include column((
 		'width' : 'quarter'
@@ -592,7 +592,7 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 Or even this:
 
-```css
+```scss
 .sidebar {
 	@include column((
 		'width' : 25%
@@ -602,7 +602,7 @@ Or even this:
 
 Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#how-big-should-the-gutter-inbetween-your-columns-be). This is so you can easily create columns without having to think about the effect of gutters like so:
 
-```css
+```scss
 .sidebar {
 	@include column((
 		'width' : 20%
@@ -651,7 +651,7 @@ All the column types from the default grid system are also available to use in y
 
 > Ensure that your semantic row container is also set to `flow`.
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'type'  : 'flow',
@@ -664,7 +664,7 @@ All the column types from the default grid system are also available to use in y
 
 ###### Magic Columns
 
-```css
+```scss
 .portfolio-item {
 	@include column(
 		'type' : 'magic'
@@ -676,7 +676,7 @@ All the column types from the default grid system are also available to use in y
 
 ###### Block Columns
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'type'  : 'block',
@@ -691,7 +691,7 @@ All the column types from the default grid system are also available to use in y
 
 The default width for the stacking of semantic columns is set in the [Configuration](#set-the-maximum-width-for-default-vertically-stacked-columns). You can override the default value like so:
 
-```css
+```scss
 .sidebar {
 	@include column((
 		'width' : 'quarter',
@@ -708,7 +708,7 @@ This will cause the columns to stack when the screen size is less than **break-2
 
 When inside a Flow Columns container and with its `$type` set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
@@ -729,7 +729,7 @@ A width is not required by default - the column is 100% width up until **break-1
 
 You can also use numeric values for percentages:
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
@@ -744,7 +744,7 @@ You can also use numeric values for percentages:
 
 Using the [$fractions map](#fractions) you can substitue writing the fraction numbers for the fraction names like so:
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
@@ -759,7 +759,7 @@ Using the [$fractions map](#fractions) you can substitue writing the fraction nu
 
 With `mobile-first` set to **false**, to achieve the same result as the above example the code would be:
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'mobile-first' : false,
@@ -824,7 +824,7 @@ With this CSS, you can get inline-block columns to behave exactly as desired in 
 
 The problem is only really an issue in Webkit based browsers - the [letter-spacing fix](https://github.com/yahoo/pure/issues/41#issuecomment-18747575) actually works just fine in Firefox and Internet Explorer without having to hard code any typeface. With these combined, our **row** mixin looks like this:
 
-```css
+```scss
 %row {
 	/* Firefox/IE collapse white-space */
 	letter-spacing: -1em;
