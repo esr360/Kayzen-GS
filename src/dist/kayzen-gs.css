@@ -117,8 +117,7 @@ https://github.com/esr360/Kayzen-GS
 }
 .row--flow {
   margin-left: -3%;
-  width: -webkit-calc(100% + kgs-option(gutter));
-  width: calc(100% + kgs-option(gutter));
+  width: 103%;
 }
 .row--flow [class*="pull-"] {
   position: relative;
