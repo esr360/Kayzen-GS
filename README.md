@@ -405,7 +405,7 @@ The 'options' form the basic foundation for your grid system. This is where you 
 
 #### Settings
 
-> **Warning:** Whilst most options are enabled by default, it is strongly recommended that you disable any features you don't use to optimise the generated CSS.
+> **Note:** Whilst most options are enabled by default, it is recommended that you disable any features you don't use to optimise the generated CSS.
 
 This is where you set which features of Kayzen GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
 
