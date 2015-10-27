@@ -323,10 +323,10 @@ To reverse the order of all columns in a given row, the `row-reverse` helper cla
 </div>
 ```
 
-When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a further helper class of `reverse-break-3`, adding the appropriate breakpoint value as desired:
+When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a seperate helper class of `reverse-break-3`, adding the appropriate breakpoint value as desired:
 
 ```html
-<div class="row row-reverse reverse-break-3">
+<div class="row reverse-break-3">
     <div class="span-4">...</div>
     <div class="span-4">...</div>
     <div class="span-4">...</div>
