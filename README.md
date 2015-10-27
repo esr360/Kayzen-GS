@@ -411,31 +411,29 @@ This is where you set which features of Kayzen GS you want to use in your projec
 
 ##### `kayzen-gs`
 
-* Default  : true
+**Default**  : true
 
 This setting outputs the Kayzen GS grid system. Disable this option only if you intend to use Kayzen GS to generate a custom, semantic grid system.
 
-##### Support Internet Explorer 6 & 7?
+##### `old-ie`
 
-> This setting only affects the regular columns.
+**Default**  : false
 
-* Default  : true
+> This setting only affects regular columns.
 
-##### Enable Responsiveness?
+Enabling this setting will allow default columns to work on Internet Explorer 6 & 7.
 
-> If disabled, columns will not vertically stack.
+##### `responsive`
 
-* Variable : $responsive
-* Type     : boolean
-* Default  : true
+**Default**  : true
 
-##### Enable mobile-first mode?
+If disabled, columns will not stack vertically.
 
-> Disabling this will improve performance without losing functionality&#42;
+##### `mobile-first`
 
-* Variable : $mobile-first
-* Type     : boolean
-* Default  : true
+**Default**  : false
+
+> Disabling this improves performance without losing functionality&#42;
 
 This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
 

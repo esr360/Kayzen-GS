@@ -332,35 +332,22 @@
 </blockquote>
 <p>This is where you set which features of Kayzen GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don&#39;t have to change anything to access all the features of Kayzen GS, the only reason you would change any of these settings is to disable any unused features to improve performance.</p>
 <h5 id="-kayzen-gs-"><code>kayzen-gs</code></h5>
-<ul>
-<li>Default  : true</li>
-</ul>
+<p><strong>Default</strong>  : true</p>
 <p>This setting outputs the Kayzen GS grid system. Disable this option only if you intend to use Kayzen GS to generate a custom, semantic grid system.</p>
-<h5 id="support-internet-explorer-6-7-">Support Internet Explorer 6 &amp; 7?</h5>
+<h5 id="-old-ie-"><code>old-ie</code></h5>
+<p><strong>Default</strong>  : false</p>
 <blockquote>
-<p>This setting only affects the regular columns.</p>
+<p>This setting only affects regular columns.</p>
 </blockquote>
-<ul>
-<li>Default  : true</li>
-</ul>
-<h5 id="enable-responsiveness-">Enable Responsiveness?</h5>
+<p>Enabling this setting will allow default columns to work on Internet Explorer 6 &amp; 7.</p>
+<h5 id="-responsive-"><code>responsive</code></h5>
+<p><strong>Default</strong>  : true</p>
+<p>If disabled, columns will not stack vertically.</p>
+<h5 id="-mobile-first-"><code>mobile-first</code></h5>
+<p><strong>Default</strong>  : false</p>
 <blockquote>
-<p>If disabled, columns will not vertically stack.</p>
+<p>Disabling this improves performance without losing functionality&#42;</p>
 </blockquote>
-<ul>
-<li>Variable : $responsive</li>
-<li>Type     : boolean</li>
-<li>Default  : true</li>
-</ul>
-<h5 id="enable-mobile-first-mode-">Enable mobile-first mode?</h5>
-<blockquote>
-<p>Disabling this will improve performance without losing functionality&#42;</p>
-</blockquote>
-<ul>
-<li>Variable : $mobile-first</li>
-<li>Type     : boolean</li>
-<li>Default  : true</li>
-</ul>
 <p>This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it&#39;s told. If this options is disabled, columns will start out at their specificed width (for example <strong>span-4</strong> would start out at 4/12&#39;s by default), and will be forced to <strong>100%</strong> width as and when it&#39;s told.</p>
 <p>&#42;This has a noticable effect when using the <a href="#flexible-columns">Flexible Columns</a>. As seen further above, with mobile-first enabled we can create a flexible column like so:</p>
 <pre><code class="lang-html">&lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
