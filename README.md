@@ -13,7 +13,7 @@ Some of the core features of Kayzen GS include:
 * Easily set vertical/horizontal align
 * Create semantic rows and columns
 * Uses inline-block columns
-* Specify column/row selector names
+* Specify global column/row selector names
 * Specify gutter width
 * Multiple column types
 * Reverse column order
