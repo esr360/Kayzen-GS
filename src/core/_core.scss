@@ -71,7 +71,7 @@ https://github.com/esr360/Kayzen-GS
     
     @if kgs-setting('flow-columns') {
         
-        &--flow {
+        &-flow {
             
             margin-left: -#{kgs-option('gutter')};
             width: 100% + kgs-option('gutter');
@@ -131,7 +131,7 @@ https://github.com/esr360/Kayzen-GS
 
     @if kgs-setting('magic-columns') {
         
-        &--magic {
+        &-magic {
             
             @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
                 
@@ -177,7 +177,7 @@ https://github.com/esr360/Kayzen-GS
     
     @if kgs-setting('no-gutter-columns') {
         
-        &--no-gutter {
+        &-no-gutter {
             
             @include kgs-pull('no-gutter');
             @include kgs-push('no-gutter');
@@ -192,7 +192,7 @@ https://github.com/esr360/Kayzen-GS
     
     @if kgs-setting('block-columns') {
         
-        &--block {
+        &-block {
             
             @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
                 @if kgs-setting('mobile-first') {
@@ -236,7 +236,7 @@ https://github.com/esr360/Kayzen-GS
 
     @if kgs-setting('reverse-columns') {
         
-        &--reverse {
+        &-reverse {
             
             &:not([class*="reverse-break"]) {
                 @include kgs-reverse-order;
