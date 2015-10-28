@@ -124,7 +124,7 @@
     ...
 &lt;/div&gt;
 </code></pre>
-<p>To change the width of a single column manually at specific breakpoints, see <a href="#flexible-columns">Adaptive Columns</a>.</p>
+<p>To change the width of a single column manually at specific breakpoints, see <a href="#adaptive-columns">Adaptive Columns</a>.</p>
 <h4 id="flow-columns">Flow Columns</h4>
 <p>Flow Columns are more flexible than regular columns - each visual row of columns does not need to be wrapped in its own <strong>row</strong> container - all your columns for all your rows can be placed in just one main <strong>row</strong> parent element with the <code>row-flow</code> class:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row-flow&quot;&gt;
@@ -183,7 +183,7 @@
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p><a href="http://esr360.github.io/Kayzen-GS/#flexible-columns">View Demo</a></p>
+<p><a href="http://esr360.github.io/Kayzen-GS/#adaptive-columns">View Demo</a></p>
 <h4 id="magic-columns">Magic Columns</h4>
 <p>Magic Columns are so named as they do not need to have their widths specified - each row of Magic Columns will automatically fill up the row applying an equal width to each column. Magic Columns are perfect for cases where you know each column will always be the same width, or where you need any <a href="http://en.wikipedia.org/wiki/Widows_and_orphans">widow</a> columns to take up any remaining space.</p>
 <p>To create a row of Magic Columns, use the <code>row-magic</code> class for your <strong>row</strong>:</p>
@@ -348,12 +348,12 @@
 <blockquote>
 <p>Disabling this improves performance without losing functionality&#42;</p>
 </blockquote>
-<p>This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it&#39;s told. If this options is disabled, columns will start out at their specificed width (for example <strong>span-4</strong> would start out at 4/12&#39;s by default), and will be forced to <strong>100%</strong> width as and when it&#39;s told.</p>
-<p>&#42;This has a noticable effect when using the <a href="#flexible-columns">Flexible Columns</a>. As seen further above, with mobile-first enabled we can create a flexible column like so:</p>
+<p>This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when they&#39;re told. If this options is disabled, columns will start out at their specificed width (for example <strong>span-4</strong> would start out at 4/12&#39;s by default), and will be forced to <strong>100%</strong> width as and when they&#39;re told.</p>
+<p>&#42;This has a noticable effect when using the <a href="#adaptive-columns">Adaptive Columns</a>. With mobile-first enabled an adaptive column can be created like so:</p>
 <pre><code class="lang-html">&lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
 </code></pre>
 <p>This will create a column that starts out at <strong>100%</strong> width, and will compact to 1/2 at <strong>break-1</strong> or more, 1/3 at <strong>break-2</strong> or more, and 1/4 at <strong>break-3</strong> or more.</p>
-<p>With mobile-first disabled, the logic is different, in fact, it is reversed:</p>
+<p>With mobile-first disabled, the logic is different; in fact, it is reversed:</p>
 <pre><code class="lang-html">&lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
 </code></pre>
 <p>Here the column is 3/12&#39;s by default, and will be forced to 1/2 at <strong>break-2</strong> or less, and 100% width at <strong>break-1</strong> or less, thus achieving the same behaviour as the above example with mobile-first enabled.</p>

@@ -161,7 +161,7 @@ To cause the columns to not stack at all, you can use the `row-break-0` helper c
 </div>
 ```
 
-To change the width of a single column manually at specific breakpoints, see [Adaptive Columns](#flexible-columns).
+To change the width of a single column manually at specific breakpoints, see [Adaptive Columns](#adaptive-columns).
 
 #### Flow Columns
 
@@ -239,7 +239,7 @@ If `mobile-first` is enabled (by default it is *disabled*), instead your code wo
 </div> 
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#flexible-columns)
+[View Demo](http://esr360.github.io/Kayzen-GS/#adaptive-columns)
 
 #### Magic Columns
 
@@ -435,9 +435,9 @@ If disabled, columns will not stack vertically.
 
 > Disabling this improves performance without losing functionality&#42;
 
-This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when it's told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when it's told.
+This setting has a fairly large impact on the behaviour of responsiveness. With this option enabled, all columns start out at 100% width, and will compact to the specified width as and when they're told. If this options is disabled, columns will start out at their specificed width (for example **span-4** would start out at 4/12's by default), and will be forced to **100%** width as and when they're told.
 
-&#42;This has a noticable effect when using the [Flexible Columns](#flexible-columns). As seen further above, with mobile-first enabled we can create a flexible column like so:
+&#42;This has a noticable effect when using the [Adaptive Columns](#adaptive-columns). With mobile-first enabled an adaptive column can be created like so:
 
 ```html
 <div class="span break-1-half break-2-third break-3-quarter">span-3</div>
@@ -445,7 +445,7 @@ This setting has a fairly large impact on the behaviour of responsiveness. With 
 
 This will create a column that starts out at **100%** width, and will compact to 1/2 at **break-1** or more, 1/3 at **break-2** or more, and 1/4 at **break-3** or more.
 
-With mobile-first disabled, the logic is different, in fact, it is reversed:
+With mobile-first disabled, the logic is different; in fact, it is reversed:
 
 ```html
 <div class="span-3 break-2-half break-1-full">span-3</div>
