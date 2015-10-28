@@ -229,6 +229,8 @@ Adaptive Columns allow for more flexibility - they allow you to specify a custom
 </div> 
 ```
 
+> Ensure you are using the `row-flow` class on your row when using adaptive columns
+
 If `mobile-first` is enabled (by default it is *disabled*), instead your code would look somthing like:
 
 ```html	
@@ -242,7 +244,7 @@ If `mobile-first` is enabled (by default it is *disabled*), instead your code wo
 </div> 
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#adaptive-columns)
+[View Demo](http://esr360.github.io/Kayzen-GS/#adaptive-columns) | [Learn More](#mobile-first)
 
 #### Magic Columns
 
@@ -281,6 +283,8 @@ Block Columns have no gutter (so the columns sit flush with each other) and are 
     ...
 </div>
 ```
+
+Block columns will naturally assume an equal width to each other if the naked `span` class is used for your column (as opposed to, say, `span-3`).
 
 [View Demo](http://esr360.github.io/Kayzen-GS/#block-columns)
 

@@ -56,6 +56,13 @@
 				color: #777;
 				margin: 1rem 0;
 			}
+            blockquote {
+                border-left: 4px solid rgba(0,0,0,0.2);
+                margin-left: 0;
+                padding-left: 1em;
+                font-style: italic;
+                color: rgba(0,0,0,0.65);
+            }
 			.row-block {
 				margin-bottom: 1rem;
 			}
@@ -174,7 +181,7 @@
 
 			<h3 id="responsiveness">Responsiveness</h3>
 			
-			<p>Kayzen GS columns are responsive out the box - the following breakpoint classes have been defined to customize the layout - these values are completely flexible and customizable (see <a target="blank" href="https://github.com/esr360/Kayzen-GS#breakpoints">Custom Configuration</a>):</p>
+			<p>Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see <a target="blank" href="https://github.com/esr360/Kayzen-GS#breakpoints">Custom Configuration</a>):</p>
 			
 			<ul>
 				<li>break-0: 0px,</li>
@@ -184,7 +191,9 @@
 				<li>break-4: 1200px</li>
 			</ul>
 			
-			<p>By default, the columns will vertically stack on top of each other when the screen size is less than 940px (break-3). Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special helper class to your row.</p>
+			<p>By default, the columns will vertically stack on top of each other when the screen size is less than 940px (break-3).</p> 
+            
+            <p>Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special helper class to your row.</p>
 			
 			<div class="row row-break-2">                    
 			    <div class="span-3">Sidebar</div>
@@ -214,23 +223,22 @@
 					
 			<p>Likewise, the above columns will now stack on top of each other when the screen size is <strong>less</strong> than <strong>1200px</strong> (break-4).</p>
 			
-			<p>To cause the columns to not stack at all, you can use the <code>break-0</code> helper class on your <strong>row</strong>:</p>
+			<p>To cause the columns to not stack at all, you can use either the <code>row-no-break</code> or <code>row-break-0</code> helper class on your <strong>row</strong>:</p>
 			
             <div class="row row-break-0">                    
-                <div class="span-4">span-4</div>
-                <div class="span-4">span-4</div>
-                <div class="span-4">span-4</div>
+                ...
             </div>
 					
 <pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row row-no-break">                       
+	...
+&lt;/div>
 &lt;div class="row row-break-0">                       
-	&lt;div class="span-4">span-4&lt;/div>
-	&lt;div class="span-4">span-4&lt;/div>
-	&lt;div class="span-4">span-4&lt;/div>
+	...
 &lt;/div>
 </pre>
 
-			<p>To change the width of a single column manually at specific breakpoints, see <a target="blank" href="https://github.com/esr360/Kayzen-GS#flexible-columns">Flexible Columns</a>.</p>
+			<p>To change the width of a single column manually at specific breakpoints, see <a target="blank" href="https://github.com/esr360/Kayzen-GS#adaptive-columns">Adaptive Columns</a>.</p>
 
 			<h3 id="flow-columns">Flow Columns</h3>
 			
@@ -282,10 +290,59 @@
 &lt;/div&gt;
 </pre>
 
-			<h4 id="flexible-columns">Flexible Columns</h4>
+            <p>As with normal columns you can add helper classes to your row of flow columns:</p>
+            
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row-flow row-break-2">
+    ...
+&lt;/div&gt;
+</pre>
+
+            <div class="row-flow row-break-2"> 
+			    <div class="span-6">Flow Column</div>
+			    <div class="span-6">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-4">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+			    <div class="span-3">Flow Column</div>
+            </div>
+
+            <p>The above flow columns will now stack on top of each other when the resolution is less than the <code>break-2</code> breakpoint, instead of the default <code>break-3</code> value.</p>
+
+			<h4 id="adaptive-columns">Adaptive Columns</h4>
 			
-			<p>Flow Columns allow for more flexibility - the main benefit being the ability to change the width of the columns to whatever you want at whatever breakpoint you want - say you want your columns to be 1/2 at <strong>break-1</strong>, 1/3 at <strong>break-2</strong>, and 1/4 at <strong>break-3</strong>, you could add the following helper classes to your columns like so:</p>
+			<p>Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the <a target="blank" href="https://github.com/esr360/Kayzen-GS#breakpoints">fraction</a> values from the configuration.</p>
+
 						
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">                    
+&lt;div class=&quot;row-flow&quot;&gt;                    
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+            <div class="row-flow">                    
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+            </div> 		
+            
+            <blockquote>
+                <p>Ensure you are using the <code>row-flow</code> class on your row when using adaptive columns</p>
+            </blockquote>
+
+            <p>If <code>mobile-first</code> is enabled (by default it is <em>disabled</em>), instead your code would look somthing like:
+            
 <pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">                    
 &lt;div class=&quot;row-flow&quot;&gt;                    
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
@@ -296,17 +353,8 @@
     &lt;div class=&quot;span break-1-half break-2-third break-3-quarter&quot;&gt;span-3&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
-			<div class="row-flow">                    
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			    <div class="span-3 break-1-half break-2-third break-3-quarter">span-3</div>
-			</div> 
+    
+            <p><a href="https://github.com/esr360/Kayzen-GS#mobile-firsrt">Learn More</a></p>
 
 			<h3 id="magic-columns">Magic Columns</h3>
 			
@@ -342,6 +390,24 @@
 &lt;/div>
 </pre>
 
+            <p>As with normal columns you can add helper classes to your row of magic columns:</p>
+            
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row-magic row-break-2">
+    ...
+&lt;/div&gt;
+</pre>
+
+            <div class="row-magic row-break-2"> 
+			    <div class="span">Magic Column</div>
+			    <div class="span">Magic Column</div>
+			    <div class="span">Magic Column</div>
+			    <div class="span">Magic Column</div>
+			    <div class="span">Magic Column</div>
+            </div>
+
+            <p>The above magic columns will now stack on top of each other when the resolution is less than the <code>break-2</code> breakpoint, instead of the default <code>break-3</code> value.</p>
+
 			<h3 id="block-columns">Block Columns</h3>
 			
 			<p>Block Columns have no gutter (so the columns sit flush with each other) and are of equal height. To create a row of Block Columns, add the <code>row-block</code> class to your <strong>row</strong>.</p>
@@ -373,6 +439,68 @@
     &lt;/div>
 &lt;/div>
 </pre>
+
+            <p>Block Columns will naturally assume an equal width to each other if the naked <code>span</code> class is used for your column (as opposed to, say, <code>span-3</code>).</p>
+
+            <p>As with normal columns you can add helper classes to your row of block columns:</p>
+            
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row-block row-break-2">
+    ...
+&lt;/div&gt;
+</pre>
+
+            <div class="row-block row-break-2"> 
+			    <div class="span">Block Column</div>
+			    <div class="span">Block Column</div>
+			    <div class="span">Block Column</div>
+            </div>
+
+            <p>The above Block Columns will now stack on top of each other when the resolution is less than the <code>break-2</code> breakpoint, instead of the default <code>break-3</code> value.</p>
+
+			<h3 id="no-gutter-columns">No Gutter Columns</h3>
+
+            <p>No-Gutter Columns are just like regular columns except they have no gutter (similar to *block-columns*, except each column assumes their own height). To create a row of No-Gutter Columns, use the `row-no-gutter` class for your **row**.</p>
+			
+			<div class="row-no-gutter">
+			    <div class="span-4">
+			        No-Gutter Column
+			    </div>
+			    <div class="span-4">
+			        No-Gutter Column
+			    </div>
+			    <div class="span-4">
+			        <p>No-Gutter Column</p>
+					<p>Unlike Block Columns, this column doesn't causes the others to grow with it.</p>
+			    </div>
+			</div>
+            
+            <p>As with normal columns you can add helper classes to your row of No-Gutter Columns:</p>
+
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row-no-gutter row-break-2">
+    ...
+&lt;/div&gt;
+</pre>
+
+            <div class="row-no-gutter row-break-2"> 
+			    <div class="span-4">No-Gutter Column</div>
+			    <div class="span-4">No-Gutter Column</div>
+			    <div class="span-4">No-Gutter Column</div>
+            </div>
+
+            <p>The above No-Gutter Columns will now stack on top of each other when the resolution is less than the <code>break-2</code> breakpoint, instead of the default <code>break-3</code> value.</p>
+            
+			<h3 id="reverse-column-order">Reverse Column Order</h3>
+            
+            <p>To reverse the order of all columns in a given row, the `row-reverse` helper class is used:</p>
+            
+            <div class="row row-reverse"> 
+			    <div class="span-3">First Column</div>
+			    <div class="span-3">Second Column</div>
+			    <div class="span-3">Third Column</div>
+			    <div class="span-3">Fourth Column</div>
+            </div>
 
 			<hr />
 

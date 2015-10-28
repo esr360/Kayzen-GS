@@ -485,147 +485,195 @@
     margin-left: 0;
   }
 }
-.row-no-gutter [class*="pull-"] {
+.row-no-gutter [class*="pull-"], .row-block [class*="pull-"] {
   position: relative;
 }
-.row-no-gutter .pull-1 {
+.row-no-gutter .pull-1, .row-block .pull-1 {
   left: -webkit-calc(-8.33333%);
   left: calc(-8.33333%);
 }
-.row-no-gutter .pull-2 {
+.row-no-gutter .pull-2, .row-block .pull-2 {
   left: -webkit-calc(-16.66667%);
   left: calc(-16.66667%);
 }
-.row-no-gutter .pull-3 {
+.row-no-gutter .pull-3, .row-block .pull-3 {
   left: -webkit-calc(-25%);
   left: calc(-25%);
 }
-.row-no-gutter .pull-4 {
+.row-no-gutter .pull-4, .row-block .pull-4 {
   left: -webkit-calc(-33.33333%);
   left: calc(-33.33333%);
 }
-.row-no-gutter .pull-5 {
+.row-no-gutter .pull-5, .row-block .pull-5 {
   left: -webkit-calc(-41.66667%);
   left: calc(-41.66667%);
 }
-.row-no-gutter .pull-6 {
+.row-no-gutter .pull-6, .row-block .pull-6 {
   left: -webkit-calc(-50%);
   left: calc(-50%);
 }
-.row-no-gutter .pull-7 {
+.row-no-gutter .pull-7, .row-block .pull-7 {
   left: -webkit-calc(-58.33333%);
   left: calc(-58.33333%);
 }
-.row-no-gutter .pull-8 {
+.row-no-gutter .pull-8, .row-block .pull-8 {
   left: -webkit-calc(-66.66667%);
   left: calc(-66.66667%);
 }
-.row-no-gutter .pull-9 {
+.row-no-gutter .pull-9, .row-block .pull-9 {
   left: -webkit-calc(-75%);
   left: calc(-75%);
 }
-.row-no-gutter .pull-10 {
+.row-no-gutter .pull-10, .row-block .pull-10 {
   left: -webkit-calc(-83.33333%);
   left: calc(-83.33333%);
 }
-.row-no-gutter .pull-11 {
+.row-no-gutter .pull-11, .row-block .pull-11 {
   left: -webkit-calc(-91.66667%);
   left: calc(-91.66667%);
 }
-.row-no-gutter .pull-12 {
+.row-no-gutter .pull-12, .row-block .pull-12 {
   left: -webkit-calc(-100%);
   left: calc(-100%);
 }
-.row-no-gutter [class*="push-"] {
+.row-no-gutter [class*="push-"], .row-block [class*="push-"] {
   position: relative;
 }
-.row-no-gutter .push-1 {
+.row-no-gutter .push-1, .row-block .push-1 {
   left: -webkit-calc(8.33333%);
   left: calc(8.33333%);
 }
-.row-no-gutter .push-2 {
+.row-no-gutter .push-2, .row-block .push-2 {
   left: -webkit-calc(16.66667%);
   left: calc(16.66667%);
 }
-.row-no-gutter .push-3 {
+.row-no-gutter .push-3, .row-block .push-3 {
   left: -webkit-calc(25%);
   left: calc(25%);
 }
-.row-no-gutter .push-4 {
+.row-no-gutter .push-4, .row-block .push-4 {
   left: -webkit-calc(33.33333%);
   left: calc(33.33333%);
 }
-.row-no-gutter .push-5 {
+.row-no-gutter .push-5, .row-block .push-5 {
   left: -webkit-calc(41.66667%);
   left: calc(41.66667%);
 }
-.row-no-gutter .push-6 {
+.row-no-gutter .push-6, .row-block .push-6 {
   left: -webkit-calc(50%);
   left: calc(50%);
 }
-.row-no-gutter .push-7 {
+.row-no-gutter .push-7, .row-block .push-7 {
   left: -webkit-calc(58.33333%);
   left: calc(58.33333%);
 }
-.row-no-gutter .push-8 {
+.row-no-gutter .push-8, .row-block .push-8 {
   left: -webkit-calc(66.66667%);
   left: calc(66.66667%);
 }
-.row-no-gutter .push-9 {
+.row-no-gutter .push-9, .row-block .push-9 {
   left: -webkit-calc(75%);
   left: calc(75%);
 }
-.row-no-gutter .push-10 {
+.row-no-gutter .push-10, .row-block .push-10 {
   left: -webkit-calc(83.33333%);
   left: calc(83.33333%);
 }
-.row-no-gutter .push-11 {
+.row-no-gutter .push-11, .row-block .push-11 {
   left: -webkit-calc(91.66667%);
   left: calc(91.66667%);
 }
-.row-no-gutter .push-12 {
+.row-no-gutter .push-12, .row-block .push-12 {
   left: -webkit-calc(100%);
   left: calc(100%);
 }
-.row-no-gutter > [class*="span"] {
+.row-no-gutter > [class*="span"], .row-block > [class*="span"] {
   display: inline-block;
   vertical-align: top;
 }
-.row-no-gutter > .span-1 {
+.row-no-gutter > .span-1, .row-block > .span-1 {
   width: 8.33333%;
 }
-.row-no-gutter > .span-2 {
+.row-no-gutter > .span-2, .row-block > .span-2 {
   width: 16.66667%;
 }
-.row-no-gutter > .span-3 {
+.row-no-gutter > .span-3, .row-block > .span-3 {
   width: 25%;
 }
-.row-no-gutter > .span-4 {
+.row-no-gutter > .span-4, .row-block > .span-4 {
   width: 33.33333%;
 }
-.row-no-gutter > .span-5 {
+.row-no-gutter > .span-5, .row-block > .span-5 {
   width: 41.66667%;
 }
-.row-no-gutter > .span-6 {
+.row-no-gutter > .span-6, .row-block > .span-6 {
   width: 50%;
 }
-.row-no-gutter > .span-7 {
+.row-no-gutter > .span-7, .row-block > .span-7 {
   width: 58.33333%;
 }
-.row-no-gutter > .span-8 {
+.row-no-gutter > .span-8, .row-block > .span-8 {
   width: 66.66667%;
 }
-.row-no-gutter > .span-9 {
+.row-no-gutter > .span-9, .row-block > .span-9 {
   width: 75%;
 }
-.row-no-gutter > .span-10 {
+.row-no-gutter > .span-10, .row-block > .span-10 {
   width: 83.33333%;
 }
-.row-no-gutter > .span-11 {
+.row-no-gutter > .span-11, .row-block > .span-11 {
   width: 91.66667%;
 }
-.row-no-gutter > .span-12 {
+.row-no-gutter > .span-12, .row-block > .span-12 {
   width: 100%;
+}
+@media (max-width: 940px) {
+  .row-no-gutter:not([class*="break"]) > [class*="span"], .row-block:not([class*="break"]) > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 0px) {
+  .row-no-gutter.row-break-0 > [class*="span"], .row-block.row-break-0 > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 460px) {
+  .row-no-gutter.row-break-1 > [class*="span"], .row-block.row-break-1 > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 720px) {
+  .row-no-gutter.row-break-2 > [class*="span"], .row-block.row-break-2 > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 940px) {
+  .row-no-gutter.row-break-3 > [class*="span"], .row-block.row-break-3 > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .row-no-gutter.row-break-4 > [class*="span"], .row-block.row-break-4 > [class*="span"] {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .row-block > [class*="span"] {
   display: table-cell;
