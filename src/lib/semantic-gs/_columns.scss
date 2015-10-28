@@ -57,13 +57,13 @@
     }
     
     // if flow column
-    @if kgs-config('type') == flow {
+    @if kgs-config('type') == 'flow' {
         @include kgs-gutter(false);
         width: kgs-flow-width($span, $columns);
 	} 
 	
     // if magic column
-	@else if kgs-config('type') == magic {
+	@else if kgs-config('type') == 'magic' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 @include kgs-column-core;
