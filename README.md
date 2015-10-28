@@ -818,7 +818,7 @@ To **vertically align** your columns, set the `vertical-align` CSS property of y
 
 ### Solving the Whitespace Issue
 
-The issue itself is outlined in great detail in [this blog post](http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0) from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the [Github issue](https://github.com/yahoo/pure/issues/41) which has received over 150 posts in over 2 years, amongst some interesting proposed fixes included [hard-coding the font-family](https://github.com/yahoo/pure/issues/41#issuecomment-21722831) of your row to *Arial* so the [letter-spacing hack](https://github.com/yahoo/pure/issues/41#issuecomment-18747575) would work consistently. However, this, along with all the other hacky fixes were deemed unsuitable for productional use, so thus the decision to leave inline-block was made.
+The issue itself is outlined in great detail in [this blog post](http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-0-3-0) from the Pure CSS blog. Indeed, this issue is what caused Pure to move away from inline-block columns and towards flex. In the [Github issue](https://github.com/yahoo/pure/issues/41), amongst some interesting proposed fixes included [hard-coding the font-family](https://github.com/yahoo/pure/issues/41#issuecomment-21722831) of your row to *Arial* so the [letter-spacing hack](https://github.com/yahoo/pure/issues/41#issuecomment-18747575) would work consistently. However, this, along with all the other hacky fixes were deemed unsuitable for productional use, so thus the decision to leave inline-block was made.
 
 And it isn't only Yahoo's Pure who have experienced this issue; other great frameworks like [csswizardry-grids](https://github.com/csswizardry/csswizardry-grids) also [suffer the same problem](https://github.com/csswizardry/csswizardry-grids/issues/62). 
 
@@ -834,39 +834,28 @@ With this CSS, you can get inline-block columns to behave exactly as desired in 
 The problem is only really an issue in Webkit based browsers - the [letter-spacing fix](https://github.com/yahoo/pure/issues/41#issuecomment-18747575) actually works just fine in Firefox and Internet Explorer without having to hard code any typeface. With these combined, our **row** mixin looks like this:
 
 ```scss
-%row {
-	/* Firefox/IE collapse white-space */
-	letter-spacing: -1em;
-	/* Webkit collapse white-space */
-	display: table !important;
-	width: 100%;
-	/* Opera collapse white-space */
-	@at-root {
-		.opera-only :-o-prefocus, & {
-			word-spacing: -0.43em;
-		}
-	}
-	/* IE < 8 collapse white-space */
-	@if $old-ie {
-		*letter-spacing: normal;
-		*word-spacing: -0.43em;
-	}	
-	/* Reset spacing */
-	@at-root {
-		* {        
-			letter-spacing: normal;
-			word-spacing: normal;
-			text-rendering: auto;
-		}		
-	}
-	/* Pseudo element to help with vertical aligning */
-	&:after {
-		content: "";
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-	}
-}
+@mixin kgs-row-core {
+    
+    // Firefox/IE collapse white-space
+    letter-spacing: -1em;
+    // Webkit collapse white-space
+    display: table;
+    width: 100%;
+    // Opera collapse white-space
+    @at-root {
+        .opera-only :-o-prefocus, & {
+            word-spacing: -0.43em;
+        }
+    }
+    // IE < 8 collapse white-space
+    @if kgs-setting('old-ie') {
+        *letter-spacing: normal;
+        *word-spacing: -0.43em;
+    }	
+    // Required for some third-party sliders
+    table-layout: fixed;
+    
+} // row()
 ```
 
 This mixin allows you to create column rows using the `inline-block` CSS property for your columns without having to worry about the whitespace that is naturally caused. You can say it looks obscure to your heart's content, but it works, and it works great.
