@@ -35,7 +35,7 @@
 <li><a href="#block-columns">Block Columns</a></li>
 <li><a href="#no-gutter-columns">No Gutter Columns</a></li>
 <li><a href="#reverse-column-order">Reverse Column Order</a></li>
-<li><a href="#push-pull-columns">Push/Pull Columns</a></li>
+<li><a href="#pushpull-columns">Push/Pull Columns</a></li>
 </ul>
 </li>
 <li><a href="#custom-configuration">Custom Configuration</a><ul>
@@ -74,13 +74,13 @@
 &lt;/div&gt;
 </code></pre>
 <blockquote>
-<p>Change the class name <em>row</em> to whatever you want in the <a href="#set-row-namespace">Configuration</a>.</p>
+<p>Change the class name <em>row</em> to whatever you want in the <a href="#options">Configuration</a>.</p>
 </blockquote>
 <p>To create a <strong>column</strong> with no specified width, add the <code>span</code> class to your element.</p>
 <pre><code class="lang-html">&lt;div class=&quot;span&quot;&gt;Column&lt;/div&gt;
 </code></pre>
 <blockquote>
-<p>Change the class name <em>span</em> to whatever you want in the <a href="#set-column-namespace">Configuration</a>.</p>
+<p>Change the class name <em>span</em> to whatever you want in the <a href="#options">Configuration</a>.</p>
 </blockquote>
 <p>By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:</p>
 <pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;                    
@@ -359,26 +359,35 @@
 <p>Here the column is 3/12&#39;s by default, and will be forced to 1/2 at <strong>break-2</strong> or less, and 100% width at <strong>break-1</strong> or less, thus achieving the same behaviour as the above example with mobile-first enabled.</p>
 <h5 id="-custom-stacking-">&#39;custom-stacking&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for the <a href="#responsiveness">custom breakpoint stacking</a> feature.</p>
 <h5 id="-adaptive-columns-">&#39;adaptive-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for <a href="#adaptive-columns">adaptive columns</a>.</p>
 <h5 id="-flow-columns-">&#39;flow-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for <a href="#flow-columns">flow columns</a>.</p>
 <h5 id="-magic-columns-">&#39;magic-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for <a href="#magic-columns">magic columns</a>.</p>
 <h5 id="-block-columns-">&#39;block-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for <a href="#block-columns">block columns</a>.</p>
 <h5 id="-no-gutter-columns-">&#39;no-gutter-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required for <a href="#no-gutter-columns">no-gutter columns</a>.</p>
 <h5 id="-reverse-columns-">&#39;reverse-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required to <a href="#reverse-columns">reverse columns</a>.</p>
 <h5 id="-pull-columns-">&#39;pull-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required to <a href="#pull-columns">pull columns</a>.</p>
 <h5 id="-push-columns-">&#39;push-columns&#39;</h5>
 <p>Default  : true</p>
+<p>This option generates the code required to <a href="#push-columns">push columns</a>.</p>
 <h4 id="breakpoints">Breakpoints</h4>
-<p>You can set as many different breakpoints as you like to use in the grid system - just amend the below Sass map as desired. These values are used for both the default grid system and the semantic grid system. </p>
+<p>Kayzen GS allows you to specify any number of breakpoints. Amend the <code>breakpoints</code> map in the config as you desire.</p>
 <blockquote>
-<p>The helper classes used for the default grid system are generated from these values.</p>
+<p>These values are used to generate the helper classes. Be wary not to include too many values here.</p>
 </blockquote>
 <pre><code class="lang-scss">&#39;breakpoints&#39; : (
     &#39;break-0&#39; : 0px,
@@ -389,9 +398,9 @@
 );
 </code></pre>
 <h4 id="fractions">Fractions</h4>
-<p>You can define any number of fractions you desire, and call them what you want. The values here are used for both the default grid system as well as the semantic one. </p>
+<p>This is where you can define the names for any fractions you wish to use in your grid system.</p>
 <blockquote>
-<p>The helper classes used for the default grid system are generated from these values.</p>
+<p>These values are used to generate the helper classes. Be wary not to include too many values here.</p>
 </blockquote>
 <pre><code class="lang-scss">&#39;fractions&#39; : (
     &#39;full&#39;    : (1, 1),
@@ -405,59 +414,59 @@
 <p>You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.</p>
 <p><a href="http://esr360.github.io/Kayzen-GS/#semantic-examples">View Examples</a></p>
 <h4 id="creating-a-semantic-row">Creating a Semantic Row</h4>
-<pre><code class="lang-css">.main {
+<pre><code class="lang-scss">.main {
     @include row;
 }
 </code></pre>
 <p>In the above example we are using <strong>main</strong> as our semantic class name.</p>
-<p><strong>Creating a semantic row of Flow Columns:</strong></p>
-<pre><code class="lang-css">.portfolio-grid {
-    @include row(flow);
+<p><strong>Creating a semantic row for Flow Columns:</strong></p>
+<pre><code class="lang-scss">.portfolio-grid {
+    @include row(&#39;flow&#39;);
 }
 </code></pre>
 <p>In the above example, our semantic class name for our row of Flow Columns is <strong>portfolio-grid</strong>.</p>
 <h4 id="creating-a-semantic-column">Creating a Semantic Column</h4>
 <h5 id="basic-example">Basic Example</h5>
-<pre><code class="lang-css">.sidebar {
-    @include column(
-        $width: (3, 12)
-    );
+<pre><code class="lang-scss">.sidebar {
+    @include column((
+        &#39;width&#39; : (3, 12)
+    ));
 }
 </code></pre>
 <p>This will create a column that spans 3 out of 12 columns in width, so <strong>1/4</strong> or <strong>25%</strong>. Alternatively, you can achieve the same thing with this:</p>
-<pre><code class="lang-css">.sidebar {
-    @include column(
-        $width: quarter
-    );
+<pre><code class="lang-scss">.sidebar {
+    @include column((
+        &#39;width&#39; : &#39;quarter&#39;
+    ));
 }
 </code></pre>
 <blockquote>
 <p>You can use any fraction defined in the <a href="#fractions">$fractions map</a>.</p>
 </blockquote>
 <p>Or even this:</p>
-<pre><code class="lang-css">.sidebar {
-    @include column(
-        $width: 25%
-    );
+<pre><code class="lang-scss">.sidebar {
+    @include column((
+        &#39;width&#39; : 25%
+    ));
 }
 </code></pre>
 <p>Note that perhaps surprisingly the above examples do <strong>not</strong> produce a <code>width</code> value of <strong>25%</strong>, but rather a calculated value based off the value of the <a href="#how-big-should-the-gutter-inbetween-your-columns-be">$gutter variable</a>. This is so you can easily create columns without having to think about the effect of gutters like so:</p>
-<pre><code class="lang-css">.sidebar {
-    @include column(
-        $width: 20%
-    );
+<pre><code class="lang-scss">.sidebar {
+    @include column((
+        &#39;width&#39; : 20%
+    ));
 }
 
 .content {
     @include column(
-        $width: 70%
-    );
+        &#39;width&#39; : 70%
+    ));
 }
 
 .promo {
     @include column(
-        $width: 10%
-    );
+        &#39;width&#39; : 10%
+    ));
 }
 </code></pre>
 <p>Which will produce the following CSS, assuming the default value of <strong>2.5%</strong> for <code>$gutter</code>:</p>
@@ -483,57 +492,53 @@
 <blockquote>
 <p>Ensure that your semantic row container is also set to <code>flow</code>.</p>
 </blockquote>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: flow,
-        $width: (3, 12)
-    );
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;type&#39;  : &#39;flow&#39;,
+        &#39;width&#39; : (3, 12)
+    ));
 }
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#flow-columns-semantic">View Demo</a></p>
 <h6 id="magic-columns">Magic Columns</h6>
-<blockquote>
-<p>You must set the <code>$namespace</code> variable to match your semantic class name.</p>
-</blockquote>
-<pre><code class="lang-css">.portfolio-item {
+<pre><code class="lang-scss">.portfolio-item {
     @include column(
-        $type: magic, 
-        $namespace: portfolio-item
+        &#39;type&#39; : &#39;magic&#39;
     );
 }
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#magic-columns-semantic">View Demo</a></p>
 <h6 id="block-columns">Block Columns</h6>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: block,
-        $width: (3, 12)
-    );
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;type&#39;  : &#39;block&#39;,
+        &#39;width&#39; : (3, 12)
+    ));
 }
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#block-columns-semantic">View Demo</a></p>
 <h5 id="responsiveness">Responsiveness</h5>
 <p>The default width for the stacking of semantic columns is set in the <a href="#set-the-maximum-width-for-default-vertically-stacked-columns">Configuration</a>. You can override the default value like so:</p>
-<pre><code class="lang-css">.sidebar {
-    @include column(
-        $width: quarter,
-        $stack: breakpoint(break-2)
-    );
+<pre><code class="lang-scss">.sidebar {
+    @include column((
+        &#39;width&#39; : &#39;quarter&#39;,
+        &#39;stack&#39; : breakpoint(break-2)
+    ));
 }
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#responsiveness-semantic">View Demo</a></p>
 <p>This will cause the columns to stack when the screen size is less than <strong>break-2</strong> as opposed to the default value of <strong>break-3</strong>.</p>
 <h6 id="flexible-columns">Flexible Columns</h6>
 <p>When inside a Flow Columns container and with its <code>$type</code> set to <strong>flow</strong>, you can set the width of your column at specific breakpoints using the <strong>respond-to</strong> map. Mobile-first is set to true by default for semantic columns, so the code looks like this:</p>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
-            ((6, 12), break-1),
-            ((4, 12), break-2),
-            ((3, 12), break-3)
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;type&#39; : &#39;flow&#39;,
+        &#39;respond-to&#39; : (
+            ((6, 12), &#39;break-1&#39;),
+            ((4, 12), &#39;break-2&#39;),
+            ((3, 12), &#39;break-3&#39;)
         )
-    );
+    ));
 }
 </code></pre>
 <p><a href="http://esr360.github.io/Kayzen-GS/#flow-columns-semantic">View Demo</a></p>
@@ -542,45 +547,45 @@
 <p>You can set any fraction you want, for example you can write <em>1, 2</em> instead of <em>6, 12</em>.</p>
 </blockquote>
 <p>You can also use numeric values for percentages:</p>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
-            (50%, break-1),
-            (100/3, break-2),
-            (25%, break-3)
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;type&#39; : &#39;flow&#39;,
+        &#39;respond-to&#39; : (
+            (50%, &#39;break-1&#39;),
+            (100/3, &#39;break-2&#39;),
+            (25%, &#39;break-3&#39;)
         )
-    );
+    ));
 }
 </code></pre>
 <p>Using the <a href="#fractions">$fractions map</a> you can substitue writing the fraction numbers for the fraction names like so:</p>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
-            (half, break-1),
-            (third, break-2),
-            (quarter, break-3)
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;type&#39; : &#39;flow&#39;,
+        &#39;respond-to&#39; : (
+            (&#39;half&#39;, &#39;break-1&#39;),
+            (&#39;third&#39;, &#39;break-2&#39;),
+            (&#39;quarter&#39;, &#39;break-3&#39;)
         )
-    );
+    ));
 }
 </code></pre>
-<p>With <code>$mobile-first</code> set to <strong>false</strong>, to achieve the same result as the above example the code would be:</p>
-<pre><code class="lang-css">.portfolio-item {
-    @include column(
-        $mobile-first: false,
-        $type: flow,
-        $width: quarter,
-        $respond-to: (
-            (third, break-3),
-            (half, break-2),
-            (full, break-1)
+<p>With <code>mobile-first</code> set to <strong>false</strong>, to achieve the same result as the above example the code would be:</p>
+<pre><code class="lang-scss">.portfolio-item {
+    @include column((
+        &#39;mobile-first&#39; : false,
+        &#39;type&#39;         : &#39;flow&#39;,
+        &#39;width&#39;        : &#39;quarter&#39;,
+        &#39;respond-to&#39; : (
+            (&#39;third&#39;, &#39;break-3&#39;),
+            (&#39;half&#39;, &#39;break-2&#39;),
+            (&#39;full&#39;, &#39;break-1&#39;)
         )
-    );
+    ));
 }
 </code></pre>
 <blockquote>
-<p>Note the requirement of a default value for <code>$width</code>.</p>
+<p>Note the requirement of a default value for <code>width</code>.</p>
 </blockquote>
 <h3 id="column-aligning">Column Aligning</h3>
 <p>Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To <strong>horizontally align</strong> a row of columns, simply set the <code>text-align</code> CSS property of your row to either <code>left</code>, <code>right</code> or <code>center</code> as desired:</p>
@@ -614,7 +619,7 @@ width: 100%;
 </code></pre>
 <p>With this CSS, you can get inline-block columns to behave exactly as desired in Webkit browsers.</p>
 <p>The problem is only really an issue in Webkit based browsers - the <a href="https://github.com/yahoo/pure/issues/41#issuecomment-18747575">letter-spacing fix</a> actually works just fine in Firefox and Internet Explorer without having to hard code any typeface. With these combined, our <strong>row</strong> mixin looks like this:</p>
-<pre><code class="lang-css">%row {
+<pre><code class="lang-scss">%row {
     /* Firefox/IE collapse white-space */
     letter-spacing: -1em;
     /* Webkit collapse white-space */

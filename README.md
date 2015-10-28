@@ -91,7 +91,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 </div>
 ```
 
-> Change the class name *row* to whatever you want in the [Configuration](#set-row-namespace).
+> Change the class name *row* to whatever you want in the [Configuration](#options).
 
 To create a **column** with no specified width, add the `span` class to your element.
 
@@ -99,7 +99,7 @@ To create a **column** with no specified width, add the `span` class to your ele
 <div class="span">Column</div>
 ```
 
-> Change the class name *span* to whatever you want in the [Configuration](#set-column-namespace).
+> Change the class name *span* to whatever you want in the [Configuration](#options).
 
 By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
