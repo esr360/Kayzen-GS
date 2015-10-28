@@ -730,7 +730,6 @@
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
-  text-align: right;
 }
 .row-reverse:not([class*="reverse-break"]) > [class*="span"] {
   -webkit-transform: scale(-1);
@@ -742,7 +741,6 @@
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-    text-align: right;
   }
   .row-reverse.reverse-break-0 > [class*="span"] {
     -webkit-transform: scale(-1);
@@ -755,7 +753,6 @@
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-    text-align: right;
   }
   .row-reverse.reverse-break-1 > [class*="span"] {
     -webkit-transform: scale(-1);
@@ -768,7 +765,6 @@
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-    text-align: right;
   }
   .row-reverse.reverse-break-2 > [class*="span"] {
     -webkit-transform: scale(-1);
@@ -781,7 +777,6 @@
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-    text-align: right;
   }
   .row-reverse.reverse-break-3 > [class*="span"] {
     -webkit-transform: scale(-1);
@@ -794,7 +789,6 @@
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-    text-align: right;
   }
   .row-reverse.reverse-break-4 > [class*="span"] {
     -webkit-transform: scale(-1);

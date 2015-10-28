@@ -5,7 +5,6 @@
 @mixin kgs-reverse-order {
     
     transform: rotate(180deg);
-    text-align: right;
     > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
     }
