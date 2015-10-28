@@ -457,7 +457,7 @@ This will create a column that starts out at **100%** width, and will compact to
 With mobile-first disabled, the logic is different; in fact, it is reversed:
 
 ```html
-<div class="span-3 break-2-half break-1-full">span-3</div>
+<div class="span-3 break-3-third break-2-half break-1-full">span-3</div>
 ```
 
 Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** or less, and 100% width at **break-1** or less, thus achieving the same behaviour as the above example with mobile-first enabled.
@@ -768,7 +768,7 @@ Using the [$fractions map](#fractions) you can substitue writing the fraction nu
 
 With `mobile-first` set to **false**, to achieve the same result as the above example the code would be:
 
-```scss
+```css
 .portfolio-item {
 	@include column((
 		'mobile-first' : false,
