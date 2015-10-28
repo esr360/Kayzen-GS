@@ -768,7 +768,7 @@ Using the [$fractions map](#fractions) you can substitue writing the fraction nu
 
 With `mobile-first` set to **false**, to achieve the same result as the above example the code would be:
 
-```css
+```scss
 .portfolio-item {
 	@include column((
 		'mobile-first' : false,
