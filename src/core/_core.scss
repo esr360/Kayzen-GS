@@ -29,7 +29,7 @@
     // Default Columns
     //-------------------------------------------------------------
     
-    @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+    @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
         @if kgs-setting('mobile-first') {
             @media (min-width: kgs-option('col-break')) {
                 @include kgs-default-columns;
@@ -37,7 +37,7 @@
         } @else {
             @include kgs-default-columns; 
             @if kgs-setting('responsive') {
-                &:not([class*="break"]) {
+                &:not([class*="stack-"]) {
                     @media (max-width: kgs-option('col-break')) {
                         @include kgs-stack-columns;
                     }
@@ -48,7 +48,7 @@
 
     @if kgs-setting('responsive') {
         @each $bp, $width in kayzenGS('breakpoints') {
-            &.#{kgs-option('row-namespace')}-#{$bp} {
+            &.stack-#{$bp} {
                 @if kgs-setting('mobile-first') {
                     @media (#{$kgs-scale}-width: $width) {
                         @include kgs-default-columns;
@@ -75,7 +75,7 @@
             @include kgs-pull('flow');
             @include kgs-push('flow');
             
-            @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
                 @if kgs-setting('mobile-first') {
                     @media (min-width: kgs-option(col-break)) {
                         @include kgs-flow-columns;
@@ -86,7 +86,7 @@
                         margin-left: #{kgs-option(gutter)};
                     } 
                     @if kgs-setting('responsive') {
-                        &:not([class*="break"]) {
+                        &:not([class*="stack-"]) {
                             @media (max-width: kgs-option('col-break')) {
                                 @include kgs-stack-columns($type: 'flow');
                             }
@@ -97,7 +97,7 @@
             
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}-#{$bp} {
+                    &.stack-#{$bp} {
                         @if kgs-setting('mobile-first') {
                             @media (#{$kgs-scale}-width: $width) {
                                 @include kgs-flow-columns;
@@ -129,7 +129,7 @@
         
         &-magic {
             
-            @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
                 
                 @if kgs-setting('mobile-first') {
                     @media (min-width: kgs-option('col-break')) {
@@ -138,7 +138,7 @@
                 } @else {
                     @include kgs-magic-columns;
                     @if kgs-setting('responsive') {
-                        &:not([class*="break"]) {
+                        &:not([class*="stack-"]) {
                             @media (max-width: kgs-option('col-break')) {
                                 @include kgs-stack-columns($type: magic);
                             }
@@ -148,7 +148,7 @@
                 
                 @if kgs-setting('responsive') {
                     @each $bp, $width in kayzenGS('breakpoints') {
-                        &.#{kgs-option('row-namespace')}-#{$bp} {
+                        &.stack-#{$bp} {
                             @if kgs-setting('mobile-first') {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-magic-columns;
@@ -178,15 +178,15 @@
             @include kgs-pull('no-gutter');
             @include kgs-push('no-gutter');
             
-            @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
                 @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option(col-break)) {
+                    @media (min-width: kgs-option('col-break')) {
                         @include kgs-no-gutter-columns;
                     }
                 } @else {
                     @include kgs-no-gutter-columns;
                     @if kgs-setting('responsive') {
-                        &:not([class*="break"]) {
+                        &:not([class*="stack-"]) {
                             @media (max-width: kgs-option('col-break')) {
                                 @include kgs-stack-columns;
                             }
@@ -197,7 +197,7 @@
             
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}-#{$bp} {
+                    &.stack-#{$bp} {
                         @if kgs-setting('mobile-first') {
                             @media (#{$kgs-scale}-width: $width) {
                                 @include kgs-no-gutter-columns;
@@ -222,7 +222,7 @@
         
         &-block {
             
-            @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
                 @if kgs-setting('mobile-first') {
                     @media (min-width: kgs-option('col-break')) {
                         @include kgs-block-columns;
@@ -230,7 +230,7 @@
                 } @else {
                     @include kgs-block-columns;
                     @if kgs-setting('responsive') {
-                        &:not([class*="break"]) {
+                        &:not([class*="stack-"]) {
                             @media (max-width: kgs-option('col-break')) {
                                 @include kgs-stack-columns;
                             }
@@ -241,7 +241,7 @@
             
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}-#{$bp} {
+                    &.stack-#{$bp} {
                         @if kgs-setting('mobile-first') {
                             @media (#{$kgs-scale}-width: $width) {
                                 @include kgs-block-columns;
@@ -265,21 +265,19 @@
     @if kgs-setting('reverse-columns') {
         
         &-reverse {
-            
             &:not([class*="reverse-break"]) {
                 @include kgs-reverse-order;
             }
+        }
             
-            @if kgs-setting('responsive') {
-                @each $bp, $width in kayzenGS('breakpoints') {
-                    @media (#{$kgs-scale}-width: $width) {
-                        &.reverse-#{$bp} {
-                            @include kgs-reverse-order;
-                        }
+        @if kgs-setting('responsive') {
+            @each $bp, $width in kayzenGS('breakpoints') {
+                @media (#{$kgs-scale}-width: $width) {
+                    &.reverse-#{$bp} {
+                        @include kgs-reverse-order;
                     }
                 }
             }
-            
         }
         
     } // kgs-setting()

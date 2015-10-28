@@ -143,7 +143,7 @@ By default, the columns will vertically stack on top of each other when the scre
 Sometimes you may want different columns to stack at different widths. To override the base value at which columns normally stack, you can add a special **helper class** to your row:
 
 ```html
-<div class="row row-break-2">                    
+<div class="row stack-break-2">                    
     <div class="span-3">Sidebar</div>
     <div class="span-9">Article</div>
 </div>
@@ -151,15 +151,15 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 [View Demo](http://esr360.github.io/Kayzen-GS/#responsiveness)
 
-Using the `row-break-2` class, the above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
+Using the `stack-break-2` class, the above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
 
-To cause the columns to not stack at all, you can use either the `row-no-break` or `row-break-0` helper classes on your **row**:
+To cause the columns to not stack at all, you can use either the `row-no-break` or `stack-break-0` helper classes on your **row**:
 
 ```html
 <div class="row row-no-break">                    
     ...
 </div>
-<div class="row row-break-0">                    
+<div class="row stack-break-0">                    
     ...
 </div>
 ```
@@ -209,7 +209,7 @@ The above code will produce something similiar the following:
 As with normal columns you can add helper classes to your row of flow columns:
 
 ```html
-<div class="row-flow row-break-2">                    
+<div class="row-flow stack-break-2">                    
     ...
 </div>
 ```
@@ -269,7 +269,7 @@ In the above example, each column will be 1/5 in width, as there are 5 columns i
 As with normal columns you can add helper classes to your row of magic columns:
 
 ```html
-<div class="row-magic row-break-2">                    
+<div class="row-magic stack-break-2">                    
     ...
 </div>
 ```
@@ -291,7 +291,7 @@ Block columns will naturally assume an equal width to each other if the naked `s
 As with normal columns you can add helper classes to your row of block columns:
 
 ```html
-<div class="row-block row-break-2">                    
+<div class="row-block stack-break-2">                    
     ...
 </div>
 ```
@@ -309,7 +309,7 @@ No-Gutter Columns are just like regular columns except they have no gutter. To c
 As with normal columns you can add helper classes to your row of no-gutter columns:
 
 ```html
-<div class="row-no-gutter row-break-2">                    
+<div class="row-no-gutter stack-break-2">                    
     ...
 </div>
 ```
@@ -323,6 +323,8 @@ To reverse the order of all columns in a given row, the `row-reverse` helper cla
     ...
 </div>
 ```
+
+> This helper class will work with all column types.
 
 When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a seperate helper class of `reverse-break-3`, adding the appropriate breakpoint value as desired:
 

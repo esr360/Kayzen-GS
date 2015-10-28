@@ -61,7 +61,7 @@
   width: 100%;
 }
 @media (max-width: 940px) {
-  .row:not([class*="break"]) > [class*="span"] {
+  .row:not([class*="stack-"]) > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -69,7 +69,7 @@
   }
 }
 @media (max-width: 0px) {
-  .row.row-break-0 > [class*="span"] {
+  .row.stack-break-0 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -77,7 +77,7 @@
   }
 }
 @media (max-width: 460px) {
-  .row.row-break-1 > [class*="span"] {
+  .row.stack-break-1 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -85,7 +85,7 @@
   }
 }
 @media (max-width: 720px) {
-  .row.row-break-2 > [class*="span"] {
+  .row.stack-break-2 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -93,7 +93,7 @@
   }
 }
 @media (max-width: 940px) {
-  .row.row-break-3 > [class*="span"] {
+  .row.stack-break-3 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -101,7 +101,7 @@
   }
 }
 @media (max-width: 1200px) {
-  .row.row-break-4 > [class*="span"] {
+  .row.stack-break-4 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -259,42 +259,42 @@
   margin-left: 3%;
 }
 @media (max-width: 940px) {
-  .row-flow:not([class*="break"]) > [class*="span"] {
+  .row-flow:not([class*="stack-"]) > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
   }
 }
 @media (max-width: 0px) {
-  .row-flow.row-break-0 > [class*="span"] {
+  .row-flow.stack-break-0 > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
   }
 }
 @media (max-width: 460px) {
-  .row-flow.row-break-1 > [class*="span"] {
+  .row-flow.stack-break-1 > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
   }
 }
 @media (max-width: 720px) {
-  .row-flow.row-break-2 > [class*="span"] {
+  .row-flow.stack-break-2 > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
   }
 }
 @media (max-width: 940px) {
-  .row-flow.row-break-3 > [class*="span"] {
+  .row-flow.stack-break-3 > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
   }
 }
 @media (max-width: 1200px) {
-  .row-flow.row-break-4 > [class*="span"] {
+  .row-flow.stack-break-4 > [class*="span"] {
     display: block;
     left: auto;
     width: 97%;
@@ -438,7 +438,7 @@
   width: 5.58333%;
 }
 @media (max-width: 940px) {
-  .row-magic:not([class*="break"]) > [class*="span"] {
+  .row-magic:not([class*="stack-"]) > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -446,7 +446,7 @@
   }
 }
 @media (max-width: 0px) {
-  .row-magic.row-break-0 > [class*="span"] {
+  .row-magic.stack-break-0 > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -454,7 +454,7 @@
   }
 }
 @media (max-width: 460px) {
-  .row-magic.row-break-1 > [class*="span"] {
+  .row-magic.stack-break-1 > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -462,7 +462,7 @@
   }
 }
 @media (max-width: 720px) {
-  .row-magic.row-break-2 > [class*="span"] {
+  .row-magic.stack-break-2 > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -470,7 +470,7 @@
   }
 }
 @media (max-width: 940px) {
-  .row-magic.row-break-3 > [class*="span"] {
+  .row-magic.stack-break-3 > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -478,7 +478,7 @@
   }
 }
 @media (max-width: 1200px) {
-  .row-magic.row-break-4 > [class*="span"] {
+  .row-magic.stack-break-4 > [class*="span"] {
     display: block;
     left: auto;
     width: 100% !important;
@@ -628,7 +628,7 @@
   width: 100%;
 }
 @media (max-width: 940px) {
-  .row-no-gutter:not([class*="break"]) > [class*="span"], .row-block:not([class*="break"]) > [class*="span"] {
+  .row-no-gutter:not([class*="stack-"]) > [class*="span"], .row-block:not([class*="stack-"]) > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -636,7 +636,7 @@
   }
 }
 @media (max-width: 0px) {
-  .row-no-gutter.row-break-0 > [class*="span"], .row-block.row-break-0 > [class*="span"] {
+  .row-no-gutter.stack-break-0 > [class*="span"], .row-block.stack-break-0 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -644,7 +644,7 @@
   }
 }
 @media (max-width: 460px) {
-  .row-no-gutter.row-break-1 > [class*="span"], .row-block.row-break-1 > [class*="span"] {
+  .row-no-gutter.stack-break-1 > [class*="span"], .row-block.stack-break-1 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -652,7 +652,7 @@
   }
 }
 @media (max-width: 720px) {
-  .row-no-gutter.row-break-2 > [class*="span"], .row-block.row-break-2 > [class*="span"] {
+  .row-no-gutter.stack-break-2 > [class*="span"], .row-block.stack-break-2 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -660,7 +660,7 @@
   }
 }
 @media (max-width: 940px) {
-  .row-no-gutter.row-break-3 > [class*="span"], .row-block.row-break-3 > [class*="span"] {
+  .row-no-gutter.stack-break-3 > [class*="span"], .row-block.stack-break-3 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -668,7 +668,7 @@
   }
 }
 @media (max-width: 1200px) {
-  .row-no-gutter.row-break-4 > [class*="span"], .row-block.row-break-4 > [class*="span"] {
+  .row-no-gutter.stack-break-4 > [class*="span"], .row-block.stack-break-4 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -679,7 +679,7 @@
   display: table-cell;
 }
 @media (max-width: 940px) {
-  .row-block:not([class*="break"]) > [class*="span"] {
+  .row-block:not([class*="stack-"]) > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -687,7 +687,7 @@
   }
 }
 @media (max-width: 0px) {
-  .row-block.row-break-0 > [class*="span"] {
+  .row-block.stack-break-0 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -695,7 +695,7 @@
   }
 }
 @media (max-width: 460px) {
-  .row-block.row-break-1 > [class*="span"] {
+  .row-block.stack-break-1 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -703,7 +703,7 @@
   }
 }
 @media (max-width: 720px) {
-  .row-block.row-break-2 > [class*="span"] {
+  .row-block.stack-break-2 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -711,7 +711,7 @@
   }
 }
 @media (max-width: 940px) {
-  .row-block.row-break-3 > [class*="span"] {
+  .row-block.stack-break-3 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -719,7 +719,7 @@
   }
 }
 @media (max-width: 1200px) {
-  .row-block.row-break-4 > [class*="span"] {
+  .row-block.stack-break-4 > [class*="span"] {
     display: block;
     left: auto;
     width: 100%;
@@ -737,60 +737,60 @@
           transform: scale(-1);
 }
 @media (max-width: 0px) {
-  .row-reverse.reverse-break-0 {
+  .row.reverse-break-0 {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
   }
-  .row-reverse.reverse-break-0 > [class*="span"] {
+  .row.reverse-break-0 > [class*="span"] {
     -webkit-transform: scale(-1);
         -ms-transform: scale(-1);
             transform: scale(-1);
   }
 }
 @media (max-width: 460px) {
-  .row-reverse.reverse-break-1 {
+  .row.reverse-break-1 {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
   }
-  .row-reverse.reverse-break-1 > [class*="span"] {
+  .row.reverse-break-1 > [class*="span"] {
     -webkit-transform: scale(-1);
         -ms-transform: scale(-1);
             transform: scale(-1);
   }
 }
 @media (max-width: 720px) {
-  .row-reverse.reverse-break-2 {
+  .row.reverse-break-2 {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
   }
-  .row-reverse.reverse-break-2 > [class*="span"] {
+  .row.reverse-break-2 > [class*="span"] {
     -webkit-transform: scale(-1);
         -ms-transform: scale(-1);
             transform: scale(-1);
   }
 }
 @media (max-width: 940px) {
-  .row-reverse.reverse-break-3 {
+  .row.reverse-break-3 {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
   }
-  .row-reverse.reverse-break-3 > [class*="span"] {
+  .row.reverse-break-3 > [class*="span"] {
     -webkit-transform: scale(-1);
         -ms-transform: scale(-1);
             transform: scale(-1);
   }
 }
 @media (max-width: 1200px) {
-  .row-reverse.reverse-break-4 {
+  .row.reverse-break-4 {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
   }
-  .row-reverse.reverse-break-4 > [class*="span"] {
+  .row.reverse-break-4 > [class*="span"] {
     -webkit-transform: scale(-1);
         -ms-transform: scale(-1);
             transform: scale(-1);
