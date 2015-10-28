@@ -153,9 +153,12 @@ Sometimes you may want different columns to stack at different widths. To overri
 
 Using the `row-break-2` class, the above columns will now stack on top of each other when the screen size is **less** than **720px** (break-2).
 
-To cause the columns to not stack at all, you can use the `row-break-0` helper class on your **row**:
+To cause the columns to not stack at all, you can use either the `row-no-break` or `row-break-0` helper classes on your **row**:
 
 ```html
+<div class="row row-no-break">                    
+    ...
+</div>
 <div class="row row-break-0">                    
     ...
 </div>
@@ -213,7 +216,7 @@ As with normal columns you can add helper classes to your row of flow columns:
 
 ##### Adaptive Columns
 
-Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the [fraction](#) values from the configurtion:
+Adaptive Columns allow for more flexibility - they allow you to specify a custom width for each breakpoint value using the [fraction](#fractions) values from the configurtion:
 	
 ```html		
 <div class="row-flow">                    
