@@ -48,7 +48,7 @@
 
     @if kgs-setting('responsive') {
         @each $bp, $width in kayzenGS('breakpoints') {
-            &.#{kgs-option('row-namespace')}--#{$bp} {
+            &.#{kgs-option('row-namespace')}-#{$bp} {
                 @if kgs-setting('mobile-first') {
                     @media (#{$kgs-scale}-width: $width) {
                         @include kgs-default-columns;
@@ -97,7 +97,7 @@
             
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}--#{$bp} {
+                    &.#{kgs-option('row-namespace')}-#{$bp} {
                         @if kgs-setting('mobile-first') {
                             @media (#{$kgs-scale}-width: $width) {
                                 @include kgs-flow-columns;
@@ -148,7 +148,7 @@
                 
                 @if kgs-setting('responsive') {
                     @each $bp, $width in kayzenGS('breakpoints') {
-                        &.#{kgs-option('row-namespace')}--#{$bp} {
+                        &.#{kgs-option('row-namespace')}-#{$bp} {
                             @if kgs-setting('mobile-first') {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-magic-columns;
