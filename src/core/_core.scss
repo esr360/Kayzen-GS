@@ -20,7 +20,7 @@ https://github.com/esr360/Kayzen-GS
 //-----------------------------------------------------------------
 
 .#{kgs-option('row-namespace')},
-[class*="#{kgs-option('row-namespace')}--"] {
+[class*="#{kgs-option('row-namespace')}-"] {
     @include kgs-row-core;
 }
 
@@ -213,7 +213,7 @@ https://github.com/esr360/Kayzen-GS
             
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.#{kgs-option('row-namespace')}--#{$bp} {
+                    &.#{kgs-option('row-namespace')}-#{$bp} {
                         @if kgs-setting('mobile-first') {
                             @media (#{$kgs-scale}-width: $width) {
                                 @include kgs-block-columns;
@@ -227,7 +227,7 @@ https://github.com/esr360/Kayzen-GS
                 }
             }
             
-        } // &--block
+        } // &-block
         
     } // kgs-setting()
     
