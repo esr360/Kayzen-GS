@@ -319,22 +319,22 @@
 						
 <pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">                    
 &lt;div class=&quot;row-flow&quot;&gt;                    
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
-    &lt;div class=&quot;span-3 break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
+    &lt;div class=&quot;span-3 break-3-third break-2-half break-1-full&quot;&gt;span-3&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
             <div class="row-flow">                    
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
-                <div class="span-3 break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
+                <div class="span-3 break-3-third break-2-half break-1-full">Adaptive Column</div>
             </div> 		
             
             <blockquote>
@@ -502,6 +502,8 @@
 			    <div class="span-3">Fourth Column</div>
             </div>
             
+            <br />
+            
 <pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
 &lt;div class="row row-reverse">
     ...
@@ -518,7 +520,44 @@
 			    <div class="span-9">Main Content</div>
 			    <div class="span-3">Sidebar</div>
             </div>
+            
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row reverse-breal-3">
+    &lt;div class="span-9">Main Content&lt;/div>
+    &lt;div class="span-3">Sidebar&lt;/div>
+&lt;/div&gt;
+</pre>
 
+            <p>When the above columns stack, the sidebar will be on top.</p>
+            
+			<h3 id="push-pull-columns">Push/Pull Columns</h3>
+            
+            <p>It is possible to push or pull your columns using the following helper classes:</p>
+            
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
+&lt;div class="row">
+    &lt;div class="span-6 push-6">...&lt;/div>
+    &lt;div class="span-6 pull-6">...&lt;/div>
+&lt;/div&gt;
+</pre>
+
+            <div class="row">
+                <div class="span-6 push-6">First Column</div>
+                <div class="span-6 pull-6">Second Column</div>
+            </div>
+
+            <p>In the above example, the columns' order would effectivaly be reversed. Naturally you can use any number between 1 and 12 (or whatever number you have set for `columns`).</p>
+            
+            <p>You can effectively re-arrange the columns in any order you desire using the push/pull classes.</p>
+            
+            <br />
+
+            <div class="row">
+                <div class="span-2 push-4">First Column</div>
+                <div class="span-4 pull-2">Second Column</div>
+                <div class="span-2 push-4">Third Column</div>
+            </div>
+            
 			<hr />
 
 			<h2 id="semantic-examples">Semantic Examples</h2>
@@ -546,14 +585,14 @@
 }
 
 .sidebar {
-	@include column(
-		$width: (3, 12)
-	);
+	@include column((
+		'width' : (3, 12)
+	));
 }
 
 .content {
 	@include column(
-		$width: (9, 12)
+		'width' : (9, 12)
 	);
 }
 </pre>
@@ -563,7 +602,7 @@
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .sidebar {
 	@include column(
-		$width: quarter
+		'width' : 'quarter'
 	);
 }
 </pre>	
@@ -572,9 +611,9 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .sidebar {
-	@include column(
-		$width: 25%
-	);
+	@include column((
+		'width' : 25%
+	));
 }
 </pre>
 			<h3 id="responsiveness-semantic">Responsiveness</h3>
@@ -583,17 +622,17 @@
 			
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .sidebar {
-	@include column(
-		$width: (3, 12),
-		$stack: breakpoint(break-2) // 720px
-	);
+	@include column((
+		'width' : (3, 12),
+		'stack' : breakpoint(break-2) // 720px
+	));
 }
 
 .content {
-	@include column(
-		$width: (9, 12),
-		$stack: breakpoint(break-2) // 720px
-	);
+	@include column((
+		'width' : (9, 12),
+		'stack' : breakpoint(break-2) // 720px
+	));
 }
 </pre>
 
@@ -603,21 +642,21 @@
 			
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;">
 .sidebar {
-	@include column(
-		$mobile-first: false,
-		$width: (3, 12)
-	);
+	@include column((
+		'mobile-first' : false,
+		'width'        : (3, 12)
+	));
 }
 		
 .content {
 	@include column(
-		$mobile-first: false,
-		$width: (9, 12)
+		'mobile-first' : false,
+		'width'        : (9, 12)
 	);
 }
 </pre>
 
-			<p>These columns will start out at their secified width and then have their width forced to 100% to stack on top of each other when told, which by default is when the screen size is less than 940px as defined by the <a href="#">$col-collapse</a> variable.</p>
+			<p>These columns will start out at their secified width and then have their width forced to 100% to stack on top of each other when told, which by default is when the screen size is less than 940px as defined by the <code>stack</code> option.</p>
 
 			<h3 id="flow-columns-semantic">Flow Columns</h3>
 			
@@ -659,14 +698,14 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-grid {
-	@include row(flow);	
+	@include row('flow');	
 }
 
 .portfolio-item {
-    @include column(
-        $type: flow,
-		$width: (3, 12)
-    );
+    @include column((
+        'type'  : 'flow',
+		'width' : (3, 12)
+    ));
 }
 </pre>
 
@@ -674,14 +713,14 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
-    @include column(
-        $type: flow,
-		$width: (3, 12),
-        $respond-to: (
-            ((6, 12), break-1),
-            ((4, 12), break-2)
+    @include column((
+        'type'       : 'flow',
+		'width'      : (3, 12),
+        'respond-to' : (
+            ((6, 12), 'break-1'),
+            ((4, 12), 'break-2')
         )
-    );
+    ));
 }
 </pre>
 	
@@ -689,14 +728,14 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
+    @include column((
+        'type' : 'flow',
+        'respond-to' : (
             ((6, 12), break-1),
             ((4, 12), break-2),
             ((3, 12), break-3)
         )
-    );
+    ));
 }
 </pre>
 
@@ -704,14 +743,14 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
+    @include column((
+        'type' : 'flow',
+        'respond-to' : (
             (50%, break-1),
             (100/3, break-2),
             (25%, break-3)
         )
-    );
+    ));
 }
 </pre>
 
@@ -719,14 +758,14 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
+    @include column((
+        'type' : 'flow',
+        'respond-to' : (
             (half, break-1),
             (third, break-2),
             (quarter, break-3)
         )
-    );
+    ));
 }
 </pre>
 
@@ -734,16 +773,16 @@
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
-    @include column(
-        $mobile-first: false,
-        $type: flow,
-        $width: quarter,
-        $respond-to: (
+    @include column((
+        'mobile-first' : false,
+        'type'         : 'flow',
+        'width'        : 'quarter',
+        'respond-to' : (
             (third, break-3),
             (half, break-2),
             (full, break-1)
         )
-    );
+    ));
 }
 </pre>
 
@@ -783,10 +822,9 @@
 }
 
 .product {
-	@include column(
-		$type: magic, 
-		$namespace: product
-	);
+	@include column((
+		'type' : 'magic'
+	));
 } 
 </pre>
 			
@@ -814,10 +852,10 @@
 }
 
 .feature {
-	@include column(
-		$type: block,
-		$width: (4, 12)
-	);
+	@include column((
+		'type'  : block,
+		'width' : (4, 12)
+	));
 }
 </pre>
 

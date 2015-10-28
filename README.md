@@ -220,12 +220,12 @@ Adaptive Columns allow for more flexibility - they allow you to specify a custom
 	
 ```html		
 <div class="row-flow">                    
-    <div class="span-3 break-2-half break-1-full">...</div>
-    <div class="span-3 break-2-half break-1-full">...</div>
-    <div class="span-3 break-2-half break-1-full">...</div>
-    <div class="span-3 break-2-half break-1-full">...</div>
-    <div class="span-3 break-2-half break-1-full">...</div>
-    <div class="span-3 break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
+    <div class="span-3 break-3-third break-2-half break-1-full">...</div>
 </div> 
 ```
 
@@ -698,7 +698,7 @@ All the column types from the default grid system are also available to use in y
 
 ##### Responsiveness
 
-The default width for the stacking of semantic columns is set in the [Configuration](#set-the-maximum-width-for-default-vertically-stacked-columns). You can override the default value like so:
+The default width for the stacking of semantic columns is set in the [Configuration](#options). You can override the default value like so:
 
 ```scss
 .sidebar {
