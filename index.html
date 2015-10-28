@@ -47,7 +47,7 @@
 				font-weight: normal;
 			}
 			.container {
-				width: 1200px;
+				width: 1080px;
 				max-width: 95%;
 				margin: auto;
 			}
@@ -223,14 +223,16 @@
 					
 			<p>Likewise, the above columns will now stack on top of each other when the screen size is <strong>less</strong> than <strong>1200px</strong> (break-4).</p>
 			
-			<p>To cause the columns to not stack at all, you can use either the <code>row-no-break</code> or <code>stack-break-0</code> helper class on your <strong>row</strong>:</p>
+			<p>To cause the columns to not stack at all, you can use either the <code>row-no-stack</code> or <code>stack-break-0</code> helper class on your <strong>row</strong>:</p>
 			
-            <div class="row stack-break-0">                    
-                ...
+            <div class="row stack-break-0">     
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
+                <div class="span-4">span-4</div>
             </div>
 					
 <pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;">
-&lt;div class="row row-no-break">                       
+&lt;div class="row row-no-stack">                       
 	...
 &lt;/div>
 &lt;div class="row stack-break-0">                       
