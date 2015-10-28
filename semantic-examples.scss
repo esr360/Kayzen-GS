@@ -21,12 +21,12 @@
 //-----------------------------------------------------------------
 
 .portfolio-grid {
-	@include row(flow);	
+    @include row(flow);	
 }
 
 .portfolio-item {
     @include column((
-        'type' : 'flow',
+        'type'  : 'flow',
         'width' : (3, 12),
         'respond-to' : (
             ((6, 12), 'break-1'),
@@ -40,25 +40,25 @@
 //-----------------------------------------------------------------
 
 .product-grid {
-	@include row;
+    @include row;
 }
 
 .product {
-	@include column((
-		'type' : 'magic'
-	));
+    @include column((
+        'type' : 'magic'
+    ));
 } 
 
 // Block Columns
 //-----------------------------------------------------------------
 
 .features {
-	@include row('block');
+    @include row('block');
 }
 
 .feature {
-	@include column((
-		'type'  : 'block',
-		'width' : (4, 12)
-	));
+    @include column((
+        'type'  : 'block',
+        'width' : (4, 12)
+    ));
 }
