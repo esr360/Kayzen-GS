@@ -173,11 +173,43 @@
     
     @if kgs-setting('no-gutter-columns') {
         
-        &-no-gutter {
+        &-no-gutter, &-block {
             
             @include kgs-pull('no-gutter');
             @include kgs-push('no-gutter');
-            @include kgs-no-gutter-columns;
+            
+            @if (kgs-option('mobile-first'), '&:not([class*="break"])', '&') {
+                @if kgs-setting('mobile-first') {
+                    @media (min-width: kgs-option(col-break)) {
+                        @include kgs-no-gutter-columns;
+                    }
+                } @else {
+                    @include kgs-no-gutter-columns;
+                    @if kgs-setting('responsive') {
+                        &:not([class*="break"]) {
+                            @media (max-width: kgs-option('col-break')) {
+                                @include kgs-stack-columns;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            @if kgs-setting('responsive') {
+                @each $bp, $width in kayzenGS('breakpoints') {
+                    &.#{kgs-option('row-namespace')}-#{$bp} {
+                        @if kgs-setting('mobile-first') {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-no-gutter-columns;
+                            }
+                        } @else {
+                            @media (#{$kgs-scale}-width: $width) {
+                                @include kgs-stack-columns;
+                            }
+                        }
+                    }
+                }
+            }            
             
         }
         
