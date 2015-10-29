@@ -29,9 +29,9 @@
         'type'  : 'flow',
         'width' : (3, 12),
         'respond-to' : (
-            ((6, 12), 'break-1'),
-            ((4, 12), 'break-2'),
-            ((3, 12), 'break-3')
+            ((4, 12), 'break-3'),
+            ((6, 12), 'break-2'),
+            ((12, 12), 'break-1')
         )
     ));
 }
@@ -53,12 +53,26 @@
 //-----------------------------------------------------------------
 
 .features {
-    @include row('block');
+    @include row;
 }
 
 .feature {
     @include column((
         'type'  : 'block',
+        'width' : (4, 12)
+    ));
+}
+
+// No-Gutter Columns
+//-----------------------------------------------------------------
+
+.items {
+    @include row;
+}
+
+.item {
+    @include column((
+        'type'  : 'no-gutter',
         'width' : (4, 12)
     ));
 }
