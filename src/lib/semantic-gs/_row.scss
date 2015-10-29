@@ -7,9 +7,5 @@
 	@if $type == flow {		
 		margin-left: -#{kgs-option(gutter)};
 		width: 100% + kgs-option(gutter);
-	} @else if $type == block {		
-		&:after {
-			display: none;
-		}
 	}
 }
