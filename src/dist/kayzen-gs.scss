@@ -229,9 +229,9 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     // Reverse $breakpoints map
     // This is to allow the generated CSS to override when scaling
     $reverse-breakpoints: if(
-        kgs-setting(mobile-first),
-        kayzenGS(breakpoints),
-        reverse-map(kayzenGS(breakpoints))
+        kgs-setting('mobile-first'),
+        kayzenGS('breakpoints'),
+        reverse-map(kayzenGS('breakpoints'))
     );
 
     > [class*="#{kgs-option('col-namespace')}"] {
@@ -243,7 +243,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
         
         @each $bp, $width in $reverse-breakpoints {
             @media (#{$kgs-scale}-width: $width) {
-                @each $name, $fraction in kayzenGS(fractions) {		
+                @each $name, $fraction in kayzenGS('fractions') {		
                     &.#{$bp}-#{$name} {
                         width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
                     }
@@ -279,11 +279,11 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     @for $i from 1 through kgs-option(columns) {       
         .pull-#{$i} {
             @if $col-type == 'default' {
-                left: calc(-#{kgs-default-width($i, kgs-option(columns))} - #{kgs-option(gutter)});
+                left: - kgs-default-width($i, kgs-option(columns)) - kgs-option(gutter);
             } @else if $col-type == 'flow' {
-                left: calc(-#{kgs-flow-width($i, kgs-option(columns))} - #{kgs-option(gutter)});
+                left: - kgs-flow-width($i, kgs-option(columns)) - kgs-option(gutter);
             } @else if $col-type == 'no-gutter' {
-                left: calc(-#{kgs-no-gutter-width($i, kgs-option(columns))});
+                left: - kgs-no-gutter-width($i, kgs-option(columns));
             }
         }      
     }     
@@ -302,11 +302,11 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     @for $i from 1 through kgs-option(columns) {       
         .push-#{$i} {
             @if $col-type == 'default' {
-                left: calc(#{kgs-default-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
+                left: kgs-default-width($i, kgs-option(columns)) + kgs-option(gutter);
             } @else if $col-type == 'flow' {
-                left: calc(#{kgs-flow-width($i, kgs-option(columns))} + #{kgs-option(gutter)});
+                left: kgs-flow-width($i, kgs-option(columns)) + kgs-option(gutter);
             } @else if $col-type == 'no-gutter' {
-                left: calc(#{kgs-no-gutter-width($i, kgs-option(columns))});
+                left: kgs-no-gutter-width($i, kgs-option(columns));
             }
         }      
     }     
@@ -878,13 +878,13 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     }
     
     // if flow column
-    @if kgs-config('type') == flow {
+    @if kgs-config('type') == 'flow' {
         @include kgs-gutter(false);
         width: kgs-flow-width($span, $columns);
 	} 
 	
     // if magic column
-	@else if kgs-config('type') == magic {
+	@else if kgs-config('type') == 'magic' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 @include kgs-column-core;
