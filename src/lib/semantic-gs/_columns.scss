@@ -151,7 +151,7 @@
                     $columns: 100;
                 } 
                 
-                // if 'width' is a (span, columns) format e.g. (3, 12)
+                // if 'width' is in (span, columns) format e.g. (3, 12)
                 @else if type-of($width) == list {
                     $span: nth($width, 1);
                     $columns: nth($width, 2);			

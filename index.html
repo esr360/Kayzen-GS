@@ -567,7 +567,7 @@
             
             <p>You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.</p>
 			
-			<h3 id="basic-example">Basic Example</h3>
+			<h3 id="semantic-basic-example">Basic Example</h3>
 			
 			<div class="main">
 				<div class="sidebar">Sidebar</div>
@@ -582,7 +582,7 @@
 	&lt;div class="content">Content&lt;/div>
 &lt;/div>
 </pre>
-			<h6>The CSS(Scss)</h6>
+			<h6>The CSS</h6>
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .main {
@@ -680,6 +680,10 @@
 </pre>
 
 			<h3 id="flow-columns-semantic">Flow Columns</h3>
+            
+            <blockquote>
+                <p>If using flow columns, you need to specify this when including your semantic row.</p>
+            </blockquote>
 			
 			<div class="portfolio-grid">
 				<div class="portfolio-item">Portfolio Item</div>
@@ -716,6 +720,22 @@
 </pre>
 
 			<h6>The CSS</h6>
+
+<pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
+.portfolio-items {
+    @include row('flow');
+}
+
+.portfolio-item {
+    @include column((
+        'type'  : 'flow',
+        'width' : (3, 12)
+        )
+    ));
+}
+</pre>
+            
+            <p>Adding adaptive responsiveness<p>
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
@@ -846,19 +866,68 @@
 
 .feature {
 	@include column((
-		'type'  : block,
+		'type'  : 'block',
 		'width' : (4, 12)
 	));
 }
 </pre>
 			
-			<h3 id="block-columns-semantic">No-Gutter Columns</h3>
+			<h3 id="no-gutter-columns-semantic">No-Gutter Columns</h3>
 			
 			<div class="items">
 				<div class="item">Item</div>
 				<div class="item">Item</div>
 				<div class="item">Item</div>
 			</div>
+			
+			<br />
+
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;"> 
+&lt;div class="item">
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+&lt;/div>
+</pre>
+
+<pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
+.items {
+	@include row;
+}
+
+.item {
+	@include column((
+		'type'  : 'no-gutter',
+		'width' : (4, 12)
+	));
+}
+</pre>
+            
+            <p>Because no-gutter columns have no gutter, they essenially act like Flow Columns, meaning you can create multiple effective column rows within just one main container:</p>
+			
+			<div class="items">
+				<div class="item">Item</div>
+				<div class="item">Item</div>
+				<div class="item">Item</div>
+				<div class="item">Item</div>
+				<div class="item">Item</div>
+				<div class="item">Item</div>
+			</div>
+
+<pre data-enlighter-language="html" class="EnlighterJSRAW" style="display: none;"> 
+&lt;div class="item">
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+	&lt;div class="item">Item&lt;/div>
+&lt;/div>
+</pre>
+
+            <blockquote>
+                <p>Whilst in theory 'adaptive responsiveness' can work with No-Gutter Columns, Kayzen GS does not currently offer this funcitonality.</p>
+            </blockquote>
             
 			<h2 id="column-aligning">Column Aligning</h2>
 			
@@ -886,8 +955,8 @@
 			    <div class="span-3" style="vertical-align: bottom">
 			        This column is bottom aligned.
 			    </div>
-			    <div class="span-3" style="vertical-align: middle">
-			          This column is middle aligned.
+			    <div class="span-3" style="vertical-align: middle; height: 200px">
+			        This is the reference column.
 			    </div>
 			</div>		
 			
@@ -902,8 +971,8 @@
     &lt;div class="span-3" style="vertical-align: bottom">
         This column is bottom aligned.
     &lt;/div>
-    &lt;div class="span-3" style="vertical-align: middle">
-          This column is middle aligned.
+    &lt;div class="span-3" style="vertical-align: middle; height: 200px">
+        This is the reference column.
     &lt;/div>
 &lt;/div>
 </pre>
