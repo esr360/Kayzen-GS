@@ -679,73 +679,49 @@
   }
 }
 .row-reverse:not([class*="reverse-break"]) {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .row-reverse:not([class*="reverse-break"]) > [class*="span"] {
-  -webkit-transform: scale(-1);
-      -ms-transform: scale(-1);
-          transform: scale(-1);
+  transform: scale(-1);
 }
 @media (max-width: 0px) {
   .row.reverse-break-0 {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .row.reverse-break-0 > [class*="span"] {
-    -webkit-transform: scale(-1);
-        -ms-transform: scale(-1);
-            transform: scale(-1);
+    transform: scale(-1);
   }
 }
 @media (max-width: 460px) {
   .row.reverse-break-1 {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .row.reverse-break-1 > [class*="span"] {
-    -webkit-transform: scale(-1);
-        -ms-transform: scale(-1);
-            transform: scale(-1);
+    transform: scale(-1);
   }
 }
 @media (max-width: 720px) {
   .row.reverse-break-2 {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .row.reverse-break-2 > [class*="span"] {
-    -webkit-transform: scale(-1);
-        -ms-transform: scale(-1);
-            transform: scale(-1);
+    transform: scale(-1);
   }
 }
 @media (max-width: 940px) {
   .row.reverse-break-3 {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .row.reverse-break-3 > [class*="span"] {
-    -webkit-transform: scale(-1);
-        -ms-transform: scale(-1);
-            transform: scale(-1);
+    transform: scale(-1);
   }
 }
 @media (max-width: 1200px) {
   .row.reverse-break-4 {
-    -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .row.reverse-break-4 > [class*="span"] {
-    -webkit-transform: scale(-1);
-        -ms-transform: scale(-1);
-            transform: scale(-1);
+    transform: scale(-1);
   }
 }
 

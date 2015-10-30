@@ -832,7 +832,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
 	$config: map-merge((
 		'width'        : 'full', 
 		'type'         : null, 
-		'namespace'    : &, 
 		'stack'        : kgs-option('col-break'), 
 		'mobile-first' : kgs-setting('mobile-first'),
 		'respond-to'   : null
@@ -889,18 +888,32 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
             @media (min-width: kgs-config('stack')) {
                 @include kgs-column-core;
                 @include kgs-gutter;
-                @include kgs-magic-column-core('#{kgs-config('namespace')}');
+                @include kgs-magic-column-core(&);
             }
         } @else {
             @include kgs-column-core;
             @include kgs-gutter;
-            @include kgs-magic-column-core('#{kgs-config('namespace')}');
+            @include kgs-magic-column-core(&);
             @media (max-width: kgs-config('stack')) {
                 @include kgs-stack-columns($type: 'magic', $core: true);
             }
         }
 	}
     
+    // if no-gutter column
+	@else if kgs-config('type') == 'no-gutter' {
+        @if kgs-config('mobile-first') {
+            @media (min-width: kgs-config('stack')) {
+                width: kgs-no-gutter-width($span, $columns);
+            }
+        } @else {
+            width: kgs-no-gutter-width($span, $columns);
+            @media (max-width: kgs-config('stack')) {
+                @include kgs-stack-columns($core: true);
+            }
+        }
+    }
+        
     // all other column types
     @else {	
         @if kgs-config('mobile-first') {
@@ -959,7 +972,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
                     $columns: 100;
                 } 
                 
-                // if 'width' is a (span, columns) format e.g. (3, 12)
+                // if 'width' is in (span, columns) format e.g. (3, 12)
                 @else if type-of($width) == list {
                     $span: nth($width, 1);
                     $columns: nth($width, 2);			
@@ -993,9 +1006,5 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
 	@if $type == flow {		
 		margin-left: -#{kgs-option(gutter)};
 		width: 100% + kgs-option(gutter);
-	} @else if $type == block {		
-		&:after {
-			display: none;
-		}
 	}
 }
