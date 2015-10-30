@@ -149,7 +149,7 @@ $kayzenGS: (
         'col-namespace'     : 'span',
     ),
     'settings' : (
-        'kayzen-gs'         : true,
+        'kayzen-gs'         : false,
         'old-ie'            : false,
         'responsive'        : true,
         'mobile-first'      : false,
@@ -529,138 +529,93 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     text-rendering: auto;
 }
 
-@if kgs-setting('kayzen-gs') {
+@mixin kayzen-gs($custom: ()) {
     
-//-----------------------------------------------------------------
-// Row
-//-----------------------------------------------------------------
-
-.#{kgs-option('row-namespace')},
-[class*="#{kgs-option('row-namespace')}-"] {
-    @include kgs-row-core;
-}
-
-//-----------------------------------------------------------------
-// Column Types
-//-----------------------------------------------------------------
-
-.#{kgs-option('row-namespace')} {
-    
-    // Default Columns
     //-------------------------------------------------------------
-    
-    @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-        @if kgs-setting('mobile-first') {
-            @media (min-width: kgs-option('col-break')) {
-                @include kgs-default-columns;
-            }
-        } @else {
-            @include kgs-default-columns; 
-            @if kgs-setting('responsive') {
-                &:not([class*="stack-"]) {
-                    @media (max-width: kgs-option('col-break')) {
-                        @include kgs-stack-columns;
-                    }
-                }
-            }
-        }
+    // Config
+    //-------------------------------------------------------------
+	
+    $kayzenGS: map-merge-deep($kayzenGS, $custom) !global;
+
+    //-------------------------------------------------------------
+    // Row
+    //-------------------------------------------------------------
+
+    .#{kgs-option('row-namespace')},
+    [class*="#{kgs-option('row-namespace')}-"] {
+        @include kgs-row-core;
     }
 
-    @if kgs-setting('responsive') {
-        @each $bp, $width in kayzenGS('breakpoints') {
-            &.stack-#{$bp} {
-                @if kgs-setting('mobile-first') {
-                    @media (#{$kgs-scale}-width: $width) {
-                        @include kgs-default-columns;
-                    }
-                } @else {
-                    @media (#{$kgs-scale}-width: $width) {
-                        @include kgs-stack-columns;
+    //-------------------------------------------------------------
+    // Column Types
+    //-------------------------------------------------------------
+    
+    .#{kgs-option('row-namespace')} {
+        
+        // Default Columns
+        //---------------------------------------------------------
+        
+        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+            @if kgs-setting('mobile-first') {
+                @media (min-width: kgs-option('col-break')) {
+                    @include kgs-default-columns;
+                }
+            } @else {
+                @include kgs-default-columns; 
+                @if kgs-setting('responsive') {
+                    &:not([class*="stack-"]) {
+                        @media (max-width: kgs-option('col-break')) {
+                            @include kgs-stack-columns;
+                        }
                     }
                 }
             }
         }
-    }  
     
-    // Flow Columns
-    //-------------------------------------------------------------
-    
-    @if kgs-setting('flow-columns') {
-        
-        &-flow {
-            
-            margin-left: -#{kgs-option('gutter')};
-            width: 100% + kgs-option('gutter');
-            
-            @include kgs-pull('flow');
-            @include kgs-push('flow');
-            
-            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-                @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option(col-break)) {
-                        @include kgs-flow-columns;
-                    }
-                } @else {
-                    @include kgs-flow-columns;
-                    > [class*="#{kgs-option(col-namespace)}"] {
-                        margin-left: #{kgs-option(gutter)};
-                    } 
-                    @if kgs-setting('responsive') {
-                        &:not([class*="stack-"]) {
-                            @media (max-width: kgs-option('col-break')) {
-                                @include kgs-stack-columns($type: 'flow');
-                            }
+        @if kgs-setting('responsive') {
+            @each $bp, $width in kayzenGS('breakpoints') {
+                &.stack-#{$bp} {
+                    @if kgs-setting('mobile-first') {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-default-columns;
+                        }
+                    } @else {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-stack-columns;
                         }
                     }
                 }
             }
-            
-            @if kgs-setting('responsive') {
-                @each $bp, $width in kayzenGS('breakpoints') {
-                    &.stack-#{$bp} {
-                        @if kgs-setting('mobile-first') {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-flow-columns;
-                            }
-                        } @else {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-stack-columns($type: 'flow');
-                            }
-                        }
-                    }
-                }
-            }
-            
-            // Adaptive Columns 
-            @if kgs-setting('responsive') {
-                @if kgs-setting('adaptive-columns') {    
-                    @include kgs-adaptive-columns;
-                }
-            }
-            
-        } // &--flow
-    
-    } // kgs-setting()
-    
-    // Magic Columns
-    //-------------------------------------------------------------
-
-    @if kgs-setting('magic-columns') {
+        }  
         
-        &-magic {
+        // Flow Columns
+        //---------------------------------------------------------
+        
+        @if kgs-setting('flow-columns') {
             
-            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+            &-flow {
                 
-                @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option('col-break')) {
-                        @include kgs-magic-columns;
-                    }
-                } @else {
-                    @include kgs-magic-columns;
-                    @if kgs-setting('responsive') {
-                        &:not([class*="stack-"]) {
-                            @media (max-width: kgs-option('col-break')) {
-                                @include kgs-stack-columns($type: magic);
+                margin-left: -#{kgs-option('gutter')};
+                width: 100% + kgs-option('gutter');
+                
+                @include kgs-pull('flow');
+                @include kgs-push('flow');
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option(col-break)) {
+                            @include kgs-flow-columns;
+                        }
+                    } @else {
+                        @include kgs-flow-columns;
+                        > [class*="#{kgs-option(col-namespace)}"] {
+                            margin-left: #{kgs-option(gutter)};
+                        } 
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns($type: 'flow');
+                                }
                             }
                         }
                     }
@@ -671,152 +626,207 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
                         &.stack-#{$bp} {
                             @if kgs-setting('mobile-first') {
                                 @media (#{$kgs-scale}-width: $width) {
-                                    @include kgs-magic-columns;
+                                    @include kgs-flow-columns;
                                 }
                             } @else {
                                 @media (#{$kgs-scale}-width: $width) {
-                                    @include kgs-stack-columns($type: magic);
+                                    @include kgs-stack-columns($type: 'flow');
                                 }
                             }
                         }
                     }
                 }
                 
-            }
-            
-        } // &--magic
+                // Adaptive Columns 
+                @if kgs-setting('responsive') {
+                    @if kgs-setting('adaptive-columns') {    
+                        @include kgs-adaptive-columns;
+                    }
+                }
+                
+            } // &--flow
         
-    } // kgs-setting()
-    
-    // No Gutter Columns
-    //-------------------------------------------------------------
-    
-    @if kgs-setting('no-gutter-columns') {
+        } // kgs-setting()
         
-        &-no-gutter, &-block {
+        // Magic Columns
+        //---------------------------------------------------------
+    
+        @if kgs-setting('magic-columns') {
             
-            @include kgs-pull('no-gutter');
-            @include kgs-push('no-gutter');
+            &-magic {
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-magic-columns;
+                        }
+                    } @else {
+                        @include kgs-magic-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns($type: magic);
+                                }
+                            }
+                        }
+                    }
+                    
+                    @if kgs-setting('responsive') {
+                        @each $bp, $width in kayzenGS('breakpoints') {
+                            &.stack-#{$bp} {
+                                @if kgs-setting('mobile-first') {
+                                    @media (#{$kgs-scale}-width: $width) {
+                                        @include kgs-magic-columns;
+                                    }
+                                } @else {
+                                    @media (#{$kgs-scale}-width: $width) {
+                                        @include kgs-stack-columns($type: magic);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                
+            } // &--magic
             
-            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-                @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option('col-break')) {
+        } // kgs-setting()
+        
+        // No Gutter Columns
+        //---------------------------------------------------------
+        
+        @if kgs-setting('no-gutter-columns') {
+            
+            &-no-gutter, &-block {
+                
+                @include kgs-pull('no-gutter');
+                @include kgs-push('no-gutter');
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-no-gutter-columns;
+                        }
+                    } @else {
                         @include kgs-no-gutter-columns;
-                    }
-                } @else {
-                    @include kgs-no-gutter-columns;
-                    @if kgs-setting('responsive') {
-                        &:not([class*="stack-"]) {
-                            @media (max-width: kgs-option('col-break')) {
-                                @include kgs-stack-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns;
+                                }
                             }
                         }
                     }
                 }
+                
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.stack-#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-no-gutter-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }            
+                
             }
             
-            @if kgs-setting('responsive') {
-                @each $bp, $width in kayzenGS('breakpoints') {
-                    &.stack-#{$bp} {
-                        @if kgs-setting('mobile-first') {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-no-gutter-columns;
-                            }
-                        } @else {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-stack-columns;
-                            }
+        } // kgs-setting()
+        
+        // Block Columns
+        //---------------------------------------------------------
+        
+        @if kgs-setting('block-columns') {
+            
+            &-block {
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-block-columns;
                         }
-                    }
-                }
-            }            
-            
-        }
-        
-    } // kgs-setting()
-    
-    // Block Columns
-    //-------------------------------------------------------------
-    
-    @if kgs-setting('block-columns') {
-        
-        &-block {
-            
-            @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-                @if kgs-setting('mobile-first') {
-                    @media (min-width: kgs-option('col-break')) {
+                    } @else {
                         @include kgs-block-columns;
-                    }
-                } @else {
-                    @include kgs-block-columns;
-                    @if kgs-setting('responsive') {
-                        &:not([class*="stack-"]) {
-                            @media (max-width: kgs-option('col-break')) {
-                                @include kgs-stack-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns;
+                                }
                             }
                         }
                     }
                 }
-            }
+                
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.stack-#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-block-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            } // &-block
             
+        } // kgs-setting()
+        
+        // Reverse Column Order
+        //---------------------------------------------------------
+    
+        @if kgs-setting('reverse-columns') {
+            
+            &-reverse {
+                &:not([class*="reverse-break"]) {
+                    @include kgs-reverse-order;
+                }
+            }
+                
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
-                    &.stack-#{$bp} {
-                        @if kgs-setting('mobile-first') {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-block-columns;
-                            }
-                        } @else {
-                            @media (#{$kgs-scale}-width: $width) {
-                                @include kgs-stack-columns;
-                            }
+                    @media (#{$kgs-scale}-width: $width) {
+                        &.reverse-#{$bp} {
+                            @include kgs-reverse-order;
                         }
                     }
                 }
             }
             
-        } // &-block
+        } // kgs-setting()
         
-    } // kgs-setting()
-    
-    // Reverse Column Order
+    } // row
+        
     //-------------------------------------------------------------
-
-    @if kgs-setting('reverse-columns') {
-        
-        &-reverse {
-            &:not([class*="reverse-break"]) {
-                @include kgs-reverse-order;
-            }
-        }
-            
-        @if kgs-setting('responsive') {
-            @each $bp, $width in kayzenGS('breakpoints') {
-                @media (#{$kgs-scale}-width: $width) {
-                    &.reverse-#{$bp} {
-                        @include kgs-reverse-order;
-                    }
-                }
-            }
-        }
-        
-    } // kgs-setting()
+    // Custom Push/Pull
+    //-------------------------------------------------------------
     
-} // row
+    @if kgs-setting('pull-columns') {
+        @include kgs-pull;
+    }
     
-//-----------------------------------------------------------------
-// Custom Push/Pull
-//-----------------------------------------------------------------
+    @if kgs-setting('push-columns') {
+        @include kgs-push;
+    }
 
-@if kgs-setting('pull-columns') {
-    @include kgs-pull;
+} // @mixin kayzen-gs
+
+@if kgs-setting('kayzen-gs') {
+    @include kayzen-gs;   
 }
-
-@if kgs-setting('push-columns') {
-    @include kgs-push;
-}
-
-} // kgs-setting
 
 
 //-----------------------------------------------------------------

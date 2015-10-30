@@ -77,7 +77,29 @@ git submodule add https://github.com/esr360/Kayzen-GS.git
 bower install Kayzen-GS
 ```
 
-Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file, and that's it.
+Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
+
+To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen GS is imported:
+
+```scss
+@include kayzen-gs;
+```
+
+It is possible to override any value in the [Configuration](#custom-configuration) by passing it to the mixin:
+
+```scss
+@include kayzen-gs((
+    'options' : (
+        'columns'           : 16,
+        'col-namespace'     : 'col',
+    ),
+    'settings' : (
+        'old-ie'            : true,
+        'pull-columns'      : false,
+        'push-columns'      : false
+    ),
+));
+```
 
 ### Default Kayzen Grid System
 
@@ -426,9 +448,9 @@ This is where you set which features of Kayzen GS you want to use in your projec
 
 ##### 'kayzen-gs'
 
-*Default : true*
+*Default : false*
 
-This setting outputs the Kayzen GS grid system. Disable this option only if you intend to use Kayzen GS to generate a custom, semantic grid system.
+This setting outputs the Kayzen GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
 
 ##### 'old-ie'
 
