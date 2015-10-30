@@ -904,6 +904,15 @@ Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
 
+#### Version 2.1.0
+
+Released: 30th October 2015
+
+###### Release Notes
+
+* moving default grid system to own mixin
+* generation of default grid system now disabled by default
+
 #### Version 2.0.0
 
 Released: 30st October 2015
