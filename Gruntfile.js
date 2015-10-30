@@ -56,7 +56,6 @@ module.exports = function(grunt) {
                 files: {
                     'src/dist/kayzen-gs.css': 'src/kayzen-gs.scss'
                 },
-                tasks: ['postcss']
             },
             prod: {
                 options: {
@@ -65,7 +64,6 @@ module.exports = function(grunt) {
                 files: {
                     'src/dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
                 },
-                tasks: ['postcss']
             } 
         },
         
@@ -79,7 +77,10 @@ module.exports = function(grunt) {
                 map: true,
                 processors: [
                     require('autoprefixer')({
-                        browsers: ['last 2 versions']
+                        browsers: [
+                            'last 2 versions', 
+                            'ie >= 9'
+                        ]
                     })
                 ]
             },
@@ -155,21 +156,8 @@ module.exports = function(grunt) {
     //-------------------------------------------------------------
     // Register Tasks
     //-------------------------------------------------------------
-    
-    grunt.registerTask('compile:dev', [
-        'concat',
-        'sass:dev',
-        'notify:app'
-    ]);
-    
-    grunt.registerTask('compile:prod', [
-        'sass:prod',
-        'scsslint',
-        'notify:app'
-    ]);
 
     grunt.registerTask('default', [
-        'compile:dev',
         'watch'
     ]);
 
