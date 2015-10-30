@@ -4,9 +4,16 @@
 
 @mixin kgs-default-columns {
         
-    > [class*="#{kgs-option('col-namespace')}"] {
-        @include kgs-column-core;
-        @include kgs-gutter;  
+    @if kgs-option('mobile-first') {
+        > [class*="#{kgs-option('col-namespace')}"] {
+            @include kgs-column-core;
+            @include kgs-gutter;  
+        }
+    } @else {
+        @at-root [class*="#{kgs-option('col-namespace')}"] {
+            @include kgs-column-core;
+            @include kgs-gutter;  
+        }
     }
         
     @for $i from 1 through kgs-option(columns) {       
