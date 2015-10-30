@@ -128,7 +128,7 @@ Using these normal columns, the total span of the columns in a given row may not
 
 #### Responsiveness
 
-> Responsiveness can be disabled [(?)](#enable-responsiveness)
+> Responsiveness can be disabled [(?)](#responsive)
 
 Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
 
@@ -306,6 +306,8 @@ No-Gutter Columns are just like regular columns except they have no gutter. To c
 </div>
 ```
 
+[View Demo](http://esr360.github.io/Kayzen-GS/#no-gutter-columns)
+
 As with normal columns you can add helper classes to your row of no-gutter columns:
 
 ```html
@@ -325,6 +327,8 @@ To reverse the order of all columns in a given row, the `row-reverse` helper cla
 ```
 
 > This helper class will work with all column types.
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#reverse-column-order)
 
 When columns become stacked, the left one becomes the top and the right one becomes the bottom. Sometimes you way wish to reverse this behaviour. To conditionally reverse the columns at a given breakpoint, you can use a seperate helper class of `reverse-break-3`, adding the appropriate breakpoint value as desired:
 
@@ -346,6 +350,8 @@ It is possible to push or pull your columns using the following helper classes:
 ```
 
 In the above example, the columns' order would effectivaly be reversed. Naturally you can use any number between 1 and 12 (or whatever number you have set for `columns`).
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#push-pull-columns)
 
 ### Custom Configuration
 
