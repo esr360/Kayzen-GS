@@ -875,3 +875,22 @@ This mixin allows you to create column rows using the `inline-block` CSS propert
 For all issues, bugs, suggestions and feature requests, please use the [issues page](https://github.com/esr360/Kayzen-GS/issues). Any and all contributions are welcomed!
 
 Follow [@esr360](https://twitter.com/ESR360) on Twitter!
+
+## Changelog
+
+#### Version 2.0.0
+
+Released: 30st October 2015
+
+###### Release Notes
+
+* re-written to be more component based
+* configuration now contained within a single Sass map
+* row class names changed
+* added `no-gutter` columns
+* added custom stacking functionality to all column types
+* added `reverse-columns` functionality
+* added ability to push and pull columns
+* support for old Internet Explorer is now disabled by default
+* `mobile-first` is now `false` by default as it generates lighter styles
+* shoutout to [@visualcookie](https://github.com/visualcookie) for his help and suggestions
