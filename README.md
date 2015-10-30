@@ -597,7 +597,7 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 }
 ```
 
-> You can use any fraction defined in the [$fractions map](#fractions).
+> You can use any fractions defined in the [Configuration](#custom-configuration).
 
 Or even this:
 
@@ -631,7 +631,7 @@ Note that perhaps surprisingly the above examples do **not** produce a `width` v
 }
 ```
 
-Which will produce the following CSS, assuming the default value of **2.5%** for `$gutter`:
+Which will produce the following CSS, assuming the default value of **2.5%** for your `gutter`:
 
 ```css
 .sidebar {
@@ -696,6 +696,19 @@ All the column types from the default grid system are also available to use in y
 
 [View Demo](http://esr360.github.io/Kayzen-GS/#block-columns-semantic)
 
+###### No-Gutter Columns
+
+```scss
+.portfolio-item {
+	@include column((
+		'type'  : 'no-gutter',
+		'width' : (3, 12)
+	));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#block-columns-semantic)
+
 ##### Responsiveness
 
 The default width for the stacking of semantic columns is set in the [Configuration](#options). You can override the default value like so:
@@ -713,13 +726,32 @@ The default width for the stacking of semantic columns is set in the [Configurat
 
 This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
 
-###### Flexible Columns
+###### Adaptive Columns
 
-When inside a Flow Columns container and with its `$type` set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** map. Mobile-first is set to true by default for semantic columns, so the code looks like this:
+When inside a Flow Columns container and with its `type` set to **flow**, you can set the width of your column at specific breakpoints using the **respond-to** option:
 
 ```scss
 .portfolio-item {
 	@include column((
+		'type' : 'flow',
+        'width' : (3, 12),
+        'respond-to' : (
+            ((4, 12), 'break-3'),
+            ((6, 12), 'break-2'),
+            ((12, 12), 'break-1')
+        )
+	));
+}
+```
+
+[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
+
+With `mobile-first` enabled, a width is not required by default if you are using adaptive responsiveness - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
+
+```scss
+.portfolio-item {
+	@include column((
+        'mobile-first' true: 
 		'type' : 'flow',
 		'respond-to' : (
 			((6, 12), 'break-1'),
@@ -730,11 +762,7 @@ When inside a Flow Columns container and with its `$type` set to **flow**, you c
 }
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
-
-A width is not required by default - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
-
-> You can set any fraction you want, for example you can write *1, 2* instead of *6, 12*.
+> You can set any fraction you want, for example you can write *(1, 2)* instead of *(6, 12)*.
 
 You can also use numeric values for percentages:
 
@@ -742,16 +770,17 @@ You can also use numeric values for percentages:
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
-		'respond-to' : (
-			(50%, 'break-1'),
-			(100/3, 'break-2'),
-			(25%, 'break-3')
-		)
+        'width' : 25%,
+        'respond-to' : (
+            (100/3, 'break-3'),
+            (50%, 'break-2'),
+            (100%, 'break-1')
+        )
 	));
 }
 ```
 
-Using the [$fractions map](#fractions) you can substitue writing the fraction numbers for the fraction names like so:
+Using the fractions from the [Configuration](#custom-configuration) you can substitue writing the fraction numbers for the fraction name like so:
 
 ```scss
 .portfolio-item {
@@ -765,25 +794,6 @@ Using the [$fractions map](#fractions) you can substitue writing the fraction nu
 	));
 }
 ```
-
-With `mobile-first` set to **false**, to achieve the same result as the above example the code would be:
-
-```scss
-.portfolio-item {
-	@include column((
-		'mobile-first' : false,
-		'type'         : 'flow',
-		'width'        : 'quarter',
-		'respond-to' : (
-			('third', 'break-3'),
-			('half', 'break-2'),
-			('full', 'break-1')
-		)
-	));
-}
-```
-
-> Note the requirement of a default value for `width`.
 
 ### Column Aligning
 
@@ -808,7 +818,7 @@ To **vertically align** your columns, set the `vertical-align` CSS property of y
 	<div class="span-3" style="vertical-align: bottom">
 		This column is bottom aligned.
 	</div>
-  	<div class="span-3" style="vertical-align: middle">
+  	<div class="span-3" style="vertical-align: middle; height: 200px">
 		  This column is middle aligned.
 	</div>
 </div>
