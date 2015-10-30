@@ -508,19 +508,19 @@ This option generates the code required for [no-gutter columns](#no-gutter-colum
 
 Default  : true
 
-This option generates the code required to [reverse columns](#reverse-columns).
+This option generates the code required to [reverse columns](#reverse-column-order).
 
 ##### 'pull-columns'
 
 Default  : true
 
-This option generates the code required to [pull columns](#pull-columns).
+This option generates the code required to [pull columns](#pushpull-columns).
 
 ##### 'push-columns'
 
 Default  : true
 
-This option generates the code required to [push columns](#push-columns).
+This option generates the code required to [push columns](#pushpull-columns).
 
 #### Breakpoints
 
@@ -603,7 +603,7 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 }
 ```
 
-> You can use any fractions defined in the [Configuration](#custom-configuration).
+> You can use any fractions defined in the [Configuration](#fractions).
 
 Or even this:
 
@@ -615,7 +615,7 @@ Or even this:
 }
 ```
 
-Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the [$gutter variable](#how-big-should-the-gutter-inbetween-your-columns-be). This is so you can easily create columns without having to think about the effect of gutters like so:
+Note that perhaps surprisingly the above examples do **not** produce a `width` value of **25%**, but rather a calculated value based off the value of the `gutter` value. This is so you can easily create columns without having to think about the effect of gutters like so:
 
 ```scss
 .sidebar {
@@ -656,11 +656,11 @@ Which will produce the following CSS, assuming the default value of **2.5%** for
 }
 ```
 
-Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#flow-columns-1)).
+Note that the **first-child** in a row of normal columns has its `margin-left` removed (this is *not* the case for [Flow Columns](#flow-columns-2)).
 
 ##### Column Types
 
-All the column types from the default grid system are also available to use in your semantic framework.
+All the column types from the default grid system are also available to use in your semantic grid system.
 
 ###### Flow Columns
 
@@ -713,7 +713,7 @@ All the column types from the default grid system are also available to use in y
 }
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#block-columns-semantic)
+[View Demo](http://esr360.github.io/Kayzen-GS/#no-gutter-columns-semantic)
 
 ##### Responsiveness
 
@@ -727,8 +727,6 @@ The default width for the stacking of semantic columns is set in the [Configurat
 	));
 }
 ```
-
-[View Demo](http://esr360.github.io/Kayzen-GS/#responsiveness-semantic)
 
 This will cause the columns to stack when the screen size is less than **break-2** as opposed to the default value of **break-3**.
 
@@ -750,7 +748,7 @@ When inside a Flow Columns container and with its `type` set to **flow**, you ca
 }
 ```
 
-[View Demo](http://esr360.github.io/Kayzen-GS/#flow-columns-semantic)
+[View Demo](http://esr360.github.io/Kayzen-GS/#semantic-adaptive)
 
 With `mobile-first` enabled, a width is not required by default if you are using adaptive responsiveness - the column is 100% width up until **break-1** where it becomes 6/12's, then 4/12's at **break-2** and 3/12's at **break-3**.
 
