@@ -468,6 +468,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     
     > [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
+        margin-left: 0;
     }
             
     @for $i from 1 through kgs-option(columns) {
@@ -549,19 +550,24 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
     //-------------------------------------------------------------
     // Column Types
     //-------------------------------------------------------------
-    
+            
     .#{kgs-option('row-namespace')} {
         
         // Default Columns
         //---------------------------------------------------------
         
-        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+        @at-root {
             @if kgs-setting('mobile-first') {
                 @media (min-width: kgs-option('col-break')) {
                     @include kgs-default-columns;
                 }
             } @else {
                 @include kgs-default-columns; 
+            }
+        }
+        
+        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+            @if kgs-setting('mobile-first') {} @else {
                 @if kgs-setting('responsive') {
                     &:not([class*="stack-"]) {
                         @media (max-width: kgs-option('col-break')) {

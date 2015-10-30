@@ -6,6 +6,7 @@
     
     > [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
+        margin-left: 0;
     }
             
     @for $i from 1 through kgs-option(columns) {
