@@ -4,20 +4,13 @@
 
 @mixin kgs-default-columns {
         
-    @if kgs-option('mobile-first') {
-        > [class*="#{kgs-option('col-namespace')}"] {
-            @include kgs-column-core;
-            @include kgs-gutter;  
-        }
-    } @else {
-        @at-root [class*="#{kgs-option('col-namespace')}"] {
-            @include kgs-column-core;
-            @include kgs-gutter;  
-        }
+    [class*="#{kgs-option('col-namespace')}"] {
+        @include kgs-column-core;
+        @include kgs-gutter;  
     }
-        
+
     @for $i from 1 through kgs-option(columns) {       
-        > .#{kgs-option('col-namespace')}-#{$i} {
+        .#{kgs-option('col-namespace')}-#{$i} {
             width: kgs-default-width($i, kgs-option(columns))
         }      
     }  
