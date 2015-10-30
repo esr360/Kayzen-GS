@@ -66,15 +66,3 @@
 
 @import 'lib/semantic-gs/row';
 @import 'lib/semantic-gs/columns';
-
-@include kayzen-gs((
-    'options' : (
-        'columns'           : 16,
-        'col-namespace'     : 'col',
-    ),
-    'settings' : (
-        'old-ie'            : true,
-        'pull-columns'      : false,
-        'push-columns'      : false
-    ),
-));
