@@ -5,7 +5,6 @@
 @mixin kgs-no-gutter-columns {
     
     > [class*="#{kgs-option('col-namespace')}"] {
-        @include kgs-column-core;
         margin-left: 0;
     }
             

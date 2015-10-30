@@ -467,7 +467,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
 @mixin kgs-no-gutter-columns {
     
     > [class*="#{kgs-option('col-namespace')}"] {
-        @include kgs-column-core;
         margin-left: 0;
     }
             
