@@ -21,6 +21,7 @@ tod.txt
 /node_modules
 .sass-cache
 index.html
+semantic-examples.scss
 
 # =========================
 # Operating System Files
