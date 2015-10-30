@@ -1,71 +1,86 @@
-//=================================================================
-// Semantic Examples
-//=================================================================
-
-// Basic Example
+//-----------------------------------------------------------------
+//
+//  Kayzen GS
+//  Made by @esr360
+//  https://github.com/esr360/Kayzen-GS
+//	
 //-----------------------------------------------------------------
 
 .main {
-	@include row;
+    @include row;
 }
 
 .sidebar {
-	@include column(
-		$width: (3, 12)
-		//$width: quarter
-		//$width: 100/4
-		//$width: 25%
-	);
+    @include column((
+        'width' : (3, 12)
+        //'width' : 'quarter'
+        //'width' : 100/4
+        //'width' : 25%
+    ));
 }
 
 .content {
-	@include column(
-		$width: (9, 12)
-	);
+    @include column((
+        'width' : (9, 12)
+    ));
 }
 
 // Flow Columns
 //-----------------------------------------------------------------
 
 .portfolio-grid {
-	@include row(flow);	
+    @include row(flow);	
 }
 
 .portfolio-item {
-    @include column(
-        $type: flow,
-        $respond-to: (
-            ((6, 12), break-1),
-            ((4, 12), break-2),
-            ((3, 12), break-3)
+    @include column((
+        'type'  : 'flow',
+        'width' : (3, 12),
+        'respond-to' : (
+            ((4, 12), 'break-3'),
+            ((6, 12), 'break-2'),
+            ((12, 12), 'break-1')
         )
-    );
+    ));
 }
 
 // Magic Columns
 //-----------------------------------------------------------------
 
 .product-grid {
-	@include row;
+    @include row;
 }
 
 .product {
-	@include column(
-		$type: magic, 
-		$namespace: product
-	);
+    @include column((
+        'type' : 'magic'
+    ));
 } 
 
 // Block Columns
 //-----------------------------------------------------------------
 
 .features {
-	@include row(block);
+    @include row;
 }
 
 .feature {
-	@include column(
-		$type: block,
-		$width: (4, 12)
-	);
+    @include column((
+        'type'  : 'block',
+        'width' : (4, 12)
+    ));
+}
+
+// No-Gutter Columns
+//-----------------------------------------------------------------
+
+.items {
+    @include row;
+}
+
+.item {
+    @include column((
+        'type'  : 'no-gutter',
+        'width' : (4, 12)
+    ));
 }

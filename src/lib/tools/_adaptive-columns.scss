@@ -1,0 +1,34 @@
+//-----------------------------------------------------------------
+// Adaptive Columns
+//-----------------------------------------------------------------
+
+@mixin kgs-adaptive-columns {
+    
+    // Reverse $breakpoints map
+    // This is to allow the generated CSS to override when scaling
+    $reverse-breakpoints: if(
+        kgs-setting('mobile-first'),
+        kayzenGS('breakpoints'),
+        reverse-map(kayzenGS('breakpoints'))
+    );
+
+    > [class*="#{kgs-option('col-namespace')}"] {
+    
+        &[class*="break"] {
+            @include kgs-column-core;
+            @include kgs-gutter($flush: false);
+        }
+        
+        @each $bp, $width in $reverse-breakpoints {
+            @media (#{$kgs-scale}-width: $width) {
+                @each $name, $fraction in kayzenGS('fractions') {		
+                    &.#{$bp}-#{$name} {
+                        width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
+                    }
+                }
+            }
+        }
+    
+    }
+
+}

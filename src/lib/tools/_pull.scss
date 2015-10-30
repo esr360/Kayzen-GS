@@ -1,0 +1,23 @@
+//-----------------------------------------------------------------
+// Pull Column
+//-----------------------------------------------------------------
+
+@mixin kgs-pull($col-type: default) {
+    
+    [class*="pull-"] {
+        position: relative;
+    }
+        
+    @for $i from 1 through kgs-option(columns) {       
+        .pull-#{$i} {
+            @if $col-type == 'default' {
+                left: - kgs-default-width($i, kgs-option(columns)) - kgs-option(gutter);
+            } @else if $col-type == 'flow' {
+                left: - kgs-flow-width($i, kgs-option(columns)) - kgs-option(gutter);
+            } @else if $col-type == 'no-gutter' {
+                left: - kgs-no-gutter-width($i, kgs-option(columns));
+            }
+        }      
+    }     
+    
+}

@@ -14,12 +14,12 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-# Prepros
+# Custom Options
 *.cfg
-
-#TODO list
-
 tod.txt
+.settings
+/node_modules
+.sass-cache
 
 # =========================
 # Operating System Files
