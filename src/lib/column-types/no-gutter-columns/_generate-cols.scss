@@ -8,9 +8,9 @@
         margin-left: 0 !important;
     }
      
-    @for $i from 1 through kgs-option(columns) {
+    @for $i from 1 through kgs-option('columns') {
         > .#{kgs-option(col-namespace)}-#{$i} {	
-            width: kgs-no-gutter-width($i, kgs-option(columns));
+            width: kgs-no-gutter-width($i, kgs-option('columns'));
         }
     }
     

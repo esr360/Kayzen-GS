@@ -151,7 +151,7 @@
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
-                                    @include kgs-stack-columns($type: magic);
+                                    @include kgs-stack-columns($type: 'magic');
                                 }
                             }
                         }
@@ -166,7 +166,7 @@
                                     }
                                 } @else {
                                     @media (#{$kgs-scale}-width: $width) {
-                                        @include kgs-stack-columns($type: magic);
+                                        @include kgs-stack-columns($type: 'magic');
                                     }
                                 }
                             }
