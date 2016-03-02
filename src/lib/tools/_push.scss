@@ -2,7 +2,7 @@
 // Push Column
 //-----------------------------------------------------------------
 
-@mixin kgs-push($col-type: default) {
+@mixin kgs-push($col-type: 'default') {
     
     [class*="push-"] {
         position: relative;
