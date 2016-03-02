@@ -220,7 +220,18 @@
                             }
                         }
                     }
-                }            
+                }          
+                
+            }
+            
+            &-no-gutter {
+                
+                // Adaptive Columns 
+                @if kgs-setting('responsive') {
+                    @if kgs-setting('adaptive-columns') {    
+                        @include kgs-adaptive-columns($col-type: 'no-gutter');
+                    }
+                }   
                 
             }
             

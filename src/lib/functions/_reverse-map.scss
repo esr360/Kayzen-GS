@@ -3,7 +3,7 @@
 // http://git.io/vLfuz
 //-----------------------------------------------------------------
 
-@function reverse-map ($map) {	
+@function reverse-map($map) {	
     $keys: map-keys($map);
     $map-reversed: ();    
     @for $i from length($keys) through 1 {

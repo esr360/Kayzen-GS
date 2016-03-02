@@ -9,9 +9,9 @@
         @include kgs-gutter($flush: false);  
     }
     
-    @for $i from 1 through kgs-option(columns) {
+    @for $i from 1 through kgs-option('columns') {
         > .#{kgs-option(col-namespace)}-#{$i} {
-            width: kgs-flow-width($i, kgs-option(columns));
+            width: kgs-flow-width($i, kgs-option('columns'));
         }
     }
    

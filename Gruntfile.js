@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         concat: {   
             app: {
                 src: _core,
-                dest: 'src/dist/kayzen-gs.scss',
+                dest: 'dist/kayzen-gs.scss',
             }
         },
       
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    'src/dist/kayzen-gs.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.css': 'src/kayzen-gs.scss'
                 },
             },
             prod: {
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'src/dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
                 },
             } 
         },
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
                 ]
             },
             build: {
-                src: 'src/dist/*.css'
+                src: 'dist/*.css'
             }
         },
   
