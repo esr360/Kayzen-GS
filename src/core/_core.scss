@@ -80,7 +80,7 @@
             
             &-flow {
                 
-                &:not(.row-no-gutter) {
+                &:not(.#{kgs-option('row-namespace')}-no-gutter) {
                     margin-left: -#{kgs-option('gutter')};
                     width: 100% + kgs-option('gutter');
                 }
