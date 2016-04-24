@@ -80,8 +80,10 @@
             
             &-flow {
                 
-                margin-left: -#{kgs-option('gutter')};
-                width: 100% + kgs-option('gutter');
+                &:not(.row-no-gutter) {
+                    margin-left: -#{kgs-option('gutter')};
+                    width: 100% + kgs-option('gutter');
+                }
                 
                 @include kgs-pull('flow');
                 @include kgs-push('flow');
