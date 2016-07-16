@@ -1,7 +1,10 @@
-//-----------------------------------------------------------------
-// Magic Column Core
-//-----------------------------------------------------------------
-
+/// Core magic column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $namespace - your column namespace e.g. 'span'
+/// @outputs relevant selectors for magic columns
 @mixin kgs-magic-column-core($namespace: '[class*="#{kgs-option('col-namespace')}"]') {
     &:first-child {
         margin-left: 0;

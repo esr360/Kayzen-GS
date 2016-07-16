@@ -1,11 +1,14 @@
-//-----------------------------------------------------------------
-// Custom Row
-//-----------------------------------------------------------------
-
+/// Custom semantic row
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $type - type of columns row should have
+/// @outputs custom row styles
 @mixin row($type: null) {
 	@include kgs-row-core;
-	@if $type == flow {		
-		margin-left: -#{kgs-option(gutter)};
+	@if $type == 'flow' {		
+		margin-left: -#{kgs-option('gutter')};
 		width: 100% + kgs-option('gutter');
 	}
 }

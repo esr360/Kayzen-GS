@@ -1,7 +1,9 @@
-//-----------------------------------------------------------------
-// Row Core
-//-----------------------------------------------------------------
-
+/// Core row styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a row
 @mixin kgs-row-core {
     
     // Firefox/IE collapse white-space
@@ -23,4 +25,4 @@
     // Required for some third-party sliders
     // table-layout: fixed;
     
-} // row()
+}

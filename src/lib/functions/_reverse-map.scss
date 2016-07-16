@@ -1,8 +1,9 @@
-//-----------------------------------------------------------------
-// Reverse Map Function
-// http://git.io/vLfuz
-//-----------------------------------------------------------------
-
+/// Reverse a map
+///
+/// @author Sean McEmerson
+/// @see http://git.io/vLfuz
+/// @group Kayzen-GS
+/// @param $map
 @function reverse-map($map) {	
     $keys: map-keys($map);
     $map-reversed: ();    

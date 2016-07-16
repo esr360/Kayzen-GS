@@ -1,8 +1,10 @@
-//-----------------------------------------------------------------
-// Map Merge Deep
-// http://git.io/vmBVH
-//-----------------------------------------------------------------
-
+/// Used to recursively merge (deep merge) two maps
+///
+/// @author Pedr Browne
+/// @group Kayzen-GS
+/// @param $map-old - The original map
+/// @param $map-new - The new map you wish to merge into the original
+/// @param $overwrite - Overwrite existing keys
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
 
 	// Iterate through each value of the new map

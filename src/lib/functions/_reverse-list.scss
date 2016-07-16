@@ -1,8 +1,10 @@
-//-----------------------------------------------------------------
-// Reverse Map Function
-// http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
-//-----------------------------------------------------------------
-
+/// Reverse a list
+///
+/// @author Hugo Giraudel
+/// @see http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+/// @group Kayzen-GS
+/// @param $list
+/// @param $recursive
 @function reverse-list($list, $recursive: false) {
    $result: ();
 
