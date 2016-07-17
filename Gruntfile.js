@@ -118,6 +118,15 @@ module.exports = function(grunt) {
         },
       
         /**
+         * Mocha
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
+
+        mochacli: {
+            all: ['unit-testing/tests.js']
+        },
+      
+        /**
          * Watch
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
@@ -167,6 +176,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
