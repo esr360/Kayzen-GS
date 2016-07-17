@@ -1,9 +1,10 @@
 /// Reverse a map
 ///
 /// @author Sean McEmerson
-/// @see http://git.io/vLfuz
+/// @access public
+/// @link http://git.io/vLfuz
 /// @group Kayzen-GS
-/// @param $map
+/// @param $map {map} - the map to be reversed
 @function reverse-map($map) {	
     $keys: map-keys($map);
     $map-reversed: ();    
