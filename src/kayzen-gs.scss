@@ -36,6 +36,17 @@
 @import 'lib/tools/stack-columns';
 
 //*****************************************************************
+// Utilities
+//*****************************************************************
+
+@import 'lib/utilities/kayzenGS';
+@import 'lib/utilities/breakpoint';
+@import 'lib/utilities/config';
+@import 'lib/utilities/fraction';
+@import 'lib/utilities/option';
+@import 'lib/utilities/setting';
+
+//*****************************************************************
 // Column Types
 //*****************************************************************
 

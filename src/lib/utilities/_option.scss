@@ -1,0 +1,9 @@
+/// Get a value from the 'options' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $option - key of desired option
+/// @return {*} desired value
+@function kgs-option($option) {
+    @return map-get-deep($kayzenGS, 'options', $option);
+}

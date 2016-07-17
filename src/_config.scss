@@ -12,7 +12,7 @@
 /// @prop {string} options.col-namespace ['col'] - namespace for gnerated col classes
 ///
 /// @prop {bool} settings.kayzen-gs [false] - output Kayzen-GS style when importing the library
-/// @prop {bool} settings.old-ie [false] - support ancient IE versions
+/// @prop {bool} settings.old-ie [false] - support ancient IE versions (pls don't)
 /// @prop {bool} settings.responsive [true] - generate responsive columns by default
 /// @prop {bool} settings.mobile-first [false] - use mobile-first when generating responsive columns
 /// @prop {bool} settings.custom-stacking [true] - generate styles for stacking at various widths
@@ -67,65 +67,7 @@ $kayzenGS: (
     )
 ) !default;
 
-//*****************************************************************
-// Tools & Utilities
-//*****************************************************************
-
-/// Get a top level value from the default Kayzen-GS config
-/// @access public
-/// @group Kayzen-GS
-/// @param {string} $option - key of desired option
-/// @return {*} desired value
-@function kayzenGS($option) {
-    @return map-get-deep($kayzenGS, $option);
-}
-
-/// Get a value from the 'options' configuration group
-/// @access public
-/// @group Kayzen-GS
-/// @param {string} $option - key of desired option
-/// @return {*} desired value
-@function kgs-option($option) {
-    @return map-get-deep($kayzenGS, 'options', $option);
-}
-
-/// Get a value from the 'settings' configuration group
-/// @access public
-/// @group Kayzen-GS
-/// @param {string} $setting - key of desired setting
-/// @return {bool} desired value
-@function kgs-setting($setting) {
-    @return map-get-deep($kayzenGS, 'settings', $setting);
-}
-
-/// Get a value from the 'breakpoints' configuration group
-/// @access public
-/// @group Kayzen-GS
-/// @param {string} $breakpoint - key of desired breakpoint
-/// @return {number} desired breakpoint value
-@function kgs-breakpoint($breakpoint) {
-    @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
-}
-
-/// Get a value from the 'fractions' configuration group
-/// @access public
-/// @group Kayzen-GS
-/// @param {string} $fraction - key of desired fraction
-/// @return {number} desired fraction value
-@function kgs-fraction($fraction) {
-    @return map-get-deep($kayzenGS, 'fractions', $fraction);
-}
-
-/// Get a nested value from the Kayzen-GS config
-/// @access public
-/// @group Kayzen-GS
-/// @param {arglist} $options - arglist of desired option
-/// @return {*} desired value
-@function kgs-config($options...) {
-    @return map-get-deep($config, $options...);
-}
-
-/// Set min/max width for breakpoints depending on 'mobile-first' value
+/// Set min/max width for breakpoint creation to determine mobile-first
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group Kayzen-GS

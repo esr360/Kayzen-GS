@@ -1,0 +1,9 @@
+/// Get a value from the 'settings' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $setting - key of desired setting
+/// @return {bool} desired value
+@function kgs-setting($setting) {
+    @return map-get-deep($kayzenGS, 'settings', $setting);
+}

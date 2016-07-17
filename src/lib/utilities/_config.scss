@@ -1,0 +1,9 @@
+/// Get a nested value from the Kayzen-GS config
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {arglist} $options - arglist of desired option
+/// @return {*} desired value
+@function kgs-config($options...) {
+    @return map-get-deep($config, $options...);
+}
