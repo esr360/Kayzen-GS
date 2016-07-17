@@ -1,9 +1,12 @@
-//-----------------------------------------------------------------
-// Adaptive Columns
-//-----------------------------------------------------------------
-
+/// Adaptive Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for adaptive columns
 @mixin kgs-adaptive-columns($col-type: 'default') {
-    
+
     // Reverse $breakpoints map
     // This is to allow the generated CSS to override when scaling
     $reverse-breakpoints: if(
@@ -13,12 +16,12 @@
     );
 
     > [class*="#{kgs-option('col-namespace')}"] {
-    
+
         &[class*="break"] {
             @include kgs-column-core;
             @include kgs-gutter($flush: false);
         }
-        
+
         @each $bp, $width in $reverse-breakpoints {
             @media (#{$kgs-scale}-width: $width) {
                 @each $name, $fraction in kayzenGS('fractions') {		
@@ -32,7 +35,7 @@
                 }
             }
         }
-    
+
     }
 
 }

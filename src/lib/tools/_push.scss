@@ -1,7 +1,10 @@
-//-----------------------------------------------------------------
-// Push Column
-//-----------------------------------------------------------------
-
+/// Push Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for push columns
 @mixin kgs-push($col-type: 'default') {
     
     [class*="push-"] {
@@ -18,6 +21,6 @@
                 left: kgs-no-gutter-width($i, kgs-option('columns'));
             }
         }      
-    }     
+    }
     
 }

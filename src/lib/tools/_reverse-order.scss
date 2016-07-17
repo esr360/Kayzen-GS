@@ -1,12 +1,12 @@
-//-----------------------------------------------------------------
-// Reverse Columns
-//-----------------------------------------------------------------
-
-@mixin kgs-reverse-order {
-    
+/// Reverse order of columns in a row
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs styles to reverse column order
+@mixin kgs-reverse-order {   
     transform: rotate(180deg);
     > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
-    }
-    
+    } 
 }

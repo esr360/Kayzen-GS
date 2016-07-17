@@ -1,7 +1,10 @@
-//-----------------------------------------------------------------
-// Gutter
-//-----------------------------------------------------------------
-
+/// Gutter
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {bool} $flush [true] - remove margin from first column in row
+/// @outputs styles for column gutters
 @mixin kgs-gutter($flush: true) {
 	margin-left: kgs-option('gutter');
     @if $flush {

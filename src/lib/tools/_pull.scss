@@ -1,7 +1,10 @@
-//-----------------------------------------------------------------
-// Pull Column
-//-----------------------------------------------------------------
-
+/// Pull Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for pull columns
 @mixin kgs-pull($col-type: 'default') {
     
     [class*="pull-"] {
