@@ -143,9 +143,10 @@
 /// Reverse a map
 ///
 /// @author Sean McEmerson
+/// @access public
 /// @link http://git.io/vLfuz
 /// @group Kayzen-GS
-/// @param $map
+/// @param $map {map} - the map to be reversed
 @function reverse-map($map) {	
     $keys: map-keys($map);
     $map-reversed: ();    
@@ -171,7 +172,7 @@
 /// @prop {string} options.col-namespace ['col'] - namespace for gnerated col classes
 ///
 /// @prop {bool} settings.kayzen-gs [false] - output Kayzen-GS style when importing the library
-/// @prop {bool} settings.old-ie [false] - support ancient IE versions
+/// @prop {bool} settings.old-ie [false] - support ancient IE versions (pls don't)
 /// @prop {bool} settings.responsive [true] - generate responsive columns by default
 /// @prop {bool} settings.mobile-first [false] - use mobile-first when generating responsive columns
 /// @prop {bool} settings.custom-stacking [true] - generate styles for stacking at various widths
@@ -226,7 +227,7 @@ $kayzenGS: (
     )
 ) !default;
 
-/// Set min/max width for breakpoints depending on 'mobile-first' value
+/// Set min/max width for breakpoint creation to determine mobile-first
 /// @author [@esr360](http://twitter.com/esr360)
 /// @access public
 /// @group Kayzen-GS
