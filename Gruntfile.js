@@ -1,12 +1,12 @@
-//=================================================================
-// Kayzen GS - Grunt Setup
-//=================================================================
+/**
+ * Kayzen-GS Grunt Setup
+ */
 
 module.exports = function(grunt) {
-
-    //-------------------------------------------------------------
-    // Config
-    //-------------------------------------------------------------
+      
+    /**
+     * Configuration
+     */
 
     // App Scripts
     var _core = [
@@ -19,19 +19,19 @@ module.exports = function(grunt) {
         'src/core/*',
         'src/lib/semantic-gs/*'
     ];
-
-    //-------------------------------------------------------------
-    // Tasks
-    //-------------------------------------------------------------
-        
-    grunt.initConfig({
-		
-        pkg: grunt.file.readJSON('package.json'),
       
-        //---------------------------------------------------------
-        // Concat
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+    /**
+     * Tasks
+     */
+
+    grunt.initConfig({
+
+        pkg: grunt.file.readJSON('package.json'),
+ 
+        /**
+         * Concat
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
 
         concat: {   
             app: {
@@ -40,41 +40,41 @@ module.exports = function(grunt) {
             }
         },
       
-        //---------------------------------------------------------
-        // Sass
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+        /**
+         * Sass
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
         
         sass: {
             options: {
-                "sourcemap=none": ''
+                sourcemap: 'none',
             },
             dev: {
-                options: {
-                    style: 'expanded'
-                },
                 files: {
                     'dist/kayzen-gs.css': 'src/kayzen-gs.scss'
                 },
+                options: {
+                    style: 'expanded'
+                }
             },
             prod: {
-                options: {
-                    style: 'compressed'
-                },
                 files: {
                     'dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
                 },
+                options: {
+                    style: 'compressed'
+                }
             } 
         },
-        
-        //---------------------------------------------------------
-        // PostCSS
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+      
+        /**
+         * PostCSS
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
       
         postcss: {
             options: {
-                map: true,
+                map: false,
                 processors: [
                     require('autoprefixer')({
                         browsers: [
@@ -88,11 +88,11 @@ module.exports = function(grunt) {
                 src: 'dist/*.css'
             }
         },
-  
-        //---------------------------------------------------------
-        // Scss Lint
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+      
+        /**
+         * ScssLint
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
         
         scsslint: {
             allFiles: [
@@ -103,27 +103,45 @@ module.exports = function(grunt) {
             },
         },
       
-        //---------------------------------------------------------
-        // Watch
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+        /**
+         * SassDoc
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
+
+        sassdoc: {
+            default: {
+                src: 'src',
+                options: {
+                    dest: 'docs'
+                }
+            },
+        },
+      
+        /**
+         * Watch
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
   
         watch: {
             css: {
                 files: [
                     'src/**/*.scss'
                 ],
-                tasks: ['sass', 'notify:css'],
+                tasks: [
+                    'sass', 
+                    'sassdoc',
+                    'notify:css'
+                ],
                 options: {
                     spawn: false,
                 }
             }
         },
       
-        //---------------------------------------------------------
-        // Notify
-        // https://github.com/sindresorhus/grunt-sass
-        //---------------------------------------------------------
+        /**
+         * Notify
+         * @see https://github.com/SassDoc/grunt-sassdoc
+         */
         
         notify: {
             css: {
@@ -141,24 +159,35 @@ module.exports = function(grunt) {
         }
 
     });
-
-    //-------------------------------------------------------------
-    // Load Npm Tasks
-    //-------------------------------------------------------------
+      
+    /**
+     * Load NPM tasks
+     */
     
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-postcss');
+    grunt.loadNpmTasks('grunt-sassdoc');
     grunt.loadNpmTasks('grunt-scss-lint');
     grunt.loadNpmTasks('grunt-notify');
-    
-    //-------------------------------------------------------------
-    // Register Tasks
-    //-------------------------------------------------------------
+      
+    /**
+     * Register Tasks
+     */
 
     grunt.registerTask('default', [
+        'compile',
         'watch'
     ]);
 
-}; // function(grunt)
+    grunt.registerTask('compile', [
+        'concat',
+        'sass',
+        'postcss',
+        //'scsslint',
+        'sassdoc',
+        'notify:app'
+    ]);
+
+};
