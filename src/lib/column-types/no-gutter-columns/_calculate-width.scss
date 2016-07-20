@@ -1,7 +1,0 @@
-//-----------------------------------------------------------------
-// Calculate No-Gutter Column Width
-//-----------------------------------------------------------------
-
-@function kgs-no-gutter-width($span, $columns) {
-	@return percentage($span/$columns);
-}

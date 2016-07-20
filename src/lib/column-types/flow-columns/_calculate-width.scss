@@ -1,7 +1,0 @@
-//-----------------------------------------------------------------
-// Calculate Flow Column Width
-//-----------------------------------------------------------------
-
-@function kgs-flow-width($span, $columns) {
-	@return ((100/$columns) * $span) - kgs-option(gutter);
-}

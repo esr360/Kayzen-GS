@@ -1,7 +1,0 @@
-//-----------------------------------------------------------------
-// Calculate Default Column Width
-//-----------------------------------------------------------------
-
-@function kgs-default-width($span, $columns) {
-	@return ((100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * kgs-option(gutter) ) / ( $columns / $span ) );
-}
