@@ -1,0 +1,15 @@
+/// Core column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a column
+@mixin kgs-column-core {
+    display: inline-block;
+    vertical-align: top;
+    // IE < 8: fake inline-block
+    @if kgs-setting('old-ie') {
+        *display: inline;
+        zoom: 1; 
+    }   
+}

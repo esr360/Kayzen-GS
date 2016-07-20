@@ -1,0 +1,17 @@
+/// Generate flow columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs relevant styles for flow columns
+@mixin kgs-flow-columns {                 
+    > [class*="#{kgs-option('col-namespace')}"] {
+        @include kgs-column-core;
+        @include kgs-gutter($flush: false);  
+    }
+    @for $i from 1 through kgs-option('columns') {
+        > .#{kgs-option(col-namespace)}-#{$i} {
+            width: kgs-flow-width($i, kgs-option('columns'));
+        }
+    }
+}

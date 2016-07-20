@@ -1,0 +1,12 @@
+// Import testing framework
+//@import 'true';
+@import '../node_modules/sass-true/sass/true';
+
+// Import the project
+@import '../src/kayzen-gs';
+
+// Import the test files
+@import 'utilities/breakpoint';
+
+// Run the tests
+@include report();

@@ -1,0 +1,9 @@
+/// Get a top level value from the default Kayzen-GS config
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $option - key of desired option
+/// @return {*} desired value
+@function kayzenGS($option) {
+    @return map-get-deep($kayzenGS, $option);
+}

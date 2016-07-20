@@ -1,0 +1,11 @@
+/// Calculate width for a flow column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {number} $span - the width (in columns) of returned value
+/// @param {number} $columns - the maxinum number of columns being used
+/// @return {number} - width of column
+@function kgs-flow-width($span, $columns) {
+	@return ((100/$columns) * $span) - kgs-option('gutter');
+}

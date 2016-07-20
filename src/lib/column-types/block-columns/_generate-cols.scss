@@ -1,0 +1,11 @@
+/// Core block column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a block column
+@mixin kgs-block-columns {
+    > [class*="#{kgs-option('col-namespace')}"] {
+        display: table-cell;
+    }  
+}

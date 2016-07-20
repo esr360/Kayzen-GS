@@ -1,0 +1,9 @@
+/// Get a value from the 'fractions' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $fraction - key of desired fraction
+/// @return {number} desired fraction value
+@function kgs-fraction($fraction) {
+    @return map-get-deep($kayzenGS, 'fractions', $fraction);
+}

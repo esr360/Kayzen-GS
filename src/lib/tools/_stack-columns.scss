@@ -1,0 +1,29 @@
+/// Stack Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type [null] - the type of columns to be generated
+/// @param {bool} $core [false] - Set if mixin is included in column selector as opposed to row
+/// @outputs styles which cause columns to become stacked
+@mixin kgs-stack-columns($type: null, $core: false) {
+    
+    $selector: if(
+        $core, '&', '> [class*="#{kgs-option(col-namespace)}"]'
+    );
+    
+    #{$selector} {
+        display: block;
+        left: auto; // resets push/pull
+        @if $type == 'flow' {
+            width: 100% - kgs-option('gutter');
+        } @else if $type == 'magic' {
+            width: 100% !important;
+            margin-left: 0;
+        } @else if $type == null {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    
+}

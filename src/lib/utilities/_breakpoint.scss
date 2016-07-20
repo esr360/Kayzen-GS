@@ -1,0 +1,9 @@
+/// Get a value from the 'breakpoints' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $breakpoint - key of desired breakpoint
+/// @return {number} desired breakpoint value
+@function kgs-breakpoint($breakpoint) {
+    @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
+}

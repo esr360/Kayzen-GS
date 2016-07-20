@@ -1,0 +1,26 @@
+/// Push Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for push columns
+@mixin kgs-push($col-type: 'default') {
+    
+    [class*="push-"] {
+        position: relative;
+    }
+        
+    @for $i from 1 through kgs-option('columns') {       
+        .push-#{$i} {
+            @if $col-type == 'default' {
+                left: kgs-default-width($i, kgs-option('columns')) + kgs-option('gutter');
+            } @else if $col-type == 'flow' {
+                left: kgs-flow-width($i, kgs-option('columns')) + kgs-option('gutter');
+            } @else if $col-type == 'no-gutter' {
+                left: kgs-no-gutter-width($i, kgs-option('columns'));
+            }
+        }      
+    }
+    
+}

@@ -1,0 +1,1115 @@
+/// Returns a list of keys to to pass into the map-set-deep() function
+///
+/// @author Sam Richard
+/// @group Kayzen-GS
+/// @access public
+/// @param $keys
+/// @param $counter
+@function get-keys($keys, $counter) {
+    $return: ();
+    @for $i from 1 to $counter {
+        $return: append($return, nth($keys, $i));
+    }
+    @return $return;
+}
+/// Map deep get
+///
+/// @author Hugo Giraudel
+/// @group Kayzen-GS
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-get-deep($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+/// Used to recursively merge (deep merge) two maps
+///
+/// @author Pedr Browne
+/// @group Kayzen-GS
+/// @param $map-old - The original map
+/// @param $map-new - The new map you wish to merge into the original
+/// @param $overwrite - Overwrite existing keys
+@function map-merge-deep($map-old, $map-new, $overwrite: true) {
+
+	// Iterate through each value of the new map
+	@each $key, $new-value in $map-new {
+		// Check if that value already exists on the old map
+		@if map-has-key($map-old, $key) {
+			// There is an existing key
+			$old-value: map-get($map-old, $key);
+			@if type-of($new-value) == map and type-of($old-value) == map {
+				// If both are maps, recurse regardless of $overwrite
+				$merged-value: map-merge-deep($old-value, $new-value);
+				$map-old: map-set($map-old, $key, $merged-value);	
+			} @else {
+				// Otherwise check $overwrite
+				@if $overwrite {
+					$map-old: map-set($map-old, $key, $new-value);
+				}
+			}
+		} @else {
+			// There is no existing key to add
+			$map-old: map-set($map-old, $key, $new-value);
+		}
+	}
+	@return $map-old;
+	
+}
+/// Set a nested key in an existing map
+///
+/// @author Sam Richard
+/// @group Kayzen-GS
+/// @param $map
+/// @param $keys
+/// @param $value
+@function map-set-deep($map, $keys, $value) {
+
+    $private-sassy-maps-suppress-warnings: true !global;
+    $length: length($keys);
+    $get-keys: ();
+    $map-level: ();
+
+    @if $length > 1 {
+        $get-keys: get-keys($keys, $length);
+        $map-level: map-get-deep($map, $get-keys);
+    }
+
+    $merge: (nth($keys, $length): $value);
+        
+    @if $map-level {
+        $merge: map-merge($map-level, $merge);
+    }
+
+    @for $i from ($length * -1 + 1) through -1 {
+        $j: abs($i);
+        $key: nth($keys, $j);
+        @if $j > 1 {
+            $get-keys: get-keys($keys, $j);
+            $map-level: map-get-deep($map, $get-keys);
+            @if $map-level {
+                $merge: map-merge($map-level, ($key: $merge));
+            }
+            @else {
+                $merge: ($key: $merge);
+            }
+        }
+        @else {
+            $merge: ($key: $merge);
+        }
+    }
+
+    $map: map-merge($map, $merge);
+    $private-sassy-maps-suppress-warnings: false !global;
+
+    @return $map;
+
+}
+/// Set a key in an existing map
+///
+/// @author Sam Richard
+/// @group Kayzen-GS
+/// @param {map} $map
+/// @param {string} $key
+/// @param {*} $value
+@function map-set($map, $key, $value) {
+    @return map-merge($map, ($key: $value));
+}
+/// Reverse a list
+///
+/// @author Hugo Giraudel
+/// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+/// @group Kayzen-GS
+/// @param $list
+/// @param $recursive
+@function reverse-list($list, $recursive: false) {
+   $result: ();
+
+   @for $i from length($list)*-1 through -1 {
+      @if type-of(nth($list, abs($i))) == list and $recursive {
+        $result: append($result, reverse(nth($list, abs($i)), $recursive));      
+      }
+
+      @else {
+        $result: append($result, nth($list, abs($i)));
+      }
+   }
+
+   @return $result;
+}
+/// Reverse a map
+///
+/// @author Sean McEmerson
+/// @access public
+/// @link http://git.io/vLfuz
+/// @group Kayzen-GS
+/// @param $map {map} - the map to be reversed
+@function reverse-map($map) {	
+    $keys: map-keys($map);
+    $map-reversed: ();    
+    @for $i from length($keys) through 1 {
+        $map-reversed: map-merge(
+            $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
+        );
+    }
+    $result: $map-reversed; 
+    @return $result;
+}
+/// Default grid system configuration
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @type map
+///
+/// @prop {number} options.columns [12] - number of columns your grid system should have
+/// @prop {number} options.gutter [3%] - width of gutter between columns
+/// @prop {number} options.col-break [940px] - default width at which columns should collapse
+/// @prop {string} options.row-namespace ['row'] - namespace for gnerated row classes
+/// @prop {string} options.col-namespace ['col'] - namespace for gnerated col classes
+///
+/// @prop {bool} settings.kayzen-gs [false] - output Kayzen-GS style when importing the library
+/// @prop {bool} settings.old-ie [false] - support ancient IE versions (pls don't)
+/// @prop {bool} settings.responsive [true] - generate responsive columns by default
+/// @prop {bool} settings.mobile-first [false] - use mobile-first when generating responsive columns
+/// @prop {bool} settings.custom-stacking [true] - generate styles for stacking at various widths
+/// @prop {bool} settings.adaptive-columns [true] - generate adaptive columns
+/// @prop {bool} settings.flow-columns [true] - generate flow columns
+/// @prop {bool} settings.magic-columns [true] - generate magic columns
+/// @prop {bool} settings.block-columns [true] - generate block columns
+/// @prop {bool} settings.no-gutter-columns [true] - generate no-gutter columns
+/// @prop {bool} settings.reverse-columns [true] - generate classes to reverse-columns
+/// @prop {bool} settings.pull-columns [true] - generate classes to pull-columns
+/// @prop {bool} settings.push-columns [true] - generate classes to push-columns
+///
+/// @prop {map} settings.breakpoints - widths to be used as breakpoints
+/// @prop {map} settings.fractions - widths to be used as pre-defined fractions
+///
+$kayzenGS: (
+    'options' : (
+        'columns'           : 12,
+        'gutter'            : 3%,
+        'col-break'         : 940px,
+        'row-namespace'     : 'row',
+        'col-namespace'     : 'span',
+    ),
+    'settings' : (
+        'kayzen-gs'         : false,
+        'old-ie'            : false,
+        'responsive'        : true,
+        'mobile-first'      : false,
+        'custom-stacking'   : true,
+        'adaptive-columns'  : true,
+        'flow-columns'      : true,
+        'magic-columns'     : true,
+        'block-columns'     : true,
+        'no-gutter-columns' : true,
+        'reverse-columns'   : true,
+        'pull-columns'      : true,
+        'push-columns'      : true
+    ),
+    'breakpoints' : (
+        'break-0'           : 0px,
+        'break-1'           : 460px,
+        'break-2'           : 720px,
+        'break-3'           : 940px,
+        'break-4'           : 1200px
+    ),
+    'fractions' : (
+        'full'              : (1, 1),
+        'half'              : (1, 2),
+        'third'             : (1, 3),
+        'quarter'           : (1, 4),
+        'sixth'             : (1, 6)
+    )
+) !default;
+
+/// Set min/max width for breakpoint creation to determine mobile-first
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @type string
+$kgs-scale: if(kgs-setting('mobile-first'), min, max);
+
+// Reset "mobile-first" to false if "responsive" is disabled
+@if not kgs-setting('responsive') {
+    $kayzenGS: map-merge-deep(('settings': (
+        'mobile-first' : false
+    )), $kayzenGS);
+}
+/// Adaptive Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for adaptive columns
+@mixin kgs-adaptive-columns($col-type: 'default') {
+
+    // Reverse $breakpoints map
+    // This is to allow the generated CSS to override when scaling
+    $reverse-breakpoints: if(
+        kgs-setting('mobile-first'),
+        kayzenGS('breakpoints'),
+        reverse-map(kayzenGS('breakpoints'))
+    );
+
+    > [class*="#{kgs-option('col-namespace')}"] {
+
+        &[class*="break"] {
+            @include kgs-column-core;
+            @include kgs-gutter($flush: false);
+        }
+
+        @each $bp, $width in $reverse-breakpoints {
+            @media (#{$kgs-scale}-width: $width) {
+                @each $name, $fraction in kayzenGS('fractions') {		
+                    &.#{$bp}-#{$name} {
+                        @if $col-type == 'default' {
+                            width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
+                        } @else if $col-type =='no-gutter' {
+                            width: kgs-no-gutter-width(nth($fraction, 1), nth($fraction, 2));
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+/// Gutter
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {bool} $flush [true] - remove margin from first column in row
+/// @outputs styles for column gutters
+@mixin kgs-gutter($flush: true) {
+	margin-left: kgs-option('gutter');
+    @if $flush {
+        &:first-child {
+            margin-left: 0;
+        };
+    }
+}
+/// Pull Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for pull columns
+@mixin kgs-pull($col-type: 'default') {
+    
+    [class*="pull-"] {
+        position: relative;
+    }
+        
+    @for $i from 1 through kgs-option('columns') {       
+        .pull-#{$i} {
+            @if $col-type == 'default' {
+                left: - kgs-default-width($i, kgs-option('columns')) - kgs-option('gutter');
+            } @else if $col-type == 'flow' {
+                left: - kgs-flow-width($i, kgs-option('columns')) - kgs-option('gutter');
+            } @else if $col-type == 'no-gutter' {
+                left: - kgs-no-gutter-width($i, kgs-option('columns'));
+            }
+        }      
+    }     
+    
+}
+/// Push Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type ['default] - the type of columns to be generated
+/// @outputs styles for push columns
+@mixin kgs-push($col-type: 'default') {
+    
+    [class*="push-"] {
+        position: relative;
+    }
+        
+    @for $i from 1 through kgs-option('columns') {       
+        .push-#{$i} {
+            @if $col-type == 'default' {
+                left: kgs-default-width($i, kgs-option('columns')) + kgs-option('gutter');
+            } @else if $col-type == 'flow' {
+                left: kgs-flow-width($i, kgs-option('columns')) + kgs-option('gutter');
+            } @else if $col-type == 'no-gutter' {
+                left: kgs-no-gutter-width($i, kgs-option('columns'));
+            }
+        }      
+    }
+    
+}
+/// Reverse order of columns in a row
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs styles to reverse column order
+@mixin kgs-reverse-order {   
+    transform: rotate(180deg);
+    > [class*="#{kgs-option('col-namespace')}"] {
+        transform: scale(-1);
+    } 
+}
+/// Stack Columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $col-type [null] - the type of columns to be generated
+/// @param {bool} $core [false] - Set if mixin is included in column selector as opposed to row
+/// @outputs styles which cause columns to become stacked
+@mixin kgs-stack-columns($type: null, $core: false) {
+    
+    $selector: if(
+        $core, '&', '> [class*="#{kgs-option(col-namespace)}"]'
+    );
+    
+    #{$selector} {
+        display: block;
+        left: auto; // resets push/pull
+        @if $type == 'flow' {
+            width: 100% - kgs-option('gutter');
+        } @else if $type == 'magic' {
+            width: 100% !important;
+            margin-left: 0;
+        } @else if $type == null {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    
+}
+
+/// Core block column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a block column
+@mixin kgs-block-columns {
+    > [class*="#{kgs-option('col-namespace')}"] {
+        display: table-cell;
+    }  
+}
+
+/// Calculate width for a default column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {number} $span - the width (in columns) of returned value
+/// @param {number} $columns - the maxinum number of columns being used
+/// @return {number} - width of column
+@function kgs-default-width($span, $columns) {
+	@return ((100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * kgs-option(gutter) ) / ( $columns / $span ) );
+}
+/// Generate each individual column size
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs classes for each column width
+@mixin kgs-default-columns {
+    [class*="#{kgs-option('col-namespace')}"] {
+        @include kgs-column-core;
+        @include kgs-gutter;  
+    }
+    @for $i from 1 through kgs-option('columns') {       
+        .#{kgs-option('col-namespace')}-#{$i} {
+            width: kgs-default-width($i, kgs-option('columns'))
+        }      
+    }  
+}
+
+/// Calculate width for a flow column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {number} $span - the width (in columns) of returned value
+/// @param {number} $columns - the maxinum number of columns being used
+/// @return {number} - width of column
+@function kgs-flow-width($span, $columns) {
+	@return ((100/$columns) * $span) - kgs-option('gutter');
+}
+/// Generate flow columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs relevant styles for flow columns
+@mixin kgs-flow-columns {                 
+    > [class*="#{kgs-option('col-namespace')}"] {
+        @include kgs-column-core;
+        @include kgs-gutter($flush: false);  
+    }
+    @for $i from 1 through kgs-option('columns') {
+        > .#{kgs-option(col-namespace)}-#{$i} {
+            width: kgs-flow-width($i, kgs-option('columns'));
+        }
+    }
+}
+
+/// Calculate width for a magic column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {number} $columns - the maxinum number of columns being used
+/// @return {number} - width of column
+@function kgs-magic-width($columns: $columns) {
+	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * kgs-option('gutter') ) / $columns );
+}
+/// Core magic column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $namespace - your column namespace e.g. 'span'
+/// @outputs relevant selectors for magic columns
+@mixin kgs-magic-column-core($namespace: '[class*="#{kgs-option('col-namespace')}"]') {
+    &:first-child {
+        margin-left: 0;
+        @for $i from 1 through kgs-option('columns') {
+            &:nth-last-child(#{$i}) {
+                &, ~ #{$namespace} {
+                    width: kgs-magic-width($i);
+                }
+            }
+        }
+    }
+}
+/// Generate magic columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs relevant styles for magic columns
+@mixin kgs-magic-columns {
+	> [class*="#{kgs-option('col-namespace')}"] {
+        @include kgs-column-core;
+        @include kgs-gutter;  
+        @include kgs-magic-column-core; 
+    }
+}
+
+/// Calculate width for a no-gutter column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {number} $span - the width (in columns) of returned value
+/// @param {number} $columns - the maxinum number of columns being used
+/// @return {number} - width of column
+@function kgs-no-gutter-width($span, $columns) {
+	@return percentage($span/$columns);
+}
+/// Generate no-gutter columns
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs relevant styles for no-gutter columns
+@mixin kgs-no-gutter-columns { 
+    > [class*="#{kgs-option('col-namespace')}"] {
+        margin-left: 0 !important;
+    }
+    @for $i from 1 through kgs-option('columns') {
+        > .#{kgs-option(col-namespace)}-#{$i} {	
+            width: kgs-no-gutter-width($i, kgs-option('columns'));
+        }
+    }  
+}
+/// Core column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a column
+@mixin kgs-column-core {
+    display: inline-block;
+    vertical-align: top;
+    // IE < 8: fake inline-block
+    @if kgs-setting('old-ie') {
+        *display: inline;
+        zoom: 1; 
+    }   
+}
+/// Core row styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a row
+@mixin kgs-row-core {
+    
+    // Firefox/IE collapse white-space
+    letter-spacing: -1em;
+    // Webkit collapse white-space
+    display: table;
+    width: 100%;
+    // Opera collapse white-space
+    @at-root {
+        .opera-only :-o-prefocus, & {
+            word-spacing: -0.43em;
+        }
+    }
+    // IE < 8 collapse white-space
+    @if kgs-setting('old-ie') {
+        *letter-spacing: normal;
+        *word-spacing: -0.43em;
+    }	
+    // Required for some third-party sliders
+    // table-layout: fixed;
+    
+}
+/// Kayzen-GS core
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {map} $custom - where custom config will be passed
+/// @outputs all grid system styles
+///
+/// @example
+///     @include kayzen-gs((
+///         'options':(
+///             'max-width' : 90% 
+///         ),
+///         'breakpoints':(
+///             'break-3'   : 840px,
+///             'break-5'   : 1600px
+///         )
+///     ));
+@mixin kayzen-gs($custom: ()) {
+
+    //*************************************************************
+    // Configuration
+    //*************************************************************
+	
+    $kayzenGS: map-merge-deep($kayzenGS, $custom) !global;
+
+    //*************************************************************
+    // Row
+    //*************************************************************
+
+    .#{kgs-option('row-namespace')},
+    [class*="#{kgs-option('row-namespace')}-"] {
+        @include kgs-row-core;
+    }
+
+    //*************************************************************
+    // Columns
+    //*************************************************************
+            
+    .#{kgs-option('row-namespace')} {
+        
+        // Default Columns
+        //*********************************************************
+        
+        @at-root {
+            @if kgs-setting('mobile-first') {
+                @media (min-width: kgs-option('col-break')) {
+                    @include kgs-default-columns;
+                }
+            } @else {
+                @include kgs-default-columns; 
+            }
+        }
+        
+        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+            @if kgs-setting('mobile-first') {} @else {
+                @if kgs-setting('responsive') {
+                    &:not([class*="stack-"]) {
+                        @media (max-width: kgs-option('col-break')) {
+                            @include kgs-stack-columns;
+                        }
+                    }
+                }
+            }
+        }
+    
+        @if kgs-setting('responsive') {
+            @each $bp, $width in kayzenGS('breakpoints') {
+                &.stack-#{$bp} {
+                    @if kgs-setting('mobile-first') {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-default-columns;
+                        }
+                    } @else {
+                        @media (#{$kgs-scale}-width: $width) {
+                            @include kgs-stack-columns;
+                        }
+                    }
+                }
+            }
+        }  
+        
+        // Flow Columns
+        //*********************************************************
+        
+        @if kgs-setting('flow-columns') {
+            
+            &-flow {
+                
+                &:not(.#{kgs-option('row-namespace')}-no-gutter) {
+                    margin-left: -#{kgs-option('gutter')};
+                    width: 100% + kgs-option('gutter');
+                }
+                
+                @include kgs-pull('flow');
+                @include kgs-push('flow');
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option(col-break)) {
+                            @include kgs-flow-columns;
+                        }
+                    } @else {
+                        @include kgs-flow-columns;
+                        > [class*="#{kgs-option(col-namespace)}"] {
+                            margin-left: #{kgs-option(gutter)};
+                        } 
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns($type: 'flow');
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.stack-#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-flow-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns($type: 'flow');
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // Adaptive Columns 
+                @if kgs-setting('responsive') {
+                    @if kgs-setting('adaptive-columns') {    
+                        @include kgs-adaptive-columns;
+                    }
+                }
+                
+            } // &--flow
+        
+        } // kgs-setting()
+        
+        // Magic Columns
+        //*********************************************************
+    
+        @if kgs-setting('magic-columns') {
+            
+            &-magic {
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-magic-columns;
+                        }
+                    } @else {
+                        @include kgs-magic-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns($type: 'magic');
+                                }
+                            }
+                        }
+                    }
+                    
+                    @if kgs-setting('responsive') {
+                        @each $bp, $width in kayzenGS('breakpoints') {
+                            &.stack-#{$bp} {
+                                @if kgs-setting('mobile-first') {
+                                    @media (#{$kgs-scale}-width: $width) {
+                                        @include kgs-magic-columns;
+                                    }
+                                } @else {
+                                    @media (#{$kgs-scale}-width: $width) {
+                                        @include kgs-stack-columns($type: 'magic');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                
+            } // &--magic
+            
+        } // kgs-setting()
+        
+        // No Gutter Columns
+        //*********************************************************
+        
+        @if kgs-setting('no-gutter-columns') {
+            
+            &-no-gutter, &-block {
+                
+                @include kgs-pull('no-gutter');
+                @include kgs-push('no-gutter');
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-no-gutter-columns;
+                        }
+                    } @else {
+                        @include kgs-no-gutter-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.stack-#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-no-gutter-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }          
+                
+            }
+            
+            &-no-gutter {
+                
+                // Adaptive Columns 
+                @if kgs-setting('responsive') {
+                    @if kgs-setting('adaptive-columns') {    
+                        @include kgs-adaptive-columns($col-type: 'no-gutter');
+                    }
+                }   
+                
+            }
+            
+        } // kgs-setting()
+        
+        // Block Columns
+        //*********************************************************
+        
+        @if kgs-setting('block-columns') {
+            
+            &-block {
+                
+                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                    @if kgs-setting('mobile-first') {
+                        @media (min-width: kgs-option('col-break')) {
+                            @include kgs-block-columns;
+                        }
+                    } @else {
+                        @include kgs-block-columns;
+                        @if kgs-setting('responsive') {
+                            &:not([class*="stack-"]) {
+                                @media (max-width: kgs-option('col-break')) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                @if kgs-setting('responsive') {
+                    @each $bp, $width in kayzenGS('breakpoints') {
+                        &.stack-#{$bp} {
+                            @if kgs-setting('mobile-first') {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-block-columns;
+                                }
+                            } @else {
+                                @media (#{$kgs-scale}-width: $width) {
+                                    @include kgs-stack-columns;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            } // &-block
+            
+        } // kgs-setting()
+        
+        // Reverse Column Order
+        //*********************************************************
+    
+        @if kgs-setting('reverse-columns') {
+            
+            &-reverse {
+                &:not([class*="reverse-break"]) {
+                    @include kgs-reverse-order;
+                }
+            }
+                
+            @if kgs-setting('responsive') {
+                @each $bp, $width in kayzenGS('breakpoints') {
+                    @media (#{$kgs-scale}-width: $width) {
+                        &.reverse-#{$bp} {
+                            @include kgs-reverse-order;
+                        }
+                    }
+                }
+            }
+            
+        } // kgs-setting()
+        
+    } // row
+
+    //*************************************************************
+    // Custom Push/Pull
+    //*************************************************************
+    
+    @if kgs-setting('pull-columns') {
+        @include kgs-pull;
+    }
+    
+    @if kgs-setting('push-columns') {
+        @include kgs-push;
+    }
+
+} // @mixin kayzen-gs
+
+//*************************************************************
+// Reset Spacing
+//*************************************************************
+* {        
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+}
+
+@if kgs-setting('kayzen-gs') {
+    @include kayzen-gs;   
+}
+
+
+/// Custom semantic column
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {map} $custom - where custom config will be passed
+/// @outputs custom column styles
+@mixin column($custom: ()) {
+
+    //*************************************************************
+    // Configuration
+    //*************************************************************
+	
+	$config: map-merge((
+		'width'        : 'full', 
+		'type'         : null, 
+		'stack'        : kgs-option('col-break'), 
+		'mobile-first' : kgs-setting('mobile-first'),
+		'respond-to'   : null
+	), $custom);
+	
+	$config: $config !global;
+	
+	$span: null;
+	$columns: null; 
+
+    //*************************************************************
+    // Prepare Grid
+    //*************************************************************
+    
+    // if 'width' is a fraction e.g. 'quarter'
+	@if type-of(kgs-config('width')) == string {
+		$span: nth(kgs-fraction(kgs-config(width)), 1);
+		$columns: nth(kgs-fraction(kgs-config('width')), 2);
+	} 
+    
+    // if 'width' is a percentage e.g. 25%
+    @else if type-of(kgs-config('width')) == number {
+		$span: kgs-config(width);
+		$columns: 100;	
+	} 
+    
+    // if 'width' is a (span, columns) format e.g. (3, 12)
+    @else if type-of(kgs-config('width')) == list {
+		$span: nth(kgs-config('width'), 1);
+		$columns: nth(kgs-config('width'), 2);	
+	}
+
+    //*************************************************************
+    // Apply Styles
+    //*************************************************************
+    
+    @if kgs-config('mobile-first') {
+        @media (min-width: kgs-config('stack')) {
+            @include kgs-column-core;
+        }
+    } @else {
+        @include kgs-column-core;
+    }
+    
+    // if flow column
+    @if kgs-config('type') == 'flow' {
+        @include kgs-gutter(false);
+        width: kgs-flow-width($span, $columns);
+	} 
+	
+    // if magic column
+	@else if kgs-config('type') == 'magic' {
+        @if kgs-config('mobile-first') {
+            @media (min-width: kgs-config('stack')) {
+                @include kgs-column-core;
+                @include kgs-gutter;
+                @include kgs-magic-column-core(&);
+            }
+        } @else {
+            @include kgs-column-core;
+            @include kgs-gutter;
+            @include kgs-magic-column-core(&);
+            @media (max-width: kgs-config('stack')) {
+                @include kgs-stack-columns($type: 'magic', $core: true);
+            }
+        }
+	}
+    
+    // if no-gutter column
+	@else if kgs-config('type') == 'no-gutter' {
+        @if kgs-config('mobile-first') {
+            @media (min-width: kgs-config('stack')) {
+                width: kgs-no-gutter-width($span, $columns);
+            }
+        } @else {
+            width: kgs-no-gutter-width($span, $columns);
+            @media (max-width: kgs-config('stack')) {
+                @include kgs-stack-columns($core: true);
+            }
+        }
+    }
+        
+    // all other column types
+    @else {	
+        @if kgs-config('mobile-first') {
+            width: 100%;
+            @media (min-width: kgs-config('stack')) {
+                @include kgs-gutter;
+                width: kgs-default-width($span, $columns);
+                @if kgs-config('type') == 'block' {
+                    display: table-cell;		
+                } 
+            }
+        } @else {		
+            @include kgs-gutter;
+            width: kgs-default-width($span, $columns);
+            @if kgs-config('type') == 'block' {
+                display: table-cell;		
+            } 
+            @media (max-width: kgs-config('stack')) {
+                @include kgs-stack-columns($core: true);
+            }
+        }
+	}
+
+    //*************************************************************
+    // Adaptive Widths
+    //*************************************************************
+	
+    @if kgs-config('respond-to') {
+            
+        $breakpoints: if(
+            kgs-config('mobile-first'),
+            kgs-config('respond-to'),
+            reverse-list(kgs-config('respond-to'))
+        );
+        
+        @each $width, $breakpoint in $breakpoints {
+            
+            $columns: null;	
+            $span: null; 
+            
+            $respond-scale: if(
+                kgs-config('mobile-first'), min, max
+            );
+    
+            @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
+                
+                // if 'width' is a fraction e.g. 'quarter'
+                @if type-of($width) == string {
+                    $span: nth(kgs-fraction($width), 1);
+                    $columns: nth(kgs-fraction($width), 2);
+                } 
+                
+                // if 'width' is a percentage e.g. 25%
+                @else if type-of($width) == number {
+                    $span: $width;
+                    $columns: 100;
+                } 
+                
+                // if 'width' is in (span, columns) format e.g. (3, 12)
+                @else if type-of($width) == list {
+                    $span: nth($width, 1);
+                    $columns: nth($width, 2);			
+                }
+                
+                @include kgs-column-core;
+                
+                // if flow column
+                @if kgs-config('type') == 'flow' {
+                    width: kgs-flow-width($span, $columns);	
+                } 
+                
+                // all other column types
+                @else {	
+                    width: kgs-default-width($span, $columns);	
+                }
+                        
+            }
+                
+        }
+        
+    }
+	
+} // @mixin column
+/// Custom semantic row
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $type - type of columns row should have
+/// @outputs custom row styles
+@mixin row($type: null) {
+	@include kgs-row-core;
+	@if $type == 'flow' {		
+		margin-left: -#{kgs-option('gutter')};
+		width: 100% + kgs-option('gutter');
+	}
+}
