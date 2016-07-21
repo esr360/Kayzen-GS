@@ -3,4 +3,6 @@
 .sass-cache
 .pages
 node_modules
+docs
 todo.md
+tests.css
