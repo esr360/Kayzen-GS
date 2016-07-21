@@ -1,7 +1,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
 [![GitHub license](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
 
-![Kayzen GS](https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo-small.png "Kayzen GS Logo")
+<img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
 ## Overview
 
