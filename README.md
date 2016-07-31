@@ -9,7 +9,7 @@
 
 [View Examples](http://kayzen.gs)
 
-![Kayzen - Premium HTML Theme Framework](http://i.imgur.com/wNiAzgD.png)
+[![Kayzen - Premium HTML Theme Framework](http://i.imgur.com/wNiAzgD.png)](https://themeforest.net/item/kayzen-multipurpose-html5-template/16768920)
 
 Some of the core features of Kayzen GS include:
 
