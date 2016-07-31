@@ -9,6 +9,8 @@
 
 [View Examples](http://kayzen.gs)
 
+![Kayzen - Premium HTML Theme Framework](http://i.imgur.com/wNiAzgD.png)
+
 Some of the core features of Kayzen GS include:
 
 * Specify any number of columns
