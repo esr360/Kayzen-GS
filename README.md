@@ -789,7 +789,7 @@ With `mobile-first` enabled, a width is not required by default if you are using
 
 > You can set any fraction you want, for example you can write *(1, 2)* instead of *(6, 12)*.
 
-You can also use numeric values for percentages:
+You can also use numeric values for the width:
 
 ```scss
 .portfolio-item {

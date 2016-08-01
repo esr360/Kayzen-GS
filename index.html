@@ -656,9 +656,9 @@
         'type'       : 'flow',
 		'width'      : (3, 12),
         'respond-to' : (
-            ((4, 12),  'break-3'),
-            ((6, 12),  'break-2'),
-            ((12, 12), 'break-1')
+            'break-3': (4, 12),
+            'break-2': (6, 12),
+            'break-1': (12, 12)
         )
     ));
 }
@@ -669,12 +669,13 @@
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
     @include column((
-        'type'       : 'flow',
-        'respond-to' : (
-            ((6, 12), 'break-1'),
-            ((4, 12), 'break-2'),
-            ((3, 12), 'break-3')
-        )
+        'mobile-first': true: 
+		'type': 'flow',
+		'respond-to' : (
+            'break-1': (6, 12),
+            'break-2': (4, 12),
+            'break-3': (3, 12)
+		)
     ));
 }
 </pre>
@@ -740,28 +741,28 @@
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
     @include column((
-        'type'  : 'flow',
-        'width' : (3, 12),
+        'type' : 'flow',
+        'width': (3, 12),
         'respond-to' : (
-            ((4, 12), 'break-3'),
-            ((6, 12), 'break-2'),
-            ((12, 12), 'break-1')
+            'break-3': (4, 12),
+            'break-2': (6, 12),
+            'break-1': (12, 12)
         )
     ));
 }
 </pre>
 
-			<p>Using percentages:</p>
+			<p>Using numeric values:</p>
 
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
     @include column((
         'type' : 'flow',
-        'width' : 25%,
+        'width': 25%,
         'respond-to' : (
-            (100/3, 'break-3'),
-            (50%, 'break-2'),
-            (100%, 'break-1')
+            'break-3': 100/3,
+            'break-2': 50%,
+            'break-1': 100%
         )
     ));
 }
@@ -775,9 +776,9 @@
         'type' : 'flow',
         'width' : 'quarter',
         'respond-to' : (
-            ('third', 'break-3'),
-            ('half', 'break-2'),
-            ('full', 'break-1')
+			'break-3': 'third',
+			'break-2': 'half',
+		    'break-1': 'full'
         )
     ));
 }
@@ -788,12 +789,12 @@
 <pre data-enlighter-language="css" class="EnlighterJSRAW" style="display: none;"> 
 .portfolio-item {
     @include column((
-        'mobile-first' : true,
-        'type'         : 'flow',
+        'mobile-first': true,
+        'type': 'flow',
         'respond-to' : (
-            ('half', 'break-1'),
-            ('third', 'break-2'),
-            ('quarter', 'break-3')
+            'break-1': 'half',
+            'break-2': 'third',
+            'break-3': 'quarter', 
         )
     ));
 }
