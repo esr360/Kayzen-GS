@@ -72,7 +72,7 @@ $kayzenGS: (
 /// @access public
 /// @group Kayzen-GS
 /// @type string
-$kgs-scale: if(kgs-setting('mobile-first'), min, max);
+$kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 
 // Reset "mobile-first" to false if "responsive" is disabled
 @if not kgs-setting('responsive') {

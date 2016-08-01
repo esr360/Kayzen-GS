@@ -52,8 +52,8 @@
             }
         }
         
-        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-            @if kgs-setting('mobile-first') {} @else {
+        @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
+            @if not kgs-setting('mobile-first') {
                 @if kgs-setting('responsive') {
                     &:not([class*="stack-"]) {
                         @media (max-width: kgs-option('col-break')) {
@@ -95,7 +95,7 @@
                 @include kgs-pull('flow');
                 @include kgs-push('flow');
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option(col-break)) {
                             @include kgs-flow-columns;
@@ -149,7 +149,7 @@
             
             &-magic {
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
@@ -198,7 +198,7 @@
                 @include kgs-pull('no-gutter');
                 @include kgs-push('no-gutter');
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-no-gutter-columns;
@@ -253,7 +253,7 @@
             
             &-block {
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-block-columns;

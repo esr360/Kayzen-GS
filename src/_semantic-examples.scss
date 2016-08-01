@@ -29,7 +29,7 @@
 //-----------------------------------------------------------------
 
 .portfolio-grid {
-    @include row(flow);	
+    @include row('flow');	
 }
 
 .portfolio-item {
@@ -55,7 +55,7 @@
     @include column((
         'type' : 'magic'
     ));
-} 
+}
 
 // Block Columns
 //-----------------------------------------------------------------

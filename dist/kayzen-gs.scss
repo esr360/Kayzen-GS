@@ -232,7 +232,7 @@ $kayzenGS: (
 /// @access public
 /// @group Kayzen-GS
 /// @type string
-$kgs-scale: if(kgs-setting('mobile-first'), min, max);
+$kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 
 // Reset "mobile-first" to false if "responsive" is disabled
 @if not kgs-setting('responsive') {
@@ -454,7 +454,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
         @include kgs-gutter($flush: false);  
     }
     @for $i from 1 through kgs-option('columns') {
-        > .#{kgs-option(col-namespace)}-#{$i} {
+        > .#{kgs-option('col-namespace')}-#{$i} {
             width: kgs-flow-width($i, kgs-option('columns'));
         }
     }
@@ -627,8 +627,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
             }
         }
         
-        @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
-            @if kgs-setting('mobile-first') {} @else {
+        @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
+            @if not kgs-setting('mobile-first') {
                 @if kgs-setting('responsive') {
                     &:not([class*="stack-"]) {
                         @media (max-width: kgs-option('col-break')) {
@@ -670,7 +670,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
                 @include kgs-pull('flow');
                 @include kgs-push('flow');
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option(col-break)) {
                             @include kgs-flow-columns;
@@ -724,7 +724,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
             
             &-magic {
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
@@ -773,7 +773,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
                 @include kgs-pull('no-gutter');
                 @include kgs-push('no-gutter');
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-no-gutter-columns;
@@ -828,7 +828,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), min, max);
             
             &-block {
                 
-                @if (kgs-option('mobile-first'), '&:not([class*="stack-"])', '&') {
+                @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-block-columns;
