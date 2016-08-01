@@ -555,11 +555,11 @@
             
         $breakpoints: if(
             kgs-config(&#39;mobile-first&#39;),
-            kgs-config(&#39;respond-to&#39;),
-            reverse-list(kgs-config(&#39;respond-to&#39;))
+            reverse-list(kgs-config(&#39;respond-to&#39;)),
+            kgs-config(&#39;respond-to&#39;)
         );
         
-        @each $width, $breakpoint in $breakpoints {
+        @each $breakpoint, $width in $breakpoints {
             
             $columns: null;	
             $span: null; 

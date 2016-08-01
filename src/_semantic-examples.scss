@@ -34,12 +34,12 @@
 
 .portfolio-item {
     @include column((
-        'type'  : 'flow',
-        'width' : (3, 12),
+        'type' : 'flow',
+        'width': (3, 12),
         'respond-to' : (
-            ((12, 12), 'break-1'),
-            ((6, 12), 'break-2'),
-            ((4, 12), 'break-3')
+            'break-3': (4, 12),
+            'break-2': (6, 12),
+            'break-1': (12, 12)
         )
     ));
 }

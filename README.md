@@ -744,7 +744,7 @@ The default width for the stacking of semantic columns is set in the [Configurat
 .sidebar {
 	@include column((
 		'width' : 'quarter',
-		'stack' : breakpoint(break-2)
+		'stack' : breakpoint('break-2')
 	));
 }
 ```
@@ -759,11 +759,11 @@ When inside a Flow Columns container and with its `type` set to **flow**, you ca
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
-        'width' : (3, 12),
+        'width': (3, 12),
         'respond-to' : (
-            ((4, 12), 'break-3'),
-            ((6, 12), 'break-2'),
-            ((12, 12), 'break-1')
+            'break-3': (4, 12),
+            'break-2': (6, 12),
+            'break-1': (12, 12)
         )
 	));
 }
@@ -776,12 +776,12 @@ With `mobile-first` enabled, a width is not required by default if you are using
 ```scss
 .portfolio-item {
 	@include column((
-        'mobile-first' true: 
-		'type' : 'flow',
+        'mobile-first': true: 
+		'type': 'flow',
 		'respond-to' : (
-			((6, 12), 'break-1'),
-			((4, 12), 'break-2'),
-			((3, 12), 'break-3')
+            'break-1': (6, 12),
+            'break-2': (4, 12),
+            'break-3': (3, 12)
 		)
 	));
 }
@@ -795,11 +795,11 @@ You can also use numeric values for percentages:
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
-        'width' : 25%,
+        'width': 25%,
         'respond-to' : (
-            (100/3, 'break-3'),
-            (50%, 'break-2'),
-            (100%, 'break-1')
+            'break-3': 100/3,
+            'break-2': 50%,
+            'break-1': 100%
         )
 	));
 }
@@ -811,10 +811,11 @@ Using the fractions from the [Configuration](#custom-configuration) you can subs
 .portfolio-item {
 	@include column((
 		'type' : 'flow',
+        'width': 'quarter',
 		'respond-to' : (
-			('half', 'break-1'),
-			('third', 'break-2'),
-			('quarter', 'break-3')
+			'break-3': 'third',
+			'break-2': 'half',
+		    'break-1': 'full'
 		)
 	));
 }
