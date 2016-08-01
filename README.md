@@ -595,12 +595,12 @@ In the above example we are using **main** as our semantic class name.
 
 
 ```scss
-.portfolio-grid {
+.portfolio-items {
 	@include row('flow');
 }
 ```
 
-In the above example, our semantic class name for our row of Flow Columns is **portfolio-grid**.
+In the above example, our semantic class name for our row of Flow Columns is **portfolio-items**.
 
 #### Creating a Semantic Column
 
