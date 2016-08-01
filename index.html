@@ -995,7 +995,25 @@
 	    <link rel="stylesheet" href="http://skyux.com/libraries/enlighter/EnlighterJS.yui.css">
 	    <script src="http://skyux.com/libraries/enlighter/mootools-core-yc.js"></script>    
 	    <script src="http://skyux.com/libraries/enlighter/EnlighterJS.yui.js"></script>    
-	    <script type="text/javascript">/* <![CDATA[ */window.addEvent('domready', function(){if (typeof EnlighterJS == "undefined"){return;};EnlighterJS.Util.Init('pre.EnlighterJSRAW', 'code.EnlighterJSRAW', {"language":"html","theme":"enlighter","indent":4,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":true,"windowButton":true,"rawcodeDoubleclick":false,"grouping":true});});/* ]]> */</script>
+	    <script type="text/javascript">
+            /* <![CDATA[ */window.addEvent('domready', function() {
+                if (typeof EnlighterJS == "undefined") {
+                    return;
+                };
+                EnlighterJS.Util.Init('pre.EnlighterJSRAW', 'code', {
+                    "language":"css",
+                    "theme":"enlighter",
+                    "indent":4,
+                    "hover":"hoverEnabled",
+                    "showLinenumbers":true,
+                    "rawButton":true,
+                    "infoButton":true,
+                    "windowButton":true,
+                    "rawcodeDoubleclick":false,
+                    "grouping":true
+                });
+            });/* ]]> */
+        </script>
 		
 	</body>
 	
