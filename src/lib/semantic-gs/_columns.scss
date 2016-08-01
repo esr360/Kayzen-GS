@@ -136,9 +136,7 @@
             $columns: null;	
             $span: null; 
             
-            $respond-scale: if(
-                kgs-config('mobile-first'), min, max
-            );
+            $respond-scale: if(kgs-config('mobile-first'), 'min', 'max');
     
             @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
                 
@@ -146,7 +144,7 @@
                 @if type-of($width) == string {
                     $span: nth(kgs-fraction($width), 1);
                     $columns: nth(kgs-fraction($width), 2);
-                } 
+                }
                 
                 // if 'width' is a percentage e.g. 25%
                 @else if type-of($width) == number {
