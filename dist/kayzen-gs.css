@@ -940,3 +940,205 @@
 .push-12 {
   left: 103%;
 }
+
+.main {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
+}
+.opera-only :-o-prefocus, .main {
+  word-spacing: -0.43em;
+}
+
+.sidebar {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3%;
+  width: 22.75%;
+}
+.sidebar:first-child {
+  margin-left: 0;
+}
+@media (max-width: 940px) {
+  .sidebar {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.content {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3%;
+  width: 74.25%;
+}
+.content:first-child {
+  margin-left: 0;
+}
+@media (max-width: 940px) {
+  .content {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.portfolio-items {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
+  margin-left: -3%;
+  width: 103%;
+}
+.opera-only :-o-prefocus, .portfolio-items {
+  word-spacing: -0.43em;
+}
+
+.portfolio-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3%;
+  width: 22%;
+}
+@media (max-width: 940px) {
+  .portfolio-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 30.33333%;
+  }
+}
+@media (max-width: 720px) {
+  .portfolio-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 47%;
+  }
+}
+@media (max-width: 460px) {
+  .portfolio-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 97%;
+  }
+}
+
+.product-grid {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
+}
+.opera-only :-o-prefocus, .product-grid {
+  word-spacing: -0.43em;
+}
+
+.product {
+  display: inline-block;
+  vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3%;
+}
+.product:first-child {
+  margin-left: 0;
+}
+.product:first-child {
+  margin-left: 0;
+}
+.product:first-child:nth-last-child(1), .product:first-child:nth-last-child(1) ~ .product {
+  width: 100%;
+}
+.product:first-child:nth-last-child(2), .product:first-child:nth-last-child(2) ~ .product {
+  width: 48.5%;
+}
+.product:first-child:nth-last-child(3), .product:first-child:nth-last-child(3) ~ .product {
+  width: 31.33333%;
+}
+.product:first-child:nth-last-child(4), .product:first-child:nth-last-child(4) ~ .product {
+  width: 22.75%;
+}
+.product:first-child:nth-last-child(5), .product:first-child:nth-last-child(5) ~ .product {
+  width: 17.6%;
+}
+.product:first-child:nth-last-child(6), .product:first-child:nth-last-child(6) ~ .product {
+  width: 14.16667%;
+}
+.product:first-child:nth-last-child(7), .product:first-child:nth-last-child(7) ~ .product {
+  width: 11.71429%;
+}
+.product:first-child:nth-last-child(8), .product:first-child:nth-last-child(8) ~ .product {
+  width: 9.875%;
+}
+.product:first-child:nth-last-child(9), .product:first-child:nth-last-child(9) ~ .product {
+  width: 8.44444%;
+}
+.product:first-child:nth-last-child(10), .product:first-child:nth-last-child(10) ~ .product {
+  width: 7.3%;
+}
+.product:first-child:nth-last-child(11), .product:first-child:nth-last-child(11) ~ .product {
+  width: 6.36364%;
+}
+.product:first-child:nth-last-child(12), .product:first-child:nth-last-child(12) ~ .product {
+  width: 5.58333%;
+}
+@media (max-width: 940px) {
+  .product {
+    display: block;
+    left: auto;
+    width: 100% !important;
+    margin-left: 0;
+  }
+}
+
+.features {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
+}
+.opera-only :-o-prefocus, .features {
+  word-spacing: -0.43em;
+}
+
+.feature {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 3%;
+  width: 31.33333%;
+  display: table-cell;
+}
+.feature:first-child {
+  margin-left: 0;
+}
+@media (max-width: 940px) {
+  .feature {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.items {
+  letter-spacing: -1em;
+  display: table;
+  width: 100%;
+}
+.opera-only :-o-prefocus, .items {
+  word-spacing: -0.43em;
+}
+
+.item {
+  display: inline-block;
+  vertical-align: top;
+  width: 33.33333%;
+}
+@media (max-width: 940px) {
+  .item {
+    display: block;
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+}
