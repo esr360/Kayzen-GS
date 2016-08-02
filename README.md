@@ -5,13 +5,13 @@
 
 ## Overview
 
-> Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.
+> Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
 
 [View Examples](http://kayzen.gs)
 
 [![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
-Some of the core features of Kayzen GS include:
+Some of the core features of Kayzen-GS include:
 
 * Specify any number of columns
 * Infinitely nestable rows
@@ -33,7 +33,7 @@ The simple answer is; flexibility. By definition, columns *are* just inline bloc
 
 #### Why don't other grid systems use inline-block?
 
-By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
+By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
 
 ## Documentation
 
@@ -60,7 +60,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ### Getting Started
 
-There are several ways to use the Kayzen GS framework depending on how much you want to customize it:
+There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
 
 #### Plain CSS 
 
@@ -68,7 +68,7 @@ If you aren't using Sass, to use the default compiled and minified grid system, 
 
 #### Using Sass
 
-If you're using Sass, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
+If you're using Sass, ensure you have a copy of the Kayzen-GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
 
 ##### Install as Git Submodule
 
@@ -84,9 +84,9 @@ bower install Kayzen-GS
 
 ---
 
-Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
+Once you have a copy of Kayzen-GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
 
-To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen GS is imported:
+To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
 
 ```scss
 @include kayzen-gs;
@@ -130,7 +130,7 @@ To create a **column** with no specified width, add the `span` class to your ele
 
 > Change the class name *span* to whatever you want in the [Configuration](#options).
 
-By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
+By default, Kayzen-GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
 ```html
 <div class="row">                    
@@ -159,7 +159,7 @@ Using these normal columns, the total span of the columns in a given row may not
 
 > Responsiveness can be disabled [(?)](#responsive)
 
-Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
+Kayzen-GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
 
 * break-0: 0px,
 * break-1: 460px,
@@ -384,7 +384,7 @@ In the above example, the columns' order would effectivaly be reversed. Naturall
 
 ### Custom Configuration
 
-Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
+Kayzen-GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
 The configuration is found in the following file:
 
@@ -392,7 +392,7 @@ The configuration is found in the following file:
 src/_config.scss
 ```
 
-All config for Kayzen GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen GS) and ensure it has all the required values.
+All config for Kayzen-GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen-GS) and ensure it has all the required values.
 
 ```scss
 $kayzenGS: (
@@ -451,13 +451,13 @@ The 'options' form the basic foundation for your grid system. This is where you 
 
 > **Note:** Whilst most options are enabled by default, it is recommended that you disable any features you don't use to optimise the generated CSS.
 
-This is where you set which features of Kayzen GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
+This is where you set which features of Kayzen-GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen-GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
 
 ##### 'kayzen-gs'
 
 *Default : false*
 
-This setting outputs the Kayzen GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
+This setting outputs the Kayzen-GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
 
 ##### 'old-ie'
 
@@ -553,7 +553,7 @@ This option generates the code required to [push columns](#pushpull-columns).
 
 #### Breakpoints
 
-Kayzen GS allows you to specify any number of breakpoints. Amend the `breakpoints` map in the config as you desire.
+Kayzen-GS allows you to specify any number of breakpoints. Amend the `breakpoints` map in the config as you desire.
 
 > These values are used to generate the helper classes. Be wary not to include too many values here.
 
@@ -585,7 +585,7 @@ This is where you can define the names for any fractions you wish to use in your
 
 ### Semantic Grid System
 
-You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
+You can use Kayzen-GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
 
 [View Examples](http://esr360.github.io/Kayzen-GS/#semantic-examples)
 
@@ -831,7 +831,7 @@ Using the fractions from the [Configuration](#custom-configuration) you can subs
 
 ### Column Aligning
 
-Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
+Whilst Kayzen-GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
 
 ```html	
 <div class="row" style="text-align: center">
