@@ -7,7 +7,7 @@
 
 > Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
 
-[View Examples](http://kayzen.gs)
+[View Examples](http://kayzen.gs) | [View Sass Documentation](http://esr360.github.io/Kayzen-GS/docs/)
 
 [![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
