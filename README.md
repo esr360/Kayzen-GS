@@ -76,6 +76,14 @@ If you're using Sass, ensure you have a copy of the Kayzen GS `src` directory in
 git submodule add https://github.com/esr360/Kayzen-GS.git
 ```
 
+##### Install with Bower
+
+```
+bower install Kayzen-GS
+```
+
+---
+
 Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
 
 To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen GS is imported:
