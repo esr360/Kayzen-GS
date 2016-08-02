@@ -97,13 +97,13 @@ It is possible to override any value in the [Configuration](#custom-configuratio
 ```scss
 @include kayzen-gs((
     'options' : (
-        'columns'           : 16,
-        'col-namespace'     : 'col',
+        'columns'       : 16,
+        'col-namespace' : 'col',
     ),
     'settings' : (
-        'old-ie'            : true,
-        'pull-columns'      : false,
-        'push-columns'      : false
+        'old-ie'        : true,
+        'pull-columns'  : false,
+        'push-columns'  : false
     ),
 ));
 ```
