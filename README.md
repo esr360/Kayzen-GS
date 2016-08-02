@@ -108,7 +108,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 
 ```html                
 <div class="row">
-	...
+    ...
 </div>
 ```
 
@@ -491,55 +491,55 @@ Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** o
 
 ##### 'custom-stacking'
 
-Default  : true
+Default : true
 
 This option generates the code required for the [custom breakpoint stacking](#responsiveness) feature.
 
 ##### 'adaptive-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [adaptive columns](#adaptive-columns).
 
 ##### 'flow-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [flow columns](#flow-columns).
 
 ##### 'magic-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [magic columns](#magic-columns).
 
 ##### 'block-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [block columns](#block-columns).
 
 ##### 'no-gutter-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [no-gutter columns](#no-gutter-columns).
 
 ##### 'reverse-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [reverse columns](#reverse-column-order).
 
 ##### 'pull-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [pull columns](#pushpull-columns).
 
 ##### 'push-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [push columns](#pushpull-columns).
 
@@ -551,11 +551,11 @@ Kayzen GS allows you to specify any number of breakpoints. Amend the `breakpoint
 
 ```scss	
 'breakpoints' : (
-	'break-0' : 0px,
-	'break-1' : 460px,
-	'break-2' : 720px,
-	'break-3' : 940px,
-	'break-4' : 1200px
+    'break-0' : 0px,
+    'break-1' : 460px,
+    'break-2' : 720px,
+    'break-3' : 940px,
+    'break-4' : 1200px
 );
 ```
 
@@ -567,11 +567,11 @@ This is where you can define the names for any fractions you wish to use in your
 
 ```scss	
 'fractions' : (
-	'full'    : (1, 1),
-	'half'    : (1, 2),
-	'third'   : (1, 3),
-	'quarter' : (1, 4),
-	'sixth'   : (1, 6)
+    'full'    : (1, 1),
+    'half'    : (1, 2),
+    'third'   : (1, 3),
+    'quarter' : (1, 4),
+    'sixth'   : (1, 6)
 );
 ```
 
@@ -585,7 +585,7 @@ You can use Kayzen GS to build your own grid system using semantic class names w
 
 ```scss
 .main {
-	@include row;
+    @include row;
 }
 ```
 
@@ -596,7 +596,7 @@ In the above example we are using **main** as our semantic class name.
 
 ```scss
 .portfolio-items {
-	@include row('flow');
+    @include row('flow');
 }
 ```
 
@@ -608,9 +608,9 @@ In the above example, our semantic class name for our row of Flow Columns is **p
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : (3, 12)
-	));
+    @include column((
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -618,9 +618,9 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 'quarter'
-	));
+    @include column((
+        'width' : 'quarter'
+    ));
 }
 ```
 
@@ -630,9 +630,9 @@ Or even this:
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 25%
-	));
+    @include column((
+        'width' : 25%
+    ));
 }
 ```
 
@@ -640,21 +640,21 @@ Note that perhaps surprisingly the above examples do **not** produce a `width` v
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 20%
-	));
+    @include column((
+        'width' : 20%
+    ));
 }
 
 .content {
-	@include column(
-		'width' : 70%
-	));
+    @include column(
+        'width' : 70%
+    ));
 }
 
 .promo {
-	@include column(
-		'width' : 10%
-	));
+    @include column(
+        'width' : 10%
+    ));
 }
 ```
 
@@ -689,10 +689,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'flow',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'flow',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -702,9 +702,9 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column(
-		'type' : 'magic'
-	);
+    @include column(
+        'type' : 'magic'
+    );
 } 
 ```
 
@@ -714,10 +714,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'block',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'block',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -727,10 +727,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'no-gutter',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'no-gutter',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -742,10 +742,10 @@ The default width for the stacking of semantic columns is set in the [Configurat
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 'quarter',
-		'stack' : breakpoint('break-2')
-	));
+    @include column((
+        'width' : 'quarter',
+        'stack' : breakpoint('break-2')
+    ));
 }
 ```
 
@@ -757,15 +757,15 @@ When inside a Flow Columns container and with its `type` set to **flow**, you ca
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': (3, 12),
         'respond-to' : (
             'break-3': (4, 12),
             'break-2': (6, 12),
             'break-1': (12, 12)
         )
-	));
+    ));
 }
 ```
 
@@ -775,15 +775,15 @@ With `mobile-first` enabled, a width is not required by default if you are using
 
 ```scss
 .portfolio-item {
-	@include column((
+    @include column((
         'mobile-first': true: 
-		'type': 'flow',
-		'respond-to' : (
+        'type': 'flow',
+        'respond-to' : (
             'break-1': (6, 12),
             'break-2': (4, 12),
             'break-3': (3, 12)
-		)
-	));
+        )
+    ));
 }
 ```
 
@@ -793,15 +793,15 @@ You can also use numeric values for the width:
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': 25%,
         'respond-to' : (
             'break-3': 100/3,
             'break-2': 50%,
             'break-1': 100%
         )
-	));
+    ));
 }
 ```
 
@@ -809,15 +809,15 @@ Using the fractions from the [Configuration](#custom-configuration) you can subs
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': 'quarter',
-		'respond-to' : (
-			'break-3': 'third',
-			'break-2': 'half',
-		    'break-1': 'full'
-		)
-	));
+        'respond-to' : (
+            'break-3': 'third',
+            'break-2': 'half',
+            'break-1': 'full'
+        )
+    ));
 }
 ```
 
@@ -827,7 +827,7 @@ Whilst Kayzen GS does not come with any classes or mixins to align your columns,
 
 ```html	
 <div class="row" style="text-align: center">
-	<div class="span-6">This column is centrally aligned.</div>
+    <div class="span-6">This column is centrally aligned.</div>
 </div>
 ```
 
@@ -835,18 +835,18 @@ To **vertically align** your columns, set the `vertical-align` CSS property of y
 
 ```html	
 <div class="row" style="height: 200px">
-	<div class="span-3" style="vertical-align: top">
-		This column is top aligned.
-	</div>
-	<div class="span-3" style="vertical-align: middle">
-		This column is middle aligned.
-	</div>
-	<div class="span-3" style="vertical-align: bottom">
-		This column is bottom aligned.
-	</div>
-  	<div class="span-3" style="vertical-align: middle; height: 200px">
-		  This column is middle aligned.
-	</div>
+    <div class="span-3" style="vertical-align: top">
+        This column is top aligned.
+    </div>
+    <div class="span-3" style="vertical-align: middle">
+        This column is middle aligned.
+    </div>
+    <div class="span-3" style="vertical-align: bottom">
+        This column is bottom aligned.
+    </div>
+    <div class="span-3" style="vertical-align: middle; height: 200px">
+            This column is middle aligned.
+    </div>
 </div>
 ```
 
@@ -904,6 +904,19 @@ Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
 
+#### Version 2.2.0
+
+Released: 2nd August 2016
+
+###### Release Notes
+
+* improving grunt tasks
+* adding SassDoc compatibility
+* slight improvement to semantic column responsivity
+* re-adding bower support
+* allow for adaptive no-gutter columns
+* general code improvements
+
 #### Version 2.1.0
 
 Released: 30th October 2015
@@ -915,7 +928,7 @@ Released: 30th October 2015
 
 #### Version 2.0.0
 
-Released: 30st October 2015
+Released: 30th October 2015
 
 ###### Release Notes
 
