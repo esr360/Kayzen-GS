@@ -131,11 +131,6 @@ module.exports = function(grunt) {
          */
 
         mochacli: {
-            options: {
-                require: ['sass-true'],
-                reporter: 'sass-true',
-                bail: false
-            },
             all: ['unit-testing/tests.js']
         },
       

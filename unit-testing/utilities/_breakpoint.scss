@@ -4,7 +4,7 @@
     $actual   : kgs-breakpoint('break-3');
     $expected : 940px;
 
-    @include assert-equal($actual, $expected, 'foo');
+    @include assert-equal($actual, $expected, 'returns the expected breakpoint value');
 
   }
 }
