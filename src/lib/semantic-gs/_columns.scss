@@ -127,7 +127,7 @@
             
         $breakpoints: if(
             kgs-config('mobile-first'),
-            reverse-list(kgs-config('respond-to')),
+            list-reverse(kgs-config('respond-to')),
             kgs-config('respond-to')
         );
         

@@ -27,13 +27,12 @@ module.exports = function(grunt) {
         concat: {   
             app: {
                 src: [
-                    'src/lib/functions/*',
+                    'vendor/Sass-Boost/dist/_sass-boost.scss',
+                    'src/lib/utilities/*',
                     'src/_config.scss',
                     'src/lib/tools/*',
                     'src/lib/column-types/**/*',
-                    'src/core/column/*',
-                    'src/core/row/*',
-                    'src/core/*',
+                    'src/core/**/*',
                     'src/lib/semantic-gs/*'
                 ],
                 dest: 'dist/kayzen-gs.scss',

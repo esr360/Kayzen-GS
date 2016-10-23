@@ -1,9 +1,9 @@
 {
     "name": "Kayzen-GS",
-    "version": "2.2.0",
-    "description": "A responsive, flexible and dynamic grid system based off inline-block columns.",
+    "version": "2.3.0",
+    "description": "A powerful and responsive grid system.",
     "main": [
-        "src/kayzen-gs.scss"	
+        "dist/kayzen-gs.scss"	
     ],
     "keywords": [
         "css",

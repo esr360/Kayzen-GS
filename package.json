@@ -1,7 +1,7 @@
 {
   "name": "Kayzen-GS",
-  "version": "2.2.0",
-  "description": "A responsive, flexible and dynamic grid system based off inline-block columns.",
+  "version": "2.3.0",
+  "description": "A powerful and responsive grid system.",
   "keywords": [
     "css",
     "sass",
@@ -28,5 +28,8 @@
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
     "sass-true": "^2.1.3"
+  },
+  "scripts": {
+      "vendor": "git clone https://github.com/esr360/Sass-Boost.git vendor/Sass-Boost"
   }
 }

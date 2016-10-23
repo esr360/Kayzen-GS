@@ -1,25 +1,82 @@
 /// Returns a list of keys to to pass into the map-set-deep() function
 ///
 /// @author Sam Richard
-/// @group Kayzen-GS
 /// @access public
+/// @link https://git.io/vPrlJ
+///
 /// @param $keys
 /// @param $counter
 @function get-keys($keys, $counter) {
     $return: ();
+
     @for $i from 1 to $counter {
         $return: append($return, nth($keys, $i));
     }
+
     @return $return;
 }
-/// Map deep get
+/// Replace a value in a list
 ///
 /// @author Hugo Giraudel
-/// @group Kayzen-GS
 /// @access public
-/// @param {Map} $map - Map
-/// @param {Arglist} $keys - Key chain
-/// @return {*} - Desired value
+/// @link https://goo.gl/NCFTHF
+///
+/// @param {map} $list - the list which contains the value you wish to replace
+/// @param {*} $old-value - the value you wish to replace
+/// @param {*} $new-value - what you wish to replace the old value with
+/// @param {bool} $recursive [false] - used if the target list is nested
+///
+/// @return {list} - updated list
+@function list-replace($list, $old-value, $new-value, $recursive: false) {
+    $result: ();
+
+    @for $i from 1 through length($list) {
+        @if type-of(nth($list, $i)) == list and $recursive {
+            $result: append($result, list-replace(nth($list, $i), $old-value, $new-value, $recursive));
+        } @else {
+            @if nth($list, $i) == $old-value {
+                $result: append($result, $new-value);
+            } @else {
+                $result: append($result, nth($list, $i));
+            }
+        }
+    }
+
+    @return $result;
+}
+/// Reverse a list
+///
+/// @author Hugo Giraudel
+/// @access public
+/// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+///
+/// @param {list }$list - the list which you wish to reverse
+/// @param {bool} $recursive [false] - enable if target list has nested values
+///
+/// @return {list} - reversed list
+@function list-reverse($list, $recursive: false) {
+    $result: ();
+
+    @for $i from length($list) * -1 through -1 {
+        @if type-of(nth($list, abs($i))) == list and $recursive {
+            $result: append($result, list-reverse(nth($list, abs($i)), $recursive));
+        } @else {
+            $result: append($result, nth($list, abs($i)));
+        }
+    }
+
+    @return $result;
+}
+/// Get a value from a nested map
+///
+/// @author Hugo Giraudel
+/// @access public
+/// @link https://www.sitepoint.com/extra-map-functions-sass/
+///
+/// @param {map} $map - map
+/// @param {arglist} $keys - key chain
+///
+/// @return {*} - desired value
 @function map-get-deep($map, $keys...) {
     @each $key in $keys {
         $map: map-get($map, $key);
@@ -29,14 +86,19 @@
 /// Used to recursively merge (deep merge) two maps
 ///
 /// @author Pedr Browne
-/// @group Kayzen-GS
-/// @param $map-old - The original map
-/// @param $map-new - The new map you wish to merge into the original
-/// @param $overwrite - Overwrite existing keys
+/// @access public
+/// @link https://git.io/vPrlX
+///
+/// @param {map} $map-old - The original map
+/// @param {map} $map-new - The new map you wish to merge into the original
+/// @param {bool} $overwrite [true] - Overwrite existing keys
+///
+/// @return {map} - merged map
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
 
     // Iterate through each value of the new map
     @each $key, $new-value in $map-new {
+
         // Check if that value already exists on the old map
         @if map-has-key($map-old, $key) {
             // There is an existing key
@@ -44,7 +106,7 @@
             @if type-of($new-value) == map and type-of($old-value) == map {
                 // If both are maps, recurse regardless of $overwrite
                 $merged-value: map-merge-deep($old-value, $new-value);
-                $map-old: map-set($map-old, $key, $merged-value);	
+                $map-old: map-set($map-old, $key, $merged-value);
             } @else {
                 // Otherwise check $overwrite
                 @if $overwrite {
@@ -55,17 +117,74 @@
             // There is no existing key to add
             $map-old: map-set($map-old, $key, $new-value);
         }
-    }
-    @return $map-old;
 
+    }
+
+    @return $map-old;
+}
+/// Reverse a map
+///
+/// @author Sean McEmerson
+/// @access public
+/// @link http://git.io/vLfuz
+///
+/// @param {map} $map - the map to be reversed
+///
+/// @return {map} - reversed map
+@function map-reverse($map) {
+    $keys: map-keys($map);
+    $map-reversed: ();
+
+    @for $i from length($keys) through 1 {
+        $map-reversed: map-merge(
+            $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
+        );
+    }
+
+    $result: $map-reversed;
+
+    @return $result;
+}
+/// Get the value of a unique key from a nested map
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+///
+/// @param {map} $map - the map which contains the target key
+/// @param {string} $target-key - the key of interest
+/// @param {*} $target-value - optional fallback value if key not found
+///
+/// @return {*} - desired value
+@function map-search($map, $target-key, $target-value: '') {
+    @each $key, $value in $map {
+        // Is this our key?
+        @if $key == $target-key {
+            $target-value: $value;
+        } @else {
+            @if type-of($value) == 'map' {
+                // Does the new map contain our key?
+                @if map-has-key($value, $target-key) {
+                    $target-value: map-get($value, $target-key);
+                } @else {
+                    // if not, recurse the function
+                    $target-value: map-search($value, $target-key, $target-value);
+                }
+            }
+        }
+    }
+    @return $target-value;
 }
 /// Set a nested key in an existing map
 ///
 /// @author Sam Richard
-/// @group Kayzen-GS
-/// @param $map
-/// @param $keys
-/// @param $value
+/// @access public
+/// @link https://git.io/vPr80
+///
+/// @param {map} $map - the map which contains the key you wish to set
+/// @param {string|list} $keys - the keychain trail to your desired key
+/// @param {*} $value - the value you wish to set for the key
+///
+/// @return {map} - updated map
 @function map-set-deep($map, $keys, $value) {
 
     $private-sassy-maps-suppress-warnings: true !global;
@@ -79,7 +198,7 @@
     }
 
     $merge: (nth($keys, $length): $value);
-        
+
     @if $map-level {
         $merge: map-merge($map-level, $merge);
     }
@@ -92,8 +211,7 @@
             $map-level: map-get-deep($map, $get-keys);
             @if $map-level {
                 $merge: map-merge($map-level, ($key: $merge));
-            }
-            @else {
+            } @else {
                 $merge: ($key: $merge);
             }
         } @else {
@@ -105,55 +223,96 @@
     $private-sassy-maps-suppress-warnings: false !global;
 
     @return $map;
-
 }
 /// Set a key in an existing map
 ///
 /// @author Sam Richard
-/// @group Kayzen-GS
-/// @param {map} $map
-/// @param {string} $key
-/// @param {*} $value
+/// @access public
+/// @link https://git.io/vPr8B
+///
+/// @param {map} $map - the map which contains the key you wish to set
+/// @param {string} $key - the key you wish to set
+/// @param {*} $value - the value you wish to set for the key
+///
+/// @return {map} - updated map
 @function map-set($map, $key, $value) {
     @return map-merge($map, ($key: $value));
 }
-/// Reverse a list
+/// Replace `$search` with `$replace` in `$string`
 ///
 /// @author Hugo Giraudel
-/// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
-///
-/// @param $list
-/// @param $recursive
-@function reverse-list($list, $recursive: false) {
-    $result: ();
-
-    @for $i from length($list)*-1 through -1 {
-        @if type-of(nth($list, abs($i))) == list and $recursive {
-            $result: append($result, reverse(nth($list, abs($i)), $recursive));      
-        } @else {
-            $result: append($result, nth($list, abs($i)));
-        }
-    }
-
-    @return $result;
-}
-/// Reverse a map
-///
-/// @author Sean McEmerson
 /// @access public
-/// @link http://git.io/vLfuz
-/// @group Kayzen-GS
-/// @param $map {map} - the map to be reversed
-@function reverse-map($map) {	
-    $keys: map-keys($map);
-    $map-reversed: ();    
-    @for $i from length($keys) through 1 {
-        $map-reversed: map-merge(
-            $map-reversed, (nth($keys, $i): map-get($map, nth($keys, $i)))
+/// @link https://css-tricks.com/snippets/sass/str-replace-function/
+///
+/// @param {string} $string - initial string
+/// @param {string} $search - substring to replace
+/// @param {string} $replace - new value
+///
+/// @return {string} - updated string
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(
+            str-slice($string, $index + str-length($search)), $search, $replace
         );
     }
-    $result: $map-reversed; 
-    @return $result;
+
+    @return $string;
+}
+/// Get a value from the 'breakpoints' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $breakpoint - key of desired breakpoint
+/// @return {number} desired breakpoint value
+@function kgs-breakpoint($breakpoint) {
+    @return map-get-deep($kayzenGS, 'breakpoints', $breakpoint);
+}
+/// Get a nested value from the Kayzen-GS config
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {arglist} $options - arglist of desired option
+/// @return {*} desired value
+@function kgs-config($options...) {
+    @return map-get-deep($config, $options...);
+}
+/// Get a value from the 'fractions' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $fraction - key of desired fraction
+/// @return {number} desired fraction value
+@function kgs-fraction($fraction) {
+    @return map-get-deep($kayzenGS, 'fractions', $fraction);
+}
+/// Get a top level value from the default Kayzen-GS config
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $option - key of desired option
+/// @return {*} desired value
+@function kayzenGS($option) {
+    @return map-get-deep($kayzenGS, $option);
+}
+/// Get a value from the 'options' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $option - key of desired option
+/// @return {*} desired value
+@function kgs-option($option) {
+    @return map-get-deep($kayzenGS, 'options', $option);
+}
+/// Get a value from the 'settings' configuration group
+///
+/// @access public
+/// @group Kayzen-GS
+/// @param {string} $setting - key of desired setting
+/// @return {bool} desired value
+@function kgs-setting($setting) {
+    @return map-get-deep($kayzenGS, 'settings', $setting);
 }
 /// Default grid system configuration
 ///
@@ -251,7 +410,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     $reverse-breakpoints: if(
         kgs-setting('mobile-first'),
         kayzenGS('breakpoints'),
-        reverse-map(kayzenGS('breakpoints'))
+        map-reverse(kayzenGS('breakpoints'))
     );
 
     > [class*="#{kgs-option('col-namespace')}"] {
@@ -538,49 +697,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         }
     }
   
-}
-/// Core column styles
-///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
-/// @outputs core styles for a column
-@mixin kgs-column-core {
-    display: inline-block;
-    vertical-align: top;
-    // IE < 8: fake inline-block
-    @if kgs-setting('old-ie') {
-        *display: inline;
-        zoom: 1; 
-    }   
-}
-/// Core row styles
-///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
-/// @outputs core styles for a row
-@mixin kgs-row-core {
-    
-    // Firefox/IE collapse white-space
-    letter-spacing: -1em;
-    // Webkit collapse white-space
-    display: table;
-    width: 100%;
-    // Opera collapse white-space
-    @at-root {
-        .opera-only :-o-prefocus, & {
-            word-spacing: -0.43em;
-        }
-    }
-    // IE < 8 collapse white-space
-    @if kgs-setting('old-ie') {
-        *letter-spacing: normal;
-        *word-spacing: -0.43em;
-    }	
-    // Required for some third-party sliders
-    // table-layout: fixed;
-    
 }
 /// Kayzen-GS core
 ///
@@ -929,7 +1045,50 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     @include kayzen-gs;   
 }
 
+/// Core column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a column
+@mixin kgs-column-core {
+    display: inline-block;
+    vertical-align: top;
+    // IE < 8: fake inline-block
+    @if kgs-setting('old-ie') {
+        *display: inline;
+        zoom: 1; 
+    }   
+}
 
+/// Core row styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a row
+@mixin kgs-row-core {
+    
+    // Firefox/IE collapse white-space
+    letter-spacing: -1em;
+    // Webkit collapse white-space
+    display: table;
+    width: 100%;
+    // Opera collapse white-space
+    @at-root {
+        .opera-only :-o-prefocus, & {
+            word-spacing: -0.43em;
+        }
+    }
+    // IE < 8 collapse white-space
+    @if kgs-setting('old-ie') {
+        *letter-spacing: normal;
+        *word-spacing: -0.43em;
+    }	
+    // Required for some third-party sliders
+    // table-layout: fixed;
+    
+}
 /// Custom semantic column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -1059,7 +1218,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
             
         $breakpoints: if(
             kgs-config('mobile-first'),
-            reverse-list(kgs-config('respond-to')),
+            list-reverse(kgs-config('respond-to')),
             kgs-config('respond-to')
         );
         

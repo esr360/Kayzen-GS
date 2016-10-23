@@ -1,26 +1,13 @@
-//-----------------------------------------------------------------
-//
-//  Kayzen GS
-//  Made by @esr360
-//  https://github.com/esr360/Kayzen-GS
-//	
-//-----------------------------------------------------------------
-
 //*****************************************************************
-// Functions
+// Kayzen-GS v2.3.1
+// A powerful and responsive grid system.
+// https://github.com/esr360/Kayzen-GS
 //*****************************************************************
 
-@import 'lib/functions/get-keys';
-@import 'lib/functions/map-get-deep';
-@import 'lib/functions/map-merge-deep';
-@import 'lib/functions/map-set';
-@import 'lib/functions/map-set-deep';
-@import 'lib/functions/reverse-list';
-@import 'lib/functions/reverse-map';
-
-//*****************************************************************
 // Utilities
 //*****************************************************************
+
+@import '../vendor/Sass-Boost/src/sass-boost';
 
 @import 'lib/utilities/kayzenGS';
 @import 'lib/utilities/breakpoint';
@@ -29,13 +16,11 @@
 @import 'lib/utilities/option';
 @import 'lib/utilities/setting';
 
-//*****************************************************************
 // Config
 //*****************************************************************
 
 @import 'config';
 
-//*****************************************************************
 // Tools
 //*****************************************************************
 
@@ -46,26 +31,20 @@
 @import 'lib/tools/reverse-order';
 @import 'lib/tools/stack-columns';
 
-//*****************************************************************
 // Column Types
 //*****************************************************************
 
 @import 'lib/column-types/default-columns/calculate-width';
 @import 'lib/column-types/default-columns/generate-cols';
-
 @import 'lib/column-types/flow-columns/calculate-width';
 @import 'lib/column-types/flow-columns/generate-cols';
-
 @import 'lib/column-types/magic-columns/core';
 @import 'lib/column-types/magic-columns/calculate-width';
 @import 'lib/column-types/magic-columns/generate-cols';
-
 @import 'lib/column-types/no-gutter-columns/calculate-width';
 @import 'lib/column-types/no-gutter-columns/generate-cols';
-
 @import 'lib/column-types/block-columns/generate-cols';
 
-//*****************************************************************
 // Core
 //*****************************************************************
 
@@ -73,7 +52,6 @@
 @import 'core/row/core';
 @import 'core/core';
 
-//*****************************************************************
 // Semantic Gridsystem
 //*****************************************************************
 

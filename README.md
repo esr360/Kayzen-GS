@@ -66,7 +66,7 @@ There are several ways to use the Kayzen-GS framework depending on how much you 
 
 #### Plain CSS
 
-If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the `[kayzen-gs.min.css](blob/master/dist/kayzen-gs.min.css)` file in your project and you're good to go.
+If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the [`kayzen-gs.min.css`](blob/master/dist/kayzen-gs.min.css) file in your project and you're good to go.
 
 #### Using Sass
 
@@ -929,6 +929,15 @@ For all issues, bugs, suggestions and feature requests, please use the [issues p
 Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
+
+#### Version 2.3.0
+
+Released: 23rd October 2016
+
+###### Release Notes
+
+* adding npm support
+* removing functions directory and adding [Sass-Boost](https://github.com/esr360/Sass-Boost) submodule
 
 #### Version 2.2.0
 
