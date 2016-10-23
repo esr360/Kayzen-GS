@@ -1,5 +1,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
 [![GitHub license](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://travis-ci.org/esr360/Kayzen-GS)
+[![Bower version](https://badge.fury.io/bo/Kayzen-GS.svg)](https://badge.fury.io/bo/Kayzen-GS)
+[![npm version](https://badge.fury.io/js/Kayzen-GS.svg)](https://badge.fury.io/js/Kayzen-GS)
 
 <img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
@@ -37,7 +39,7 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 
 ## Documentation
 
-* [Getting Started](#getting-started)
+* [Installation](#installation)
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
   * [Responsiveness](#responsiveness)
   * [Flow Columns](#flow-columns)
@@ -58,33 +60,49 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 * [Column Aligning](#column-aligning)
 * [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
-### Getting Started
+### Installation
 
 There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
 
-#### Plain CSS 
+#### Plain CSS
 
-If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the `kayzen-gs.min.css` file in your project and you're good to go.
+If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the `[kayzen-gs.min.css](blob/master/dist/kayzen-gs.min.css)` file in your project and you're good to go.
 
 #### Using Sass
 
-If you're using Sass, ensure you have a copy of the Kayzen-GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
+Kayzen-GS requires **Sass 3.3+**
 
-##### Install as Git Submodule
-
-```
-git submodule add https://github.com/esr360/Kayzen-GS.git
-```
-
-##### Install with Bower
+##### Via Git Clone
 
 ```
-bower install Kayzen-GS
+git clone --recursive https://github.com/esr360/Kayzen-GS.git
+```
+
+##### As Git Submodule
+
+```
+git submodule add https://github.com/esr360/Kayzen-GS.git && git submodule update --init --recursive
+```
+
+##### Via Bower
+
+```
+bower install Kayzen-GS && cd bower_components/Kayzen-GS && npm run vendor
+```
+
+##### Via NPM
+
+```
+npm install Kayzen-GS
 ```
 
 ---
 
-Once you have a copy of Kayzen-GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
+After you have installed Kayzen-GS, import the following file into your project's main `.scss` file:
+
+```
+dist/kayzen-gs.scss
+```
 
 To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
 

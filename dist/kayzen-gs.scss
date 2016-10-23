@@ -35,29 +35,29 @@
 /// @param $overwrite - Overwrite existing keys
 @function map-merge-deep($map-old, $map-new, $overwrite: true) {
 
-	// Iterate through each value of the new map
-	@each $key, $new-value in $map-new {
-		// Check if that value already exists on the old map
-		@if map-has-key($map-old, $key) {
-			// There is an existing key
-			$old-value: map-get($map-old, $key);
-			@if type-of($new-value) == map and type-of($old-value) == map {
-				// If both are maps, recurse regardless of $overwrite
-				$merged-value: map-merge-deep($old-value, $new-value);
-				$map-old: map-set($map-old, $key, $merged-value);	
-			} @else {
-				// Otherwise check $overwrite
-				@if $overwrite {
-					$map-old: map-set($map-old, $key, $new-value);
-				}
-			}
-		} @else {
-			// There is no existing key to add
-			$map-old: map-set($map-old, $key, $new-value);
-		}
-	}
-	@return $map-old;
-	
+    // Iterate through each value of the new map
+    @each $key, $new-value in $map-new {
+        // Check if that value already exists on the old map
+        @if map-has-key($map-old, $key) {
+            // There is an existing key
+            $old-value: map-get($map-old, $key);
+            @if type-of($new-value) == map and type-of($old-value) == map {
+                // If both are maps, recurse regardless of $overwrite
+                $merged-value: map-merge-deep($old-value, $new-value);
+                $map-old: map-set($map-old, $key, $merged-value);	
+            } @else {
+                // Otherwise check $overwrite
+                @if $overwrite {
+                    $map-old: map-set($map-old, $key, $new-value);
+                }
+            }
+        } @else {
+            // There is no existing key to add
+            $map-old: map-set($map-old, $key, $new-value);
+        }
+    }
+    @return $map-old;
+
 }
 /// Set a nested key in an existing map
 ///
@@ -96,8 +96,7 @@
             @else {
                 $merge: ($key: $merge);
             }
-        }
-        @else {
+        } @else {
             $merge: ($key: $merge);
         }
     }
@@ -122,23 +121,21 @@
 ///
 /// @author Hugo Giraudel
 /// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
-/// @group Kayzen-GS
+///
 /// @param $list
 /// @param $recursive
 @function reverse-list($list, $recursive: false) {
-   $result: ();
+    $result: ();
 
-   @for $i from length($list)*-1 through -1 {
-      @if type-of(nth($list, abs($i))) == list and $recursive {
-        $result: append($result, reverse(nth($list, abs($i)), $recursive));      
-      }
+    @for $i from length($list)*-1 through -1 {
+        @if type-of(nth($list, abs($i))) == list and $recursive {
+            $result: append($result, reverse(nth($list, abs($i)), $recursive));      
+        } @else {
+            $result: append($result, nth($list, abs($i)));
+        }
+    }
 
-      @else {
-        $result: append($result, nth($list, abs($i)));
-      }
-   }
-
-   @return $result;
+    @return $result;
 }
 /// Reverse a map
 ///
@@ -289,7 +286,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {bool} $flush [true] - remove margin from first column in row
 /// @outputs styles for column gutters
 @mixin kgs-gutter($flush: true) {
-	margin-left: kgs-option('gutter');
+    margin-left: kgs-option('gutter');
     @if $flush {
         &:first-child {
             margin-left: 0;
@@ -354,11 +351,14 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @access public
 /// @group Kayzen-GS
 /// @outputs styles to reverse column order
-@mixin kgs-reverse-order {   
+@mixin kgs-reverse-order {
+
     transform: rotate(180deg);
+    
     > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
     } 
+
 }
 /// Stack Columns
 ///
@@ -380,11 +380,11 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         @if $type == 'flow' {
             width: 100% - kgs-option('gutter');
         } @else if $type == 'magic' {
+            margin-left: 0;
             width: 100% !important;
-            margin-left: 0;
         } @else if $type == null {
-            width: 100%;
             margin-left: 0;
+            width: 100%;
         }
     }
     
@@ -411,7 +411,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-default-width($span, $columns) {
-	@return ((100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * kgs-option(gutter) ) / ( $columns / $span ) );
+    @return ((100/$columns) * $span) - ( ( ((100 / ((100/$columns) * $span)) - 1) * kgs-option(gutter) ) / ( $columns / $span ) );
 }
 /// Generate each individual column size
 ///
@@ -420,15 +420,18 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @group Kayzen-GS
 /// @outputs classes for each column width
 @mixin kgs-default-columns {
+
     [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
         @include kgs-gutter;  
     }
+
     @for $i from 1 through kgs-option('columns') {       
         .#{kgs-option('col-namespace')}-#{$i} {
-            width: kgs-default-width($i, kgs-option('columns'))
+            width: kgs-default-width($i, kgs-option('columns'));
         }      
-    }  
+    } 
+
 }
 
 /// Calculate width for a flow column
@@ -440,7 +443,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-flow-width($span, $columns) {
-	@return ((100/$columns) * $span) - kgs-option('gutter');
+    @return ((100/$columns) * $span) - kgs-option('gutter');
 }
 /// Generate flow columns
 ///
@@ -448,16 +451,19 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @access public
 /// @group Kayzen-GS
 /// @outputs relevant styles for flow columns
-@mixin kgs-flow-columns {                 
+@mixin kgs-flow-columns {
+
     > [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
         @include kgs-gutter($flush: false);  
     }
+
     @for $i from 1 through kgs-option('columns') {
         > .#{kgs-option('col-namespace')}-#{$i} {
             width: kgs-flow-width($i, kgs-option('columns'));
         }
     }
+
 }
 
 /// Calculate width for a magic column
@@ -468,7 +474,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-magic-width($columns: $columns) {
-	@return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * kgs-option('gutter') ) / $columns );
+    @return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * kgs-option('gutter') ) / $columns );
 }
 /// Core magic column styles
 ///
@@ -496,7 +502,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @group Kayzen-GS
 /// @outputs relevant styles for magic columns
 @mixin kgs-magic-columns {
-	> [class*="#{kgs-option('col-namespace')}"] {
+    > [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
         @include kgs-gutter;  
         @include kgs-magic-column-core; 
@@ -512,7 +518,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-no-gutter-width($span, $columns) {
-	@return percentage($span/$columns);
+    @return percentage($span/$columns);
 }
 /// Generate no-gutter columns
 ///
@@ -521,14 +527,17 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @group Kayzen-GS
 /// @outputs relevant styles for no-gutter columns
 @mixin kgs-no-gutter-columns { 
+
     > [class*="#{kgs-option('col-namespace')}"] {
         margin-left: 0 !important;
     }
+
     @for $i from 1 through kgs-option('columns') {
         > .#{kgs-option(col-namespace)}-#{$i} {	
             width: kgs-no-gutter-width($i, kgs-option('columns'));
         }
-    }  
+    }
+  
 }
 /// Core column styles
 ///
@@ -662,13 +671,13 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
             
             &-flow {
                 
+                @include kgs-pull('flow');
+                @include kgs-push('flow');
+                
                 &:not(.#{kgs-option('row-namespace')}-no-gutter) {
                     margin-left: -#{kgs-option('gutter')};
                     width: 100% + kgs-option('gutter');
                 }
-                
-                @include kgs-pull('flow');
-                @include kgs-push('flow');
                 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
@@ -676,10 +685,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                             @include kgs-flow-columns;
                         }
                     } @else {
+
                         @include kgs-flow-columns;
                         > [class*="#{kgs-option(col-namespace)}"] {
                             margin-left: #{kgs-option(gutter)};
-                        } 
+                        }
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -687,6 +698,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                 }
                             }
                         }
+                        
                     }
                 }
                 
@@ -909,8 +921,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 //*************************************************************
 * {        
     letter-spacing: normal;
-    word-spacing: normal;
     text-rendering: auto;
+    word-spacing: normal;
 }
 
 @if kgs-setting('kayzen-gs') {
@@ -930,46 +942,46 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     //*************************************************************
     // Configuration
     //*************************************************************
-	
-	$config: map-merge((
-		'width'        : 'full', 
-		'type'         : null, 
-		'stack'        : kgs-option('col-break'), 
-		'mobile-first' : kgs-setting('mobile-first'),
-		'respond-to'   : null
-	), $custom);
-	
-	$config: $config !global;
-	
-	$span: null;
-	$columns: null; 
+
+    $config: map-merge((
+        'width'        : 'full', 
+        'type'         : null, 
+        'stack'        : kgs-option('col-break'), 
+        'mobile-first' : kgs-setting('mobile-first'),
+        'respond-to'   : null
+    ), $custom);
+
+    $config: $config !global;
+
+    $span: null;
+    $columns: null; 
 
     //*************************************************************
     // Prepare Grid
     //*************************************************************
-    
+
     // if 'width' is a fraction e.g. 'quarter'
-	@if type-of(kgs-config('width')) == string {
-		$span: nth(kgs-fraction(kgs-config(width)), 1);
-		$columns: nth(kgs-fraction(kgs-config('width')), 2);
-	} 
-    
+    @if type-of(kgs-config('width')) == string {
+        $span: nth(kgs-fraction(kgs-config(width)), 1);
+        $columns: nth(kgs-fraction(kgs-config('width')), 2);
+    } 
+
     // if 'width' is a percentage e.g. 25%
     @else if type-of(kgs-config('width')) == number {
-		$span: kgs-config(width);
-		$columns: 100;	
-	} 
-    
+        $span: kgs-config(width);
+        $columns: 100;	
+    } 
+
     // if 'width' is a (span, columns) format e.g. (3, 12)
     @else if type-of(kgs-config('width')) == list {
-		$span: nth(kgs-config('width'), 1);
-		$columns: nth(kgs-config('width'), 2);	
-	}
+        $span: nth(kgs-config('width'), 1);
+        $columns: nth(kgs-config('width'), 2);	
+    }
 
     //*************************************************************
     // Apply Styles
     //*************************************************************
-    
+
     @if kgs-config('mobile-first') {
         @media (min-width: kgs-config('stack')) {
             @include kgs-column-core;
@@ -977,15 +989,15 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     } @else {
         @include kgs-column-core;
     }
-    
+
     // if flow column
     @if kgs-config('type') == 'flow' {
         @include kgs-gutter(false);
         width: kgs-flow-width($span, $columns);
-	} 
-	
+    } 
+
     // if magic column
-	@else if kgs-config('type') == 'magic' {
+    @else if kgs-config('type') == 'magic' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 @include kgs-column-core;
@@ -1000,10 +1012,10 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 @include kgs-stack-columns($type: 'magic', $core: true);
             }
         }
-	}
-    
+    }
+
     // if no-gutter column
-	@else if kgs-config('type') == 'no-gutter' {
+    @else if kgs-config('type') == 'no-gutter' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 width: kgs-no-gutter-width($span, $columns);
@@ -1037,12 +1049,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 @include kgs-stack-columns($core: true);
             }
         }
-	}
+    }
 
     //*************************************************************
     // Adaptive Widths
     //*************************************************************
-	
+
     @if kgs-config('respond-to') {
             
         $breakpoints: if(
@@ -1057,7 +1069,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
             $span: null; 
             
             $respond-scale: if(kgs-config('mobile-first'), 'min', 'max');
-    
+
             @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
                 
                 // if 'width' is a fraction e.g. 'quarter'
@@ -1095,7 +1107,7 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         }
         
     }
-	
+
 } // @mixin column
 /// Custom semantic row
 ///
@@ -1105,9 +1117,9 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
 /// @param {string} $type - type of columns row should have
 /// @outputs custom row styles
 @mixin row($type: null) {
-	@include kgs-row-core;
-	@if $type == 'flow' {		
-		margin-left: -#{kgs-option('gutter')};
-		width: 100% + kgs-option('gutter');
-	}
+    @include kgs-row-core;
+    @if $type == 'flow' {		
+        margin-left: -#{kgs-option('gutter')};
+        width: 100% + kgs-option('gutter');
+    }
 }

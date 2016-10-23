@@ -18,11 +18,11 @@
         @if $type == 'flow' {
             width: 100% - kgs-option('gutter');
         } @else if $type == 'magic' {
+            margin-left: 0;
             width: 100% !important;
-            margin-left: 0;
         } @else if $type == null {
-            width: 100%;
             margin-left: 0;
+            width: 100%;
         }
     }
     

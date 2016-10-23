@@ -1,11 +1,11 @@
 {
-    "name":"Kayzen-GS",
-    "description":"A responsive, flexible and dynamic grid system based off inline-block columns.",
-    "version":"2.2.0",
-    "main":[
+    "name": "Kayzen-GS",
+    "version": "2.2.0",
+    "description": "A responsive, flexible and dynamic grid system based off inline-block columns.",
+    "main": [
         "src/kayzen-gs.scss"	
     ],
-    "keywords":[
+    "keywords": [
         "css",
         "sass",
         "responsive",
@@ -18,11 +18,9 @@
         "development"
     ],
     "homepage":"http://kayzen.gs/",
-    "ignore":[
-        ".git",
-        ".gitattributes",
-        ".gitignore",
-        "bower.json",
-        "semantic-examples.scss"
+    "ignore": [
+        "**/.*",
+        ".node_modules",
+        "bower.json"
     ]
 }
