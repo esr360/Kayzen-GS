@@ -1,5 +1,5 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
-[![GitHub license](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://travis-ci.org/esr360/Kayzen-GS)
+[![Travis build](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://travis-ci.org/esr360/Kayzen-GS)
 [![Bower version](https://badge.fury.io/bo/Kayzen-GS.svg)](https://badge.fury.io/bo/Kayzen-GS)
 [![npm version](https://badge.fury.io/js/Kayzen-GS.svg)](https://badge.fury.io/js/Kayzen-GS)
 
