@@ -1,17 +1,19 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
-[![GitHub license](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://raw.githubusercontent.com/esr360/Kayzen-GS/master/LICENSE)
+[![GitHub license](https://api.travis-ci.org/esr360/Kayzen-GS.svg)](https://travis-ci.org/esr360/Kayzen-GS)
+[![Bower version](https://badge.fury.io/bo/Kayzen-GS.svg)](https://badge.fury.io/bo/Kayzen-GS)
+[![npm version](https://badge.fury.io/js/Kayzen-GS.svg)](https://badge.fury.io/js/Kayzen-GS)
 
 <img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
 ## Overview
 
-> Kayzen GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen GS is a one of a kind framework suitable for any project.
+> Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
 
-[View Examples](http://kayzen.gs)
+[View Examples](http://kayzen.gs) | [View Sass Documentation](http://esr360.github.io/Kayzen-GS/docs/)
 
-[![Kayzen - Premium HTML Theme Framework](http://i.imgur.com/wNiAzgD.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
+[![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
-Some of the core features of Kayzen GS include:
+Some of the core features of Kayzen-GS include:
 
 * Specify any number of columns
 * Infinitely nestable rows
@@ -33,11 +35,11 @@ The simple answer is; flexibility. By definition, columns *are* just inline bloc
 
 #### Why don't other grid systems use inline-block?
 
-By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
+By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
 
 ## Documentation
 
-* [Getting Started](#getting-started)
+* [Installation](#installation)
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
   * [Responsiveness](#responsiveness)
   * [Flow Columns](#flow-columns)
@@ -58,27 +60,51 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
 * [Column Aligning](#column-aligning)
 * [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
-### Getting Started
+### Installation
 
-There are several ways to use the Kayzen GS framework depending on how much you want to customize it:
+There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
 
-#### Plain CSS 
+#### Plain CSS
 
-If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the `kayzen-gs.min.css` file in your project and you're good to go.
+If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the [`kayzen-gs.min.css`](blob/master/dist/kayzen-gs.min.css) file in your project and you're good to go.
 
 #### Using Sass
 
-If you're using Sass, ensure you have a copy of the Kayzen GS `src` directory in your project. You can either manually download or clone the repo, or you can use one of the following methods:
+Kayzen-GS requires **Sass 3.3+**
 
-##### Install as Git Submodule
+##### Via Git Clone
 
 ```
-git submodule add https://github.com/esr360/Kayzen-GS.git
+git clone --recursive https://github.com/esr360/Kayzen-GS.git
 ```
 
-Once you have a copy of Kayzen GS in your project, import the `kayzen-gs.scss` file from the root of the `src` directory into your project's main Sass file.
+##### As Git Submodule
 
-To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen GS is imported:
+```
+git submodule add https://github.com/esr360/Kayzen-GS.git && git submodule update --init --recursive
+```
+
+##### Via Bower
+
+```
+bower install Kayzen-GS && cd bower_components/Kayzen-GS && npm run vendor
+```
+
+##### Via NPM
+
+```
+npm install Kayzen-GS
+```
+
+---
+
+After you have installed Kayzen-GS, import the following file into your project's main `.scss` file:
+
+```
+dist/kayzen-gs.scss
+```
+
+To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
 
 ```scss
 @include kayzen-gs;
@@ -89,13 +115,13 @@ It is possible to override any value in the [Configuration](#custom-configuratio
 ```scss
 @include kayzen-gs((
     'options' : (
-        'columns'           : 16,
-        'col-namespace'     : 'col',
+        'columns'       : 16,
+        'col-namespace' : 'col',
     ),
     'settings' : (
-        'old-ie'            : true,
-        'pull-columns'      : false,
-        'push-columns'      : false
+        'old-ie'        : true,
+        'pull-columns'  : false,
+        'push-columns'  : false
     ),
 ));
 ```
@@ -108,7 +134,7 @@ To create a basic **row** for your columns to live in, add the `row` class to yo
 
 ```html                
 <div class="row">
-	...
+    ...
 </div>
 ```
 
@@ -122,7 +148,7 @@ To create a **column** with no specified width, add the `span` class to your ele
 
 > Change the class name *span* to whatever you want in the [Configuration](#options).
 
-By default, Kayzen GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
+By default, Kayzen-GS comes with reusable classes which can be used to create your column widths. The most basic example of a row of Kayzen columns using the default settings would look something like this:
 
 ```html
 <div class="row">                    
@@ -151,7 +177,7 @@ Using these normal columns, the total span of the columns in a given row may not
 
 > Responsiveness can be disabled [(?)](#responsive)
 
-Kayzen GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
+Kayzen-GS columns are responsive out the box - the following breakpoint values have been defined to customize your layout - these values are completely flexible and customizable (see [Custom Configuration](#breakpoints)):
 
 * break-0: 0px,
 * break-1: 460px,
@@ -376,7 +402,7 @@ In the above example, the columns' order would effectivaly be reversed. Naturall
 
 ### Custom Configuration
 
-Kayzen GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
+Kayzen-GS is built in **Sass**/SCSS, so to make the most it you will need a way to pre-process your CSS from `.scss` files.
 
 The configuration is found in the following file:
 
@@ -384,7 +410,7 @@ The configuration is found in the following file:
 src/_config.scss
 ```
 
-All config for Kayzen GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen GS) and ensure it has all the required values.
+All config for Kayzen-GS is contained within a single variable; `$kayzenGS`, as a Sass map. This variable has a `!default` flag meaning it can be overwritten if you want to store the configuration elsewhere in your project. Just re-define the variable wherever you want (before including Kayzen-GS) and ensure it has all the required values.
 
 ```scss
 $kayzenGS: (
@@ -443,13 +469,13 @@ The 'options' form the basic foundation for your grid system. This is where you 
 
 > **Note:** Whilst most options are enabled by default, it is recommended that you disable any features you don't use to optimise the generated CSS.
 
-This is where you set which features of Kayzen GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
+This is where you set which features of Kayzen-GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen-GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
 
 ##### 'kayzen-gs'
 
 *Default : false*
 
-This setting outputs the Kayzen GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
+This setting outputs the Kayzen-GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
 
 ##### 'old-ie'
 
@@ -491,71 +517,71 @@ Here the column is 3/12's by default, and will be forced to 1/2 at **break-2** o
 
 ##### 'custom-stacking'
 
-Default  : true
+Default : true
 
 This option generates the code required for the [custom breakpoint stacking](#responsiveness) feature.
 
 ##### 'adaptive-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [adaptive columns](#adaptive-columns).
 
 ##### 'flow-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [flow columns](#flow-columns).
 
 ##### 'magic-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [magic columns](#magic-columns).
 
 ##### 'block-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [block columns](#block-columns).
 
 ##### 'no-gutter-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required for [no-gutter columns](#no-gutter-columns).
 
 ##### 'reverse-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [reverse columns](#reverse-column-order).
 
 ##### 'pull-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [pull columns](#pushpull-columns).
 
 ##### 'push-columns'
 
-Default  : true
+Default : true
 
 This option generates the code required to [push columns](#pushpull-columns).
 
 #### Breakpoints
 
-Kayzen GS allows you to specify any number of breakpoints. Amend the `breakpoints` map in the config as you desire.
+Kayzen-GS allows you to specify any number of breakpoints. Amend the `breakpoints` map in the config as you desire.
 
 > These values are used to generate the helper classes. Be wary not to include too many values here.
 
 ```scss	
 'breakpoints' : (
-	'break-0' : 0px,
-	'break-1' : 460px,
-	'break-2' : 720px,
-	'break-3' : 940px,
-	'break-4' : 1200px
+    'break-0' : 0px,
+    'break-1' : 460px,
+    'break-2' : 720px,
+    'break-3' : 940px,
+    'break-4' : 1200px
 );
 ```
 
@@ -567,17 +593,17 @@ This is where you can define the names for any fractions you wish to use in your
 
 ```scss	
 'fractions' : (
-	'full'    : (1, 1),
-	'half'    : (1, 2),
-	'third'   : (1, 3),
-	'quarter' : (1, 4),
-	'sixth'   : (1, 6)
+    'full'    : (1, 1),
+    'half'    : (1, 2),
+    'third'   : (1, 3),
+    'quarter' : (1, 4),
+    'sixth'   : (1, 6)
 );
 ```
 
 ### Semantic Grid System
 
-You can use Kayzen GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
+You can use Kayzen-GS to build your own grid system using semantic class names whilst retaining complete control over the flexibility of your columns.
 
 [View Examples](http://esr360.github.io/Kayzen-GS/#semantic-examples)
 
@@ -585,7 +611,7 @@ You can use Kayzen GS to build your own grid system using semantic class names w
 
 ```scss
 .main {
-	@include row;
+    @include row;
 }
 ```
 
@@ -596,7 +622,7 @@ In the above example we are using **main** as our semantic class name.
 
 ```scss
 .portfolio-items {
-	@include row('flow');
+    @include row('flow');
 }
 ```
 
@@ -608,9 +634,9 @@ In the above example, our semantic class name for our row of Flow Columns is **p
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : (3, 12)
-	));
+    @include column((
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -618,9 +644,9 @@ This will create a column that spans 3 out of 12 columns in width, so **1/4** or
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 'quarter'
-	));
+    @include column((
+        'width' : 'quarter'
+    ));
 }
 ```
 
@@ -630,9 +656,9 @@ Or even this:
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 25%
-	));
+    @include column((
+        'width' : 25%
+    ));
 }
 ```
 
@@ -640,21 +666,21 @@ Note that perhaps surprisingly the above examples do **not** produce a `width` v
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 20%
-	));
+    @include column((
+        'width' : 20%
+    ));
 }
 
 .content {
-	@include column(
-		'width' : 70%
-	));
+    @include column(
+        'width' : 70%
+    ));
 }
 
 .promo {
-	@include column(
-		'width' : 10%
-	));
+    @include column(
+        'width' : 10%
+    ));
 }
 ```
 
@@ -689,10 +715,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'flow',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'flow',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -702,9 +728,9 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column(
-		'type' : 'magic'
-	);
+    @include column(
+        'type' : 'magic'
+    );
 } 
 ```
 
@@ -714,10 +740,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'block',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'block',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -727,10 +753,10 @@ All the column types from the default grid system are also available to use in y
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type'  : 'no-gutter',
-		'width' : (3, 12)
-	));
+    @include column((
+        'type'  : 'no-gutter',
+        'width' : (3, 12)
+    ));
 }
 ```
 
@@ -742,10 +768,10 @@ The default width for the stacking of semantic columns is set in the [Configurat
 
 ```scss
 .sidebar {
-	@include column((
-		'width' : 'quarter',
-		'stack' : breakpoint('break-2')
-	));
+    @include column((
+        'width' : 'quarter',
+        'stack' : breakpoint('break-2')
+    ));
 }
 ```
 
@@ -757,15 +783,15 @@ When inside a Flow Columns container and with its `type` set to **flow**, you ca
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': (3, 12),
         'respond-to' : (
             'break-3': (4, 12),
             'break-2': (6, 12),
             'break-1': (12, 12)
         )
-	));
+    ));
 }
 ```
 
@@ -775,15 +801,15 @@ With `mobile-first` enabled, a width is not required by default if you are using
 
 ```scss
 .portfolio-item {
-	@include column((
+    @include column((
         'mobile-first': true: 
-		'type': 'flow',
-		'respond-to' : (
+        'type': 'flow',
+        'respond-to' : (
             'break-1': (6, 12),
             'break-2': (4, 12),
             'break-3': (3, 12)
-		)
-	));
+        )
+    ));
 }
 ```
 
@@ -793,15 +819,15 @@ You can also use numeric values for the width:
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': 25%,
         'respond-to' : (
             'break-3': 100/3,
             'break-2': 50%,
             'break-1': 100%
         )
-	));
+    ));
 }
 ```
 
@@ -809,25 +835,25 @@ Using the fractions from the [Configuration](#custom-configuration) you can subs
 
 ```scss
 .portfolio-item {
-	@include column((
-		'type' : 'flow',
+    @include column((
+        'type' : 'flow',
         'width': 'quarter',
-		'respond-to' : (
-			'break-3': 'third',
-			'break-2': 'half',
-		    'break-1': 'full'
-		)
-	));
+        'respond-to' : (
+            'break-3': 'third',
+            'break-2': 'half',
+            'break-1': 'full'
+        )
+    ));
 }
 ```
 
 ### Column Aligning
 
-Whilst Kayzen GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
+Whilst Kayzen-GS does not come with any classes or mixins to align your columns, it is extremely easy to add this functionality yourself. To **horizontally align** a row of columns, simply set the `text-align` CSS property of your row to either `left`, `right` or `center` as desired:
 
 ```html	
 <div class="row" style="text-align: center">
-	<div class="span-6">This column is centrally aligned.</div>
+    <div class="span-6">This column is centrally aligned.</div>
 </div>
 ```
 
@@ -835,18 +861,18 @@ To **vertically align** your columns, set the `vertical-align` CSS property of y
 
 ```html	
 <div class="row" style="height: 200px">
-	<div class="span-3" style="vertical-align: top">
-		This column is top aligned.
-	</div>
-	<div class="span-3" style="vertical-align: middle">
-		This column is middle aligned.
-	</div>
-	<div class="span-3" style="vertical-align: bottom">
-		This column is bottom aligned.
-	</div>
-  	<div class="span-3" style="vertical-align: middle; height: 200px">
-		  This column is middle aligned.
-	</div>
+    <div class="span-3" style="vertical-align: top">
+        This column is top aligned.
+    </div>
+    <div class="span-3" style="vertical-align: middle">
+        This column is middle aligned.
+    </div>
+    <div class="span-3" style="vertical-align: bottom">
+        This column is bottom aligned.
+    </div>
+    <div class="span-3" style="vertical-align: middle; height: 200px">
+            This column is middle aligned.
+    </div>
 </div>
 ```
 
@@ -904,6 +930,28 @@ Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
 
+#### Version 2.3.0
+
+Released: 23rd October 2016
+
+###### Release Notes
+
+* adding npm support
+* removing functions directory and adding [Sass-Boost](https://github.com/esr360/Sass-Boost) submodule
+
+#### Version 2.2.0
+
+Released: 2nd August 2016
+
+###### Release Notes
+
+* improving grunt tasks
+* adding SassDoc compatibility
+* slight improvement to semantic column responsivity
+* re-adding bower support
+* allow for adaptive no-gutter columns
+* general code improvements
+
 #### Version 2.1.0
 
 Released: 30th October 2015
@@ -915,7 +963,7 @@ Released: 30th October 2015
 
 #### Version 2.0.0
 
-Released: 30st October 2015
+Released: 30th October 2015
 
 ###### Release Notes
 

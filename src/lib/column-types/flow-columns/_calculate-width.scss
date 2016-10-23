@@ -7,5 +7,5 @@
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-flow-width($span, $columns) {
-	@return ((100/$columns) * $span) - kgs-option('gutter');
+    @return ((100/$columns) * $span) - kgs-option('gutter');
 }

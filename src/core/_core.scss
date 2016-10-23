@@ -87,13 +87,13 @@
             
             &-flow {
                 
+                @include kgs-pull('flow');
+                @include kgs-push('flow');
+                
                 &:not(.#{kgs-option('row-namespace')}-no-gutter) {
                     margin-left: -#{kgs-option('gutter')};
                     width: 100% + kgs-option('gutter');
                 }
-                
-                @include kgs-pull('flow');
-                @include kgs-push('flow');
                 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
@@ -101,10 +101,12 @@
                             @include kgs-flow-columns;
                         }
                     } @else {
+
                         @include kgs-flow-columns;
                         > [class*="#{kgs-option(col-namespace)}"] {
                             margin-left: #{kgs-option(gutter)};
-                        } 
+                        }
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -112,6 +114,7 @@
                                 }
                             }
                         }
+                        
                     }
                 }
                 
@@ -334,8 +337,8 @@
 //*************************************************************
 * {        
     letter-spacing: normal;
-    word-spacing: normal;
     text-rendering: auto;
+    word-spacing: normal;
 }
 
 @if kgs-setting('kayzen-gs') {

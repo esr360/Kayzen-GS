@@ -1,9 +1,24 @@
 {
   "name": "Kayzen-GS",
-  "version": "2.2.0",
+  "version": "2.3.0",
+  "description": "A powerful and responsive grid system.",
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "grid system",
+    "framework"
+  ],
+  "author": "Edmund Reed (http://twitter.com/esr360)",
+  "homepage": "https://github.com/esr360/Kayzen-GS",
+  "bugs": {
+    "url": "https://github.com/esr360/Kayzen-GS/issues"
+  },
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
@@ -12,6 +27,9 @@
     "grunt-postcss": "^0.8.0",
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
-    "sass-true": "^2.1.2"
+    "sass-true": "^2.1.3"
+  },
+  "scripts": {
+      "vendor": "git clone https://github.com/esr360/Sass-Boost.git vendor/Sass-Boost"
   }
 }

@@ -1,41 +1,40 @@
-/**
- * Kayzen-GS Grunt Setup
- */
+/******************************************************************
+ * Kayzen-GS
+ * Grunt Setup
+ * @uthor [@esr360](http://twitter.com/esr360)
+ ******************************************************************/
 
 module.exports = function(grunt) {
-      
-    /**
-     * Configuration
-     */
-
-    // App Scripts
-    var _core = [
-        'src/lib/functions/*',
-        'src/_config.scss',
-        'src/lib/tools/*',
-        'src/lib/column-types/**/*',
-        'src/core/column/*',
-        'src/core/row/*',
-        'src/core/*',
-        'src/lib/semantic-gs/*'
-    ];
-      
-    /**
-     * Tasks
-     */
 
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
+        
+        /**
+         * Clean
+         * @see https://github.com/gruntjs/grunt-contrib-clean
+         */
+        clean: {
+            dist: {
+                src: 'dist'
+            }
+        },
  
         /**
          * Concat
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-
         concat: {   
             app: {
-                src: _core,
+                src: [
+                    'vendor/Sass-Boost/dist/_sass-boost.scss',
+                    'src/lib/utilities/*',
+                    'src/_config.scss',
+                    'src/lib/tools/*',
+                    'src/lib/column-types/**/*',
+                    'src/core/**/*',
+                    'src/lib/semantic-gs/*'
+                ],
                 dest: 'dist/kayzen-gs.scss',
             }
         },
@@ -44,7 +43,6 @@ module.exports = function(grunt) {
          * Sass
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-        
         sass: {
             options: {
                 sourcemap: 'none',
@@ -64,22 +62,13 @@ module.exports = function(grunt) {
                 options: {
                     style: 'compressed'
                 }
-            },
-            test: {
-                files: {
-                    'unit-testing/tests.css': 'unit-testing/tests.scss'
-                },
-                options: {
-                    style: 'expanded'
-                }
-            } 
+            }
         },
       
         /**
          * PostCSS
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-      
         postcss: {
             options: {
                 map: false,
@@ -101,12 +90,14 @@ module.exports = function(grunt) {
          * ScssLint
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-        
         scsslint: {
             allFiles: [
-                'src/kayzen-gs.scss',
+                'src/core/**/*.scss',
+                'src/lib/**/*.scss',
+                '_config.scss',
             ],
             options: {
+                configFile: '.scss-lint.yml',
                 colorizeOutput: true
             },
         },
@@ -115,7 +106,6 @@ module.exports = function(grunt) {
          * SassDoc
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-
         sassdoc: {
             default: {
                 src: 'src',
@@ -129,13 +119,7 @@ module.exports = function(grunt) {
          * Mocha
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-
         mochacli: {
-            options: {
-                require: ['sass-true'],
-                reporter: 'sass-true',
-                bail: false
-            },
             all: ['unit-testing/tests.js']
         },
       
@@ -143,7 +127,6 @@ module.exports = function(grunt) {
          * Watch
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-  
         watch: {
             css: {
                 files: [
@@ -164,7 +147,6 @@ module.exports = function(grunt) {
          * Notify
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
-        
         notify: {
             css: {
                 options: {
@@ -185,7 +167,7 @@ module.exports = function(grunt) {
     /**
      * Load NPM tasks
      */
-    
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -205,10 +187,12 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('compile', [
+        'scsslint',
+        'mochacli',
+        'clean',
         'concat',
         'sass',
         'postcss',
-        //'scsslint',
         'sassdoc',
         'notify:app'
     ]);

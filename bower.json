@@ -1,0 +1,26 @@
+{
+    "name": "Kayzen-GS",
+    "version": "2.3.0",
+    "description": "A powerful and responsive grid system.",
+    "main": [
+        "dist/kayzen-gs.scss"	
+    ],
+    "keywords": [
+        "css",
+        "sass",
+        "responsive",
+        "grid system",
+        "inline-block",
+        "mobile-first",
+        "front-end",
+        "framework",
+        "web",
+        "development"
+    ],
+    "homepage":"http://kayzen.gs/",
+    "ignore": [
+        "**/.*",
+        ".node_modules",
+        "bower.json"
+    ]
+}

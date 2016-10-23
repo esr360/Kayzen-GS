@@ -5,13 +5,16 @@
 /// @group Kayzen-GS
 /// @outputs classes for each column width
 @mixin kgs-default-columns {
+
     [class*="#{kgs-option('col-namespace')}"] {
         @include kgs-column-core;
         @include kgs-gutter;  
     }
+
     @for $i from 1 through kgs-option('columns') {       
         .#{kgs-option('col-namespace')}-#{$i} {
-            width: kgs-default-width($i, kgs-option('columns'))
+            width: kgs-default-width($i, kgs-option('columns'));
         }      
-    }  
+    } 
+
 }

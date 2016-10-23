@@ -10,46 +10,46 @@
     //*************************************************************
     // Configuration
     //*************************************************************
-	
-	$config: map-merge((
-		'width'        : 'full', 
-		'type'         : null, 
-		'stack'        : kgs-option('col-break'), 
-		'mobile-first' : kgs-setting('mobile-first'),
-		'respond-to'   : null
-	), $custom);
-	
-	$config: $config !global;
-	
-	$span: null;
-	$columns: null; 
+
+    $config: map-merge((
+        'width'        : 'full', 
+        'type'         : null, 
+        'stack'        : kgs-option('col-break'), 
+        'mobile-first' : kgs-setting('mobile-first'),
+        'respond-to'   : null
+    ), $custom);
+
+    $config: $config !global;
+
+    $span: null;
+    $columns: null; 
 
     //*************************************************************
     // Prepare Grid
     //*************************************************************
-    
+
     // if 'width' is a fraction e.g. 'quarter'
-	@if type-of(kgs-config('width')) == string {
-		$span: nth(kgs-fraction(kgs-config(width)), 1);
-		$columns: nth(kgs-fraction(kgs-config('width')), 2);
-	} 
-    
+    @if type-of(kgs-config('width')) == string {
+        $span: nth(kgs-fraction(kgs-config(width)), 1);
+        $columns: nth(kgs-fraction(kgs-config('width')), 2);
+    } 
+
     // if 'width' is a percentage e.g. 25%
     @else if type-of(kgs-config('width')) == number {
-		$span: kgs-config(width);
-		$columns: 100;	
-	} 
-    
+        $span: kgs-config(width);
+        $columns: 100;	
+    } 
+
     // if 'width' is a (span, columns) format e.g. (3, 12)
     @else if type-of(kgs-config('width')) == list {
-		$span: nth(kgs-config('width'), 1);
-		$columns: nth(kgs-config('width'), 2);	
-	}
+        $span: nth(kgs-config('width'), 1);
+        $columns: nth(kgs-config('width'), 2);	
+    }
 
     //*************************************************************
     // Apply Styles
     //*************************************************************
-    
+
     @if kgs-config('mobile-first') {
         @media (min-width: kgs-config('stack')) {
             @include kgs-column-core;
@@ -57,15 +57,15 @@
     } @else {
         @include kgs-column-core;
     }
-    
+
     // if flow column
     @if kgs-config('type') == 'flow' {
         @include kgs-gutter(false);
         width: kgs-flow-width($span, $columns);
-	} 
-	
+    } 
+
     // if magic column
-	@else if kgs-config('type') == 'magic' {
+    @else if kgs-config('type') == 'magic' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 @include kgs-column-core;
@@ -80,10 +80,10 @@
                 @include kgs-stack-columns($type: 'magic', $core: true);
             }
         }
-	}
-    
+    }
+
     // if no-gutter column
-	@else if kgs-config('type') == 'no-gutter' {
+    @else if kgs-config('type') == 'no-gutter' {
         @if kgs-config('mobile-first') {
             @media (min-width: kgs-config('stack')) {
                 width: kgs-no-gutter-width($span, $columns);
@@ -117,17 +117,17 @@
                 @include kgs-stack-columns($core: true);
             }
         }
-	}
+    }
 
     //*************************************************************
     // Adaptive Widths
     //*************************************************************
-	
+
     @if kgs-config('respond-to') {
             
         $breakpoints: if(
             kgs-config('mobile-first'),
-            reverse-list(kgs-config('respond-to')),
+            list-reverse(kgs-config('respond-to')),
             kgs-config('respond-to')
         );
         
@@ -137,7 +137,7 @@
             $span: null; 
             
             $respond-scale: if(kgs-config('mobile-first'), 'min', 'max');
-    
+
             @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
                 
                 // if 'width' is a fraction e.g. 'quarter'
@@ -175,5 +175,5 @@
         }
         
     }
-	
+
 } // @mixin column

@@ -12,7 +12,7 @@
     $reverse-breakpoints: if(
         kgs-setting('mobile-first'),
         kayzenGS('breakpoints'),
-        reverse-map(kayzenGS('breakpoints'))
+        map-reverse(kayzenGS('breakpoints'))
     );
 
     > [class*="#{kgs-option('col-namespace')}"] {

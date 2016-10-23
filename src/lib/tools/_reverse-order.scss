@@ -4,9 +4,12 @@
 /// @access public
 /// @group Kayzen-GS
 /// @outputs styles to reverse column order
-@mixin kgs-reverse-order {   
+@mixin kgs-reverse-order {
+
     transform: rotate(180deg);
+    
     > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
     } 
+
 }
