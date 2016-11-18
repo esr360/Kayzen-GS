@@ -15,6 +15,23 @@
 
     @return $return;
 }
+/// Determine if a passed color is grayscale
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+///
+/// @param {color} $color - the color to test for grayscaleness
+/// @param {string} $string [''] - string to provide additional/alternative scoping
+/// @param {string} $namespace ['grey] - the namespace to search $string for
+///
+/// @return {bool} - whether or not the passed color is grayscale
+@function is-grayscale($color: '', $string: '', $namespace: 'grey') {
+    @if (type-of($color) == 'color' and grayscale($color) == $color) or (str-index($string, $namespace)) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
 /// Replace a value in a list
 ///
 /// @author Hugo Giraudel
@@ -353,7 +370,7 @@ $kayzenGS: (
         'col-namespace'     : 'span',
     ),
     'settings' : (
-        'kayzen-gs'         : true,
+        'kayzen-gs'         : false,
         'old-ie'            : false,
         'responsive'        : true,
         'mobile-first'      : false,
