@@ -35,8 +35,5 @@
     "grunt-sassdoc": "^2.0.2",
     "grunt-scss-lint": "^0.3.8",
     "sass-true": "^2.1.3"
-  },
-  "scripts": {
-      "vendor": "git clone https://github.com/esr360/Sass-Boost.git vendor/Sass-Boost"
   }
 }

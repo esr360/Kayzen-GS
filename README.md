@@ -955,6 +955,16 @@ Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
 
+#### Version 2.4.0
+
+Released: 1st June 2017
+
+###### Release Notes
+
+* dependencies are now node modules instead of git submodules
+* slight change in how grid system is imported/included
+* scss files linted
+
 #### Version 2.3.0
 
 Released: 23rd October 2016
