@@ -134,8 +134,6 @@ If you want to create the grid system automatically (with default options) when 
 @import '../Kayzen-GS/dist/include-kayzen-gs';
 ```
 
----
-
 ## Documentation
 
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
