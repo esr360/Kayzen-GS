@@ -30,6 +30,14 @@ Some of the core features of Kayzen-GS include:
 * Push/pull columns
 * Works in all browsers
 
+#### Why use inline-block columns?
+
+The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
+
+#### Why don't other grid systems use inline-block?
+
+By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
+
 ### Installation
 
 There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
@@ -128,14 +136,6 @@ If you want to create the grid system automatically (with default options) when 
 
 ---
 
-#### Why use inline-block columns?
-
-The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
-
-#### Why don't other grid systems use inline-block?
-
-By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
-
 ## Documentation
 
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
@@ -157,28 +157,6 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
   * [Creating a Semantic Column](#creating-a-semantic-column)
 * [Column Aligning](#column-aligning)
 * [Solving the Whitespace Issue](#solving-the-whitespace-issue)
-
-To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
-
-```scss
-@include kayzen-gs;
-```
-
-It is possible to override any value in the [Configuration](#custom-configuration) by passing it to the mixin:
-
-```scss
-@include kayzen-gs((
-    'options' : (
-        'columns'       : 16,
-        'col-namespace' : 'col',
-    ),
-    'settings' : (
-        'old-ie'        : true,
-        'pull-columns'  : false,
-        'push-columns'  : false
-    ),
-));
-```
 
 ### Default Kayzen Grid System
 
@@ -476,7 +454,6 @@ $kayzenGS: (
         'col-namespace'     : 'span',
     ),
     'settings' : (
-        'kayzen-gs'         : true,
         'old-ie'            : false,
         'responsive'        : true,
         'mobile-first'      : false,
@@ -524,12 +501,6 @@ The 'options' form the basic foundation for your grid system. This is where you 
 > **Note:** Whilst most options are enabled by default, it is recommended that you disable any features you don't use to optimise the generated CSS.
 
 This is where you set which features of Kayzen-GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen-GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
-
-##### 'kayzen-gs'
-
-*Default : false*
-
-This setting outputs the Kayzen-GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
 
 ##### 'old-ie'
 
