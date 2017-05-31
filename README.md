@@ -5,6 +5,9 @@
 
 <img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
+* [Installation](#installation)
+* [Documentation](#documentation)
+
 ### Overview
 
 > Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
@@ -33,43 +36,97 @@ There are several ways to use the Kayzen-GS framework depending on how much you 
 
 #### Plain CSS
 
-If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the [`kayzen-gs.min.css`](blob/master/dist/kayzen-gs.min.css) file in your project and you're good to go.
+You can download the complete grid-system compiled with the [default options](#options) and simply load it on your page:
+
+> [Download kayzen-gs.css (19kb)](dist/kayzen-gs.css)
+
+> [Download kayzen-gs.min.css (15kb)](dist/kayzen-gs.min.css)
 
 #### Using Sass
 
-Kayzen-GS requires **Sass 3.3+**
+> Kayzen-GS requires **Sass 3.3+**
 
-##### Via Git Clone
+Or you can import the Kayzen-GS library into your project and create the grid system yourself (with any custom options you may require):
 
-```
-git clone --recursive https://github.com/esr360/Kayzen-GS.git
-```
-
-##### As Git Submodule
+##### Via NPM
 
 ```
-git submodule add https://github.com/esr360/Kayzen-GS.git && git submodule update --init --recursive
+npm install Kayzen-GS --save
+```
+
+```css
+@import '../node_modules/Kayzen-GS/dist/kayzen-gs';
 ```
 
 ##### Via Bower
 
 ```
-bower install Kayzen-GS && cd bower_components/Kayzen-GS && npm run vendor
+bower install Kayzen-GS --save
 ```
 
-##### Via NPM
+```css
+@import '../bower_components/Kayzen-GS/dist/kayzen-gs';
+```
+
+##### As Git Submodule
 
 ```
-npm install Kayzen-GS
+git submodule add https://github.com/esr360/Kayzen-GS.git vendor
+```
+
+```css
+@import '../vendor/Kayzen-GS/dist/kayzen-gs';
+```
+
+##### Via Git Clone
+
+```
+git clone https://github.com/esr360/Kayzen-GS.git
+```
+
+```css
+@import '../Kayzen-GS/dist/kayzen-gs';
+```
+
+##### Download
+
+> [Download _kayzen-gs.scss](dist/_kayzen-gs.scss)
+
+```css
+@import 'PATH/TO/kayzen-gs';
 ```
 
 ---
 
-After you have installed Kayzen-GS, import the following file into your project's main `.scss` file:
+Once loaded, create the grid-system by including the `kayzen-gs` mixin, where you can pass any custom [options](#options):
 
+```scss
+// Using default options
+@include kayzen-gs();
 ```
-dist/kayzen-gs.scss
+
+```scss
+// Using custom options
+@include kayzen-gs((
+    'options' : (
+        'columns'       : 16,
+        'col-namespace' : 'col'
+    ),
+    'settings' : (
+        'old-ie'        : true,
+        'pull-columns'  : false,
+        'push-columns'  : false
+    )
+));
 ```
+
+If you want to create the grid system automatically (with default options) when you import the `_kayzen-gs.scss` file, instead import the `_include-kayzen-gs.scss` file:
+
+```css
+@import '../Kayzen-GS/dist/include-kayzen-gs';
+```
+
+---
 
 #### Why use inline-block columns?
 
