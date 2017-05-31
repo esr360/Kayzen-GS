@@ -4,16 +4,16 @@
 /// @access public
 /// @group Kayzen-GS
 /// @outputs relevant styles for no-gutter columns
-@mixin kgs-no-gutter-columns { 
+@mixin kgs-no-gutter-columns {
 
     > [class*="#{kgs-option('col-namespace')}"] {
         margin-left: 0 !important;
     }
 
     @for $i from 1 through kgs-option('columns') {
-        > .#{kgs-option(col-namespace)}-#{$i} {	
+        > .#{kgs-option(col-namespace)}-#{$i} {
             width: kgs-no-gutter-width($i, kgs-option('columns'));
         }
     }
-  
+
 }

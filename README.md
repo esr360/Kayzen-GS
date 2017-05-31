@@ -5,13 +5,14 @@
 
 <img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
-## Overview
+* [Installation](#installation)
+* [Documentation](#documentation)
+
+### Overview
 
 > Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
 
 [View Examples](http://kayzen.gs) | [View Sass Documentation](http://esr360.github.io/Kayzen-GS/docs/)
-
-[![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
 Some of the core features of Kayzen-GS include:
 
@@ -37,9 +38,106 @@ The simple answer is; flexibility. By definition, columns *are* just inline bloc
 
 By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
 
+### Installation
+
+There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
+
+#### Plain CSS
+
+You can download the complete grid-system compiled with the [default options](#options) and simply load it on your page:
+
+> [Download kayzen-gs.css (19kb)](dist/kayzen-gs.css)
+
+> [Download kayzen-gs.min.css (15kb)](dist/kayzen-gs.min.css)
+
+#### Using Sass
+
+> Kayzen-GS requires **Sass 3.3+**
+
+Or you can import the Kayzen-GS library into your project and create the grid system yourself (with any custom options you may require):
+
+##### Via NPM
+
+```
+npm install Kayzen-GS --save
+```
+
+```css
+@import '../node_modules/Kayzen-GS/dist/kayzen-gs';
+```
+
+##### Via Bower
+
+```
+bower install Kayzen-GS --save
+```
+
+```css
+@import '../bower_components/Kayzen-GS/dist/kayzen-gs';
+```
+
+##### As Git Submodule
+
+```
+git submodule add https://github.com/esr360/Kayzen-GS.git vendor
+```
+
+```css
+@import '../vendor/Kayzen-GS/dist/kayzen-gs';
+```
+
+##### Via Git Clone
+
+```
+git clone https://github.com/esr360/Kayzen-GS.git
+```
+
+```css
+@import '../Kayzen-GS/dist/kayzen-gs';
+```
+
+##### Download
+
+> [Download _kayzen-gs.scss](dist/_kayzen-gs.scss)
+
+```css
+@import 'PATH/TO/kayzen-gs';
+```
+
+---
+
+Once loaded, create the grid-system by including the `kayzen-gs` mixin, where you can pass any custom [options](#options):
+
+```scss
+// Using default options
+@include kayzen-gs();
+```
+
+```scss
+// Using custom options
+@include kayzen-gs((
+    'options' : (
+        'columns'       : 16,
+        'col-namespace' : 'col'
+    ),
+    'settings' : (
+        'old-ie'        : true,
+        'pull-columns'  : false,
+        'push-columns'  : false
+    )
+));
+```
+
+If you want to create the grid system automatically (with default options) when you import the `_kayzen-gs.scss` file, instead import the `_include-kayzen-gs.scss` file:
+
+```css
+@import '../Kayzen-GS/dist/include-kayzen-gs';
+```
+
+---
+
 ## Documentation
 
-* [Installation](#installation)
 * [Default Kayzen Grid system](#default-kayzen-grid-system)
   * [Responsiveness](#responsiveness)
   * [Flow Columns](#flow-columns)
@@ -59,72 +157,6 @@ By default, using **inline-block** for columns causes a [natural whitespace](htt
   * [Creating a Semantic Column](#creating-a-semantic-column)
 * [Column Aligning](#column-aligning)
 * [Solving the Whitespace Issue](#solving-the-whitespace-issue)
-
-### Installation
-
-There are several ways to use the Kayzen-GS framework depending on how much you want to customize it:
-
-#### Plain CSS
-
-If you aren't using Sass, to use the default compiled and minified grid system, download the core files and load the [`kayzen-gs.min.css`](blob/master/dist/kayzen-gs.min.css) file in your project and you're good to go.
-
-#### Using Sass
-
-Kayzen-GS requires **Sass 3.3+**
-
-##### Via Git Clone
-
-```
-git clone --recursive https://github.com/esr360/Kayzen-GS.git
-```
-
-##### As Git Submodule
-
-```
-git submodule add https://github.com/esr360/Kayzen-GS.git && git submodule update --init --recursive
-```
-
-##### Via Bower
-
-```
-bower install Kayzen-GS && cd bower_components/Kayzen-GS && npm run vendor
-```
-
-##### Via NPM
-
-```
-npm install Kayzen-GS
-```
-
----
-
-After you have installed Kayzen-GS, import the following file into your project's main `.scss` file:
-
-```
-dist/kayzen-gs.scss
-```
-
-To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
-
-```scss
-@include kayzen-gs;
-```
-
-It is possible to override any value in the [Configuration](#custom-configuration) by passing it to the mixin:
-
-```scss
-@include kayzen-gs((
-    'options' : (
-        'columns'       : 16,
-        'col-namespace' : 'col',
-    ),
-    'settings' : (
-        'old-ie'        : true,
-        'pull-columns'  : false,
-        'push-columns'  : false
-    ),
-));
-```
 
 ### Default Kayzen Grid System
 
@@ -422,7 +454,6 @@ $kayzenGS: (
         'col-namespace'     : 'span',
     ),
     'settings' : (
-        'kayzen-gs'         : true,
         'old-ie'            : false,
         'responsive'        : true,
         'mobile-first'      : false,
@@ -470,12 +501,6 @@ The 'options' form the basic foundation for your grid system. This is where you 
 > **Note:** Whilst most options are enabled by default, it is recommended that you disable any features you don't use to optimise the generated CSS.
 
 This is where you set which features of Kayzen-GS you want to use in your project. By default, all functionality outlined in this documentation is enabled, meaning you don't have to change anything to access all the features of Kayzen-GS, the only reason you would change any of these settings is to disable any unused features to improve performance.
-
-##### 'kayzen-gs'
-
-*Default : false*
-
-This setting outputs the Kayzen-GS grid system. This option is disabled by default to allow you to include the grid system anywhere in your project, and not just where you import the `kayzen-gs.scss` file.
 
 ##### 'old-ie'
 
@@ -929,6 +954,16 @@ For all issues, bugs, suggestions and feature requests, please use the [issues p
 Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
+
+#### Version 2.4.0
+
+Released: 1st June 2017
+
+###### Release Notes
+
+* dependencies are now node modules instead of git submodules
+* slight change in how grid system is imported/included
+* scss files linted
 
 #### Version 2.3.0
 

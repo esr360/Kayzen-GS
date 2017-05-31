@@ -15,7 +15,7 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-clean
          */
         clean: {
-            dist: {
+            default: {
                 src: 'dist'
             }
         },
@@ -25,9 +25,9 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         concat: {   
-            app: {
+            default: {
                 src: [
-                    'vendor/Sass-Boost/dist/_sass-boost.scss',
+                    'node_modules/Sass-Boost/dist/_sass-boost.scss',
                     'src/lib/utilities/*',
                     'src/_config.scss',
                     'src/lib/tools/*',
@@ -35,7 +35,11 @@ module.exports = function(grunt) {
                     'src/core/**/*',
                     'src/lib/semantic-gs/*'
                 ],
-                dest: 'dist/kayzen-gs.scss',
+                dest: 'dist/_kayzen-gs.scss',
+            },
+            include: {
+                src: 'src/include-kayzen-gs.scss',
+                dest: 'dist/_include-kayzen-gs.scss'
             }
         },
       
@@ -49,7 +53,7 @@ module.exports = function(grunt) {
             },
             dev: {
                 files: {
-                    'dist/kayzen-gs.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.css':'src/include-kayzen-gs.scss'
                 },
                 options: {
                     style: 'expanded'
@@ -57,7 +61,7 @@ module.exports = function(grunt) {
             },
             prod: {
                 files: {
-                    'dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.min.css':'src/include-kayzen-gs.scss'
                 },
                 options: {
                     style: 'compressed'
@@ -81,7 +85,7 @@ module.exports = function(grunt) {
                     })
                 ]
             },
-            build: {
+            default: {
                 src: 'dist/*.css'
             }
         },
@@ -91,15 +95,15 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         scsslint: {
-            allFiles: [
-                'src/core/**/*.scss',
-                'src/lib/**/*.scss',
-                '_config.scss',
-            ],
             options: {
                 configFile: '.scss-lint.yml',
                 colorizeOutput: true
             },
+            default: [
+                'src/core/**/*.scss',
+                'src/lib/**/*.scss',
+                '_config.scss',
+            ]
         },
       
         /**
@@ -112,7 +116,7 @@ module.exports = function(grunt) {
                 options: {
                     dest: 'docs'
                 }
-            },
+            }
         },
       
         /**
@@ -120,7 +124,7 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         mochacli: {
-            all: ['unit-testing/tests.js']
+            scss: ['unit-testing/tests.js']
         },
       
         /**
@@ -128,7 +132,7 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         watch: {
-            css: {
+            default: {
                 files: [
                     'src/**/*.scss'
                 ],

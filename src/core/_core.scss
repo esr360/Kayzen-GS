@@ -9,7 +9,7 @@
 /// @example
 ///     @include kayzen-gs((
 ///         'options':(
-///             'max-width' : 90% 
+///             'max-width' : 90%
 ///         ),
 ///         'breakpoints':(
 ///             'break-3'   : 840px,
@@ -21,8 +21,18 @@
     //*************************************************************
     // Configuration
     //*************************************************************
-	
+
     $kayzenGS: map-merge-deep($kayzenGS, $custom) !global;
+
+    //*************************************************************
+    // Reset Spacing
+    //*************************************************************
+
+    * {
+        letter-spacing: normal;
+        text-rendering: auto;
+        word-spacing: normal;
+    }
 
     //*************************************************************
     // Row
@@ -36,22 +46,22 @@
     //*************************************************************
     // Columns
     //*************************************************************
-            
+
     .#{kgs-option('row-namespace')} {
-        
+
         // Default Columns
         //*********************************************************
-        
+
         @at-root {
             @if kgs-setting('mobile-first') {
                 @media (min-width: kgs-option('col-break')) {
                     @include kgs-default-columns;
                 }
             } @else {
-                @include kgs-default-columns; 
+                @include kgs-default-columns;
             }
         }
-        
+
         @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
             @if not kgs-setting('mobile-first') {
                 @if kgs-setting('responsive') {
@@ -63,7 +73,7 @@
                 }
             }
         }
-    
+
         @if kgs-setting('responsive') {
             @each $bp, $width in kayzenGS('breakpoints') {
                 &.stack-#{$bp} {
@@ -78,23 +88,23 @@
                     }
                 }
             }
-        }  
-        
+        }
+
         // Flow Columns
         //*********************************************************
-        
+
         @if kgs-setting('flow-columns') {
-            
+
             &-flow {
-                
+
                 @include kgs-pull('flow');
                 @include kgs-push('flow');
-                
+
                 &:not(.#{kgs-option('row-namespace')}-no-gutter) {
                     margin-left: -#{kgs-option('gutter')};
                     width: 100% + kgs-option('gutter');
                 }
-                
+
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option(col-break)) {
@@ -114,10 +124,10 @@
                                 }
                             }
                         }
-                        
+
                     }
                 }
-                
+
                 @if kgs-setting('responsive') {
                     @each $bp, $width in kayzenGS('breakpoints') {
                         &.stack-#{$bp} {
@@ -133,27 +143,27 @@
                         }
                     }
                 }
-                
-                // Adaptive Columns 
+
+                // Adaptive Columns
                 @if kgs-setting('responsive') {
-                    @if kgs-setting('adaptive-columns') {    
+                    @if kgs-setting('adaptive-columns') {
                         @include kgs-adaptive-columns;
                     }
                 }
-                
+
             } // &--flow
-        
+
         } // kgs-setting()
-        
+
         // Magic Columns
         //*********************************************************
-    
+
         @if kgs-setting('magic-columns') {
-            
+
             &-magic {
-                
+
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
-                    
+
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-magic-columns;
@@ -168,7 +178,7 @@
                             }
                         }
                     }
-                    
+
                     @if kgs-setting('responsive') {
                         @each $bp, $width in kayzenGS('breakpoints') {
                             &.stack-#{$bp} {
@@ -184,23 +194,23 @@
                             }
                         }
                     }
-                    
+
                 }
-                
+
             } // &--magic
-            
+
         } // kgs-setting()
-        
+
         // No Gutter Columns
         //*********************************************************
-        
+
         @if kgs-setting('no-gutter-columns') {
-            
+
             &-no-gutter, &-block {
-                
+
                 @include kgs-pull('no-gutter');
                 @include kgs-push('no-gutter');
-                
+
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
@@ -217,7 +227,7 @@
                         }
                     }
                 }
-                
+
                 @if kgs-setting('responsive') {
                     @each $bp, $width in kayzenGS('breakpoints') {
                         &.stack-#{$bp} {
@@ -232,30 +242,30 @@
                             }
                         }
                     }
-                }          
-                
+                }
+
             }
-            
+
             &-no-gutter {
-                
-                // Adaptive Columns 
+
+                // Adaptive Columns
                 @if kgs-setting('responsive') {
-                    @if kgs-setting('adaptive-columns') {    
+                    @if kgs-setting('adaptive-columns') {
                         @include kgs-adaptive-columns($col-type: 'no-gutter');
                     }
-                }   
-                
+                }
+
             }
-            
+
         } // kgs-setting()
-        
+
         // Block Columns
         //*********************************************************
-        
+
         @if kgs-setting('block-columns') {
-            
+
             &-block {
-                
+
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
                     @if kgs-setting('mobile-first') {
                         @media (min-width: kgs-option('col-break')) {
@@ -272,7 +282,7 @@
                         }
                     }
                 }
-                
+
                 @if kgs-setting('responsive') {
                     @each $bp, $width in kayzenGS('breakpoints') {
                         &.stack-#{$bp} {
@@ -288,22 +298,22 @@
                         }
                     }
                 }
-                
+
             } // &-block
-            
+
         } // kgs-setting()
-        
+
         // Reverse Column Order
         //*********************************************************
-    
+
         @if kgs-setting('reverse-columns') {
-            
+
             &-reverse {
                 &:not([class*="reverse-break"]) {
                     @include kgs-reverse-order;
                 }
             }
-                
+
             @if kgs-setting('responsive') {
                 @each $bp, $width in kayzenGS('breakpoints') {
                     @media (#{$kgs-scale}-width: $width) {
@@ -313,34 +323,21 @@
                     }
                 }
             }
-            
+
         } // kgs-setting()
-        
+
     } // row
 
     //*************************************************************
     // Custom Push/Pull
     //*************************************************************
-    
+
     @if kgs-setting('pull-columns') {
         @include kgs-pull;
     }
-    
+
     @if kgs-setting('push-columns') {
         @include kgs-push;
     }
 
 } // @mixin kayzen-gs
-
-//*************************************************************
-// Reset Spacing
-//*************************************************************
-* {        
-    letter-spacing: normal;
-    text-rendering: auto;
-    word-spacing: normal;
-}
-
-@if kgs-setting('kayzen-gs') {
-    @include kayzen-gs;   
-}

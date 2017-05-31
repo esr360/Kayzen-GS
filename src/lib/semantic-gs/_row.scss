@@ -7,7 +7,7 @@
 /// @outputs custom row styles
 @mixin row($type: null) {
     @include kgs-row-core;
-    @if $type == 'flow' {		
+    @if $type == 'flow' {
         margin-left: -#{kgs-option('gutter')};
         width: 100% + kgs-option('gutter');
     }

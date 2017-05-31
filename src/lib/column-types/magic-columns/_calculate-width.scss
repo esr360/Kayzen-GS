@@ -6,5 +6,5 @@
 /// @param {number} $columns - the maxinum number of columns being used
 /// @return {number} - width of column
 @function kgs-magic-width($columns: $columns) {
-    @return (100/$columns) - ( ( ( (100 / (100/$columns) ) - 1) * kgs-option('gutter') ) / $columns );
+    @return (100 / $columns) - ( ( ( (100 / (100 / $columns) ) - 1) * kgs-option('gutter') ) / $columns );
 }
