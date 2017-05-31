@@ -12,9 +12,9 @@
     //*************************************************************
 
     $config: map-merge((
-        'width'        : 'full', 
-        'type'         : null, 
-        'stack'        : kgs-option('col-break'), 
+        'width'        : 'full',
+        'type'         : null,
+        'stack'        : kgs-option('col-break'),
         'mobile-first' : kgs-setting('mobile-first'),
         'respond-to'   : null
     ), $custom);
@@ -22,7 +22,7 @@
     $config: $config !global;
 
     $span: null;
-    $columns: null; 
+    $columns: null;
 
     //*************************************************************
     // Prepare Grid
@@ -32,18 +32,18 @@
     @if type-of(kgs-config('width')) == string {
         $span: nth(kgs-fraction(kgs-config(width)), 1);
         $columns: nth(kgs-fraction(kgs-config('width')), 2);
-    } 
+    }
 
     // if 'width' is a percentage e.g. 25%
     @else if type-of(kgs-config('width')) == number {
         $span: kgs-config(width);
-        $columns: 100;	
-    } 
+        $columns: 100;
+    }
 
     // if 'width' is a (span, columns) format e.g. (3, 12)
     @else if type-of(kgs-config('width')) == list {
         $span: nth(kgs-config('width'), 1);
-        $columns: nth(kgs-config('width'), 2);	
+        $columns: nth(kgs-config('width'), 2);
     }
 
     //*************************************************************
@@ -62,7 +62,7 @@
     @if kgs-config('type') == 'flow' {
         @include kgs-gutter(false);
         width: kgs-flow-width($span, $columns);
-    } 
+    }
 
     // if magic column
     @else if kgs-config('type') == 'magic' {
@@ -90,29 +90,33 @@
             }
         } @else {
             width: kgs-no-gutter-width($span, $columns);
+
             @media (max-width: kgs-config('stack')) {
                 @include kgs-stack-columns($core: true);
             }
         }
     }
-        
+
     // all other column types
-    @else {	
+    @else {
         @if kgs-config('mobile-first') {
             width: 100%;
+
             @media (min-width: kgs-config('stack')) {
                 @include kgs-gutter;
                 width: kgs-default-width($span, $columns);
                 @if kgs-config('type') == 'block' {
-                    display: table-cell;		
-                } 
+                    display: table-cell;
+                }
             }
-        } @else {		
+        } @else {
             @include kgs-gutter;
             width: kgs-default-width($span, $columns);
+
             @if kgs-config('type') == 'block' {
-                display: table-cell;		
-            } 
+                display: table-cell;
+            }
+
             @media (max-width: kgs-config('stack')) {
                 @include kgs-stack-columns($core: true);
             }
@@ -124,56 +128,56 @@
     //*************************************************************
 
     @if kgs-config('respond-to') {
-            
+
         $breakpoints: if(
             kgs-config('mobile-first'),
             list-reverse(kgs-config('respond-to')),
             kgs-config('respond-to')
         );
-        
+
         @each $breakpoint, $width in $breakpoints {
-            
-            $columns: null;	
-            $span: null; 
-            
+
+            $columns: null;
+            $span: null;
+
             $respond-scale: if(kgs-config('mobile-first'), 'min', 'max');
 
             @media (#{$respond-scale}-width: kgs-breakpoint($breakpoint)) {
-                
+
                 // if 'width' is a fraction e.g. 'quarter'
                 @if type-of($width) == string {
                     $span: nth(kgs-fraction($width), 1);
                     $columns: nth(kgs-fraction($width), 2);
                 }
-                
+
                 // if 'width' is a percentage e.g. 25%
                 @else if type-of($width) == number {
                     $span: $width;
                     $columns: 100;
-                } 
-                
+                }
+
                 // if 'width' is in (span, columns) format e.g. (3, 12)
                 @else if type-of($width) == list {
                     $span: nth($width, 1);
-                    $columns: nth($width, 2);			
+                    $columns: nth($width, 2);
                 }
-                
+
                 @include kgs-column-core;
-                
+
                 // if flow column
                 @if kgs-config('type') == 'flow' {
-                    width: kgs-flow-width($span, $columns);	
-                } 
-                
-                // all other column types
-                @else {	
-                    width: kgs-default-width($span, $columns);	
+                    width: kgs-flow-width($span, $columns);
                 }
-                        
+
+                // all other column types
+                @else {
+                    width: kgs-default-width($span, $columns);
+                }
+
             }
-                
+
         }
-        
+
     }
 
 } // @mixin column

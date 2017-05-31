@@ -1,10 +1,11 @@
 {
     "name": "Kayzen-GS",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "description": "A powerful and responsive grid system.",
-    "main": [
-        "dist/kayzen-gs.scss"	
+    "authors": [
+        "(Edmund Reed)[http://twitter.com/esr360] <esr360@live.com>"
     ],
+    "homepage": "http://kayzen.gs/",
     "keywords": [
         "css",
         "sass",
@@ -17,10 +18,11 @@
         "web",
         "development"
     ],
-    "homepage":"http://kayzen.gs/",
+    "main": "dist/kayzen-gs.scss",
     "ignore": [
         "**/.*",
         ".node_modules",
         "bower.json"
-    ]
+    ],
+    "license": "MIT"
 }

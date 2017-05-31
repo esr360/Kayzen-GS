@@ -15,7 +15,7 @@ module.exports = function(grunt) {
          * @see https://github.com/gruntjs/grunt-contrib-clean
          */
         clean: {
-            dist: {
+            default: {
                 src: 'dist'
             }
         },
@@ -25,9 +25,9 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         concat: {   
-            app: {
+            default: {
                 src: [
-                    'vendor/Sass-Boost/dist/_sass-boost.scss',
+                    'node_modules/Sass-Boost/dist/_sass-boost.scss',
                     'src/lib/utilities/*',
                     'src/_config.scss',
                     'src/lib/tools/*',
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
                     })
                 ]
             },
-            build: {
+            default: {
                 src: 'dist/*.css'
             }
         },
@@ -91,15 +91,15 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         scsslint: {
-            allFiles: [
-                'src/core/**/*.scss',
-                'src/lib/**/*.scss',
-                '_config.scss',
-            ],
             options: {
                 configFile: '.scss-lint.yml',
                 colorizeOutput: true
             },
+            default: [
+                'src/core/**/*.scss',
+                'src/lib/**/*.scss',
+                '_config.scss',
+            ]
         },
       
         /**
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
                 options: {
                     dest: 'docs'
                 }
-            },
+            }
         },
       
         /**
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         mochacli: {
-            all: ['unit-testing/tests.js']
+            default: ['unit-testing/tests.js']
         },
       
         /**
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         watch: {
-            css: {
+            default: {
                 files: [
                     'src/**/*.scss'
                 ],

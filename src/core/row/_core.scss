@@ -5,7 +5,7 @@
 /// @group Kayzen-GS
 /// @outputs core styles for a row
 @mixin kgs-row-core {
-    
+
     // Firefox/IE collapse white-space
     letter-spacing: -1em;
     // Webkit collapse white-space
@@ -21,8 +21,8 @@
     @if kgs-setting('old-ie') {
         *letter-spacing: normal;
         *word-spacing: -0.43em;
-    }	
+    }
     // Required for some third-party sliders
     // table-layout: fixed;
-    
+
 }

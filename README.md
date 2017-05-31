@@ -5,13 +5,11 @@
 
 <img src="https://raw.githubusercontent.com/esr360/Kayzen-GS/gh-pages/logo.png" width="270">
 
-## Overview
+### Overview
 
 > Kayzen-GS is a powerful framework for building responsive grid systems. Built using Sass and based off inline-block columns, Kayzen-GS is a one of a kind framework suitable for any project.
 
 [View Examples](http://kayzen.gs) | [View Sass Documentation](http://esr360.github.io/Kayzen-GS/docs/)
-
-[![Kayzen - Premium HTML Theme Framework](http://skyux.com/images/kayzen-gh.png)](http://preview.themeforest.net/item/kayzen-multipurpose-html5-template/full_screen_preview/16768920)
 
 Some of the core features of Kayzen-GS include:
 
@@ -28,37 +26,6 @@ Some of the core features of Kayzen-GS include:
 * Adaptive column widths
 * Push/pull columns
 * Works in all browsers
-
-#### Why use inline-block columns?
-
-The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
-
-#### Why don't other grid systems use inline-block?
-
-By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
-
-## Documentation
-
-* [Installation](#installation)
-* [Default Kayzen Grid system](#default-kayzen-grid-system)
-  * [Responsiveness](#responsiveness)
-  * [Flow Columns](#flow-columns)
-  * [Adaptive Columns](#adaptive-columns)
-  * [Magic Columns](#magic-columns)
-  * [Block Columns](#block-columns)
-  * [No Gutter Columns](#no-gutter-columns)
-  * [Reverse Column Order](#reverse-column-order)
-  * [Push/Pull Columns](#pushpull-columns)
-* [Custom Configuration](#custom-configuration)
-  * [Options](#options)
-  * [Settings](#settings)
-  * [Breakpoints](#breakpoints)
-  * [Fractions](#fractions)
-* [Semantic Grid System](#semantic-grid-system)
-  * [Creating a Semantic Row](#creating-a-semantic-row)
-  * [Creating a Semantic Column](#creating-a-semantic-column)
-* [Column Aligning](#column-aligning)
-* [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
 ### Installation
 
@@ -103,6 +70,36 @@ After you have installed Kayzen-GS, import the following file into your project'
 ```
 dist/kayzen-gs.scss
 ```
+
+#### Why use inline-block columns?
+
+The simple answer is; flexibility. By definition, columns *are* just inline blocks - it's the way CSS columns are supposed to work. Creating CSS columns by applying `inline-block` opens up a whole world of flexibility for your columns - the [most useful benefit](https://github.com/yahoo/pure/issues/41#issuecomment-21071440) being the ability to set their *horizontal* and *vertical* alignment, just by setting the `text-align` and `vertical-align` properties respectively. 
+
+#### Why don't other grid systems use inline-block?
+
+By default, using **inline-block** for columns causes a [natural whitespace](http://css-tricks.com/fighting-the-space-between-inline-block-elements/) to appear between each column, which can vary in width from font to font and browser to browser. Indeed, this has caused [many people many problems](http://stackoverflow.com/search?q=inline-block+column), and there are plenty of go-to [hacky and impractical](http://davidwalsh.name/remove-whitespace-inline-block) work arounds, none of which are really suitble for a production environment. However, for the first time Kayzen-GS allows for the use of completely usable and functional columns which use **inline-block** and have **no white-space**. And to top it all off, they work on all browsers, including **Internet Explorer 6** (not that anyone uses it anymore...).
+
+## Documentation
+
+* [Default Kayzen Grid system](#default-kayzen-grid-system)
+  * [Responsiveness](#responsiveness)
+  * [Flow Columns](#flow-columns)
+  * [Adaptive Columns](#adaptive-columns)
+  * [Magic Columns](#magic-columns)
+  * [Block Columns](#block-columns)
+  * [No Gutter Columns](#no-gutter-columns)
+  * [Reverse Column Order](#reverse-column-order)
+  * [Push/Pull Columns](#pushpull-columns)
+* [Custom Configuration](#custom-configuration)
+  * [Options](#options)
+  * [Settings](#settings)
+  * [Breakpoints](#breakpoints)
+  * [Fractions](#fractions)
+* [Semantic Grid System](#semantic-grid-system)
+  * [Creating a Semantic Row](#creating-a-semantic-row)
+  * [Creating a Semantic Column](#creating-a-semantic-column)
+* [Column Aligning](#column-aligning)
+* [Solving the Whitespace Issue](#solving-the-whitespace-issue)
 
 To use the default Kayzen Grid System, the `kayzen-gs` mixin needs to be called. This mixin can be called automatically by setting the `kayzen-gs` option in the [Configuration](#custom-configuration) to `true`. Alternatively, you can call the mixin like so anywhere in your project after Kayzen-GS is imported:
 

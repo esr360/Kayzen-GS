@@ -7,5 +7,5 @@
 @mixin kgs-block-columns {
     > [class*="#{kgs-option('col-namespace')}"] {
         display: table-cell;
-    }  
+    }
 }

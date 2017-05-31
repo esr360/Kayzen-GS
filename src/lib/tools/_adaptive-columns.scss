@@ -24,11 +24,11 @@
 
         @each $bp, $width in $reverse-breakpoints {
             @media (#{$kgs-scale}-width: $width) {
-                @each $name, $fraction in kayzenGS('fractions') {		
+                @each $name, $fraction in kayzenGS('fractions') {
                     &.#{$bp}-#{$name} {
                         @if $col-type == 'default' {
                             width: kgs-flow-width(nth($fraction, 1), nth($fraction, 2));
-                        } @else if $col-type =='no-gutter' {
+                        } @else if $col-type == 'no-gutter' {
                             width: kgs-no-gutter-width(nth($fraction, 1), nth($fraction, 2));
                         }
                     }

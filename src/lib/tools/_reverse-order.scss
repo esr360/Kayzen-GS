@@ -7,9 +7,9 @@
 @mixin kgs-reverse-order {
 
     transform: rotate(180deg);
-    
+
     > [class*="#{kgs-option('col-namespace')}"] {
         transform: scale(-1);
-    } 
+    }
 
 }

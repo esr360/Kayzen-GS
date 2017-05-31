@@ -1,7 +1,9 @@
 {
   "name": "Kayzen-GS",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "A powerful and responsive grid system.",
+  "author": "(Edmund Reed)[http://twitter.com/esr360] <esr360@live.com>",
+  "homepage": "https://github.com/esr360/Kayzen-GS",
   "keywords": [
     "css",
     "sass",
@@ -9,12 +11,17 @@
     "grid system",
     "framework"
   ],
-  "author": "Edmund Reed (http://twitter.com/esr360)",
-  "homepage": "https://github.com/esr360/Kayzen-GS",
   "bugs": {
     "url": "https://github.com/esr360/Kayzen-GS/issues"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esr360/Kayzen-GS.git"
+  },
+  "dependencies": {
+    "Sass-Boost": "^1.1.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "grunt": "^1.0.1",
