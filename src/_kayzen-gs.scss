@@ -4,10 +4,13 @@
 // https://github.com/esr360/Kayzen-GS
 //*****************************************************************
 
-// Utilities
+// Vendor
 //*****************************************************************
 
 @import '../node_modules/Sass-Boost/src/sass-boost';
+
+// Utilities
+//*****************************************************************
 
 @import 'lib/utilities/kayzenGS';
 @import 'lib/utilities/breakpoint';

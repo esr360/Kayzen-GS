@@ -35,7 +35,11 @@ module.exports = function(grunt) {
                     'src/core/**/*',
                     'src/lib/semantic-gs/*'
                 ],
-                dest: 'dist/kayzen-gs.scss',
+                dest: 'dist/_kayzen-gs.scss',
+            },
+            include: {
+                src: 'src/include-kayzen-gs.scss',
+                dest: 'dist/_include-kayzen-gs.scss'
             }
         },
       
@@ -49,7 +53,7 @@ module.exports = function(grunt) {
             },
             dev: {
                 files: {
-                    'dist/kayzen-gs.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.css':'src/include-kayzen-gs.scss'
                 },
                 options: {
                     style: 'expanded'
@@ -57,7 +61,7 @@ module.exports = function(grunt) {
             },
             prod: {
                 files: {
-                    'dist/kayzen-gs.min.css': 'src/kayzen-gs.scss'
+                    'dist/kayzen-gs.min.css':'src/include-kayzen-gs.scss'
                 },
                 options: {
                     style: 'compressed'
@@ -120,7 +124,7 @@ module.exports = function(grunt) {
          * @see https://github.com/SassDoc/grunt-sassdoc
          */
         mochacli: {
-            default: ['unit-testing/tests.js']
+            scss: ['unit-testing/tests.js']
         },
       
         /**

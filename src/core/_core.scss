@@ -25,6 +25,16 @@
     $kayzenGS: map-merge-deep($kayzenGS, $custom) !global;
 
     //*************************************************************
+    // Reset Spacing
+    //*************************************************************
+
+    * {
+        letter-spacing: normal;
+        text-rendering: auto;
+        word-spacing: normal;
+    }
+
+    //*************************************************************
     // Row
     //*************************************************************
 
@@ -331,17 +341,3 @@
     }
 
 } // @mixin kayzen-gs
-
-//*************************************************************
-// Reset Spacing
-//*************************************************************
-
-* {
-    letter-spacing: normal;
-    text-rendering: auto;
-    word-spacing: normal;
-}
-
-@if kgs-setting('kayzen-gs') {
-    @include kayzen-gs;
-}

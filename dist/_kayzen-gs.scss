@@ -456,7 +456,6 @@ $kayzenGS: (
         'col-namespace'     : 'span',
     ),
     'settings' : (
-        'kayzen-gs'         : true,
         'old-ie'            : false,
         'responsive'        : true,
         'mobile-first'      : false,
@@ -828,6 +827,16 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     $kayzenGS: map-merge-deep($kayzenGS, $custom) !global;
 
     //*************************************************************
+    // Reset Spacing
+    //*************************************************************
+
+    * {
+        letter-spacing: normal;
+        text-rendering: auto;
+        word-spacing: normal;
+    }
+
+    //*************************************************************
     // Row
     //*************************************************************
 
@@ -1134,20 +1143,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     }
 
 } // @mixin kayzen-gs
-
-//*************************************************************
-// Reset Spacing
-//*************************************************************
-
-* {
-    letter-spacing: normal;
-    text-rendering: auto;
-    word-spacing: normal;
-}
-
-@if kgs-setting('kayzen-gs') {
-    @include kayzen-gs;
-}
 
 /// Core column styles
 ///
