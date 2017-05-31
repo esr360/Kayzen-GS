@@ -18,7 +18,7 @@
         "web",
         "development"
     ],
-    "main": "dist/kayzen-gs.scss",
+    "main": "dist/_kayzen-gs.scss",
     "ignore": [
         "**/.*",
         ".node_modules",
