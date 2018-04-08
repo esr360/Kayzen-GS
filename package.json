@@ -20,20 +20,48 @@
     "url": "https://github.com/esr360/Kayzen-GS.git"
   },
   "dependencies": {
-    "Sass-Boost": "^1.1.0"
+    "Sass-Boost": "^1.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
-    "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-cli": "^2.1.0",
-    "grunt-notify": "^0.4.5",
-    "grunt-postcss": "^0.8.0",
-    "grunt-sassdoc": "^2.0.2",
-    "grunt-scss-lint": "^0.3.8",
-    "sass-true": "^2.1.3"
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "concat": "^1.0.3",
+    "eslint": "^4.14.0",
+    "jsdoc": "^3.5.5",
+    "jsdom": "^11.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.4.2",
+    "node-sass": "^4.7.2",
+    "node-sass-json-importer": "^3.0.2",
+    "postcss": "*",
+    "postcss-cli": "*",
+    "sass-true": "^3.0.0-beta.1",
+    "sassdoc": "^2.5.0",
+    "stylelint": "^8.4.0",
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint './src/js/**/*.js'",
+    "lint:scss": "stylelint src/scss/**/*.scss",
+    "test": "npm run test:js && npm run test:scss",
+    "test:js": "mocha unit-testing/js/tests.js --require babel-register",
+    "test:scss": "mocha unit-testing/scss/tests.js --require babel-register",
+    "docs": "npm run docs:js && npm run docs:sass",
+    "docs:js": "jsdoc src/js -r -d docs/js",
+    "docs:sass": "sassdoc src/scss -d docs/sass",
+    "js": "webpack",
+    "sass": "npm run sass:build && npm run sass:dev && npm run sass:prod && npm run sass:autoprefix",
+    "sass:build": "node ./build/sass-concat.js",
+    "sass:dev": "node-sass src/scss/include-kayzen-gs.scss dist/kayzen-gs.css --output-style=expanded --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
+    "sass:prod": "node-sass src/scss/include-kayzen-gs.scss dist/kayzen-gs.min.css --output-style=compressed --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
+    "sass:autoprefix": "postcss --use autoprefixer -r dist/**/*.css --no-map",
+    "compile": "npm run lint && npm test && npm run docs && npm run js && npm run sass"
   }
 }

@@ -151,42 +151,26 @@
 }
 /// Used to recursively merge (deep merge) two maps
 ///
-/// @author Pedr Browne
+/// @author Zsolt Pentz
 /// @access public
-/// @link https://git.io/vPrlX
+/// @link https://codepen.io/pentzzsolt/pen/yJkgyW
 ///
 /// @param {map} $map-old - The original map
 /// @param {map} $map-new - The new map you wish to merge into the original
-/// @param {bool} $overwrite [true] - Overwrite existing keys
 ///
 /// @return {map} - merged map
-@function map-merge-deep($map-old, $map-new, $overwrite: true) {
+@function map-merge-deep($parent-map, $child-map) {
+    $result: $parent-map;
 
-    // Iterate through each value of the new map
-    @each $key, $new-value in $map-new {
-
-        // Check if that value already exists on the old map
-        @if map-has-key($map-old, $key) {
-            // There is an existing key
-            $old-value: map-get($map-old, $key);
-            @if type-of($new-value) == map and type-of($old-value) == map {
-                // If both are maps, recurse regardless of $overwrite
-                $merged-value: map-merge-deep($old-value, $new-value);
-                $map-old: map-set($map-old, $key, $merged-value);
-            } @else {
-                // Otherwise check $overwrite
-                @if $overwrite {
-                    $map-old: map-set($map-old, $key, $new-value);
-                }
-            }
+    @each $key, $value in $child-map {
+        @if(type-of(map-get($result, $key)) == map and type-of($value) == map) {
+            $result: map-merge($result, ($key: map-merge-deep(map-get($result, $key), $value)));
         } @else {
-            // There is no existing key to add
-            $map-old: map-set($map-old, $key, $new-value);
+            $result: map-merge($result, ($key: $value));
         }
-
     }
 
-    @return $map-old;
+    @return $result;
 }
 /// Reverse a map
 ///
@@ -650,7 +634,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     }
 
 }
-
 /// Core block column styles
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -662,7 +645,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         display: table-cell;
     }
 }
-
 /// Calculate width for a default column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -694,7 +676,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     }
 
 }
-
 /// Calculate width for a flow column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -726,7 +707,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     }
 
 }
-
 /// Calculate width for a magic column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -769,7 +749,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         @include kgs-magic-column-core;
     }
 }
-
 /// Calculate width for a no-gutter column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
@@ -799,6 +778,47 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         }
     }
 
+}
+/// Core column styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a column
+@mixin kgs-column-core {
+    display: inline-block;
+    vertical-align: top;
+    // IE < 8: fake inline-block
+    @if kgs-setting('old-ie') {
+        *display: inline;
+        zoom: 1;
+    }
+}
+/// Core row styles
+///
+/// @author [@esr360](http://twitter.com/esr360)
+/// @access public
+/// @group Kayzen-GS
+/// @outputs core styles for a row
+@mixin kgs-row-core {
+    // Firefox/IE collapse white-space
+    letter-spacing: -1em;
+    // Webkit collapse white-space
+    display: table;
+    width: 100%;
+    // Opera collapse white-space
+    @at-root {
+        .opera-only :-o-prefocus, & {
+            word-spacing: -0.43em;
+        }
+    }
+    // IE < 8 collapse white-space
+    @if kgs-setting('old-ie') {
+        *letter-spacing: normal;
+        *word-spacing: -0.43em;
+    }
+    // Required for some third-party sliders
+    // table-layout: fixed;
 }
 /// Kayzen-GS core
 ///
@@ -859,7 +879,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 @media (min-width: kgs-option('col-break')) {
                     @include kgs-default-columns;
                 }
-            } @else {
+            }
+            @else {
                 @include kgs-default-columns;
             }
         }
@@ -883,7 +904,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                         @media (#{$kgs-scale}-width: $width) {
                             @include kgs-default-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @media (#{$kgs-scale}-width: $width) {
                             @include kgs-stack-columns;
                         }
@@ -896,7 +918,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
         //*********************************************************
 
         @if kgs-setting('flow-columns') {
-
             &-flow {
 
                 @include kgs-pull('flow');
@@ -912,9 +933,10 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                         @media (min-width: kgs-option(col-break)) {
                             @include kgs-flow-columns;
                         }
-                    } @else {
-
+                    }
+                    @else {
                         @include kgs-flow-columns;
+
                         > [class*="#{kgs-option(col-namespace)}"] {
                             margin-left: #{kgs-option(gutter)};
                         }
@@ -926,7 +948,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                 }
                             }
                         }
-
                     }
                 }
 
@@ -937,7 +958,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-flow-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns($type: 'flow');
                                 }
@@ -954,14 +976,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 }
 
             } // &--flow
-
         } // kgs-setting()
 
         // Magic Columns
         //*********************************************************
 
         @if kgs-setting('magic-columns') {
-
             &-magic {
 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
@@ -970,8 +990,10 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-magic-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-magic-columns;
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -988,7 +1010,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                     @media (#{$kgs-scale}-width: $width) {
                                         @include kgs-magic-columns;
                                     }
-                                } @else {
+                                }
+                                @else {
                                     @media (#{$kgs-scale}-width: $width) {
                                         @include kgs-stack-columns($type: 'magic');
                                     }
@@ -1000,14 +1023,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 }
 
             } // &--magic
-
         } // kgs-setting()
 
         // No Gutter Columns
         //*********************************************************
 
         @if kgs-setting('no-gutter-columns') {
-
             &-no-gutter, &-block {
 
                 @include kgs-pull('no-gutter');
@@ -1018,8 +1039,10 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-no-gutter-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-no-gutter-columns;
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -1037,7 +1060,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-no-gutter-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns;
                                 }
@@ -1049,7 +1073,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
             }
 
             &-no-gutter {
-
                 // Adaptive Columns
                 @if kgs-setting('responsive') {
                     @if kgs-setting('adaptive-columns') {
@@ -1058,14 +1081,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 }
 
             }
-
         } // kgs-setting()
 
         // Block Columns
         //*********************************************************
 
         @if kgs-setting('block-columns') {
-
             &-block {
 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
@@ -1073,7 +1094,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-block-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-block-columns;
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
@@ -1092,7 +1114,8 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-block-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns;
                                 }
@@ -1102,14 +1125,12 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                 }
 
             } // &-block
-
         } // kgs-setting()
 
         // Reverse Column Order
         //*********************************************************
 
         @if kgs-setting('reverse-columns') {
-
             &-reverse {
                 &:not([class*="reverse-break"]) {
                     @include kgs-reverse-order;
@@ -1125,7 +1146,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
                     }
                 }
             }
-
         } // kgs-setting()
 
     } // row
@@ -1143,51 +1163,6 @@ $kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
     }
 
 } // @mixin kayzen-gs
-
-/// Core column styles
-///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
-/// @outputs core styles for a column
-@mixin kgs-column-core {
-    display: inline-block;
-    vertical-align: top;
-    // IE < 8: fake inline-block
-    @if kgs-setting('old-ie') {
-        *display: inline;
-        zoom: 1;
-    }
-}
-
-/// Core row styles
-///
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
-/// @outputs core styles for a row
-@mixin kgs-row-core {
-
-    // Firefox/IE collapse white-space
-    letter-spacing: -1em;
-    // Webkit collapse white-space
-    display: table;
-    width: 100%;
-    // Opera collapse white-space
-    @at-root {
-        .opera-only :-o-prefocus, & {
-            word-spacing: -0.43em;
-        }
-    }
-    // IE < 8 collapse white-space
-    @if kgs-setting('old-ie') {
-        *letter-spacing: normal;
-        *word-spacing: -0.43em;
-    }
-    // Required for some third-party sliders
-    // table-layout: fixed;
-
-}
 /// Custom semantic column
 ///
 /// @author [@esr360](http://twitter.com/esr360)
