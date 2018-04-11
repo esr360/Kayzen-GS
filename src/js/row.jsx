@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import defaults from '../config.json';
 
 export default class Row extends React.Component {
 
