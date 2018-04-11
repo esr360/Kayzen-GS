@@ -5,7 +5,7 @@ export default function(env) {
 
     return {
         entry: { 
-            'kayzen-gs': './src/index.js' 
+            'kayzen-gs': './src/js/index.js' 
         },
 
         output: {

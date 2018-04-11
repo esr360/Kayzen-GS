@@ -9,6 +9,21 @@
 
 @import '../../node_modules/Sass-Boost/src/sass-boost';
 
+// Config
+//*****************************************************************
+
+@import '../config.json';
+
+$kayzenGS: $defaults !default;
+
+/// Set min/max width for breakpoint creation to determine mobile-first
+$kgs-scale: if(map-get-deep($kayzenGS, 'settings', 'mobile-first'), 'min', 'max');
+
+// Reset 'mobile-first' to false if "responsive" is disabled
+@if not map-get-deep($kayzenGS, 'settings', 'responsive') {
+    $kayzenGS: map-merge-deep(('settings': ('mobile-first' : false)), $kayzenGS);
+}
+
 // Utilities
 //*****************************************************************
 
@@ -18,11 +33,6 @@
 @import 'lib/utilities/fraction';
 @import 'lib/utilities/option';
 @import 'lib/utilities/setting';
-
-// Config
-//*****************************************************************
-
-@import 'config';
 
 // Tools
 //*****************************************************************
