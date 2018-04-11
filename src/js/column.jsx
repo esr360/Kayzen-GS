@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import defaults from '../config.json';
 
 export default class Column extends React.Component {
 
@@ -9,7 +10,20 @@ export default class Column extends React.Component {
 
         this.tag = this.props.tag || 'div';
         this.width = this.props.width || this.context['column-width'];
-        this.class = this.props.className ? this.props.className + ' span' : 'span';
+
+        try {
+            this.colNamespace = global.UI.config.grid.options['col-namespace'];
+        }
+        catch(error) {
+            try {
+                this.colNamespace = defaults.defaults.options['col-namespace'];
+            }
+            catch(error) {
+                this.colNamespace = 'span';
+            }
+        }
+
+        this.class = this.props.className ? this.props.className + this.colNamespace : this.colNamespace;
 
         if (this.width) {
             if (typeof this.width === 'object') {

@@ -16,7 +16,20 @@ export default class Row extends React.Component {
         ]
 
         this.tag = this.props.tag || 'div';
-        this.class = 'row';
+
+        try {
+            this.rowNamespace = global.UI.config.grid.options['row-namespace']
+        }
+        catch(error) {
+            try {
+                this.rowNamespace = defaults.defaults.options['row-namespace'];
+            }
+            catch(error) {
+                this.rowNamespace = 'row';
+            }
+        }
+
+        this.class = this.props.className ? this.props.className + this.rowNamespace : this.rowNamespace;
 
         if (this.props.stack) {
             this.class = `${this.class} stack-${this.props.stack}`;
@@ -25,11 +38,11 @@ export default class Row extends React.Component {
             this.class = `${this.class} stack-break-0`;
         }
 
-        if (this.props.reverse) this.class = `${this.class} row-reverse`;
+        if (this.props.reverse) this.class = `${this.class} ${this.rowNamespace}-reverse`;
 
         Object.keys(this.props).forEach(prop => {
             if (this.columnTypes.includes(prop)) {
-                this.class = `${this.class} row-${prop}`;
+                this.class = `${this.class} ${this.rowNamespace}-${prop}`;
             }
         });
     }
