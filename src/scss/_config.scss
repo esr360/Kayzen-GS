@@ -1,33 +1,7 @@
 /// Default grid system configuration
 ///
 /// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
 /// @type map
-///
-/// @prop {number} options.columns [12] - number of columns your grid system should have
-/// @prop {number} options.gutter [3%] - width of gutter between columns
-/// @prop {number} options.col-break [940px] - default width at which columns should collapse
-/// @prop {string} options.row-namespace ['row'] - namespace for gnerated row classes
-/// @prop {string} options.col-namespace ['col'] - namespace for gnerated col classes
-///
-/// @prop {bool} settings.kayzen-gs [false] - output Kayzen-GS style when importing the library
-/// @prop {bool} settings.old-ie [false] - support ancient IE versions (pls don't)
-/// @prop {bool} settings.responsive [true] - generate responsive columns by default
-/// @prop {bool} settings.mobile-first [false] - use mobile-first when generating responsive columns
-/// @prop {bool} settings.custom-stacking [true] - generate styles for stacking at various widths
-/// @prop {bool} settings.adaptive-columns [true] - generate adaptive columns
-/// @prop {bool} settings.flow-columns [true] - generate flow columns
-/// @prop {bool} settings.magic-columns [true] - generate magic columns
-/// @prop {bool} settings.block-columns [true] - generate block columns
-/// @prop {bool} settings.no-gutter-columns [true] - generate no-gutter columns
-/// @prop {bool} settings.reverse-columns [true] - generate classes to reverse-columns
-/// @prop {bool} settings.pull-columns [true] - generate classes to pull-columns
-/// @prop {bool} settings.push-columns [true] - generate classes to push-columns
-///
-/// @prop {map} settings.breakpoints - widths to be used as breakpoints
-/// @prop {map} settings.fractions - widths to be used as pre-defined fractions
-///
 $kayzenGS: if(variable-exists('kayzenGS-defaults'), $kayzenGS-defaults, (
     'options' : (
         'columns'           : 12,

@@ -15,13 +15,6 @@ export default function(env) {
             libraryTarget: 'commonjs2'
         },
 
-        plugins: [
-            new webpack.optimize.UglifyJsPlugin({
-                include: /\.min\.js$/,
-                minimize: true
-            })
-        ],
-
         externals: {
             'react': 'React',
             'react-dom': 'ReactDOM',
