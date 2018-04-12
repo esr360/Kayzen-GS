@@ -61,7 +61,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -379,16 +379,43 @@ module.exports = ReactPropTypesSecret;
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("React");
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = require("ReactDOM");
+module.exports = require("React");
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("ReactDOM");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -413,17 +440,17 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(10)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(12)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(13)();
+  module.exports = __webpack_require__(15)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -492,7 +519,13 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = {"kayzenGS-defaults":{"options":{"columns":12,"gutter":"3%","col-break":"940px","row-namespace":"row","col-namespace":"span"},"settings":{"old-ie":false,"responsive":true,"mobile-first":false,"custom-stacking":true,"adaptive-columns":true,"flow-columns":true,"magic-columns":true,"block-columns":true,"no-gutter-columns":true,"reverse-columns":true,"pull-columns":true,"push-columns":true},"breakpoints":{"break-0":"0px","break-1":"460px","break-2":"720px","break-3":"940px","break-4":"1200px"},"fractions":{"full":[1,1],"half":[1,2],"third":[1,3],"quarter":[1,4],"sixth":[1,6]}}}
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -502,7 +535,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _row = __webpack_require__(9);
+var _row = __webpack_require__(11);
 
 Object.defineProperty(exports, 'Row', {
   enumerable: true,
@@ -511,7 +544,7 @@ Object.defineProperty(exports, 'Row', {
   }
 });
 
-var _column = __webpack_require__(14);
+var _column = __webpack_require__(16);
 
 Object.defineProperty(exports, 'Column', {
   enumerable: true,
@@ -523,11 +556,11 @@ Object.defineProperty(exports, 'Column', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(global) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -535,17 +568,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(5);
+var _reactDom = __webpack_require__(6);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _propTypes = __webpack_require__(6);
+var _propTypes = __webpack_require__(7);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _config = __webpack_require__(9);
+
+var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -566,7 +603,18 @@ var Row = function (_React$Component) {
         _this.columnTypes = ['block', 'default', 'flow', 'magic', 'no-gutter'];
 
         _this.tag = _this.props.tag || 'div';
-        _this.class = 'row';
+
+        try {
+            _this.rowNamespace = global.UI.config.grid.options['row-namespace'];
+        } catch (error) {
+            try {
+                _this.rowNamespace = _config2.default['kayzenGS-defaults'].options['row-namespace'];
+            } catch (error) {
+                _this.rowNamespace = 'row';
+            }
+        }
+
+        _this.class = _this.props.className ? _this.props.className + _this.rowNamespace : _this.rowNamespace;
 
         if (_this.props.stack) {
             _this.class = _this.class + ' stack-' + _this.props.stack;
@@ -574,11 +622,11 @@ var Row = function (_React$Component) {
             _this.class = _this.class + ' stack-break-0';
         }
 
-        if (_this.props.reverse) _this.class = _this.class + ' row-reverse';
+        if (_this.props.reverse) _this.class = _this.class + ' ' + _this.rowNamespace + '-reverse';
 
         Object.keys(_this.props).forEach(function (prop) {
             if (_this.columnTypes.includes(prop)) {
-                _this.class = _this.class + ' row-' + prop;
+                _this.class = _this.class + ' ' + _this.rowNamespace + '-' + prop;
             }
         });
         return _this;
@@ -611,9 +659,10 @@ exports.default = Row;
 Row.childContextTypes = {
     'column-width': _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string, _propTypes2.default.object])
 };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -628,11 +677,11 @@ Row.childContextTypes = {
 
 var emptyFunction = __webpack_require__(1);
 var invariant = __webpack_require__(2);
-var warning = __webpack_require__(7);
-var assign = __webpack_require__(11);
+var warning = __webpack_require__(8);
+var assign = __webpack_require__(13);
 
 var ReactPropTypesSecret = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(12);
+var checkPropTypes = __webpack_require__(14);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -1163,7 +1212,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1260,7 +1309,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1275,7 +1324,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(2);
-  var warning = __webpack_require__(7);
+  var warning = __webpack_require__(8);
   var ReactPropTypesSecret = __webpack_require__(3);
   var loggedTypeFailures = {};
 }
@@ -1327,7 +1376,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1392,11 +1441,11 @@ module.exports = function() {
 
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(global) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1408,17 +1457,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(5);
+var _reactDom = __webpack_require__(6);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _propTypes = __webpack_require__(6);
+var _propTypes = __webpack_require__(7);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _config = __webpack_require__(9);
+
+var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1438,7 +1491,18 @@ var Column = function (_React$Component) {
 
         _this.tag = _this.props.tag || 'div';
         _this.width = _this.props.width || _this.context['column-width'];
-        _this.class = _this.props.className ? _this.props.className + ' span' : 'span';
+
+        try {
+            _this.colNamespace = global.UI.config.grid.options['col-namespace'];
+        } catch (error) {
+            try {
+                _this.colNamespace = _config2.default['kayzenGS-defaults'].options['col-namespace'];
+            } catch (error) {
+                _this.colNamespace = 'span';
+            }
+        }
+
+        _this.class = _this.props.className ? _this.props.className + _this.colNamespace : _this.colNamespace;
 
         if (_this.width) {
             if (_typeof(_this.width) === 'object') {
@@ -1483,6 +1547,7 @@ exports.default = Column;
 Column.contextTypes = {
     'column-width': _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string, _propTypes2.default.object])
 };
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ })
 /******/ ]);

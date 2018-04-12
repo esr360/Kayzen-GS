@@ -19,11 +19,11 @@ export default class Row extends React.Component {
         this.tag = this.props.tag || 'div';
 
         try {
-            this.rowNamespace = global.UI.config.grid.options['row-namespace']
+            this.rowNamespace = global.UI.config.grid.options['row-namespace'];
         }
         catch(error) {
             try {
-                this.rowNamespace = defaults.defaults.options['row-namespace'];
+                this.rowNamespace = defaults['kayzenGS-defaults'].options['row-namespace'];
             }
             catch(error) {
                 this.rowNamespace = 'row';

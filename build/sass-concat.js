@@ -4,6 +4,8 @@ const fs = require('fs');
 const files = [
     // vendor
     './node_modules/Sass-Boost/dist/_sass-boost.scss',
+    // config
+    './src/scss/_config.scss',
     // utilities
     './src/scss/lib/utilities/_breakpoint.scss',
     './src/scss/lib/utilities/_config.scss',
@@ -11,8 +13,6 @@ const files = [
     './src/scss/lib/utilities/_kayzenGS.scss',
     './src/scss/lib/utilities/_option.scss',
     './src/scss/lib/utilities/_setting.scss',
-    // config
-    './src/scss/_config.scss',
     // tools
     './src/scss/lib/tools/_adaptive-columns.scss',
     './src/scss/lib/tools/_gutter.scss',

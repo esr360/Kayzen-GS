@@ -12,22 +12,13 @@
 // Config
 //*****************************************************************
 
-@import '../config.json';
-
-$kayzenGS: $defaults !default;
-
-/// Set min/max width for breakpoint creation to determine mobile-first
-$kgs-scale: if(map-get-deep($kayzenGS, 'settings', 'mobile-first'), 'min', 'max');
-
-// Reset 'mobile-first' to false if "responsive" is disabled
-@if not map-get-deep($kayzenGS, 'settings', 'responsive') {
-    $kayzenGS: map-merge-deep(('settings': ('mobile-first' : false)), $kayzenGS);
-}
+@import '../config.json', 'config';
 
 // Utilities
 //*****************************************************************
 
 @import 'lib/utilities/kayzenGS';
+
 @import 'lib/utilities/breakpoint';
 @import 'lib/utilities/config';
 @import 'lib/utilities/fraction';

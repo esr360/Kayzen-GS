@@ -28,7 +28,7 @@
 /// @prop {map} settings.breakpoints - widths to be used as breakpoints
 /// @prop {map} settings.fractions - widths to be used as pre-defined fractions
 ///
-$kayzenGS: (
+$kayzenGS: if(variable-exists('kayzenGS-defaults'), $kayzenGS-defaults, (
     'options' : (
         'columns'           : 12,
         'gutter'            : 3%,
@@ -64,18 +64,12 @@ $kayzenGS: (
         'quarter'           : (1, 4),
         'sixth'             : (1, 6)
     )
-) !default;
+)) !default;
 
 /// Set min/max width for breakpoint creation to determine mobile-first
-/// @author [@esr360](http://twitter.com/esr360)
-/// @access public
-/// @group Kayzen-GS
-/// @type string
-$kgs-scale: if(kgs-setting('mobile-first'), 'min', 'max');
+$kgs-scale: if(map-get-deep($kayzenGS, 'settings', 'mobile-first'), 'min', 'max');
 
-// Reset "mobile-first" to false if "responsive" is disabled
-@if not kgs-setting('responsive') {
-    $kayzenGS: map-merge-deep(('settings': (
-        'mobile-first' : false
-    )), $kayzenGS);
+// Reset 'mobile-first' to false if "responsive" is disabled
+@if not map-get-deep($kayzenGS, 'settings', 'responsive') {
+    $kayzenGS: map-merge-deep(('settings': ('mobile-first' : false)), $kayzenGS);
 }

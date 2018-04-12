@@ -16,7 +16,7 @@ export default class Column extends React.Component {
         }
         catch(error) {
             try {
-                this.colNamespace = defaults.defaults.options['col-namespace'];
+                this.colNamespace = defaults['kayzenGS-defaults'].options['col-namespace'];
             }
             catch(error) {
                 this.colNamespace = 'span';
