@@ -9,8 +9,10 @@
     "css",
     "sass",
     "scss",
+    "responsive",
     "grid system",
-    "framework"
+    "framework",
+    "react"
   ],
   "bugs": {
     "url": "https://github.com/esr360/Kayzen-GS/issues"
