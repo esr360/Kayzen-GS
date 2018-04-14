@@ -5,6 +5,5 @@
 .pages
 npm-debug.log
 node_modules
-docs
 todo.md
 tests.css
