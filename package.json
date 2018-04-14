@@ -66,6 +66,7 @@
     "sass:dev": "node-sass src/scss/include-kayzen-gs.scss dist/kayzen-gs.css --output-style=expanded --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
     "sass:prod": "node-sass src/scss/include-kayzen-gs.scss dist/kayzen-gs.min.css --output-style=compressed --importer=node_modules/node-sass-json-importer/dist/node-sass-json-importer.js",
     "sass:autoprefix": "postcss --use autoprefixer -r dist/**/*.css --no-map",
-    "compile": "npm run lint && npm test && npm run docs && npm run js && npm run sass"
+    "compile": "npm run lint && npm test && npm run docs && npm run js && npm run sass",
+    "semantic-examples": "node-sass semantic-examples.scss dist/semantic-examples.min.css --output-style=compressed"
   }
 }
