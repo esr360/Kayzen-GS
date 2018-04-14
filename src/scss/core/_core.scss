@@ -57,7 +57,8 @@
                 @media (min-width: kgs-option('col-break')) {
                     @include kgs-default-columns;
                 }
-            } @else {
+            }
+            @else {
                 @include kgs-default-columns;
             }
         }
@@ -81,7 +82,8 @@
                         @media (#{$kgs-scale}-width: $width) {
                             @include kgs-default-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @media (#{$kgs-scale}-width: $width) {
                             @include kgs-stack-columns;
                         }
@@ -94,7 +96,6 @@
         //*********************************************************
 
         @if kgs-setting('flow-columns') {
-
             &-flow {
 
                 @include kgs-pull('flow');
@@ -110,9 +111,10 @@
                         @media (min-width: kgs-option(col-break)) {
                             @include kgs-flow-columns;
                         }
-                    } @else {
-
+                    }
+                    @else {
                         @include kgs-flow-columns;
+
                         > [class*="#{kgs-option(col-namespace)}"] {
                             margin-left: #{kgs-option(gutter)};
                         }
@@ -124,7 +126,6 @@
                                 }
                             }
                         }
-
                     }
                 }
 
@@ -135,7 +136,8 @@
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-flow-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns($type: 'flow');
                                 }
@@ -152,14 +154,12 @@
                 }
 
             } // &--flow
-
         } // kgs-setting()
 
         // Magic Columns
         //*********************************************************
 
         @if kgs-setting('magic-columns') {
-
             &-magic {
 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
@@ -168,8 +168,10 @@
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-magic-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-magic-columns;
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -186,7 +188,8 @@
                                     @media (#{$kgs-scale}-width: $width) {
                                         @include kgs-magic-columns;
                                     }
-                                } @else {
+                                }
+                                @else {
                                     @media (#{$kgs-scale}-width: $width) {
                                         @include kgs-stack-columns($type: 'magic');
                                     }
@@ -198,14 +201,12 @@
                 }
 
             } // &--magic
-
         } // kgs-setting()
 
         // No Gutter Columns
         //*********************************************************
 
         @if kgs-setting('no-gutter-columns') {
-
             &-no-gutter, &-block {
 
                 @include kgs-pull('no-gutter');
@@ -216,8 +217,10 @@
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-no-gutter-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-no-gutter-columns;
+
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
                                 @media (max-width: kgs-option('col-break')) {
@@ -235,7 +238,8 @@
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-no-gutter-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns;
                                 }
@@ -247,7 +251,6 @@
             }
 
             &-no-gutter {
-
                 // Adaptive Columns
                 @if kgs-setting('responsive') {
                     @if kgs-setting('adaptive-columns') {
@@ -256,14 +259,12 @@
                 }
 
             }
-
         } // kgs-setting()
 
         // Block Columns
         //*********************************************************
 
         @if kgs-setting('block-columns') {
-
             &-block {
 
                 @if (kgs-setting('mobile-first'), '&:not([class*="stack-"])', '&') {
@@ -271,7 +272,8 @@
                         @media (min-width: kgs-option('col-break')) {
                             @include kgs-block-columns;
                         }
-                    } @else {
+                    }
+                    @else {
                         @include kgs-block-columns;
                         @if kgs-setting('responsive') {
                             &:not([class*="stack-"]) {
@@ -290,7 +292,8 @@
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-block-columns;
                                 }
-                            } @else {
+                            }
+                            @else {
                                 @media (#{$kgs-scale}-width: $width) {
                                     @include kgs-stack-columns;
                                 }
@@ -300,14 +303,12 @@
                 }
 
             } // &-block
-
         } // kgs-setting()
 
         // Reverse Column Order
         //*********************************************************
 
         @if kgs-setting('reverse-columns') {
-
             &-reverse {
                 &:not([class*="reverse-break"]) {
                     @include kgs-reverse-order;
@@ -323,7 +324,6 @@
                     }
                 }
             }
-
         } // kgs-setting()
 
     } // row

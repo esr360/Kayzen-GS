@@ -1,9 +1,7 @@
 language: node_js
 node_js:
-  - "4.4"
-before_install:
-    - gem install sass
-    - gem install scss-lint
-    - npm install -g grunt-cli 
-install: npm install
-before_script: grunt compile
+    - 6
+install: 
+    - npm install
+before_script: 
+    - npm run compile

@@ -7,22 +7,23 @@
 // Vendor
 //*****************************************************************
 
-@import '../node_modules/Sass-Boost/src/sass-boost';
+@import '../../node_modules/Sass-Boost/src/sass-boost';
+
+// Config
+//*****************************************************************
+
+@import '../config.json', 'config';
 
 // Utilities
 //*****************************************************************
 
 @import 'lib/utilities/kayzenGS';
+
 @import 'lib/utilities/breakpoint';
 @import 'lib/utilities/config';
 @import 'lib/utilities/fraction';
 @import 'lib/utilities/option';
 @import 'lib/utilities/setting';
-
-// Config
-//*****************************************************************
-
-@import 'config';
 
 // Tools
 //*****************************************************************
