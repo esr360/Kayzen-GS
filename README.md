@@ -13,7 +13,7 @@
 
 ## Overview
 
-[View SassDoc Documentation](http://esr360.github.io/Kayzen-GS/docs/)
+[View SassDoc Documentation](http://esr360.github.io/Kayzen-GS/docs/sass/)
 
 Some of the core features of Kayzen-GS include:
 
