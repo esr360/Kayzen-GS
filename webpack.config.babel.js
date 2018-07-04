@@ -16,9 +16,8 @@ export default function(env) {
         },
 
         externals: {
-            'react': 'React',
-            'react-dom': 'ReactDOM',
-            'react-router': 'ReactRouter'
+            'react': 'react',
+            'react-dom': 'react-dom'
         },
 
         module: {
