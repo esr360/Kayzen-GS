@@ -406,13 +406,13 @@ module.exports = g;
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = require("React");
+module.exports = require("react");
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("ReactDOM");
+module.exports = require("react-dom");
 
 /***/ }),
 /* 7 */

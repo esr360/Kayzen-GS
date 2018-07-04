@@ -186,6 +186,14 @@ Follow [@esr360](https://twitter.com/ESR360) on Twitter!
 
 ## Changelog
 
+#### Version 2.5.1
+
+Released: 4th July 2018 🇺🇸 🦅
+
+###### Release Notes
+
+* Fixes incorrect `externals` in webppack config
+
 #### Version 2.5.0
 
 Released: 14th April 2018

@@ -1,8 +1,6 @@
 import path from 'path';
-import webpack from 'webpack';
 
-export default function(env) {
-
+export default function() {
     return {
         entry: { 
             'kayzen-gs': './src/js/index.js' 
@@ -32,5 +30,4 @@ export default function(env) {
 
         devtool: false
     }
-
 };

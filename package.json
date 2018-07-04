@@ -1,7 +1,7 @@
 {
   "name": "kayzen-gs",
-  "version": "2.5.0",
-  "description": "A powerful grid system for building responsive UI's for the web",
+  "version": "2.5.1",
+  "description": "A powerful framework for building responsive grid systems for the web",
   "author": "(Edmund Reed)[http://twitter.com/esr360] <esr360@live.com>",
   "homepage": "https://github.com/esr360/Kayzen-GS",
   "main": "dist/kayzen-gs.js",
